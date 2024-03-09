@@ -1,0 +1,15 @@
+
+import Image from "next/image";
+
+import { LogoProps } from "@/interfaces/Interfaces";
+  
+const Logo: React.FC<LogoProps> = ({icon, width, height, alt}) =>{
+    return(
+        <Image src={icon}
+         alt={alt} 
+         width={width}  
+         height={height}/>
+    )
+}
+
+export default Logo;

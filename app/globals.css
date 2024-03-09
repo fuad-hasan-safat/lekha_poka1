@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+@font-face {
+  font-family: Kangso;
+  src: url("/public/Fonts/KongshoMJ.ttf") format("truetype");
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  /* background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)); */
+}
+
+
+.search-button {
+  /* Styles for the button */
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.search-icon {
+  /* Styles for the search icon */
+  width: 20px;
+  height: 20px;
+}
+
+.search-input {
+  /* Styles for the search input field */
+  display: none;
+  width: 100px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin-left: 5px;
+}
+.slider-pagination button.opacity-100{
+  background-color: red !important;
+}
+.data-twe-carousel-active{
+  background-color: yellow !important;
+}
+
+.dividerwidth{
+  width: 400px;
+}
+
+.roundedimg {
+  border-radius: 50%;
+}
+
+.iteam{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.iteam img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+
+/* carosal */
+
+.carousel {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  color: gray;
+  font-size: 2rem;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  z-index: 1;
+  transition: background-color 0.3s;
+}
+.carousel__btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.carousel__btn--prev {
+  left: 0;
+}
+.carousel__btn--next {
+  right: 0;
+}
+.carousel__img {
+  width: 100%;
+  height: 812px;
+  display: block;
+  transition: transform 3s ease-in-out;
+}
+/* .carousel__img:hover {
+  transform: scale(1.05);
+} */
+
+.carousel__indicator{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+z-index: 20;
+}
