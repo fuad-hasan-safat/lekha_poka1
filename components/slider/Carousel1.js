@@ -7,11 +7,11 @@ import SliderPost from '../sliderPost/SliderPost';
 // ...
 const CarouselIndicators = ({ images, activeIndex, onClick }) => {
   return (
-    <div className="">
+    <div className="space-x-1 absolute bottom-[136px] left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0">
       {images.map((_, index) => (
-        <><span
+        <><button
           key={index}
-          className={`h-28 w-28 rounded space-x-3 z-50 ${index === activeIndex ? ' bg-yellow-400' : 'bg-red-400'
+          className={`carousel__indicator ${index === activeIndex ? ' bg-yellow-400 shadow-md' : 'bg-gray-400'
             }`}
           onClick={() => onClick(index)}
         />
@@ -49,9 +49,24 @@ const Carousel1 = ({ images, sliderPosts, interval = 3000 }) => {
   };
   return (
     <div className="carousel relative">
-      <button onClick={prevSlide} className="carousel__btn carousel__btn--prev">
+      <button onClick={prevSlide} className="carousel__btn carousel__btn--prev z-1000">
         &lt;
       </button>
+      <div className='absolute pl-[302px] pt-[168px]'>
+        {<SliderPost
+          title={sliderPosts[activeIndex].title}
+          caption={sliderPosts[activeIndex].caltion}
+          discription={sliderPosts[activeIndex].discription}
+          id={sliderPosts[activeIndex].id}
+        />}
+      </div>
+      <div className=''>
+        <CarouselIndicators
+          images={images}
+          activeIndex={activeIndex}
+          onClick={goToSlide}
+        />
+      </div>
 
       <div className='w-full h-812 justify-center'>
         <img
@@ -59,21 +74,8 @@ const Carousel1 = ({ images, sliderPosts, interval = 3000 }) => {
           alt={`Slide ${activeIndex}`}
           className="carousel__img"
         />
-        <div className='absolute flex pb-8'>
-          <CarouselIndicators
-            images={images}
-            activeIndex={activeIndex}
-            onClick={goToSlide}
-          />
-        </div>
-          <div className='z-50'>
-          { <SliderPost
-            title={sliderPosts[activeIndex].title}
-            caption={sliderPosts[activeIndex].caltion}
-            discription={sliderPosts[activeIndex].discription}
-            id={sliderPosts[activeIndex].id}
-          /> }
-        </div>
+
+
       </div>
       <button onClick={nextSlide} className="carousel__btn carousel__btn--next">
         &gt;
