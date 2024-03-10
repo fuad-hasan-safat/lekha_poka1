@@ -8,7 +8,7 @@ import SearchButton from "./SearchIcon";
 
 const MyNavbar = () => {
   return (
-    <div className="bg-white-800 flex items-center justify-between shadow-dark-strong h-[92]">
+    <div className="bg-white-800 flex items-center justify-between shadow-dark-strong h-[92] ">
       {/* Logo */}
       <div className="">
         <Logo icon= '/images/logo1.png'  width = {655} height={92} alt='LekhaPoka logo'/>
@@ -16,7 +16,7 @@ const MyNavbar = () => {
 
       <div className="text-black p-10 text-2xl pr-[293px] ">
         {/* Buttons */}
-        <ul className="space-x-4 flex flex-wrap">
+        <ul className="space-x-4 flex flex-wrap kangsa-font">
           <li >
             <Link href="/">
               প্রচ্ছদ

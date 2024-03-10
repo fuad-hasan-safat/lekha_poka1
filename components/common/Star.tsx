@@ -29,8 +29,8 @@ const Star: React.FC<starObject> = ({
             <Image
               src={
                 item == 1
-                  ? "/images/star/full-star.svg"
-                  : "/images/star/half-star.svg"
+                  ? "/images/svgs/full-star.svg"
+                  : "/images/svgs/half-star.svg"
               }
               width={width}
               height={height}

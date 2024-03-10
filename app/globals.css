@@ -3,10 +3,16 @@
 @tailwind utilities;
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+
+ 
 @font-face {
-  font-family: Kangso;
-  src: url("/public/Fonts/KongshoMJ.ttf") format("truetype");
+  font-family: 'kangsa';
+  src: url('/public/Fonts/KongshoMJ.ttf') format('truetype');
 }
+.kangsa-font{
+  font-family: 'kangsa' ;
+}
+ 
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -80,6 +86,10 @@ body {
   height: 60px;
   border-radius: 50%;
 }
+.lekhokIteam img{
+  width: 60px;
+  height: 60px;
+}
 
 
 /* carosal */
@@ -103,7 +113,7 @@ body {
   transition: background-color 0.3s;
 }
 .carousel__btn:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(109, 104, 104, 0.8);
 }
 .carousel__btn--prev {
   left: 0;

@@ -1,13 +1,6 @@
 import Star from "@/components/common/Star";
 import Image from "next/image";
-
-interface lekhaPokaProfileObj {
-  image: string;
-  id: string;
-  title: string;
-  writer: string;
-  star: number;
-}
+import { lekhaPokaProfileObj } from "@/interfaces/Interfaces";
 
 const LekhaPokaProfile: React.FC<lekhaPokaProfileObj> = ({
   image,
@@ -18,7 +11,7 @@ const LekhaPokaProfile: React.FC<lekhaPokaProfileObj> = ({
 }) => {
   return (
     <>
-      <div className="flex">
+      <div className="flex ">
         <div className="iteam">
           <img src={image} height={100} width={100} alt="" />
         </div>
@@ -30,7 +23,12 @@ const LekhaPokaProfile: React.FC<lekhaPokaProfileObj> = ({
           <div className="pt-2">
             <Star star={star} alt="" width={20} height={20} />
           </div>
+
         </div>
+
+      </div>
+      <div className="pt-2">
+        <hr className={` w-96 h-0.5 border-t-0 bg-gray-300 dark:bg-white/10 `} />
       </div>
     </>
   );

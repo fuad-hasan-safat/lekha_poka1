@@ -1,6 +1,6 @@
 import LekhaPokaProfile from "@/components/common/lekhaProfile";
 
-const Somosamoyik = () => {
+const Jonopriyo = () => {
   const somosamoyekPosts = [
     {
       id: "xyz",
@@ -28,7 +28,7 @@ const Somosamoyik = () => {
       image: "/images/writerimage/robi.jpg",
       title: "নৌকা ডুবি",
       writer: "রবীন্দ্রনাথ ঠাকুর",
-      star: 2.5,
+      star: 4,
     },
     {
       id: "xyz",
@@ -43,9 +43,9 @@ const Somosamoyik = () => {
     <>
       <div>
         <div>
-          <h1 className="text-[20px] text-yellow-500 font-semibold">সমসাময়িক</h1>
+          <h1 className="text-[20px] text-yellow-500 font-semibold">জনপ্রিয়</h1>
         </div>
-        <div className="pt-10">
+        <div className="pt-10 ">
           {somosamoyekPosts.length &&
             somosamoyekPosts.map((item, index) => (
               <div className="pb-3">
@@ -65,4 +65,4 @@ const Somosamoyik = () => {
   );
 };
 
-export default Somosamoyik;
+export default Jonopriyo;

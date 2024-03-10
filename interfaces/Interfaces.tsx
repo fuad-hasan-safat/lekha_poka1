@@ -12,13 +12,44 @@ export interface starObject {
   alt: string;
 }
 
-export type Post ={
-  id: string,
-  title: string,
-  caltion: string,
-  discription: string,
-  image: string,
+export interface lekhaPokaProfileObj {
+  image: string;
+  id: string;
+  title: string;
+  writer: string;
+  star: number;
 }
-export interface Posts {
-  post: Post[];
+
+export interface lekhokObj {
+  image: string;
+  id: string;
+  writer: string;
+  lifeCycle: string;
 }
+
+export interface mainContaintButton{
+  id: string;
+  height: number;
+  weidth:number;
+  txt:string;
+}
+
+
+export interface mainContaintPost{
+  id: string;
+  title:string;
+  writer:string;
+  content:string;
+}
+
+
+// export type Post ={
+//   id: string,
+//   title: string,
+//   caltion: string,
+//   discription: string,
+//   image: string,
+// }
+// export interface Posts {
+//   post: Post[];
+// }

@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { Post } from '@/interfaces/Interfaces';
-import SliderPost from '../sliderPost/SliderPost';
+import SliderPost from './sliderPost/SliderPost';
 
 
 // ...
@@ -11,7 +11,7 @@ const CarouselIndicators = ({ images, activeIndex, onClick }) => {
       {images.map((_, index) => (
         <><button
           key={index}
-          className={`carousel__indicator ${index === activeIndex ? ' bg-yellow-400 shadow-md' : 'bg-gray-400'
+          className={`carousel__indicator ${index === activeIndex ? ' bg-orange-400 shadow-md' : 'bg-gray-400'
             }`}
           onClick={() => onClick(index)}
         />
@@ -48,7 +48,7 @@ const Carousel1 = ({ images, sliderPosts, interval = 3000 }) => {
     setActiveIndex(index);
   };
   return (
-    <div className="carousel relative">
+    <div className="carousel relative ">
       <button onClick={prevSlide} className="carousel__btn carousel__btn--prev z-1000">
         &lt;
       </button>

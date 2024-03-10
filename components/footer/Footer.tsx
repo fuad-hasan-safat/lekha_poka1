@@ -71,6 +71,10 @@ const MyFooter: React.FC = () => {
         </div>
         
       </div>
+      <div className="">
+                {/* <hr className="my-12 h-0.5 border-t-0 bg-yellow-600 dark:bg-white/10 " /> */}
+                <hr className={`ml-[400px] my-12 h-0.5 w-[1073px] border-t-0 bg-gray-400  dark:bg-white/10 justify-center content-center z-50`} />
+            </div>
       <div className="grid justify-center">
         <div className="text-white mb-24 pt-12"> © 2024 Lekhapoka | All Rights Reserved </div>
       </div>

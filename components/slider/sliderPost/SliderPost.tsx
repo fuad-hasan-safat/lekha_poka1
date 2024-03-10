@@ -23,7 +23,7 @@ const SliderPost: React.FC<SliderPostProps> = ({
         {discription}
       </div>
 
-      <button className="w-[176px] bg-yellow-400 px-2 py-1 h-[56px] rounded-md text-[19px] font-semibold text-white">
+      <button className="w-[176px] bg-orange-400 px-2 py-1 h-[56px] rounded-md text-[19px] font-semibold text-white">
         বিস্তারিত
       </button>
     </div>

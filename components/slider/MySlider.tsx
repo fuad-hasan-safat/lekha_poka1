@@ -1,7 +1,7 @@
 "use client";
 import Container from "postcss/lib/container";
 import { useEffect } from "react";
-import SliderPost from "../sliderPost/SliderPost";
+import SliderPost from "./sliderPost/SliderPost";
 
 const posts = [
   {
