@@ -1,15 +1,14 @@
-import MainContentButton from "../common/mainContentButton";
 import MaincontentBody from "../common/maincontentBody";
 import MainContentDivider from "../common/mainContentDivider";
+import ProcchodButtonList from "./ProcchodButtonList";
 
 export default function ProcchodLeftContent() {
-
-    const mainContentPosts = [
-        {
-            id: "xyz",
-            title: "অবেলায় শঙ্খধ্বনি",
-            writer: "রুদ্র মুহম্মদ শহীদুল্লাহ",
-            content: `অতোটা হৃদয় প্রয়োজন নেই,</br>
+  const mainContentPosts = [
+    {
+      id: "xyz",
+      title: "অবেলায় শঙ্খধ্বনি",
+      writer: "রুদ্র মুহম্মদ শহীদুল্লাহ",
+      content: `অতোটা হৃদয় প্রয়োজন নেই,</br>
             কিছুটা শরীর কিছুটা মাংস মাধবীও চাই।</br>
             এতোটা গ্রহণ এতো প্রশংসা প্রয়োজন নেই</br>
             কিছুটা আঘাত অবহেলা চাই প্রত্যাখান।</br>
@@ -35,23 +34,23 @@ export default function ProcchodLeftContent() {
             কিছুটা হিংস্র বিদ্রোহ চাই কিছুটা আঘাত</br>
             রক্তে কিছুটা উত্তাপ চাই, উষ্ণতা চাই</br>
             চাই কিছু লাল তীব্র আগুন।</br>`,
-        },
+    },
 
-        {
-            id: "xyz",
-            title: "কমলপ্রিয়ার আকাশটুক",
-            writer: "অর্ঘ্য রায় চৌধুরী",
-            content: `চিঠিটা যখন এল, তখন বারান্দার ওপর ঘন হয়ে এসেছে মেঘ, দক্ষিণ কলকাতার এই অঞ্চলের গলিপথগুলোয় নিবিড় নির্জনতা।
+    {
+      id: "xyz",
+      title: "কমলপ্রিয়ার আকাশটুক",
+      writer: "অর্ঘ্য রায় চৌধুরী",
+      content: `চিঠিটা যখন এল, তখন বারান্দার ওপর ঘন হয়ে এসেছে মেঘ, দক্ষিণ কলকাতার এই অঞ্চলের গলিপথগুলোয় নিবিড় নির্জনতা।
             চিঠি আসার দিনগুলো আর নেই, তবুও চিঠি লিখত একজনই। চিঠি লেখার দিন চলে গেলেও চিঠি লিখত সে। বলত, ‘চিঠির মধ্যে যে ডাক জেগে থাকে, সেই ডাক আর কোথাও পাওয়া যায় না।’
             ওই মেঘের বারান্দায় এক কোণে একটা বেতের চেয়ার, একটা দুপুর, আর বহুযুগ আগের এক নির্জন বনভূমি হেঁটে এসেছিল, বেশ কিছু কবিতার লাইন।
              কমলপ্রিয়া চিঠিটাকে গোপন করেননি, চিঠির কথা বলেছিলেন অনিরুদ্ধকে। অনিরুদ্ধ জানতেন এ চিঠি আসতে পারে, এক সন্ধ্যায় ওই ব্যালকনিতেই পাশাপাশি কমলপ্রিয়া বলেছিলেন, বহুদিন পর হঠাৎ তথাগতর সঙ্গে দেখা হওয়ার কথা, আকুল দুই চোখ, একাকী জীবন। বলেছিলেন, ডেনভারের এক ছোট্ট অ্যাপার্টমেন্ট দরজা খুলে রেখেছে তাঁর জন্য। বলেছিলেন, তথাগতর বিদেশে পড়তে যাওয়ার পর ধীরে ধীরে কমে আসা চিঠিগুলোর কথা, কোনো এক স্বর্ণকেশীর সুনীল চোখ। তারপর বহু বহুদিন নির্জন পথ, নির্ঘুম রাত, ফিকে হয়ে আসা রং, আর বাবা মার মৃত্যুর পর একাকী জীবনের কথা তো অনিরুদ্ধ জানতেনই। জীবনের বহু পথ পাড়ি দিয়ে ডানা ভাঙা পাখির মতো অনিরুদ্ধ যেদিন তাঁর জীবনের প্রথম কিশোরীর কাছে ফিরে এসেছিলেন, কমলপ্রিয়া সেই ফিরে আসা উপেক্ষা করতে পারেননি`,
-        },
+    },
 
-        {
-            id: "xyz",
-            title: "একটি কবিতার জন্য",
-            writer: "শামসুর রাহমান",
-            content: `বৃক্ষের নিকটে গিয়ে বলি ; </br>
+    {
+      id: "xyz",
+      title: "একটি কবিতার জন্য",
+      writer: "শামসুর রাহমান",
+      content: `বৃক্ষের নিকটে গিয়ে বলি ; </br>
             দয়াবান বৃক্ষ তুমি একটি কবিতা দিতে পারো ?</br>
             বৃক্ষ বলে আমার বাকল ফুঁড়ে আমার মজ্জায়</br>
             যদি মিশে যেতে পারো, তবে</br>
@@ -67,78 +66,35 @@ export default function ProcchodLeftContent() {
             এই বৃক্ষ, জরাজীর্ণ দেয়াল এবং</br>
             বৃদ্ধের সম্মুখে নতজানু আমি থাকবো কতোকাল ? </br>
             বলো কতোকাল ? </br>`,
-        },
-    ];
+    },
+  ];
 
-    const buttons = [
-        {
-            id: 'sob',
-            txt: 'সব',
-        },
-        {
-            id: 'kobita',
-            txt: 'কবিতা',
-        },
-        {
-            id: 'probondho',
-            txt: 'প্রবন্ধ',
-        },
-        {
-            id: 'golpo',
-            txt: 'গল্প',
-        },
-        {
-            id: 'anugolpo',
-            txt: 'অনুগল্প',
-        },
-        {
-            id: 'jiboni',
-            txt: 'জীবনী',
-        },
-    ]
-
-    return (
-        <div>
-            <div className="flex space-x-6 pl-[200px] pt-16">
-                {/* <MainContentButton id="sob" height={50} weidth={100} txt="সব" />
-                <MainContentButton id="sob" height={50} weidth={100} txt="কবিতা" />
-                <MainContentButton id="sob" height={50} weidth={100} txt="প্রবন্ধ" />
-                <MainContentButton id="sob" height={50} weidth={100} txt="গল্প" />
-                <MainContentButton id="sob" height={50} weidth={100} txt="অনুগল্প" />
-                <MainContentButton id="sob" height={50} weidth={100} txt="জীবনী" /> */}
-                {
-                    buttons.length && buttons.map((button, index) =>(
-                        <>
-                        <MainContentButton
-                        key={index}
-                        id={button.id}
-                        txt={button.txt}
-                        height={50}
-                        weidth={100}
-                        />
-                        </>
-                    ))
-                }
-            </div>
-            <div className="pt-20 ml-[200px] text-3xl w-[604px]">
-                {mainContentPosts.length && mainContentPosts.map((post, index) => (
-                    <>
-                        <div>
-                            <MaincontentBody
-                                key={index}
-                                id={post.id}
-                                title={post.title}
-                                writer={post.writer}
-                                content={post.content}
-                            />
-                        </div>
-                        <div>
-                            {index <= mainContentPosts.length - 2? <MainContentDivider/>:''}
-                            
-                        </div>
-                    </>
-                ))}
-            </div>
-        </div>
-    );
-};
+  return (
+    <div>
+      <ProcchodButtonList />
+      <div className="pt-20 ml-[200px] text-3xl w-[604px]">
+        {mainContentPosts.length &&
+          mainContentPosts.map((post, index) => (
+            <>
+              <div>
+                <MaincontentBody
+                  key={index}
+                  id={post.id}
+                  title={post.title}
+                  writer={post.writer}
+                  content={post.content}
+                />
+              </div>
+              <div>
+                {index <= mainContentPosts.length - 2 ? (
+                  <MainContentDivider />
+                ) : (
+                  ""
+                )}
+              </div>
+            </>
+          ))}
+      </div>
+    </div>
+  );
+}

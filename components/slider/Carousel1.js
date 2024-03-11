@@ -49,7 +49,7 @@ const Carousel1 = ({ images, sliderPosts, interval = 3000 }) => {
     setActiveIndex(index);
   };
   return (
-    <div className="carousel relative ">
+    <div className="carousel relative pt-[82px]">
       <button onClick={prevSlide} className="carousel__btn carousel__btn--prev z-1000">
         &lt;
       </button>

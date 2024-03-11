@@ -1,3 +1,4 @@
+import { SetStateAction } from 'react'
 export interface LogoProps {
   icon: string;
   width: number;
@@ -27,21 +28,21 @@ export interface lekhokObj {
   lifeCycle: string;
 }
 
-export interface mainContaintButton{
+export interface buttonItem {
   id: string;
   height: number;
-  weidth:number;
-  txt:string;
+  weidth: number;
+  txt: string;
+  selectedId: string;
+  setSelectedId: React.Dispatch<SetStateAction<string>>;
 }
 
-
-export interface mainContaintPost{
+export interface mainContaintPost {
   id: string;
-  title:string;
-  writer:string;
-  content:string;
+  title: string;
+  writer: string;
+  content: string;
 }
-
 
 // export type Post ={
 //   id: string,

@@ -6,8 +6,8 @@ import SongInfo from "./song-info";
 const AudioPlayer = () => {
     return (
         <>
-            <div className="flex flex-row justify-center content-center space-x-16 mb-10">
-                <div>
+            <div className="fixed flex flex-row backdrop-blur-md justify-center content-center space-x-16 bottom-[50px] bg-black/20  w-full h-[140px] ">
+                <div className="items-center content-center justify-center z-[200]">
                     <SongInfo/>
                 </div>
 
