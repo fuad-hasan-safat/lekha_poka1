@@ -68,7 +68,7 @@ const Carousel1 = ({ images, sliderPosts, interval = 3000 }) => {
         />
       </div>
 
-      <div className='w-full h-812 justify-center'>
+      <div className='w-full h-812 justify-center transition-all  cubic-bezier(0.77, 0, 0.175, 1)'>
         <img
           src={images[activeIndex]}
           alt={`Slide ${activeIndex}`}
@@ -80,8 +80,6 @@ const Carousel1 = ({ images, sliderPosts, interval = 3000 }) => {
       <button onClick={nextSlide} className="carousel__btn carousel__btn--next">
         &gt;
       </button>
-
-
     </div>
   );
 };

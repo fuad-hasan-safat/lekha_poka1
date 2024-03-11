@@ -127,6 +127,7 @@ body {
   display: block;
   transition: transform 300ms ease-in-out;
 }
+
 /* .carousel__img:hover {
   transform: scale(1.05);
 } */

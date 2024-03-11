@@ -20,7 +20,7 @@ const MaincontentBody: React.FC<mainContaintPost> = ({
                 >{title}</h1>
             </div>
             <div className="pb-4">
-                <p className="text-xl font-semibold ">{writer}</p>
+                <p className="text-xl text-gray-800 font-semibold ">{writer}</p>
             </div>
             <div className="pb-3">
                 <div className="text-[16px] text-gray-500" dangerouslySetInnerHTML={html} />
