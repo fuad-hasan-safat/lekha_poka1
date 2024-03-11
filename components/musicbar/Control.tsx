@@ -37,10 +37,10 @@ const Controls = () => {
 
     }
     return (
-        <div className="flex flex-row mt-4">
+        <div className="flex flex-row mt-4 space-x-6">
             <ImageButton src={shuffleButtonIcon} fnc={onClick} />
             <ImageButton src={prevButtonIcon} fnc={onClick} />
-            <ImageButton src={playButtonIcon} fnc={onClick} />
+            <ImageButton src={pauseButtonIcon} fnc={onClick} />
             <ImageButton src={nextButtonIcon} fnc={onClick} />
             <ImageButton src={repeatButtonIcon} fnc={onClick} />
         </div>

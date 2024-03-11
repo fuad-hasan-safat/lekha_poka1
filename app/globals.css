@@ -149,10 +149,14 @@ z-index: 20;
   appearance: none;
   width: 400px;
   height: 7px;
-  background-color: #505050;
+  background-color: #fffefe;
   border-radius: 7px;
   outline: none;
   @apply drop-shadow-lg;
+}
+
+.slider::-webkit-progress-value {
+   background-color: rgb(225, 228, 54);
 }
 
 .slider::-webkit-slider-thumb {
@@ -160,7 +164,7 @@ z-index: 20;
   appearance: none;
   height: 19px;
   width: 19px;
-  background-color: white;
+  background-color: rgb(241, 219, 18);
   border-radius: 100%;
   border: #505050 1px solid;
   cursor: pointer;
@@ -170,7 +174,7 @@ z-index: 20;
 .slider::-moz-range-thumb {
   height: 19px;
   width: 19px;
-  background-color: white;
+  background-color: rgb(218, 233, 80);
   border-radius: 100%;
   border: #505050 1px solid;
   cursor: pointer;

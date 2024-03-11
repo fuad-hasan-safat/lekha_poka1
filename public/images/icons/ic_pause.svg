@@ -1,1 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120.88 120.88"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#505050;}.cls-3{fill:none;stroke:#707070;}</style></defs><g id="Layer_1-2"><g><g id="Ellipse_7-2"><circle class="cls-1" cx="60.44" cy="60.44" r="60.44"/><circle class="cls-3" cx="60.44" cy="60.44" r="59.9"/></g><g><rect class="cls-2" x="46.39" y="40.27" width="9.21" height="40.33"/><rect class="cls-2" x="65.28" y="40.27" width="9.21" height="40.33"/></g></g></g></svg>
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="36" height="36" rx="18" fill="#FCD200"/>
+<path d="M16.875 23.925V12.075C16.875 10.95 16.4 10.5 15.2 10.5H12.175C10.975 10.5 10.5 10.95 10.5 12.075V23.925C10.5 25.05 10.975 25.5 12.175 25.5H15.2C16.4 25.5 16.875 25.05 16.875 23.925Z" fill="white"/>
+<path d="M25.5 23.925V12.075C25.5 10.95 25.025 10.5 23.825 10.5H20.8C19.6083 10.5 19.125 10.95 19.125 12.075V23.925C19.125 25.05 19.6 25.5 20.8 25.5H23.825C25.025 25.5 25.5 25.05 25.5 23.925Z" fill="white"/>
+</svg>

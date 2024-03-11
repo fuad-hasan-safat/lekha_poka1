@@ -11,7 +11,7 @@ const AudioPlayer = () => {
                     <SongInfo/>
                 </div>
 
-                <div className="flex flex-col items-center space-y-3">
+                <div className="flex flex-col items-center space-y-8">
                     <Controls />
                     <Progressbar />
 
