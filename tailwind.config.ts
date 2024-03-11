@@ -33,7 +33,11 @@ const config: Config = {
         '108': '108px',
         '812': '812px',
       },
+      colors:{
+        primary: "#505050"
+      },
     },
+
   },
   darkMode: "class",
   plugins: [require("tw-elements/plugin.cjs")]
