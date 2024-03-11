@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Post } from '@/interfaces/Interfaces';
 import SliderPost from './sliderPost/SliderPost';
+import AudioPlayer from '../musicbar/AudioPlayer';
 
 
 // ...
@@ -67,6 +68,7 @@ const Carousel1 = ({ images, sliderPosts, interval = 3000 }) => {
           onClick={goToSlide}
         />
       </div>
+     
 
       <div className='w-full h-812 justify-center'>
         <img
