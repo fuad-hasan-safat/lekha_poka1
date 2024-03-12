@@ -16,7 +16,7 @@ type ControlsProps = {
 
 const Controls = ({onPlayClick, onPrevClick, onNextClick, onRepeatClick, onShuffleClick ,isPlaying, repeat, shuffle}: ControlsProps) => {
 
-    const playButtonIcon: string = '/images/icons/ic_play.svg';
+    const playButtonIcon: string = '/images/icons/play-svgrepo-com.svg';
     const nextButtonIcon: string  = '/images/icons/ic_next.svg';
     const prevButtonIcon: string  = '/images/icons/ic_prev.svg';
     const shuffleButtonIcon: string  = '/images/icons/ic_shuffle.svg';

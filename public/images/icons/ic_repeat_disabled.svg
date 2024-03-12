@@ -1,15 +1,20 @@
-<svg viewBox="-51.2 -51.2 614.40 614.40" xmlns="http://www.w3.org/2000/svg" fill="#000000">
-    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-    <g id="SVGRepo_iconCarrier">
-        <title>ionicons-v5-c</title>
-        <polyline points="320 120 368 168 320 216"
-            style="fill:none;stroke:#676565;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></polyline>
-        <path d="M352,168H144a80.24,80.24,0,0,0-80,80v16"
-            style="fill:none;stroke:#676565;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path>
-        <polyline points="192 392 144 344 192 296"
-            style="fill:none;stroke:#676565;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></polyline>
-        <path d="M160,344H368a80.24,80.24,0,0,0,80-80V248"
-            style="fill:none;stroke:#676565;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120.88 120.88">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:none;}.cls-3{fill:#ccc;}.cls-2{stroke:#ccc;stroke-miterlimit:10;stroke-width:5.5px;}</style>
+    </defs>
+    <g id="Layer_1-2">
+        <g>
+            <g id="Ellipse_7-2">
+                <circle class="cls-1" cx="60.44" cy="60.44" r="60.44" />
+                <circle class="cls-1" cx="60.44" cy="60.44" r="59.9" />
+            </g>
+            <g>
+                <path id="Polygon_1" class="cls-3" d="M65,81.2l9.23-19.84,12.38,16.45-21.62,3.38Z" />
+                <path class="cls-2"
+                    d="M60.5,81.47c-11.62,0-20.24-9.4-20.24-21.02s9.42-21.04,21.04-21.04,21.04,9.42,21.04,21.04c0,5.2-1.88,9.95-5,13.62" />
+            </g>
+        </g>
     </g>
 </svg>

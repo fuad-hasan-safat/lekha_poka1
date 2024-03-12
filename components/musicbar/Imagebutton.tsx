@@ -9,7 +9,7 @@ import Image from "next/image";
   };
   
   const ImageButton = ({ fnc, src, className }: ImageButtonProps) => {
-    const buttonSize = 30;
+    const buttonSize = 40;
     return (
       <button onClick={fnc}>
         <Image
