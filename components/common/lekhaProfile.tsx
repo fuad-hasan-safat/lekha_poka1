@@ -15,7 +15,7 @@ const LekhaPokaProfile: React.FC<lekhaPokaProfileObj> = ({
         <div className="iteam">
           <img src={image} height={100} width={100} alt="" />
         </div>
-        <div className="pl-4 text-black">
+        <div className="pl-4 text-black space-y-2">
           <a className="font-semibold " href="#">
             {title}
           </a>

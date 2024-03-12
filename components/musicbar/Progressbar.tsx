@@ -1,7 +1,7 @@
 const Progressbar = () => {
     return (
-        <div className="flex flex-row space-x-3">
-            <span className="text-xs ">01:00</span>
+        <div className="flex flex-row space-x-4 justify-center items-center ">
+            <span className="text-xs text-black font-semibold">01:00</span>
             <input
                 type="range"
                 min={1}
@@ -12,7 +12,7 @@ const Progressbar = () => {
             />
 
 
-            <span className="text-xs">02:00</span>
+            <span className="text-xs text-black font-semibold">02:00</span>
 
         </div>
 

@@ -19,7 +19,7 @@ export default function Login() {
                             {/* <label className="block text-gray-700 text-sm font-bold mb-2">
                                 Password
                             </label> */}
-                            <input className="border border-red-500 rounded  py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="পাসওয়ার্ড দিন" required />
+                            <input className="border rounded  py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="পাসওয়ার্ড দিন" required />
 
                         </div>
                         <a className="ml-[126px] mb-6 inline-block align-baseline font-bold text-xs text-black-300 hover:text-black-800" href="#">
