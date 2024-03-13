@@ -22,7 +22,7 @@ const MyNavbar = () => {
         />
       </div>
 
-      <div className="text-black p-10 text-2xl pr-[293px] font-KangshaMJ">
+      <div className="font-KangshaMJ text-black p-10 text-2xl pr-[293px]">
         {/* Buttons */}
         <ul className="space-x-6 flex flex-wrap kangsa-font">
           <li

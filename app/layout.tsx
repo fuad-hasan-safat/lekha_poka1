@@ -1,8 +1,23 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import localFont from '@next/font/local'
 
 const inter = Inter({ subsets: ['latin'] })
+
+const poppins = localFont({
+  src: [
+    {
+      path: './LiSirajee.ttf',
+      weight: '400'
+    },
+    {
+      path: './LiSirajee.ttf',
+      weight: '700'
+    }
+  ],
+  variable: '--font-kangsoMj'
+})
 
 export const metadata: Metadata = {
   title: 'লেখার পোকা',
@@ -16,7 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${poppins.variable} font-sans`}>{children}</body>
     </html>
   )
 }

@@ -36,9 +36,9 @@ const config: Config = {
       colors: {
         primary: "#505050"
       },
-      fontFamily: {
-        KangshaMJ: ['KongshoMJ', 'sans-serif'],
-      },
+       fontFamily: {
+        sans: ['var(--font-kangsoMj)']
+      }
     },
 
   },

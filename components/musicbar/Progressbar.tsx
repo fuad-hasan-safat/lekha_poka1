@@ -17,19 +17,19 @@ const Progressbar = ({
     return (
         <div className="flex flex-row space-x-4 justify-center items-center ">
             <span className="text-xs text-black font-semibold">{leftLabel}</span>
-            {/* <input
+            <input
                 type="range"
                 min='1'
                 max='100'
                 value={progress}
                 step={0.25}
-                className="appearance-none bg-transparent [&::-webkit-slider-runnable-track]:h-[4px] w-[400px] [&::-webkit-slider-runnable-track]:bg-white [&::-webkit-slider-runnable-track]:text-yellow-400 "
+                className="slider appearance-none bg-transparent [&::-webkit-slider-runnable-track]:h-1 w-[400px] [&::-webkit-slider-runnable-track]:bg-white [&::-webkit-slider-runnable-track]:text-yellow-400 "
                 height={2}
                 onChange={(event) => {
                     onChange(parseInt(event?.target.value))
                 }}
-            /> */}
-            <div className="w-[400px] h-[4px] bg-white">
+            />
+            {/* <div className="w-[400px] h-[4px] bg-white">
                 <Slider
                     key='progressbar'
                     min={1}
@@ -45,7 +45,7 @@ const Progressbar = ({
                         onChange(parseInt(event?.target.value));
                     }} placeholder={undefined}
                 />
-            </div>
+            </div> */}
 
 
 

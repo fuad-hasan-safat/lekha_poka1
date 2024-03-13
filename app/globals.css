@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
+/* @font-face {
   font-family: 'KongshoMJ';
   src: url('fonts/KongshoMJ.eot');
   src: url('fonts/KongshoMJ.eot') format('embedded-opentype'),
@@ -10,7 +10,7 @@
        url('fonts/KongshoMJ.woff') format('woff'),
        url('fonts/KongshoMJ.ttf') format('truetype'),
        url('fonts/KongshoMJ.svg#KongshoMJ') format('svg');
-}
+} */
 
 
 
