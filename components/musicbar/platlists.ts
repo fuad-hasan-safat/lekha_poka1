@@ -3,7 +3,7 @@ import {Playlist} from '@/components/musicbar/audioplayer/type'
 
 const playlist: Playlist = [
   {
-    audioSrc: '/audio/track1.mp3',
+    audioSrc: '/audio/track2.mp3',
     metadata: {
       title: 'বাগিচায় বুলবুলি তুই',
       writer: 'কাজী নজরুল ইসলাম',
@@ -11,7 +11,7 @@ const playlist: Playlist = [
     },
   },
   {
-    audioSrc: '/audio/track2.mp3',
+    audioSrc: '/audio/track1.mp3',
     metadata: {
       title: 'দাঁড়ালে দুয়ারে মোর',
        writer: 'কাজী নজরুল ইসলাম',

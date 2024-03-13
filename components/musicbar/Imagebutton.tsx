@@ -4,14 +4,14 @@ import Image from "next/image";
 
   type ImageButtonProps = {
     src: string;
-    fnc: () => void;
+    onClick: () => void;
     className?: string;
   };
   
-  const ImageButton = ({ fnc, src, className }: ImageButtonProps) => {
-    const buttonSize = 30;
+  const ImageButton = ({ onClick, src, className }: ImageButtonProps) => {
+    const buttonSize = 20;
     return (
-      <button onClick={fnc}>
+      <button onClick={onClick}>
         <Image
           src={src}
           width={buttonSize}

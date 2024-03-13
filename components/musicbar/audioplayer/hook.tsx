@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Controls, InitialPlayerState, PlayerState, Playlist } from '@/components/musicbar/audioplayer/type';
-import { createAudioPlayer } from '@/components/musicbar/audioplayer/audioplayer'
-
+import { createAudioplayer } from '@/components/musicbar/audioplayer/audioplayer'
 interface AudioPlayer extends Controls {
   playerState: PlayerState;
 }
@@ -12,16 +11,16 @@ function useAudioPlayer(playlist: Playlist): AudioPlayer {
   const playerRef = useRef<Controls | null>(null);
 
   useEffect(() => {
-    const newPlayer = createAudioPlayer(playlist, setPlayerState);
+    const newPlayer = createAudioplayer(playlist, setPlayerState);
     playerRef.current = newPlayer;
     return () => {
       newPlayer.cleanup();
     };
   }, [playlist]);
 
-  // function setPlaybackPosition(position: number) {
-  //   playerRef.current?.setPlaybackPosition(position);
-  // }
+  function setPlaybackPosition(position: number) {
+    playerRef.current?.setPlaybackPosition(position);
+  }
 
   function toggleShuffle() {
     playerRef.current?.toggleShuffle();
@@ -39,8 +38,8 @@ function useAudioPlayer(playlist: Playlist): AudioPlayer {
     playerRef.current?.playNextTrack();
   }
 
-  function playPrevTrack() {
-    playerRef.current?.playPrevTrack();
+  function playPreviousTrack() {
+    playerRef.current?.playPreviousTrack();
   }
 
   function cleanup() {
@@ -48,13 +47,13 @@ function useAudioPlayer(playlist: Playlist): AudioPlayer {
   }
 
   return {
-    // setPlaybackPosition,
+    setPlaybackPosition,
     playerState,
     toggleShuffle,
     toggleRepeat,
     togglePlayPause,
     playNextTrack,
-    playPrevTrack,
+    playPreviousTrack,
     cleanup,
   };
 }

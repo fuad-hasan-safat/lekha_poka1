@@ -1,23 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* @import '~bootstrap/dist/css/bootstrap.min.css'; */
 
-
- 
 @font-face {
-  font-family: 'kangsa';
-  src: url('/public/Fonts/KongshoMJ.ttf') format('truetype');
+  font-family: 'KongshoMJ';
+  src: url('fonts/KongshoMJ.eot');
+  src: url('fonts/KongshoMJ.eot') format('embedded-opentype'),
+       url('fonts/KongshoMJ.woff2') format('woff2'),
+       url('fonts/KongshoMJ.woff') format('woff'),
+       url('fonts/KongshoMJ.ttf') format('truetype'),
+       url('fonts/KongshoMJ.svg#KongshoMJ') format('svg');
 }
-.kangsa-font{
-  font-family: 'kangsa' ;
-}
- 
+
+
 
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,12 +31,8 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
+  font-family: "KongshoMJ", serif ;
+   
 }
 
 
@@ -133,8 +130,7 @@ body {
 } */
 
 .carousel__indicator{
-  width: 10px;
-  height: 10px;
+
   border-radius: 50%;
  display: flex;
  justify-content: center;
@@ -146,37 +142,65 @@ z-index: 20;
 /* music bar slider */
 .slider {
   -webkit-appearance: none;
-  appearance: none;
+  appearance: none; 
   width: 400px;
-  height: 7px;
-  background-color: #fffefe;
+  height: 4px;
+  background-color: #ffffff;
   border-radius: 7px;
   outline: none;
-  @apply drop-shadow-lg;
-}
 
-.slider::-webkit-progress-value {
-   background-color: rgb(225, 228, 54);
 }
-
-.slider::-webkit-slider-thumb {
+.sound{
   -webkit-appearance: none;
-  appearance: none;
-  height: 19px;
-  width: 19px;
-  background-color: rgb(241, 219, 18);
-  border-radius: 100%;
-  border: #505050 1px solid;
-  cursor: pointer;
-  @apply drop-shadow-lg;
+  appearance: none; 
+  width: 100px;
+  height: 4px;
+  background-color: #ffffff;
+  border-radius: 7px;
+  outline: none;
 }
 
-.slider::-moz-range-thumb {
-  height: 19px;
-  width: 19px;
-  background-color: rgb(218, 233, 80);
-  border-radius: 100%;
-  border: #505050 1px solid;
-  cursor: pointer;
-  @apply drop-shadow-lg;
+/*
+/*Chrome*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+   input[type='range'] {
+    overflow: hidden;
+    /* width: 400px; */
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #ffffff;
+  }
+  
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: #f8e405;
+    margin-top: -1px;
+  }
+  
+  input[type='range']::-webkit-slider-thumb {
+    /* width: 10px; */
+    -webkit-appearance: none;
+    /* height: 10px; */
+    /* cursor: ; */
+    background: #f8e405;
+    box-shadow: -400px 0 0 400px #f8e405;
+  }
+
 }
+/** FF*/
+.slider::input[type="range"]::-moz-range-progress {
+background-color: #f8e405; 
+}
+/* input[type="range"]::-moz-range-track {  
+background-color: #9a905d;
+} */
+/* IE*/
+.slider::input[type="range"]::-ms-fill-lower {
+background-color: #f8e405; 
+}
+/* input[type="range"]::-ms-fill-upper {  
+background-color: #9a905d;
+} */
+
+

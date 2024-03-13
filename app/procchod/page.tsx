@@ -5,7 +5,7 @@ export default function Procchod() {
   return (
   
 
-      <div className="flex">
+      <div className="flex pt-10">
           <div className="w-maincontainwidth">
             <ProcchodLeftContent/>
           </div>

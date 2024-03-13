@@ -7,8 +7,11 @@ import SearchButton from "./SearchIcon";
 
 const MyNavbar = () => {
   const [selectedNav, setSelectedNav] = useState("");
+
   return (
-    <div className="fixed z-[999] bg-white-800 flex items-center justify-between shadow-dark-strong h-[92]  w-full bg-white">
+    <>
+    
+    <div  className="fixed  z-[999] bg-white-800 flex items-center justify-between shadow-dark-strong h-[92]  w-full bg-white">
       {/* Logo */}
       <div className="">
         <Logo
@@ -19,7 +22,7 @@ const MyNavbar = () => {
         />
       </div>
 
-      <div className="text-black p-10 text-2xl pr-[293px] ">
+      <div className="text-black p-10 text-2xl pr-[293px] font-KangshaMJ">
         {/* Buttons */}
         <ul className="space-x-6 flex flex-wrap kangsa-font">
           <li
@@ -79,6 +82,7 @@ const MyNavbar = () => {
         </ul>
       </div>
     </div>
+    </>
   );
 };
 

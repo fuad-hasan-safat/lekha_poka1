@@ -24,22 +24,19 @@ const Controls = ({onPlayClick, onPrevClick, onNextClick, onRepeatClick, onShuff
     const shuffleButtonDisabledIcon: string  = '/images/icons/ic_shuffle_disabled.svg';
     const pauseButtonIcon: string  = '/images/icons/ic_pause.svg';
     const repeatButtonDisabledIcon: string  = '/images/icons/ic_repeat_disabled.svg';
-    function onClick() {
 
-    }
   
 
     return (
         <div className="flex flex-row mt-4 space-x-6">
-            <ImageButton src={shuffle?shuffleButtonIcon:shuffleButtonDisabledIcon} fnc={onShuffleClick} />
-            <ImageButton src={prevButtonIcon}  fnc={onPrevClick}  />
-            <ImageButton src={isPlaying?pauseButtonIcon: playButtonIcon} className='h-[50px] w-[50px]' fnc={onPlayClick} />
-            <ImageButton src={nextButtonIcon}  fnc={onNextClick} />
-            <ImageButton src={repeat?repeatButtonIcon:repeatButtonDisabledIcon} fnc={onRepeatClick} />
+            <ImageButton src={shuffle?shuffleButtonIcon:shuffleButtonDisabledIcon} onClick={onShuffleClick} />
+            <ImageButton src={prevButtonIcon}  onClick={onPrevClick}  />
+            <ImageButton src={isPlaying?pauseButtonIcon: playButtonIcon} className='h-[50px] w-[50px]' onClick={onPlayClick} />
+            <ImageButton src={nextButtonIcon}  onClick={onNextClick} />
+            <ImageButton src={repeat?repeatButtonIcon:repeatButtonDisabledIcon} onClick={onRepeatClick} />
         </div>
     );
 };
 
 export default Controls;
-
 

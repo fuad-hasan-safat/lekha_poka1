@@ -22,9 +22,9 @@ const config: Config = {
         'w-1920': '1920px',
         'footerWidth': '1920px',
         'footerLineHeight': '1073px',
-        'sidebarwidth':'29.1666%',
-        'maincontainwidth':'70.833%',
-        
+        'sidebarwidth': '29.1666%',
+        'maincontainwidth': '70.833%',
+
       },
       height: {
         'h-102': '102px',
@@ -33,8 +33,11 @@ const config: Config = {
         '108': '108px',
         '812': '812px',
       },
-      colors:{
+      colors: {
         primary: "#505050"
+      },
+      fontFamily: {
+        KangshaMJ: ['KongshoMJ', 'sans-serif'],
       },
     },
 

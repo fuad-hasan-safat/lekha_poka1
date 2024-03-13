@@ -8,11 +8,11 @@ import AudioPlayer from '../musicbar/AudioPlayer';
 // ...
 const CarouselIndicators = ({ images, activeIndex, onClick }) => {
   return (
-    <div className="space-x-1 absolute bottom-[136px] left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0">
+    <div className="space-x-1 absolute bottom-[136px]  z-[2] mx-[15%] mb-4 flex list-none p-0 content-center justify-center">
       {images.map((_, index) => (
         <><button
           key={index}
-          className={`carousel__indicator ${index === activeIndex ? ' bg-orange-400 shadow-md' : 'bg-gray-400'
+          className={`carousel__indicator    ${index === activeIndex ? ' bg-orange-400 shadow-md h-[15px] w-[15px]' : 'bg-gray-400 h-[12px] w-[12px] mt-[2px]'
             }`}
           onClick={() => onClick(index)}
         />
@@ -24,7 +24,7 @@ const CarouselIndicators = ({ images, activeIndex, onClick }) => {
 };
 
 
-const Carousel1 = ({ images, sliderPosts, interval = 3000 }) => {
+const Carousel1 = ({sliderPosts, interval = 3000 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -36,12 +36,12 @@ const Carousel1 = ({ images, sliderPosts, interval = 3000 }) => {
 
   const nextSlide = () => {
     setActiveIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === sliderPosts.length - 1 ? 0 : prevIndex + 1
     );
   };
   const prevSlide = () => {
     setActiveIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? sliderPosts.length - 1 : prevIndex - 1
     );
   };
 
@@ -63,7 +63,7 @@ const Carousel1 = ({ images, sliderPosts, interval = 3000 }) => {
       </div>
       <div className=''>
         <CarouselIndicators
-          images={images}
+          images={sliderPosts}
           activeIndex={activeIndex}
           onClick={goToSlide}
         />
@@ -72,7 +72,7 @@ const Carousel1 = ({ images, sliderPosts, interval = 3000 }) => {
 
       <div className='w-full h-812 justify-center transition-all  cubic-bezier(0.77, 0, 0.175, 1)'>
         <img
-          src={images[activeIndex]}
+          src={sliderPosts[activeIndex].image}
           alt={`Slide ${activeIndex}`}
           className="carousel__img"
         />
