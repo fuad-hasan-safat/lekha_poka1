@@ -1,5 +1,6 @@
 import LekhaPokaProfile from "@/components/common/lekhaProfile";
 import LekhokDetails from "@/components/common/lekhok";
+import SidebarPostDivider from "@/components/common/sidebarpostdivider";
 import Image from "next/image";
 
 const Lekhok = () => {
@@ -45,15 +46,25 @@ const Lekhok = () => {
                 <div className="pt-10 pb-1">
                     {somosamoyekPosts.length &&
                         somosamoyekPosts.map((item, index) => (
-                            <div className="pb-3">
-                                <LekhokDetails
-                                    key={index}
-                                    image={item.image}
-                                    writer={item.writer}
-                                    id={item.id}
-                                    lifeCycle={item.lifeCycle}
-                                />
-                            </div>
+                            <>
+                                <div className="pb-3">
+                                    <LekhokDetails
+                                        key={index}
+                                        image={item.image}
+                                        writer={item.writer}
+                                        id={item.id}
+                                        lifeCycle={item.lifeCycle}
+                                    />
+                                </div>
+                                <div className="pb-3">
+                                    {index <= somosamoyekPosts.length - 2 ? (
+                                        <SidebarPostDivider />
+                                    ) : (
+                                        ""
+                                    )}
+                                </div>
+                            </>
+
                         ))}
                 </div>
                 <div>
@@ -72,12 +83,12 @@ const Lekhok = () => {
                                 className="pl-2 bg-white rounded-md border border-gray-300  w-[50px] h-[43px] "
 
                             >
-                                 <Image
-                                src={'/images/svgs/previous.svg'}
-                                width={10}
-                                height={10}
-                                alt={'ff'}
-                                className="ml-[6px]"
+                                <Image
+                                    src={'/images/svgs/previous.svg'}
+                                    width={10}
+                                    height={10}
+                                    alt={'ff'}
+                                    className="ml-[6px]"
                                 />
 
                             </button>
@@ -86,10 +97,10 @@ const Lekhok = () => {
 
                             >
                                 <Image
-                                src={'/images/svgs/next.svg'}
-                                width={10}
-                                height={10}
-                                alt={'ff'}
+                                    src={'/images/svgs/next.svg'}
+                                    width={10}
+                                    height={10}
+                                    alt={'ff'}
                                 />
 
                             </button>

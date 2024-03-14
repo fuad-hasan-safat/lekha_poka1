@@ -1,4 +1,5 @@
 import LekhaPokaProfile from "@/components/common/lekhaProfile";
+import SidebarPostDivider from "@/components/common/sidebarpostdivider";
 
 const Somosamoyik = () => {
   const somosamoyekPosts = [
@@ -48,7 +49,8 @@ const Somosamoyik = () => {
         <div className="pt-10">
           {somosamoyekPosts.length &&
             somosamoyekPosts.map((item, index) => (
-              <div className="pb-3">
+              <>
+                <div className="pb-1">
                 <LekhaPokaProfile
                   key={index}
                   image={item.image}
@@ -58,6 +60,15 @@ const Somosamoyik = () => {
                   star={item.star}
                 />
               </div>
+              <div className="pb-3">
+              {index <= somosamoyekPosts.length - 2 ? (
+                  <SidebarPostDivider />
+              ) : (
+                  ""
+              )}
+          </div>
+              </>
+            
             ))}
         </div>
       </div>

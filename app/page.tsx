@@ -1,4 +1,4 @@
-import Procchod from "@/app/procchod/page";
+import Procchod from "@/components/procchod/Procchod";
 import MyNavbar from "@/components/navbar/Navbar";
 import MyFooter from "@/components/footer/Footer";
 import Carousel1 from "@/components/slider/Carousel1";
@@ -35,13 +35,13 @@ export default function Home() {
   return (
     <>
       <main>
-        <MyNavbar />
+       
         <Carousel1 sliderPosts={posts} />
         <div>
           <AudioPlayer />
         </div>
         <Procchod />
-        <MyFooter />
+        
       </main>
 
     </>

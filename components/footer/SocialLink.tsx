@@ -17,12 +17,14 @@ const SocialLink: React.FC<SocialLinkProps> = ({ title, links }) => {
             <div>
 
                 <div className="pb-14 ">
-                    <ul className=" flex ">
-                        {links.map((link) => (
-                            <li key={link.label} className="pr-4 text-2xl">
-                                {/* <a href={link.url}>{link.label}</a> */}
-                                <i className={link.label}></i>
-                            </li>
+                    <ul className=" flex space-x-4">
+                        {links.map((link, index) => (
+                            <img
+                            src={link.label}
+                            key={index}
+                            height={20}
+                            width={20}
+                            />
                         ))}
                     </ul>
 

@@ -1,4 +1,4 @@
-import Divider from "../common/divider"
+import Divider from "../common/sidebardivider"
 import Jonopriyo from "./jonopriyo/Jonopriyo"
 import Lekhok from "./lekhok/Lekhok"
 import Login from "./login/Login"

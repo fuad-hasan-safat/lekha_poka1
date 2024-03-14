@@ -1,4 +1,5 @@
 import LekhaPokaProfile from "@/components/common/lekhaProfile";
+import SidebarPostDivider from "@/components/common/sidebarpostdivider";
 
 const Jonopriyo = () => {
   const somosamoyekPosts = [
@@ -48,16 +49,28 @@ const Jonopriyo = () => {
         <div className="pt-10 ">
           {somosamoyekPosts.length &&
             somosamoyekPosts.map((item, index) => (
-              <div className="pb-3">
-                <LekhaPokaProfile
-                  key={index}
-                  image={item.image}
-                  title={item.title}
-                  writer={item.writer}
-                  id={item.id}
-                  star={item.star}
-                />
-              </div>
+              <>
+
+                <div className="pb-1">
+                  <LekhaPokaProfile
+                    key={index}
+                    image={item.image}
+                    title={item.title}
+                    writer={item.writer}
+                    id={item.id}
+                    star={item.star}
+                  />
+                </div>
+                <div className="pb-3">
+                  {index <= somosamoyekPosts.length - 2 ? (
+                    <SidebarPostDivider />
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </>
+
+
             ))}
         </div>
       </div>

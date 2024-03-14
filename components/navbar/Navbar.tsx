@@ -11,16 +11,16 @@ const MyNavbar = () => {
   return (
     <>
     
-    <div  className="fixed  z-[999] bg-white-800 flex items-center justify-between shadow-dark-strong h-[92]  w-full bg-white">
+    <div  className="fixed z-[999] bg-white-800 flex items-center justify-between shadow-dark-strong h-[92]  w-full bg-white">
       {/* Logo */}
-      <div className="">
+    
         <Logo
           icon="/images/logo1.png"
           width={655}
           height={92}
           alt="LekhaPoka logo"
         />
-      </div>
+    
 
       <div className="font-KangshaMJ text-black p-10 text-2xl pr-[293px]">
         {/* Buttons */}
