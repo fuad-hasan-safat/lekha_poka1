@@ -55,6 +55,7 @@ const Carousel1 = ({sliderPosts, interval = 3000 }) => {
       </button>
       <div className='absolute pl-[302px] pt-[168px]'>
         {<SliderPost
+        key={`${sliderPosts[activeIndex].id} of ${sliderPosts[activeIndex].title}`}
           title={sliderPosts[activeIndex].title}
           caption={sliderPosts[activeIndex].caltion}
           discription={sliderPosts[activeIndex].discription}
