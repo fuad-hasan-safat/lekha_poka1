@@ -28,13 +28,18 @@ export interface lekhokObj {
   lifeCycle: string;
 }
 
-export interface buttonItem {
+export interface ProcchodButtonProps  {
+  selectedId: string;
+  setSelectedId: React.Dispatch<SetStateAction<string>>;
+};
+
+
+export interface buttonItem extends ProcchodButtonProps {
   id: string;
   height: number;
   weidth: number;
   txt: string;
-  selectedId: string;
-  setSelectedId: React.Dispatch<SetStateAction<string>>;
+  
 }
 
 export interface mainContaintPost {

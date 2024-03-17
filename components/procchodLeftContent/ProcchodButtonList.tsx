@@ -1,5 +1,5 @@
 "use client";
-import { buttonItem } from "@/interfaces/Interfaces";
+import { buttonItem, ProcchodButtonProps } from "@/interfaces/Interfaces";
 import { useEffect, useState } from "react";
 import ButtonItem from "../common/buttonItem";
 
@@ -30,9 +30,7 @@ const buttons = [
   },
 ];
 
-const ProcchodButtonList = () => {
-  const [selectedId, setSelectedId] = useState("");
-
+const ProcchodButtonList = ({ selectedId, setSelectedId }: ProcchodButtonProps) => {
   return (
     <div className="flex space-x-6 pl-[200px] pt-16">
       {buttons.length &&
