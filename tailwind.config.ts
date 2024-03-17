@@ -37,7 +37,8 @@ const config: Config = {
         primary: "#505050"
       },
        fontFamily: {
-        sans: ['var(--font-kangsoMj)']
+        kangsa: ['var(--font-kangsa)'],
+        arial:['var(--font-Arimo)'],
       }
     },
 

@@ -1,5 +1,5 @@
-import LoginPage from "./login";
-
+import LoginPage from "../../components/login/login";
+import "../../public/assets/css/globals.css";
 export default function Home() {
 
     return (

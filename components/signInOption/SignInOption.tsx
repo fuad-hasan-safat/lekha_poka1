@@ -78,7 +78,7 @@ export default function SignInOption({title, icon1, icon2, icon3, lowermessege1,
             </div>
 
             <div className="flex pt-4">
-                <p className="pl-6  text-gray-500">{lowermessege1}</p> <a className="ml-3 text-black" href="#">{lowermessege2}</a>
+                <p className="pl-6  text-gray-500">{lowermessege1}</p> <a className="ml-3 text-black font-semibold text-lg" href="#">{lowermessege2}</a>
             </div>
         </>
 
