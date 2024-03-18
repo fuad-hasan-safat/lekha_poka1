@@ -5,10 +5,6 @@ export const kangsa = localFont({
       path: "../../public/assets/fonts/LiSirajee.ttf",
       weight: "400",
     },
-    {
-      path: "../../public/assets/fonts/LiSirajee.ttf",
-      weight: "700",
-    },
   ],
   variable: "--font-kangsa",
 });
