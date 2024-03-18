@@ -14,8 +14,8 @@ export default function LoginSignInOtpLeftPartDesign() {
         <div className=" grid place-items-center">
           <div className="w-[561px] text-black text-6xl">
             <h1 className="">Enjoy The world of</h1>
-            <h1>
-              <span className="text-yellow-400">Poem</span> anytime !
+            <h1 className="mt-2">
+              <span className="text-[#F9A106]">Poem</span> anytime !
             </h1>
           </div>
 

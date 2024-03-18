@@ -192,15 +192,11 @@ z-index: 20;
 .slider::input[type="range"]::-moz-range-progress {
 background-color: #f8e405; 
 }
-/* input[type="range"]::-moz-range-track {  
-background-color: #9a905d;
-} */
-/* IE*/
+
 .slider::input[type="range"]::-ms-fill-lower {
 background-color: #f8e405; 
 }
-/* input[type="range"]::-ms-fill-upper {  
-background-color: #9a905d;
-} */
+
+
 
 
