@@ -1,5 +1,5 @@
 import SignUpPage from "@/components/signup/SignUpPage";
-import "../../public/assets/css/globals.css";
+import "../../app/globals.css";
 export default function Home() {
 
     return (

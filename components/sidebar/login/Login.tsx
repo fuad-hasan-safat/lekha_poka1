@@ -7,21 +7,21 @@ export default function Login() {
             <div>
 
 
-                <div className="text-[20px] font-semibold text-yellow-500 h-[28px] w-[102.34px] pt-5 mb-8">লগইন</div>
+                <div className="text-[20px] font-semibold text-yellow-500 h-[28px]  pt-5 mb-8">লগইন</div>
                 <div className="mb-3 w-[298px] pt-4">
 
-                    <input className="border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="ইমেইল আইডি দিন " required />
+                    <input className="border rounded-2xl w-[297px] h-[43px] text-[14px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="ইমেইল আইডি দিন " required />
                 </div>
                 <div className="">
 
-                    <input className="border rounded  py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="পাসওয়ার্ড দিন" required />
+                    <input className="border rounded-2xl w-[297px] h-[43px] text-[14px] py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="পাসওয়ার্ড দিন" required />
 
                 </div>
-                <a className="ml-[126px] mb-6 inline-block align-baseline font-bold text-xs text-black-300 hover:text-black-800" href="#">
+                <a className="ml-[170px] mb-6 inline-block align-baseline font-bold text-xs text-gray-600 hover:text-black-800" href="#">
                     পাসওয়ার্ড ভুলে গেসেন?
                 </a>
                 <div className="">
-                    <button className="px-20 mb-8 bg-yellow-500 hover:bg-yellow-700 text-white font-bold  py-2 rounded focus:outline-none focus:shadow-outline" type="button">
+                    <button className=" mb-8 w-[297px] h-[43px] text-[16px] bg-[#F9A106] hover:bg-yellow-700 text-white font-semibold  py-2 rounded focus:outline-none focus:shadow-outline" type="button">
                         লগইন করুন
                     </button>
 

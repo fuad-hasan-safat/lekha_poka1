@@ -1,7 +1,5 @@
 import Procchod from "@/components/procchod/Procchod";
-
 import Carousel1 from "@/components/slider/Carousel1";
-
 import AudioPlayer from "@/components/musicbar/AudioPlayer";
 import Layout from "@/components/layout/layout";
 

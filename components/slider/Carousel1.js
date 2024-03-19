@@ -49,11 +49,11 @@ const Carousel1 = ({sliderPosts, interval = 3000 }) => {
     setActiveIndex(index);
   };
   return (
-    <div className="carousel relative pt-[82px]">
+    <div className="carousel relative pt-[125px]">
       <button onClick={prevSlide} className="carousel__btn carousel__btn--prev z-1000">
         &lt;
       </button>
-      <div className='absolute pl-[302px] pt-[168px]'>
+      <div className='absolute pl-[302px] pt-[150px]'>
         {<SliderPost
         key={`${sliderPosts[activeIndex].id} of ${sliderPosts[activeIndex].title}`}
           title={sliderPosts[activeIndex].title}
@@ -71,7 +71,7 @@ const Carousel1 = ({sliderPosts, interval = 3000 }) => {
       </div>
      
 
-      <div className='w-full h-812 justify-center transition-all  cubic-bezier(0.77, 0, 0.175, 1)'>
+      <div className='w-full h-[780px] justify-center transition-all  cubic-bezier(0.77, 0, 0.175, 1)'>
         <img
           src={sliderPosts[activeIndex].image}
           alt={`Slide ${activeIndex}`}

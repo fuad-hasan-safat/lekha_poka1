@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "../../public/assets/css/globals.css";
+import "../../app/globals.css";
 import MyNavbar from "@/components/navbar/Navbar";
 import MyFooter from "@/components/footer/Footer";
 import { kangsa } from "../fonts/kangsa";
