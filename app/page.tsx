@@ -4,18 +4,15 @@ import AudioPlayer from "@/components/musicbar/AudioPlayer";
 import { sliderPosts } from "@/public/demo-data/data";
 import Layout from "./layout";
 export default function Home() {
-
- 
   return (
     <>
-       <Layout>
+      <Layout showNavbar={true} showFooter={true}>
         <Carousel1 sliderPosts={sliderPosts} />
         <div>
           <AudioPlayer />
         </div>
         <Procchod />
-      </Layout> 
+      </Layout>
     </>
-
-  )
+  );
 }

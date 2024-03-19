@@ -1,12 +1,8 @@
-import { kangsa } from '@/components/fonts/kangsa';
-import '../app/globals.css'
-import MyNavbar from '@/components/navbar/Navbar';
-import MyFooter from '@/components/footer/Footer';
-import { Metadata } from 'next/types';
-
-
-
-
+import { kangsa } from "@/components/fonts/kangsa";
+import "../app/globals.css";
+import MyNavbar from "@/components/navbar/Navbar";
+import MyFooter from "@/components/footer/Footer";
+import { Metadata } from "next/types";
 
 export const metadata: Metadata = {
   title: "লেখার পোকা",
@@ -19,9 +15,10 @@ interface LayoutProps {
   showFooter?: boolean;
 }
 
-
 export default function Layout({
-  children, showNavbar = true, showFooter = true ,
+  children,
+  showNavbar = false,
+  showFooter = false,
 }: LayoutProps) {
   return (
     <html lang="en">
@@ -33,7 +30,6 @@ export default function Layout({
     </html>
   );
 }
-
 
 // export const metadata = {
 //   title: 'লেখার পোকা',
