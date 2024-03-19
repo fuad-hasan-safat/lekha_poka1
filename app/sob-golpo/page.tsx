@@ -1,12 +1,12 @@
 import AudioPlayer from "@/components/musicbar/AudioPlayer";
-import SobKobita from "@/components/kobita/sobKobita";
+import SobGolpo from "@/components/golpo/sobGolpo";
 import Layout from "../layout";
 
 export default function Home(){
     return(
-        <Layout showNavbar={true} showFooter={true}>
+        <Layout showFooter={true} showNavbar={true}>
         <div className="pt-[125px] text-black">
-            <SobKobita/>
+            <SobGolpo/>
         </div>
         <AudioPlayer/>
         </Layout>

@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Sidebar from "../sidebar/Sidebar";
-import SobKobitaLeftContent from "./sobKobitaLeftContent";
+import SobGolpoLeftContent from "./sobGolpoLeftContent";
 
 
-export default function SobKobita() {
+
+export default function SobGolpo() {
     return (
         <>
             <div className="flex flex-col">
                 <div>
                     <Image
-                        src={'/images/pages-banner-svg/kobita.svg'}
+                        src={'/images/pages-banner-svg/golpo.svg'}
                         height={380}
                         width={1920}
                         alt={"kobita banner"}
@@ -17,7 +18,7 @@ export default function SobKobita() {
                 </div>
                 <div className="flex flex-row">
                     <div className="w-maincontainwidth">
-                        <SobKobitaLeftContent />
+                        <SobGolpoLeftContent/>
                     </div>
                     <div className="w-sidebarwidth">
                         <Sidebar />

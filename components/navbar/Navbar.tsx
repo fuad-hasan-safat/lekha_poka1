@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 import Logo from "../common/Logo";
@@ -7,6 +7,8 @@ import SearchButton from "./SearchIcon";
 
 const MyNavbar = () => {
   const [selectedNav, setSelectedNav] = useState("");
+
+ 
 
   return (
     <>
@@ -33,7 +35,7 @@ const MyNavbar = () => {
                 : ""
             }`}
           >
-            <Link href="#">প্রচ্ছদ</Link>
+            <Link href="/">প্রচ্ছদ</Link>
           </li>
           <li
             onClick={() => setSelectedNav("sob_lekha")}
@@ -43,7 +45,7 @@ const MyNavbar = () => {
                 : ""
             }`}
           >
-            <Link href="#">সব লেখা</Link>
+            <Link href="/">সব লেখা</Link>
           </li>
           <li
             onClick={() => setSelectedNav("bistarito")}
@@ -63,7 +65,7 @@ const MyNavbar = () => {
                 : ""
             }`}
           >
-            <Link href="#">যোগাযোগ</Link>
+            <Link href="/contactus">যোগাযোগ</Link>
           </li>
           <li
             onClick={() => setSelectedNav("amader_somporke")}

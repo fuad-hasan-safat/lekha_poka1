@@ -6,7 +6,7 @@ import Logo from "../common/Logo";
 import FooterLink from "./FooterLink";
 import SocialLink from "./SocialLink";
 
-const MyFooter: React.FC = () => {
+const MyFooter = () => {
   const icon: string = "";
   return (
     <div className=" bg-black pl-56 pt-36">
