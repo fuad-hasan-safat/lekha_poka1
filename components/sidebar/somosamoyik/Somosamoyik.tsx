@@ -44,31 +44,32 @@ const Somosamoyik = () => {
     <>
       <div>
         <div>
-          <h1 className="text-[20px] text-yellow-500 font-semibold">সমসাময়িক</h1>
+          <div className="text-[20px] text-yellow-500 font-semibold">
+            সমসাময়িক
+          </div>
         </div>
         <div className="pt-10">
           {somosamoyekPosts.length &&
             somosamoyekPosts.map((item, index) => (
               <>
                 <div className="pb-1">
-                <LekhaPokaProfile
-                  key={index}
-                  image={item.image}
-                  title={item.title}
-                  writer={item.writer}
-                  id={item.id}
-                  star={item.star}
-                />
-              </div>
-              <div className="pb-3">
-              {index <= somosamoyekPosts.length - 2 ? (
-                  <SidebarPostDivider />
-              ) : (
-                  ""
-              )}
-          </div>
+                  <LekhaPokaProfile
+                    key={index}
+                    image={item.image}
+                    title={item.title}
+                    writer={item.writer}
+                    id={item.id}
+                    star={item.star}
+                  />
+                </div>
+                <div className="pb-3">
+                  {index <= somosamoyekPosts.length - 2 ? (
+                    <SidebarPostDivider />
+                  ) : (
+                    ""
+                  )}
+                </div>
               </>
-            
             ))}
         </div>
       </div>

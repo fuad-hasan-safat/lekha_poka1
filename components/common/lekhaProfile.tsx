@@ -1,6 +1,7 @@
 import Star from "@/components/common/Star";
 import Image from "next/image";
 import { lekhaPokaProfileObj } from "@/interfaces/Interfaces";
+import Link from "next/link";
 
 const LekhaPokaProfile: React.FC<lekhaPokaProfileObj> = ({
   image,
@@ -16,9 +17,9 @@ const LekhaPokaProfile: React.FC<lekhaPokaProfileObj> = ({
           <img src={image} height={100} width={100} alt="" />
         </div>
         <div className="pl-4 text-black space-y-2">
-          <a className="font-semibold " href="#">
+          <Link className="font-semibold " href="#">
             {title}
-          </a>
+          </Link>
           <h1>{writer}</h1>
           <div className="pt-2">
             <Star star={star} alt="" width={20} height={20} />

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import MaincontentBody from "../common/maincontentBody";
 import MainContentDivider from "../common/mainContentDivider";
 import { sobKobitaPosts } from "@/public/demo-data/data";
+import SobKobitaBody from "./sobKobitaBody";
 export default function SobKobitaLeftContent() {
 
 //   const [selectedId, setSelectedId] = useState("sob");
@@ -20,7 +21,7 @@ export default function SobKobitaLeftContent() {
           postList.map((post, index) => (
             <>
               <div>
-                <MaincontentBody
+                <SobKobitaBody
                   key={index}
                   id={post.id}
                   title={post.title}

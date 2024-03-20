@@ -65,7 +65,7 @@ const MyNavbar = () => {
                 : ""
             }`}
           >
-            <Link href="/contactus">যোগাযোগ</Link>
+            <Link href="/contacts">যোগাযোগ</Link>
           </li>
           <li
             onClick={() => setSelectedNav("amader_somporke")}

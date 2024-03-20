@@ -2,11 +2,7 @@ import SignInOption from "@/components/signInOption/SignInOption";
 
 export default function Login() {
     return (
-        <div className="">
-
             <div>
-
-
                 <div className="text-[20px] font-semibold text-yellow-500 h-[28px]  pt-5 mb-8">লগইন</div>
                 <div className="mb-3 w-[298px] pt-4">
 
@@ -36,11 +32,6 @@ export default function Login() {
                     lowermessege2="একাউন্ট তৈরী করুন ।"
                     classProperty=" flex shadow-primary-1 w-[70px] h-[47px] items-center justify-center"
                 />
-
-                {/* </div> */}
-
-                {/* </div> */}
             </div>
-        </div>
     );
 }
