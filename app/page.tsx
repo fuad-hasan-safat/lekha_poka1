@@ -8,9 +8,7 @@ export default function Home() {
     <>
       <Layout showNavbar={true} showFooter={true}>
         <Carousel1 sliderPosts={sliderPosts} />
-        <div>
-          <AudioPlayer />
-        </div>
+        <AudioPlayer />
         <Procchod />
       </Layout>
     </>

@@ -14,19 +14,20 @@ const SongInfo =  ({ title, writer, image }: SongInfoProps) => {
 
             <div className="flex flex-row pt-10 space-x-2">
                 <div className="">
-                    <img
+                    <img 
                         src={image}
-                      
                         alt={title}
+                        width={70}
+                        height={70}
                         className="h-[70px] w-[70px] rounded-full"
-                    />
+                    ></img>
                 </div>
                 <div className="flex flex-col text-gray-600 space-y-2 mt-1">
                     <div className="">
-                        <h1 className="text-xl  font-bold">{title}</h1>
+                        <div className="text-xl  font-bold">{title}</div>
                     </div>
                     <div>
-                        <h1>{writer}</h1>
+                        <div>{writer}</div>
                     </div>
                 </div>
 

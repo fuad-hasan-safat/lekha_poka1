@@ -9,7 +9,7 @@ export default function PostDetails() {
       <div className="flex flex-col pt-[115px]">
         <div>
           <Image
-            src={'/images/lekha.png'}
+            src={'/images/pages-banner-svg/golpo.svg'}
             height={380}
             width={1920}
             alt={"kobita banner"}

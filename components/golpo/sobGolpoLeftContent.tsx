@@ -1,8 +1,8 @@
 "use client"
 import { useEffect, useState } from "react";
-import MaincontentBody from "../common/maincontentBody";
 import MainContentDivider from "../common/mainContentDivider";
 import { sobGolpoPosts } from "@/public/demo-data/data";
+import SobGolpoBody from "./sobGolpoBody";
 export default function SobGolpoLeftContent() {
 
 //   const [selectedId, setSelectedId] = useState("sob");
@@ -20,7 +20,7 @@ export default function SobGolpoLeftContent() {
           postList.map((post, index) => (
             <>
               <div>
-                <MaincontentBody
+                <SobGolpoBody
                   key={index}
                   id={post.id}
                   title={post.title}

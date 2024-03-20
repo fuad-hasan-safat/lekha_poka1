@@ -6,14 +6,14 @@ export default function MusicleftPart() {
     }
 
     return (
-        <>
+
             <div className="flex flex-row  space-x-5 mt-[70px]">
 
                 {/* fav icon */}
                 <button className="">
                     <img
                         src="/images/icons/ic_fav.svg"
-                    />
+                    ></img>
                 </button>
 
                 {/* volume icon */}
@@ -23,7 +23,7 @@ export default function MusicleftPart() {
                     <img
                         src="/images/icons/ic_volumeon.svg"
                          
-                    />
+                    ></img>
                 </button>
                 {/* volume bar */}
                 <div>
@@ -33,12 +33,8 @@ export default function MusicleftPart() {
                 <button>
                     <img
                         src="/images/icons/ic_songlist.svg"
-                    />
+                    ></img>
                 </button>
             </div>
-
-
-
-        </>
     );
 }

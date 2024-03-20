@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Post } from '@/interfaces/Interfaces';
 import SliderPost from './sliderPost/SliderPost';
 import AudioPlayer from '../musicbar/AudioPlayer';
+import Image from 'next/image';
 
 
 // ...
@@ -72,9 +73,11 @@ const Carousel1 = ({sliderPosts, interval = 3000 }) => {
      
 
       <div className='w-full h-[780px] justify-center transition-all  cubic-bezier(0.77, 0, 0.175, 1)'>
-        <img
+        <Image
           src={sliderPosts[activeIndex].image}
           alt={`Slide ${activeIndex}`}
+          width={1920}
+          height={780}
           className="carousel__img"
         />
 

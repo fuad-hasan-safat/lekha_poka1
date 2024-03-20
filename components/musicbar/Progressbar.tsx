@@ -29,28 +29,8 @@ const Progressbar = ({
                     onChange(parseInt(event?.target.value))
                 }}
             />
-            {/* <div className="w-[400px] h-[4px] bg-white">
-                <Slider
-                    key='progressbar'
-                    min={1}
-                    max={100}
-                    color="yellow"
-                    defaultValue={50}
-                    step={0.25}
-                    // className="text-[#2ec947]"
-                    // barClassName="rounded-none bg-white"
-                    // thumbClassName="[&::-moz-range-thumb]:rounded-none [&::-webkit-slider-thumb]:rounded-none [&::-moz-range-thumb]:-mt-[4px] [&::-webkit-slider-thumb]:-mt-[4px]"
-                    trackClassName="slider"
-                    onChange={(event) => {
-                        onChange(parseInt(event?.target.value));
-                    }} placeholder={undefined}
-                />
-            </div> */}
-
-
 
             <span className="text-xs text-black font-semibold">{rightLabel}</span>
-
         </div>
 
     )

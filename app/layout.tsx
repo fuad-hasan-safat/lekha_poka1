@@ -4,10 +4,10 @@ import MyNavbar from "@/components/navbar/Navbar";
 import MyFooter from "@/components/footer/Footer";
 import { Metadata } from "next/types";
 
-// export const metadata: Metadata = {
-//   title: "লেখার পোকা",
-//   description: "লাইভ টেকনোলজিস",
-// };
+export const metadata: Metadata = {
+  title: "লেখার পোকা",
+  description: "লাইভ টেকনোলজিস",
+};
 
 interface LayoutProps {
   children: React.ReactNode;

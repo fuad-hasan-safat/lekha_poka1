@@ -4,7 +4,7 @@ import Image from "next/image";
 import { mainContaintPost } from "@/interfaces/Interfaces";
 import { useRouter } from "next/navigation";
 
-const MaincontentBody: React.FC<mainContaintPost> = ({
+const SobGolpoBody: React.FC<mainContaintPost> = ({
   id,
   title,
   writer,
@@ -15,8 +15,8 @@ const MaincontentBody: React.FC<mainContaintPost> = ({
   const [html, setHTML] = useState({ __html: content });
 
 
-  function handleClick(postId: String) {
-     router.push(`/${postId}`);
+  function handleClick(golpoId: String) {
+    router.push(`/sob-golpo/${golpoId}`);
   }
   return (
     <>
@@ -51,4 +51,4 @@ const MaincontentBody: React.FC<mainContaintPost> = ({
   );
 };
 
-export default MaincontentBody;
+export default SobGolpoBody;
