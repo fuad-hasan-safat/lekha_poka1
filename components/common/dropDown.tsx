@@ -1,20 +1,7 @@
 "use client"
 import React from 'react'
-import Select from 'react-select'
+import Select, { ControlProps, DropdownIndicatorProps, StylesConfig, components } from "react-select";
 
-// const colourStyles = {
-//     control: (styles: any) => ({ ...styles, backgroundColor: 'white' }),
-//     option: (styles: any, { data, isDisabled, isFocused, isSelected }: any) => {
-//       const color = 'red';
-//       return {
-//         ...styles,
-//         backgroundColor: isDisabled ? 'red' : 'blue',
-//         color: '#FFF',
-//         cursor: isDisabled ? 'not-allowed' : 'default',
-//       };
-//     },
-
-//   };
 
 const options = [
     { value: 'English (U.K)', label: 'English (U.K)' },
@@ -34,12 +21,36 @@ export default function DropDown() {
             'language': 'Bangla (BD)'
         },
     ]
+
+
+    const DropdownIndicator:React.FC<DropdownIndicatorProps> =  props => {
+        return (
+          <components.DropdownIndicator {...props}>
+            <img 
+        
+            className='h-5 w-5'
+            src="/images/svgs/dropDown.svg"/>
+          </components.DropdownIndicator>
+        );
+      };
+
+      const style:StylesConfig  =  {
+        control: (base: any) => ({
+          ...base,
+          border: 0,
+          boxShadow: 'none'
+        })
+      };
+
     return (
         <>
 
             <Select 
             options={options}
             defaultInputValue='English (U.K)'
+            closeMenuOnSelect={false}
+            components={{DropdownIndicator}}
+            styles={style}
             />
 
         </>

@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList, faSearch } from '@fortawesome/free-solid-svg-icons';
+import Image from 'next/image';
 
 interface SearchIconInputProps { }
 
 const searchInputVariants = {
-    hidden: { opacity: 0, scaleX: 0 }, // Adjust scaleX for leftward growth
-    visible: { opacity: 1, scaleX: 1, transition: { duration: 0.8 } },
+    hidden: { opacity: 0, scaleX: 0 , scaleY:0}, // Adjust scaleX for leftward growth
+    visible: { opacity: 1, scaleX: 1, scaleY:1, transition: { duration: 0.9 } },
 };
 
 const SearchIconInput: React.FC<SearchIconInputProps> = () => {
@@ -23,14 +24,25 @@ const SearchIconInput: React.FC<SearchIconInputProps> = () => {
 
 
     return (
-        <motion.div className="relative place-content-center">
-            <FontAwesomeIcon
+        <motion.div 
+        variants={searchInputVariants}
+        className="relative place-content-center">
+            <Image
+            src="/images/svgs/search.svg"
+            height={50}
+            width={50}
+            alt=""
+            className={` cursor-pointer ${isSearchActive ? 'hidden' : ''}`}
+            onClick={()=> setIsSearchActive(true)}
+            />
+            {/* <FontAwesomeIcon
                 icon={faSearch}
                 className={`text-slate-500 text-lg cursor-pointer ${isSearchActive ? 'hidden' : ''}`}
                 onClick={()=> setIsSearchActive(true)}
-            />
+            /> */}
 
-            {isSearchActive && (<FontAwesomeIcon
+            {isSearchActive && (
+            <FontAwesomeIcon
                 icon={faSearch}
                 className={`relative left-9 text-slate-500 text-lg cursor-pointer`}
             />

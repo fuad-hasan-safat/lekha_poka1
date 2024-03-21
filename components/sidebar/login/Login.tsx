@@ -30,6 +30,7 @@ export default function Login() {
                     icon3="/images/loginOptionIcon/apple.svg"
                     lowermessege1="একাউন্ট নেই? "
                     lowermessege2="একাউন্ট তৈরী করুন ।"
+                    signLogLink="/signup"
                     classProperty=" flex shadow-primary-1 w-[70px] h-[47px] items-center justify-center"
                 />
             </div>

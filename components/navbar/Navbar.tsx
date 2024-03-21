@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Logo from "../common/Logo";
 import SearchIconInput from "./searchInput";
-
+import { Select, Option } from "@material-tailwind/react";
 export const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
@@ -14,9 +14,11 @@ export const navLinks = [
 
 const MyNavbar = () => {
   const [selectedNav, setSelectedNav] = useState("");
-  const iconl = 30;
+ const [isOpen, setIsOpen] = useState(false);
 
-  const [isSearchSelected, setIsSearchSelected] = useState(false);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
 
   const [isActive, setIsActive] = useState(false);
 
@@ -51,14 +53,19 @@ const MyNavbar = () => {
               >
                 <Link href="/">প্রচ্ছদ</Link>
               </li>
-              <li
-                onClick={() => setSelectedNav("sob_lekha")}
-                className={`${selectedNav === "sob_lekha"
-                  ? "text-yellow-400 font-semibold underline"
-                  : ""
-                  }`}
-              >
-                <Link href="/">সব লেখা</Link>
+              <li>
+                {/* <Link href="/">সব লেখা</Link> */}
+                <button className="text-black hover:text-gray-900 focus:outline-none focus:ring-yellow-300 focus:ring-1  mb-4" onClick={handleClick}>
+                  সব লেখা
+                </button>
+                {isOpen && (
+                  <ul className="absolute  rounded shadow-md overflow-hidden space-y-3">
+                    {/* Dropdown content goes here */}
+                    <li className="bg-yellow-300 h-[40px] w-[60px] p-2 text-black rounded-md"><Link href={'/sob-kobita'} >কবিতা</Link> </li>
+                    <li className="bg-yellow-300 h-[40px] w-[60px] p-2 text-black rounded-md"><Link href={'/sob-golpo'} >গল্প</Link></li>
+                    <li className="bg-yellow-300 h-[40px] w-[60px] p-2 text-black rounded-md">জীবনী</li>
+                  </ul>
+                )}
               </li>
               <li
                 onClick={() => setSelectedNav("bistarito")}
@@ -93,7 +100,7 @@ const MyNavbar = () => {
             {/* <ul>
               <li> */}
 
-            <SearchIconInput/>
+            <SearchIconInput />
 
             {/* <a href="#">
                   {

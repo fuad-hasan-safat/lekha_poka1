@@ -10,6 +10,7 @@ import useAudioPlayer from "./audioplayer/hook";
 import MusicleftPart from "./leftPart/MusicLeftPart";
 
 const AudioPlayer = () => {
+    const audioRef = useRef();
     const {
         playNextTrack,
         playPreviousTrack,
