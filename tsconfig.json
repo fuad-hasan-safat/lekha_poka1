@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/slider/BootsrtapSlider.tsx", "components/slider/Carousel1.js", "tailwind.config.ts", "components/musicbar/MusicBar.js", "components/musicbar/MyMusic.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/slider/BootsrtapSlider.tsx", "components/slider/Carousel1.js", "tailwind.config.ts", "components/musicbar/MusicBar.js", "components/musicbar/MyMusic.js", "components/navbar/searchIcon.tsx"],
   "exclude": ["node_modules"]
 }

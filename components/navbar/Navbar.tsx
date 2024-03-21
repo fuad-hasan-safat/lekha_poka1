@@ -1,15 +1,28 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-
 import Logo from "../common/Logo";
-import SearchButton from "./SearchIcon";
+import SearchIconInput from "./searchInput";
+
+export const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/products', label: 'Products' },
+  { href: '/services', label: 'Services' },
+  { href: '/contact', label: 'Contact' },
+]
 
 const MyNavbar = () => {
   const [selectedNav, setSelectedNav] = useState("");
   const iconl = 30;
 
   const [isSearchSelected, setIsSearchSelected] = useState(false);
+
+  const [isActive, setIsActive] = useState(false);
+
+  const handleSearchClick = () => {
+    setIsActive(!isActive); // Toggle 'isActive' state on click
+  };
 
   return (
     <>
@@ -77,9 +90,12 @@ const MyNavbar = () => {
             </ul>
           </div>
           <div className="">
-            <ul>
-              <li>
-                <a href="#">
+            {/* <ul>
+              <li> */}
+
+            <SearchIconInput/>
+
+            {/* <a href="#">
                   {
                     isSearchSelected ? <>
                       <div className="flex flex-row ">
@@ -110,9 +126,9 @@ const MyNavbar = () => {
                             src="/images/svgs/search.svg" />
                         </div>
                       </>
-                  }
+                  } */}
 
-                  {/* {!isSearchSelected ?
+            {/* {!isSearchSelected ?
                     <img
                       height={60}
                       width={60}
@@ -135,10 +151,10 @@ const MyNavbar = () => {
                           src="/images/svgs/list.svg" />
                       </div>
                     </>} */}
-                </a>
-              </li>
-              {/* Add more buttons as needed */}
-            </ul>
+            {/* </a> */}
+            {/* </li> */}
+            {/* Add more buttons as needed */}
+            {/* </ul> */}
           </div>
 
         </div>
