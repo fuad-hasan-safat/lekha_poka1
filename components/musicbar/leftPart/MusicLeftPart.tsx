@@ -1,8 +1,6 @@
 import Volumebar from "./volumebar";
 
-type musicProp = {
-    audioRef:HTMLAudioElement;
-}
+
 
 export default function MusicleftPart() {
     function mute_sound() {

@@ -1,19 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { animations, motion } from "framer-motion";
-import { Select, Option } from "@material-tailwind/react";
+
 
 import Logo from "../common/Logo";
-import SearchIconInput from "./searchInput";
 import Image from "next/image";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-const searchInputVariants = {
-  hidden: { opacity: 0, scaleX: 0, scaleY: 0 }, // Adjust scaleX for leftward growth
-  visible: { opacity: 1, scaleX: 1, scaleY: 1, transition: { duration: 0.9 } },
-};
+import SobLekha from "./sobLekhaDropDown";
 
 export const navLinks = [
   { href: "/", label: "Home" },
@@ -31,7 +25,6 @@ const MyNavbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const [isActive, setIsActive] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -53,12 +46,12 @@ const MyNavbar = () => {
         />
 
         <div
-          className={` space-x-3 text-black text-[18px]  place-content-center `}
+          className={` space-x-3 text-black text-[18px]  place-content-center`}
         >
           {/* Buttons */}
 
           <ul
-            className={`flex flex-row space-x-6  kangsa-font transition-all ease-in-out duration-1000 ${
+            className={`flex flex-row space-x-6 w-[1030px] kangsa-font transition-all ease-in-out duration-1000 ${
               isSearchActive ? "ml-[400px]" : "ml-[600px]"
             }`}
           >
@@ -66,40 +59,20 @@ const MyNavbar = () => {
               onClick={() => setSelectedNav("procchod")}
               className={`${
                 selectedNav === "procchod"
-                  ? "text-yellow-400 font-semibold underline"
+                  ? "text-[#F9A106] font-semibold underline"
                   : ""
               }`}
             >
               <Link href="/">প্রচ্ছদ</Link>
             </li>
             <li>
-              {/* <Link href="/">সব লেখা</Link> */}
-              <button
-                className="text-black  w-[75px] hover:text-gray-900 focus:outline-none focus:ring-yellow-300 focus:ring-1  mb-4"
-                onClick={handleClick}
-              >
-                সব লেখা
-              </button>
-              {isOpen && (
-                <ul className="absolute  rounded shadow-md overflow-hidden space-y-3">
-                  {/* Dropdown content goes here */}
-                  <li className="bg-yellow-300 h-[40px] w-[60px] p-2 text-black rounded-md">
-                    <Link href={"/sob-kobita"}>কবিতা</Link>{" "}
-                  </li>
-                  <li className="bg-yellow-300 h-[40px] w-[60px] p-2 text-black rounded-md">
-                    <Link href={"/sob-golpo"}>গল্প</Link>
-                  </li>
-                  <li className="bg-yellow-300 h-[40px] w-[60px] p-2 text-black rounded-md">
-                    জীবনী
-                  </li>
-                </ul>
-              )}
+              <SobLekha/>
             </li>
             <li
               onClick={() => setSelectedNav("bistarito")}
               className={`${
                 selectedNav === "bistarito"
-                  ? "text-yellow-400 font-semibold underline"
+                  ? "text-[#F9A106] font-semibold underline"
                   : ""
               }`}
             >
@@ -109,7 +82,7 @@ const MyNavbar = () => {
               onClick={() => setSelectedNav("zogazog")}
               className={`${
                 selectedNav === "zogazog"
-                  ? "text-yellow-400 font-semibold underline"
+                  ? "text-[#F9A106] font-semibold underline"
                   : ""
               }`}
             >
@@ -117,15 +90,13 @@ const MyNavbar = () => {
             </li>
             <li
               onClick={() => setSelectedNav("amader_somporke")}
-              className={` w-[210px]${
+              className={` w-[130px] ${
                 selectedNav === "amader_somporke"
-                  ? "text-yellow-400 font-semibold underline"
+                  ? "text-[#F9A106] font-semibold underline"
                   : ""
               }`}
             >
-              <Link
-              className="w-[210px]"
-               href="#">আমাদের সম্পর্কে</Link>
+              <Link href="#">আমাদের সম্পর্কে</Link>
             </li>
             <li className="relative flex flex-row place-content-center ">
               <Image
@@ -136,9 +107,10 @@ const MyNavbar = () => {
                 className={` cursor-pointer`}
                 onClick={() => setIsSearchActive(true)}
               />
+              
 
               <input
-                className={`w-[200px] bg-transparent text-black py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-300 ${
+                className={`w-[200px] bg-transparent text-black py-2 rounded-md focus:outline-none  ${
                   isSearchActive ? "visible" : "hidden"
                 }`}
                 type="text"
@@ -149,7 +121,7 @@ const MyNavbar = () => {
               {isSearchActive && (
                 <FontAwesomeIcon
                   icon={faList}
-                  className="absolute text-gray-500 text-lg px-2 cursor-pointer ml-auto mt-2 right-5" // Right-aligned
+                  className="absolute text-gray-500 text-lg px-2 cursor-pointer ml-auto mt-[10px] right-5" // Right-aligned
                   onClick={() => setIsSearchActive(false)}
                 />
               )}

@@ -2,10 +2,8 @@
 import { useRef, useState } from "react";
 import Controls from "./Control";
 import Progressbar from "./Progressbar";
-import { createAudioplayer } from "./audioplayer/audioplayer";
 import playlist from "./platlists";
 import SongInfo from "./song-info";
-import { InitialPlayerState, PlayerState } from "./audioplayer/type";
 import useAudioPlayer from "./audioplayer/hook";
 import MusicleftPart from "./leftPart/MusicLeftPart";
 
