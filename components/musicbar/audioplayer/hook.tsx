@@ -1,6 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
-import { Controls, InitialPlayerState, PlayerState, Playlist } from '@/components/musicbar/audioplayer/type';
-import { createAudioplayer } from '@/components/musicbar/audioplayer/audioplayer'
+import { useState, useRef, useEffect } from "react";
+import {
+  Controls,
+  InitialPlayerState,
+  PlayerState,
+  Playlist,
+} from "@/components/musicbar/audioplayer/type";
+import { createAudioplayer } from "@/components/musicbar/audioplayer/audioplayer";
 interface AudioPlayer extends Controls {
   playerState: PlayerState;
 }
@@ -46,6 +51,14 @@ function useAudioPlayer(playlist: Playlist): AudioPlayer {
     playerRef.current?.cleanup();
   }
 
+  function muteSound() {
+    playerRef.current?.muteSound();
+  }
+
+  function handleVolumeChange(event: React.ChangeEvent<HTMLInputElement>) {
+    playerRef.current?.handleVolumeChange(event);
+  }
+
   return {
     setPlaybackPosition,
     playerState,
@@ -55,6 +68,8 @@ function useAudioPlayer(playlist: Playlist): AudioPlayer {
     playNextTrack,
     playPreviousTrack,
     cleanup,
+    muteSound,
+    handleVolumeChange,
   };
 }
 

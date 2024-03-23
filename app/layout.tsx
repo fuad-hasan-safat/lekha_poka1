@@ -1,4 +1,3 @@
-import { kangsa } from "@/components/fonts/kangsa";
 import "../app/globals.css";
 import MyNavbar from "@/components/navbar/Navbar";
 import MyFooter from "@/components/footer/Footer";
