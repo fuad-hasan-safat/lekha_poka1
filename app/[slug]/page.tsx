@@ -67,7 +67,6 @@ export default function PostDetails() {
           </div>
         </div>
       </div>
-      <AudioPlayer />
     </Layout>
   );
 }

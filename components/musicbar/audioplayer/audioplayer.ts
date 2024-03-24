@@ -115,6 +115,7 @@ export function createAudioplayer(
   //#region
   function init() {
     setupAudioElementListeners();
+    audioElement.volume = 0.5;
     loadTrack(0);
   }
 

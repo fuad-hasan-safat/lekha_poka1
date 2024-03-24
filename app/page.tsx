@@ -6,11 +6,11 @@ import Layout from "./layout";
 export default function Home() {
   return (
     <>
-      <Layout showNavbar={true} showFooter={true}>
+      {/* <Layout showNavbar={true} showFooter={true}> */}
         <Carousel1 sliderPosts={sliderPosts} />
-        <AudioPlayer />
+       
         <Procchod />
-      </Layout>
+      {/* </Layout> */}
     </>
   );
 }

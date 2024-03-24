@@ -12,6 +12,7 @@ const Volumebar = ({ handleVolumeChange }: VolumebarProps) => {
           id="volume"
           step={0.05}
           width={100}
+          defaultValue={0.5}
           className="sound appearance-none bg-transparent [&::-webkit-slider-runnable-track]:h-[4px] w-[100px] [&::-webkit-slider-runnable-track]:white "
           onChange={handleVolumeChange}
         />

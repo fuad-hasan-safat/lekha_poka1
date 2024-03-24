@@ -4,11 +4,10 @@ import Layout from "../layout";
 
 export default function Home() {
   return (
-    <Layout showNavbar={true} showFooter={true}>
+    // <Layout showNavbar={true} showFooter={true}>
       <div className="pt-[125px] text-black">
         <SobKobita />
       </div>
-      <AudioPlayer />
-    </Layout>
+    // </Layout>
   );
 }

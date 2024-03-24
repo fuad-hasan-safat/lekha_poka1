@@ -48,8 +48,8 @@ const AudioPlayer = () => {
 
   return (
     <>
-      <div className="fixed flex flex-row backdrop-blur-lg justify-center content-center space-x-16 bottom-[40px] bg-yellow-500/30  w-full h-[140px] ">
-        <div className="items-center content-center justify-center z-[200]">
+      <div className="fixed flex flex-row backdrop-blur-lg justify-center content-center space-x-16 bottom-[24px] bg-yellow-500/30  w-full h-[140px] ">
+        <div className="items-center content-center justify-center z-[200] w-[300px]">
           <SongInfo
             title={currentTrackMetadata?.title}
             writer={currentTrackMetadata?.writer}
@@ -57,7 +57,7 @@ const AudioPlayer = () => {
           />
         </div>
 
-        <div className="flex flex-col items-center space-y-6 pt-2">
+        <div className="flex flex-col items-center space-y-6 pt-2 w-[700px]">
           <Controls
             onShuffleClick={toggleShuffle}
             onRepeatClick={toggleRepeat}
@@ -76,7 +76,7 @@ const AudioPlayer = () => {
           />
         </div>
 
-        <div>
+        <div className="w-[300px]">
           <MusicleftPart
             muteSound={muteSound}
             handleVolumeChange={handleVolumeChange}

@@ -3,6 +3,8 @@ import MyNavbar from "@/components/navbar/Navbar";
 import MyFooter from "@/components/footer/Footer";
 import { Metadata } from "next/types";
 import localFont from "next/font/local";
+import AudioPlayer from "@/components/musicbar/AudioPlayer";
+import { useEffect, useState } from "react";
 
 const myFont = localFont({ src: '../public/assets/fonts/Tatsama.ttf' })
 
@@ -22,12 +24,17 @@ export default function Layout({
   showNavbar = false,
   showFooter = false,
 }: LayoutProps) {
+
+
   return (
     <html lang="en">
-      <body className={`${myFont.className}`}>
-        {showNavbar && <MyNavbar />}
-        <main>{children}</main>
-        {showFooter && <MyFooter />}
+      <body>
+        <main className={`${myFont.className}`}>
+        {!showNavbar && <MyNavbar />}
+        <div>{children}</div>
+        {!showFooter && <MyFooter />}
+        {!showFooter &&<AudioPlayer />}
+        </main>
       </body>
     </html>
   );
