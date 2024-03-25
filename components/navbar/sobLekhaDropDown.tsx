@@ -4,7 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 
-const SobLekha: React.FC = () => {
+type soblekhaProp ={
+  sobClass: string;
+}
+
+const SobLekha = ({sobClass}:soblekhaProp) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -31,9 +35,10 @@ const SobLekha: React.FC = () => {
       <button
         type="button"
         onClick={toggleDropdown}
-        className="inline-flex w-[110px] justify-center shadow-sm px-2  bg-white text-[18px] font-medium text-black focus:outline-none focus:text-[#F9A106]"
+        className={`${sobClass} inline-flex w-[110px] justify-center shadow-sm px-2  bg-white text-[18px] font-medium  focus:outline-none focus:text-[#F9A106]`}
         aria-haspopup="true"
         aria-expanded={isOpen ? 'true' : 'false'}
+        
       >
         সব লেখা
         <FontAwesomeIcon icon={faAngleDown} className="ml-2 pt-1 h-5 w-5 focus:text-[#F9A106]" />

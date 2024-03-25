@@ -1,12 +1,12 @@
 import AudioPlayer from "@/components/musicbar/AudioPlayer";
-import SobGolpo from "@/components/golpo/sobGolpo";
-import Layout from "../layout";
+import SobKobita from "@/components/kobita/sobKobita";
+import Layout from "../(lekhapoka)/layout";
 
 export default function Home() {
   return (
-    // <Layout showFooter={true} showNavbar={true}>
+    // <Layout showNavbar={true} showFooter={true}>
       <div className="pt-[125px] text-black">
-        <SobGolpo />
+        <SobKobita />
       </div>
     // </Layout>
   );

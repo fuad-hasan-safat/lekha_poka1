@@ -1,15 +1,15 @@
-import Layout from "@/app/layout";
+import Layout from "@/app/(lekhapoka)/layout";
 import AudioPlayer from "@/components/musicbar/AudioPlayer";
 import Sidebar from "@/components/sidebar/Sidebar";
 import Image from "next/image";
 
 export default function PostDetails() {
   return (
-    // <Layout showFooter={true} showNavbar={true}>
+    <Layout showFooter={true} showNavbar={true}>
       <div className="flex flex-col pt-[115px]">
         <div>
           <Image
-            src={'/images/pages-banner-svg/kobita.svg'}
+            src={'/images/lekha.png'}
             height={380}
             width={1920}
             alt={"kobita banner"}
@@ -67,6 +67,6 @@ export default function PostDetails() {
           </div>
         </div>
       </div>
-    // </Layout>
+    </Layout>
   );
 }

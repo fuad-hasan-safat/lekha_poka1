@@ -1,4 +1,4 @@
-import Layout from "@/app/layout";
+import Layout from "@/app/(lekhapoka)/layout";
 import AudioPlayer from "@/components/musicbar/AudioPlayer";
 import Sidebar from "@/components/sidebar/Sidebar";
 import Image from "next/image";

@@ -1,29 +1,18 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-
-
-import Logo from "../common/Logo";
 import Image from "next/image";
 import { faList } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
+import Logo from "../common/Logo";
 import SobLekha from "./sobLekhaDropDown";
 
-export const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/products", label: "Products" },
-  { href: "/services", label: "Services" },
-  { href: "/contact", label: "Contact" },
-];
 
 const MyNavbar = () => {
-  const [selectedNav, setSelectedNav] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
+  const [selectedNav, setSelectedNav] = useState("");
 
   const [isSearchActive, setIsSearchActive] = useState(false);
 
@@ -33,9 +22,13 @@ const MyNavbar = () => {
     setSearchTerm(event.target.value);
   };
 
+  
+
   return (
     <>
-      <div className={`fixed z-[999] bg-white-800 flex flex-row items-center  shadow-dark-strong h-[92]  w-full bg-white`}>
+      <div
+        className={`fixed z-[999] bg-white-800 flex flex-row items-center  shadow-dark-strong h-[92]  w-full bg-white`}
+      >
         {/* Logo */}
 
         <Logo
@@ -65,8 +58,15 @@ const MyNavbar = () => {
             >
               <Link href="/">প্রচ্ছদ</Link>
             </li>
-            <li>
-              <SobLekha/>
+            <li
+             onClick={() => {
+               setSelectedNav("soblekha")
+              }}
+        
+            >
+              <SobLekha sobClass={`${selectedNav === "soblekha"
+                  ? "text-[#F9A106] font-semibold underline"
+                  : "text-black"}`} />
             </li>
             <li
               onClick={() => setSelectedNav("bistarito")}
@@ -107,7 +107,6 @@ const MyNavbar = () => {
                 className={` cursor-pointer`}
                 onClick={() => setIsSearchActive(true)}
               />
-              
 
               <input
                 className={`w-[200px] bg-transparent text-black py-2 rounded-md focus:outline-none  ${

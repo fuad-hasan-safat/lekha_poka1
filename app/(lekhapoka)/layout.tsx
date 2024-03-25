@@ -1,10 +1,10 @@
 "use client"
-import "../app/globals.css";
+import "../../app/globals.css";
 import React from 'react';
 import { Provider } from "react-redux";
 import store, { RootState } from "@/lib/store";
-import { useDispatch, useSelector } from "react-redux";
-import { makeTrueFalse } from "@/lib/features/navbar-footer/showNavbarFooterSlice";
+// import { useDispatch, useSelector } from "react-redux";
+// import { makeTrueFalse } from "@/lib/features/navbar-footer/showNavbarFooterSlice";
 import { Metadata } from "next/types";
 import localFont from "next/font/local";
 
@@ -16,7 +16,7 @@ import AudioPlayer from "@/components/musicbar/AudioPlayer";
 
 
 const myFont = localFont({
-  src: '../public/assets/fonts/Tatsama.ttf'
+  src: '../../public/assets/fonts/Tatsama.ttf'
 })
 
 const metadata: Metadata = {
@@ -33,18 +33,18 @@ export default function Layout({
   children,
 
 }: LayoutProps) {
-  const footerNavbarShow = useSelector((state:RootState)=> state.navbarState.hideNavbarFooter)
+  // const footerNavbarShow = useSelector((state:RootState)=> state.navbarState.hideNavbarFooter)
   return (
     <html lang="en">
       <body>
-        {/* <Provider store={store}> */}
+        <Provider store={store}>
         <main className={`${myFont.className}`}>
-          {footerNavbarShow && <MyNavbar />}
+           <MyNavbar />
           <div>{children}</div>
-          {footerNavbarShow && <MyFooter />}
-          { footerNavbarShow && <AudioPlayer />}
+         <MyFooter />
+       <AudioPlayer />
         </main>
-        {/* </Provider> */}
+        </Provider>
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
 import ContactUs from "@/components/contactus/contactus";
-import Layout from "../layout";
+import Layout from "../(lekhapoka)/layout";
 
 export default function Home() {
     return (
