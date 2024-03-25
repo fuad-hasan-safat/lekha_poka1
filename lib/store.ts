@@ -1,13 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit'
 
-export const makeStore = () => {
-  return configureStore({
-    reducer: {},
-  })
-}
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './reducers'; // Replace with your root reducer path
 
-// Infer the type of makeStore
-export type AppStore = ReturnType<typeof makeStore>
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<AppStore['getState']>
-export type AppDispatch = AppStore['dispatch']
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false, // Disable serializability check for Next.js server-side rendering
+    }),
+});
+
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof rootReducer>;
+
+export default store;
+

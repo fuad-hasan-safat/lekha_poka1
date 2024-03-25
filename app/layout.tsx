@@ -1,40 +1,50 @@
+"use client"
 import "../app/globals.css";
-import MyNavbar from "@/components/navbar/Navbar";
-import MyFooter from "@/components/footer/Footer";
+import React from 'react';
+import { Provider } from "react-redux";
+import store, { RootState } from "@/lib/store";
+import { useDispatch, useSelector } from "react-redux";
+import { makeTrueFalse } from "@/lib/features/navbar-footer/showNavbarFooterSlice";
 import { Metadata } from "next/types";
 import localFont from "next/font/local";
+
+import MyNavbar from "@/components/navbar/Navbar";
+import MyFooter from "@/components/footer/Footer";
+
 import AudioPlayer from "@/components/musicbar/AudioPlayer";
-import { useEffect, useState } from "react";
 
-const myFont = localFont({ src: '../public/assets/fonts/Tatsama.ttf' })
 
-export const metadata: Metadata = {
+
+const myFont = localFont({
+  src: '../public/assets/fonts/Tatsama.ttf'
+})
+
+const metadata: Metadata = {
   title: "লেখার পোকা",
   description: "লাইভ টেকনোলজিস",
 };
 
 interface LayoutProps {
   children: React.ReactNode;
-  showNavbar?: boolean;
-  showFooter?: boolean;
+
 }
 
 export default function Layout({
   children,
-  showNavbar = false,
-  showFooter = false,
+
 }: LayoutProps) {
-
-
+  const footerNavbarShow = useSelector((state:RootState)=> state.navbarState.hideNavbarFooter)
   return (
     <html lang="en">
       <body>
+        {/* <Provider store={store}> */}
         <main className={`${myFont.className}`}>
-        {!showNavbar && <MyNavbar />}
-        <div>{children}</div>
-        {!showFooter && <MyFooter />}
-        {!showFooter &&<AudioPlayer />}
+          {footerNavbarShow && <MyNavbar />}
+          <div>{children}</div>
+          {footerNavbarShow && <MyFooter />}
+          { footerNavbarShow && <AudioPlayer />}
         </main>
+        {/* </Provider> */}
       </body>
     </html>
   );

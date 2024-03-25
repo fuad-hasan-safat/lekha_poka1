@@ -7,9 +7,10 @@ import FooterLink from "./FooterLink";
 import SocialLink from "./SocialLink";
 
 const MyFooter = () => {
+
   const icon: string = "";
   return (
-    <div className=" bg-black pl-56 pt-36">
+    <div className={`bg-black pl-56 pt-36`}>
       <div className="flex flex-row space-x-28  mt-[100px] ml-[190px] ">
         <div className="">
           <Logo

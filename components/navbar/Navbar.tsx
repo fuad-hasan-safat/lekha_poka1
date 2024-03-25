@@ -35,7 +35,7 @@ const MyNavbar = () => {
 
   return (
     <>
-      <div className="fixed z-[999] bg-white-800 flex flex-row items-center  shadow-dark-strong h-[92]  w-full bg-white">
+      <div className={`fixed z-[999] bg-white-800 flex flex-row items-center  shadow-dark-strong h-[92]  w-full bg-white`}>
         {/* Logo */}
 
         <Logo
