@@ -49,13 +49,9 @@ export interface mainContaintPost {
   content: string;
 }
 
-// export type Post ={
-//   id: string,
-//   title: string,
-//   caltion: string,
-//   discription: string,
-//   image: string,
-// }
-// export interface Posts {
-//   post: Post[];
-// }
+export interface LoogedInUser {
+  id: number;
+  name: string;
+  email?: string; // Optional property (can be undefined)
+  // Other user properties
+}

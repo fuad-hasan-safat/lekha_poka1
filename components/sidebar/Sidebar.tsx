@@ -1,7 +1,7 @@
 import Divider from "../common/sidebardivider"
 import Jonopriyo from "./jonopriyo/Jonopriyo"
 import Lekhok from "./lekhok/Lekhok"
-import Login from "./login/Login"
+import Login from "./login-sidebar/Login"
 import Samprotik from "./samprotik/Samprotik"
 import Somosamoyik from "./somosamoyik/Somosamoyik"
 export default function Sidebar() {
@@ -14,7 +14,7 @@ export default function Sidebar() {
                     <div className="pl-16">
                         <Login />
                     </div>
-                    <Divider />
+                    
                     <div>
                         <Somosamoyik />
                     </div>
