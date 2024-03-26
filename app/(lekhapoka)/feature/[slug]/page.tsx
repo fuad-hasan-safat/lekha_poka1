@@ -1,18 +1,18 @@
-
 import Sidebar from "@/components/sidebar/Sidebar";
 import { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "কবিতা",
+  title: "ফিচার",
   description: "লেখার পোকা",
 };
+
 export default function PostDetails() {
   return (
       <div className="flex flex-col pt-[115px]">
         <div>
           <Image
-            src={'/images/pages-banner-svg/kobita.svg'}
+            src={'/images/pages-banner-svg/golpo.svg'}
             height={380}
             width={1920}
             alt={"kobita banner"}

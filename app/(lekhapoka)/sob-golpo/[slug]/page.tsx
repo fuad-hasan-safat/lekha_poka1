@@ -1,11 +1,14 @@
-import Layout from "@/app/(lekhapoka)/layout";
-import AudioPlayer from "@/components/musicbar/AudioPlayer";
 import Sidebar from "@/components/sidebar/Sidebar";
+import { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "গল্প",
+  description: "লেখার পোকা",
+};
 
 export default function PostDetails() {
   return (
-    // <Layout showFooter={true} showNavbar={true}>
       <div className="flex flex-col pt-[115px]">
         <div>
           <Image
@@ -67,6 +70,5 @@ export default function PostDetails() {
           </div>
         </div>
       </div>
-   
   );
 }

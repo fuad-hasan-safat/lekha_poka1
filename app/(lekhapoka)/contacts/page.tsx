@@ -1,12 +1,13 @@
 import ContactUs from "@/components/contactus/contactus";
-import Layout from "../(lekhapoka)/layout";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "যোগাযোগ",
+  description: "লেখার পোকা",
+};
 export default function Home() {
-    return (
-            // <Layout showFooter={true} showNavbar={true}>
-                <div className="pt-[125px] text-black">
-                    <ContactUs />
-                </div>
-            // </Layout>
-    )
+  return (
+    <div className="pt-[125px] text-black">
+      <ContactUs />
+    </div>
+  );
 }

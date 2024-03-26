@@ -5,7 +5,7 @@ type logreg = {
     btntext: string;
 }
 
-export default function LoginReg({ logreg, btntext }: logreg) {
+export default function SigninForm({ logreg, btntext }: logreg) {
     return (
         <>
             <div >
@@ -19,9 +19,13 @@ export default function LoginReg({ logreg, btntext }: logreg) {
 
                         <input className="w-[559px] h-[62px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Full Name" required />
                     </div>
+                    <div className="mb-4 ">
+
+                        <input className="w-[559px] h-[62px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="email" required />
+                    </div>
                     <div className="">
 
-                        <input className="w-[559px] h-[62px] p-4 bg-[#FCF7E8]  rounded-2xl   text-gray-700  leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Mobile Number" required />
+                        <input className="w-[559px] h-[62px] p-4 bg-[#FCF7E8]  rounded-2xl   text-gray-700  leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="password" required />
 
                     </div>
 

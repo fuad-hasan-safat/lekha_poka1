@@ -1,4 +1,4 @@
-import LoginReg from "@/components/common/login-reg";
+import LoginReg from "@/components/common/loginform";
 import LoginSignInOtpLeftPartDesign from "../common/login-signup-otp-left-design";
 import { arial } from "../fonts/arial";
 import SignInOption from "../signInOption/SignInOption";

@@ -19,10 +19,10 @@ const myFont = localFont({
   src: '../../public/assets/fonts/Tatsama.ttf'
 })
 
-const metadata: Metadata = {
-  title: "লেখার পোকা",
-  description: "লাইভ টেকনোলজিস",
-};
+// const metadata: Metadata = {
+//   title: "লেখার পোকা",
+//   description: "লাইভ টেকনোলজিস",
+// };
 
 interface LayoutProps {
   children: React.ReactNode;

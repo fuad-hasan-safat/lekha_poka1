@@ -1,8 +1,8 @@
-import LoginReg from "@/components/common/login-reg";
 import LoginSignInOtpLeftPartDesign from "../common/login-signup-otp-left-design";
 import { arial } from "../fonts/arial";
 import SignInOption from "../signInOption/SignInOption";
 import DropDown from "../common/dropDown";
+import SigninForm from "../common/signinforn";
 
 const SignUpPage = () => {
   return (
@@ -16,7 +16,7 @@ const SignUpPage = () => {
           {/* right part */}
           <div className=" w-[640px]  bg-white rounded-l-[46px] text-black grid place-items-center ">
             <div className="grid place-items-center">
-              <LoginReg logreg="Create Account" btntext="Sign Up" />
+              <SigninForm logreg="Create Account" btntext="Sign Up" />
               <SignInOption
                 title="Or Signup with"
                 icon1="/images/loginOptionIcon/google.svg"

@@ -5,7 +5,6 @@ import Image from "next/image";
 
 export default function PostDetails() {
   return (
-    <Layout showFooter={true} showNavbar={true}>
       <div className="flex flex-col pt-[115px]">
         <div>
           <Image
@@ -67,6 +66,5 @@ export default function PostDetails() {
           </div>
         </div>
       </div>
-    </Layout>
   );
 }

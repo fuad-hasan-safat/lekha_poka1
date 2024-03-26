@@ -1,4 +1,5 @@
-import { useState } from "react";
+"use client";
+import { useRouter } from "next/navigation";
 
 interface SliderPostProps {
   title: string;
@@ -13,6 +14,11 @@ const SliderPost: React.FC<SliderPostProps> = ({
   discription,
   id,
 }) => {
+  const router = useRouter();
+  
+  function featureHandler(postId: String) {
+    router.push(`/feature/${postId}`);
+  }
   //   const [html, setHTML] = useState({ __html: discription });
   return (
     <div className="mt-14 font-primary space-y-4">
@@ -23,7 +29,10 @@ const SliderPost: React.FC<SliderPostProps> = ({
         {discription}
       </div>
 
-      <button className="w-[176px] bg-orange-400 px-2 py-1 h-[56px] rounded-md text-[19px] font-semibold text-white">
+      <button
+        onClick={() => featureHandler(id)}
+        className="w-[176px] bg-orange-400 px-2 py-1 h-[56px] rounded-md text-[19px] font-semibold text-white"
+      >
         বিস্তারিত
       </button>
     </div>

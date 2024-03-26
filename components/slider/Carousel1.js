@@ -1,8 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { Post } from '@/interfaces/Interfaces';
 import SliderPost from './sliderPost/SliderPost';
-import AudioPlayer from '../musicbar/AudioPlayer';
 import Image from 'next/image';
 
 
