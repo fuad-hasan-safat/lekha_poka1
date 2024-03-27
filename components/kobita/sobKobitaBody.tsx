@@ -16,7 +16,7 @@ const SobKobitaBody: React.FC<mainContaintPost> = ({
 
 
   function handleClick(kobitaId: String) {
-    router.push(`/sob-kobita/${kobitaId}`);
+    router.push(`/kobita/${kobitaId}`);
   }
   return (
     <>

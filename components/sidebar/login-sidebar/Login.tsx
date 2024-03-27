@@ -12,17 +12,20 @@ import { LoogedInUser } from "@/interfaces/Interfaces";
 export default function Login() {
   const router = useRouter();
 
-  const [email, setEmail] = useState("");
+  const [number, setnumber] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState<LoogedInUser>({
-    id: 0,
-    name:'',
-    email:''
+    status: '',
+    name: '',
+    phone: '',
+    uuid: '',
   });
-  const [token, setToken] = useState("");
+  const [status, setStatus] = useState("");
+  const [username, setUsername] = useState("");
+  const [userUuid, setUserUuid] = useState("");
 
-  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
+  const handleNumberhange = (e: ChangeEvent<HTMLInputElement>) => {
+    setnumber(e.target.value);
   };
 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -30,13 +33,16 @@ export default function Login() {
   };
 
   async function submitLogin() {
-    
+
     console.log("Calling submitLogin");
-    console.log({ email, password, apiBasePath });
+    console.log({ number, password, apiBasePath });
     try {
       const response = await axios.post(
-        `${apiBasePath}/login`,
-        { email, password },
+        `http://192.168.88.248:3002/login`,
+        {
+          phone: number,
+          password: password,
+        },
         {
           headers: {
             "Content-Type": "application/json",
@@ -49,18 +55,23 @@ export default function Login() {
       if (response.status === 200) {
         const data = await response.data;
 
-        //console.log({ data });
+        console.log(data)
 
-        // Store token in session storage
-        setToken(data.token);
-        // window.sessionStorage.setItem("token", data.token);
-        // window.sessionStorage.setItem("user", JSON.stringify(data.user));
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
-        // Redirect to dashboard or another authenticated route
-        // router.push("/dashboard");     
+  
+        setStatus(data.status);
+        setUserUuid(data.uuid);
+        setUser(data);
+        localStorage.setItem("status", data.status);
+        localStorage.setItem("name", data.name);
+        localStorage.setItem("uuid", data.uuid);
+        localStorage.setItem("phone", data.phone);
+        //localStorage.setItem('user', data);
 
-        setEmail('')
+       
+      
+      
+
+        setnumber('')
         setPassword('')
       } else {
         //console.log("error res", response);
@@ -73,34 +84,35 @@ export default function Login() {
   }
 
   useEffect(() => {
-    setToken(localStorage.getItem("token") || "");
-   
-  }, [token]);
+    setStatus(localStorage.getItem("status") || "");
 
-   useEffect(() => {
-    if (token) {
-      setUser(JSON.parse(localStorage.getItem("user") || ""));
-    }
-  }, [token]);
+  }, [status]);
+
+  useEffect(() => {
+    setUsername(localStorage.getItem('name')|| '');
+    setUserUuid(localStorage.getItem('uuid')|| '')
+  }, []);
+
+ 
 
   return (
     <>
-      {token ? (
+      {status ? (
         <>
           <div className="flex flex-col">
             <div className="text-black text-xl mb-4">
-              Hey {user?.name} , welcom to LekharPoka
+              Hey {username} , welcom to LekharPoka
             </div>
             <div className="flex flex-row space-x-3 text-[18px]">
               <LogoutButton
                 buttonText="Logout"
                 buttonClass="text-white bg-[#F9A106] w-[100px] h-[30px]"
-                setToken={setToken}
+                setStatus={setStatus}
               />
               <GoToProfile
                 buttonText="Your Profile"
                 buttonClass="text-white bg-[#F9A106] w-[200px] h-[30px]  "
-                id={user.id}              />
+                id={userUuid} />
             </div>
             <Divider />
           </div>
@@ -114,12 +126,12 @@ export default function Login() {
             <div className="mb-3 w-[298px] pt-4">
               <input
                 className="border rounded-2xl w-[297px] h-[43px] text-[14px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="username"
-                type="text"
+                id="phonenumber"
+                type="number"
                 placeholder="ইমেইল আইডি দিন "
                 required
-                onChange={handleEmailChange}
-                value={email}
+                onChange={handleNumberhange}
+                value={number}
               />
             </div>
             <div className="">

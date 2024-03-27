@@ -5,6 +5,8 @@ import SignInOption from "../signInOption/SignInOption";
 import DropDown from "../common/dropDown";
 
 const LoginPage = () => {
+
+  
   return (
     <>
       <div className={`flex ${arial.variable} font-arial`}>

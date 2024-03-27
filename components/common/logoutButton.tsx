@@ -3,15 +3,15 @@ import { SetStateAction, useEffect, useState } from "react";
 type logoutProps = {
   buttonClass: string;
   buttonText: string;
-  setToken: React.Dispatch<SetStateAction<string>>
+  setStatus: React.Dispatch<SetStateAction<string>>
 };
 
-export default function LogoutButton({ buttonClass, buttonText, setToken }: logoutProps) {
+export default function LogoutButton({ buttonClass, buttonText, setStatus }: logoutProps) {
   
     function logoutHandaler(){
         localStorage.removeItem("user");
         localStorage.removeItem("token");
-        setToken("");
+        setStatus("");
     }
 
 

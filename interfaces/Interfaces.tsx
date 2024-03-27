@@ -50,8 +50,9 @@ export interface mainContaintPost {
 }
 
 export interface LoogedInUser {
-  id: number;
+  status: string;
   name: string;
-  email?: string; // Optional property (can be undefined)
+  phone: string;
+  uuid: string;
   // Other user properties
 }

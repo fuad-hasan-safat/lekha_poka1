@@ -3,7 +3,7 @@ import { SetStateAction, useEffect, useState } from "react";
 type AddPostButtonProps = {
   buttonClass: string;
   buttonText: string;
-  userId: number;
+  userId: string;
 };
 
 export default function AddPostButton({ buttonClass, buttonText, userId }: AddPostButtonProps) {

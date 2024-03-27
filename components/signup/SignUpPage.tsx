@@ -1,13 +1,23 @@
+"use client"
 import LoginSignInOtpLeftPartDesign from "../common/login-signup-otp-left-design";
 import { arial } from "../fonts/arial";
 import SignInOption from "../signInOption/SignInOption";
 import DropDown from "../common/dropDown";
 import SigninForm from "../common/signinforn";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const SignUpPage = () => {
+
+  const [token, setToken] = useState("");
+  useEffect(() => {
+    setToken(localStorage.getItem("token") || "");
+  }, [token]);
+
+
   return (
     <>
-      <div className={`flex ${arial.variable} font-arial`}>
+      {!token ? (<div className={`flex ${arial.variable} font-arial`}>
         <div className="relative flex flex-row h-[832px]  w-[1280px] bg-[#FCF7E8] shadow-md">
           {/* left part */}
           <div className=" w-[640px]   ">
@@ -34,8 +44,22 @@ const SignUpPage = () => {
           </div>
         </div>
       </div>
+      ) :
+        (
+
+          <div className={`pt-[130px] pb-10 w-full place-content-center ${arial.variable} font-arial`}>
+            <div className="text-center text-7xl text-red-600">
+              <div>You are already logged in to this site</div>
+              <div className="text-4xl text-purple-900 underline hover:text-blue-500">
+                <Link href="/">Go to homepage</Link>
+              </div>
+            </div>
+          </div>
+
+        )}
     </>
   );
+
 };
 
 export default SignUpPage;

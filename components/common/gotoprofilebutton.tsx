@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 type gotoprofileProps = {
   buttonClass: string;
   buttonText: string;
-  id: number;
+  id: string;
 };
 
 export default function GoToProfile({
@@ -14,7 +14,7 @@ export default function GoToProfile({
 }: gotoprofileProps) {
   const router = useRouter();
 
-  function handleClick(userId: number) {
+  function handleClick(userId: string) {
     router.push(`/user/${userId}`);
   }
 

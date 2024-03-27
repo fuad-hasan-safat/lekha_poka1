@@ -1,6 +1,8 @@
 "use client"
 
+import { apiBasePath } from "@/utils/constant";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 type logreg = {
@@ -8,68 +10,80 @@ type logreg = {
     btntext: string;
 }
 
+interface SignupState {
+    fullName: string;
+    mobileNumber: string;
+    password: string;
+    retypePassword: string;
+    error: string | null;
+    isDisabled: boolean;
+}
 export default function SigninForm({ logreg, btntext }: logreg) {
-    const [fullName, setFullName] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [password, setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+    const router = useRouter()
+    const [state, setState] = useState<SignupState>({
+        fullName: '',
+        mobileNumber: '',
+        password: '',
+        retypePassword: '',
+        error: null,
+        isDisabled: true, // Button initially disabled
+    });
 
-
-    const validatePhoneNumber = (number: any) => {
-        const tenDigitRegex = /^\d{10}$/;
-        const thirteenDigitRegex = /^88\d{11}$/;
-
-        if (!tenDigitRegex.test(number) && !thirteenDigitRegex.test(number)) {
-            setErrorMessage('Invalid phone number format. Please enter a 10-digit number starting with 1 or a 13-digit number starting with 88.');
-            return false;
-        } else if (tenDigitRegex.test(number) && number[0] !== '1') {
-            setErrorMessage('10-digit phone number must start with 1.');
-            return false;
-        }
-
-        setErrorMessage('');
-        return true;
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        setState((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
     };
 
-    const validatePassword = (password: any) => {
-        const passwordRegex = /^(?=.*[A-Z]).{8,}$/;
+    const validate = () => {
+        let isValid = true;
+        setState((prevState) => ({ ...prevState, error: null }));
 
-        if (!passwordRegex.test(password)) {
-            setErrorMessage('Password must be at least 8 characters and contain at least one uppercase letter.');
-            return false;
+        if (!state.mobileNumber) {
+            setState((prevState) => ({ ...prevState, error: 'Mobile number is required.' }));
+            isValid = false;
+        } else if (state.mobileNumber.startsWith('0')) {
+            setState((prevState) => ({ ...prevState, error: 'Mobile number cannot start with zero.' }));
+            isValid = false;
         }
 
-        setErrorMessage('');
-        return true;
+        if (!state.password) {
+            setState((prevState) => ({ ...prevState, error: 'Password is required.' }));
+            isValid = false;
+        } else if (state.password.length < 8) {
+            setState((prevState) => ({ ...prevState, error: 'Password must be at least 8 characters long.' }));
+            isValid = false;
+        }
+
+        if (state.password !== state.retypePassword) {
+            setState((prevState) => ({ ...prevState, error: 'Passwords do not match.' }));
+            isValid = false;
+        }
+
+        setState((prevState) => ({ ...prevState, isDisabled: !isValid })); // Enable button if all validations pass
     };
 
-    const handleSubmit = async (event: { preventDefault: () => void; }) => {
-        event.preventDefault();
+    const handleSubmit = async () => {
+        validate(); // Perform validation before submitting
 
-        if (!validatePhoneNumber(phoneNumber) || !validatePassword(password)) {
-            return;
+        if (!state.isDisabled) {
+            try {
+                const response = await axios.post(`${apiBasePath}/register`, {
+                    name: state.fullName,
+                    phone: state.mobileNumber,
+                    password: state.password,
+                    usertype:"user",
+                });
+                // Handle successful signup response (e.g., redirect)
+                router.push(`/`)
+            } catch (error) {
+                console.error('Signup error:', error);
+                // Handle signup error (e.g., display error message)
+            }
         }
-
-        const data = {
-            fullName,
-            phoneNumber,
-            password,
-        };
-
-        try {
-            const response = await axios.post('http://your-backend-api-url/signup', data);
-            console.log('Signup response:', response.data);
-        } catch (error) {
-            console.error('Signup error:', error);
-            setErrorMessage('An error occurred during signup. Please try again later.');
-        }
-
-        // Reset input fields (optional)
-        setFullName('');
-        setPhoneNumber('');
-        setPassword('');
     };
-
 
     return (
         <>
@@ -79,44 +93,65 @@ export default function SigninForm({ logreg, btntext }: logreg) {
                     {logreg}
                 </div>
                 <div className="  grid place-items-center">
-                    {errorMessage && <div className="p-6  text-lg">{errorMessage}</div>}
-
                     <div className="mb-4 ">
 
                         <input
-                            value={fullName}
-                            onChange={(event) => setFullName(event.target.value)}
-
-                            className="w-[559px] h-[62px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="username"
                             type="text"
+                            name="fullName"
                             placeholder="Full Name"
-                            required />
+                            value={state.fullName}
+                            onChange={handleChange}
+                            className="w-[559px] h-[62px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        />
                     </div>
                     <div className="mb-4 ">
 
                         <input
-                            value={phoneNumber}
-                            onChange={(event) => setPhoneNumber(event.target.value)}
-
-                            className="w-[559px] h-[62px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             id="phonenumber"
-                            type="tel"
-                            placeholder="Phone Number"
-                            required />
+                            type="number"
+                            name="mobileNumber"
+                            placeholder="Mobile Number"
+                            value={state.mobileNumber}
+                            onChange={handleChange}
+                            onBlur={validate}
+                            className="w-[559px] h-[62px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        />
+                        {state.error && state.mobileNumber.startsWith('0') && <p className="error">Mobile number cannot start with zero.</p>}
+                    </div>
+                    <div className="mb-5">
+
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            value={state.password}
+                            onChange={handleChange}
+                            onBlur={validate}
+                            className="w-[559px] h-[62px] p-4 bg-[#FCF7E8]  rounded-2xl   text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        />
+
                     </div>
                     <div className="">
 
                         <input
-                            value={password}
-                            onChange={(event) => setPassword(event.target.value)}
-                            className="w-[559px] h-[62px] p-4 bg-[#FCF7E8]  rounded-2xl   text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
-                            id="password"
                             type="password"
-                            placeholder="password"
-                            required />
+                            name="retypePassword"
+                            placeholder="Retype Password"
+                            value={state.retypePassword}
+                            onChange={handleChange}
+                            onBlur={validate}
+                            className="w-[559px] h-[62px] p-4 bg-[#FCF7E8]  rounded-2xl   text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
+                            required
+                        />
+                        {state.error && <p className="error">{state.error}</p>}
 
                     </div>
+
 
                     <button
                         onClick={handleSubmit}

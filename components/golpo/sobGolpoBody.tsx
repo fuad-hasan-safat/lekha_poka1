@@ -16,7 +16,7 @@ const SobGolpoBody: React.FC<mainContaintPost> = ({
 
 
   function handleClick(golpoId: String) {
-    router.push(`/sob-golpo/${golpoId}`);
+    router.push(`/golpo/${golpoId}`);
   }
   return (
     <>

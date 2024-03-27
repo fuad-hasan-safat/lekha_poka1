@@ -4,18 +4,19 @@ import Image from "next/image";
 import { mainContaintPost } from "@/interfaces/Interfaces";
 import { useRouter } from "next/navigation";
 
-const SobProbondhoBody: React.FC<mainContaintPost> = ({
+const SobOnugolpoBody: React.FC<mainContaintPost> = ({
   id,
   title,
   writer,
   content,
 }) => {
   const router = useRouter();
+
   const [html, setHTML] = useState({ __html: content });
 
 
-  function handleClick(probondhoId: String) {
-    router.push(`/probondho/${probondhoId}`);
+  function handleClick(onugolpoId: String) {
+    router.push(`/onugolpo/${onugolpoId}`);
   }
   return (
     <>
@@ -50,4 +51,4 @@ const SobProbondhoBody: React.FC<mainContaintPost> = ({
   );
 };
 
-export default SobProbondhoBody;
+export default SobOnugolpoBody;
