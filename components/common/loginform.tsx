@@ -32,8 +32,8 @@ export default function LoginForm({ logreg, btntext }: logreg) {
   };
 
   async function submitLogin() {
-    console.log("Calling submitLogin");
-    console.log({ email, password, apiBasePath });
+    //console.log("Calling submitLogin");
+    //console.log({ email, password, apiBasePath });
     try {
       const response = await axios.post(
         `${apiBasePath}/login`,
