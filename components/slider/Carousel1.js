@@ -15,7 +15,6 @@ const CarouselIndicators = ({ images, activeIndex, onClick }) => {
             }`}
           onClick={() => onClick(index)}
         />
-
         </>
       ))}
     </div>
