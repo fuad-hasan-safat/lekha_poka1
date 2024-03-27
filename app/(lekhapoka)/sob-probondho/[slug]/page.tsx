@@ -2,12 +2,13 @@
 import Sidebar from "@/components/sidebar/Sidebar";
 import axios from "axios";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
 
 
 export default function PostDetails(context: any) {
   const { slug } = context.params;
+
 
   const [data, setData] = useState(null); // State to store fetched data
   const [error, setError] = useState(null); // State to store any errors
@@ -23,7 +24,7 @@ export default function PostDetails(context: any) {
       }
     };
 
-    fetchData(); // Call the function on component mount
+    fetchData();
   }, []);
 
 
@@ -31,7 +32,7 @@ export default function PostDetails(context: any) {
       <div className="flex flex-col pt-[115px]">
         <div>
           <Image
-            src={'/images/pages-banner-svg/kobita.svg'}
+            src={'/images/pages-banner-svg/probondho.png'}
             height={380}
             width={1920}
             alt={"kobita banner"}

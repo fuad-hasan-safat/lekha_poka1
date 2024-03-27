@@ -82,7 +82,7 @@ const SobLekha = ({sobClass}:soblekhaProp) => {
               অনুগল্প
               </Link>
             <Link 
-            href="#" 
+            href="/sob-probondho" 
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-white hover:text-[#F9A10]" 
             role="menuitem" 
             tabIndex={-1} 

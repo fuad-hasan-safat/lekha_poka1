@@ -1,18 +1,37 @@
+"use client"
 import Sidebar from "@/components/sidebar/Sidebar";
-import { Metadata } from "next";
+import axios from "axios";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
-export const metadata: Metadata = {
-  title: "গল্প",
-  description: "লেখার পোকা",
-};
 
-export default function PostDetails() {
+export default function PostDetails(context: any) {
+  const { slug } = context.params;
+
+  const [data, setData] = useState(null); // State to store fetched data
+  const [error, setError] = useState(null); // State to store any errors
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(``); // Replace with your API endpoint
+        setData(response.data); // Set the fetched data in state
+      } catch (error: any) {
+        setError(error);
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData(); // Call the function on component mount
+  }, []);
+
+
   return (
       <div className="flex flex-col pt-[115px]">
         <div>
           <Image
-            src={'/images/pages-banner-svg/golpo.svg'}
+            src={'/images/pages-banner-svg/kobita.svg'}
             height={380}
             width={1920}
             alt={"kobita banner"}

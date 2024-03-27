@@ -1,13 +1,12 @@
 "use client"
 import { useEffect, useState } from "react";
-import MaincontentBody from "../common/maincontentBody";
 import MainContentDivider from "../common/mainContentDivider";
 import { sobKobitaPosts } from "@/public/demo-data/data";
-import SobKobitaBody from "./sobKobitaBody";
+import SobKobitaBody from "./sobProbondhoBody";
 import axios from "axios";
 import Loading from "../common/loading";
 
-export default function SobKobitaLeftContent() {
+export default function SobProbondhoLeftContent() {
 
   //   const [selectedId, setSelectedId] = useState("sob");
   const [postList, setPostList] = useState(sobKobitaPosts)
@@ -33,10 +32,10 @@ export default function SobKobitaLeftContent() {
     fetchData(); // Call the function on component mount
   }, []);
 
+
   if (isLoading) {
     return <Loading />;
   } else {
-
     return (
       <div>
         <div className="pt-20 ml-[200px] text-3xl w-[604px]">
