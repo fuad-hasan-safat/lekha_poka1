@@ -70,7 +70,7 @@ export default function SigninForm({ logreg, btntext }: logreg) {
 
         if (!state.isDisabled) {
             try {
-                const response = await axios.post(`${apiBasePath}/register`, {
+                const response = await axios.post(`http://192.168.88.248:3002/register`, {
                     name: state.fullName,
                     phone: state.mobileNumber,
                     password: state.password,

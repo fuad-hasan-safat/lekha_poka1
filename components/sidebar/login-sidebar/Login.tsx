@@ -8,8 +8,7 @@ import Divider from "@/components/common/sidebardivider";
 import LogoutButton from "@/components/common/logoutButton";
 import GoToProfile from "@/components/common/gotoprofilebutton";
 import { LoogedInUser } from "@/interfaces/Interfaces";
-import { getServerSession } from "next-auth";
-import { authConfig } from "@/lib/auth";
+
 
 export default function Login() {
 
@@ -55,10 +54,10 @@ export default function Login() {
       );
 
       //console.log({ response });
+      
 
       if (response.status === 200) {
         const data = await response.data;
-
         console.log(data);
         setStatus(data.status);
         setUserUuid(data.uuid);
@@ -72,27 +71,28 @@ export default function Login() {
         setnumber("");
         setPassword("");
       } else {
-        //console.log("error res", response);
+        console.log("error res--------------------", response.data.message);
         alert(response.data.message);
       }
     } catch (error: any) {
-      //console.log("inside catch", error);
+      console.log("inside catch ----------------", error);
       alert(error.response.data.message);
     }
   }
 
   useEffect(() => {
     setStatus(localStorage.getItem("status") || "");
-  }, [status]);
+  }, []);
 
   useEffect(() => {
+    setStatus(localStorage.getItem("status") || "");
     setUsername(localStorage.getItem("name") || "");
     setUserUuid(localStorage.getItem("uuid") || "");
-  }, []);
+  }, [status]);
 
   return (
     <>
-      {status ? (
+      {status === 'sucess' ? (
         <>
           <div className="flex flex-col">
             <div className="text-black text-xl mb-4">
@@ -124,7 +124,7 @@ export default function Login() {
                 className="border rounded-2xl w-[297px] h-[43px] text-[14px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="phonenumber"
                 type="number"
-                placeholder="ইমেইল আইডি দিন "
+                placeholder="মোবাইল নাম্বার দিন"
                 required
                 onChange={handleNumberhange}
                 value={number}

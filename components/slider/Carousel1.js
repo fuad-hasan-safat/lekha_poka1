@@ -24,21 +24,37 @@ const CarouselIndicators = ({ images, activeIndex, onClick }) => {
 
 const Carousel1 = ({interval = 3000 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [data, setData] = useState(sliderPosts); // State to store fetched data
+  const [data, setData] = useState([{
+    _id: '',
+    title: '',
+    content: '',
+    image: '',
+    __v:0
+  }
+  ]); // State to store fetched data
   const [error, setError] = useState(null); // State to store any errors
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(``); // Replace with your API endpoint
-       // setData(response.data); // Set the fetched data in state
-      } catch (error) {
-        setError(error);
-        console.error('Error fetching data:', error);
-      }
-    };
 
-    fetchData(); // Call the function on component mount
+    fetch(`http://192.168.88.248:3002/sliders`)
+    .then(response => response.json())
+    .then(data =>{
+      setData(data)
+    }).catch(error => console.log("Error fetching data"))
+
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await axios.get(`http://192.168.88.248:3002/sliders`); 
+
+    //     console.log(response.data)
+    //    setData(response.data); 
+    //   } catch (error) {
+    //     setError(error);
+    //     console.error('Error fetching data:', error);
+    //   }
+    // };
+
+    // fetchData(); 
   }, []); 
 
 
@@ -69,11 +85,11 @@ const Carousel1 = ({interval = 3000 }) => {
         &lt;
       </button>
       <div className='absolute pl-[302px] pt-[150px]'>
-        {<SliderPost
-        key={`${data[activeIndex].id} of ${data[activeIndex].title}`}
+        { <SliderPost
+        key={`${data[activeIndex]._id} of ${data[activeIndex].title}`}
           title={data[activeIndex].title}
-          caption={data[activeIndex].caltion}
-          discription={data[activeIndex].discription}
+          caption={data[activeIndex].caption}
+          discription={data[activeIndex].content}
           id={data[activeIndex].id}
         />}
       </div>
@@ -87,11 +103,11 @@ const Carousel1 = ({interval = 3000 }) => {
      
 
       <div className='w-full h-[780px] justify-center transition-all  cubic-bezier(0.77, 0, 0.175, 1)'>
-        <Image
-          src={data[activeIndex].image}
+        <img
+          src={`http://192.168.88.248:3002/${data[activeIndex].image}`}
           alt={`Slide ${activeIndex}`}
-          width={1920}
-          height={780}
+         // width={1920}
+          //height={780}
           className="carousel__img"
         />
 

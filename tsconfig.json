@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/slider/BootsrtapSlider.tsx", "components/slider/Carousel1.js", "tailwind.config.ts", "components/musicbar/MusicBar.js", "components/musicbar/MyMusic.js", "components/navbar/searchIcon.tsx", "components/common/logoutButton.tsx", "components/sidebar/login-sidebar/Login.tsx", "app/api/auth/[...nextauth].js", "components/sideBarLogInSucess/loginSucessfull.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/slider/BootsrtapSlider.tsx", "components/slider/Carousel1.js", "tailwind.config.ts", "components/musicbar/MusicBar.js", "components/musicbar/MyMusic.js", "components/navbar/searchIcon.tsx", "components/common/logoutButton.tsx", "components/sidebar/login-sidebar/Login.tsx", "app/api/auth/[...nextauth].js", "components/sideBarLogInSucess/loginSucessfull.tsx", "components/procchodLeftContent/ProcchodLeftContent.jsx", "components/procchodLeftContent/ProcchodButtonList.jsx", "components/procchod/Procchod.jsx", "components/common/buttonItem.jsx", "components/common/mainContentDivider.jsx", "components/common/maincontentBody.jsx"],
   "exclude": ["node_modules"]
 }

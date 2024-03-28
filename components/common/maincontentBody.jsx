@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { mainContaintPost } from "@/interfaces/Interfaces";
+import { mainContaintPostType } from "@/interfaces/Interfaces";
 import { useRouter } from "next/navigation";
 
-const MaincontentBody: React.FC<mainContaintPost> = ({
+const MaincontentBody = ({
   id,
   title,
   writer,
@@ -15,7 +15,7 @@ const MaincontentBody: React.FC<mainContaintPost> = ({
   const [html, setHTML] = useState({ __html: content });
 
 
-  function handleClick(postId: String) {
+  function handleClick(postId) {
      router.push(`/${postId}`);
   }
   return (

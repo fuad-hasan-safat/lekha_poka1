@@ -95,7 +95,6 @@ export default function LoginForm({ logreg, btntext }: logreg) {
 
   return (
     <>
-    
       <div>
         <div className="text-[48px] mb-5  font-semibold text-yellow-500">
           {logreg}

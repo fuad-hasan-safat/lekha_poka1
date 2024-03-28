@@ -93,7 +93,7 @@ const SobLekha = ({ sobClass }: soblekhaProp) => {
               প্রবন্ধ
             </Link>
             <Link
-              href="#"
+              href="/jiboni"
               className="block px-4 py-2 text-sm rounded-br-3xl text-gray-700 hover:bg-white hover:text-[#F9A10]"
               role="menuitem"
               tabIndex={-1}

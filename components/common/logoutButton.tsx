@@ -9,8 +9,9 @@ type logoutProps = {
 export default function LogoutButton({ buttonClass, buttonText, setStatus }: logoutProps) {
   
     function logoutHandaler(){
-        localStorage.removeItem("user");
-        localStorage.removeItem("token");
+        localStorage.removeItem("status");
+        localStorage.removeItem("name");
+        localStorage.removeItem("uuid");
         setStatus("");
     }
 

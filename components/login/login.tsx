@@ -1,3 +1,4 @@
+'use client'
 import LoginReg from "@/components/common/loginform";
 import LoginSignInOtpLeftPartDesign from "../common/login-signup-otp-left-design";
 import { arial } from "../fonts/arial";
