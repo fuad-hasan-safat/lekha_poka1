@@ -8,17 +8,21 @@ import Divider from "@/components/common/sidebardivider";
 import LogoutButton from "@/components/common/logoutButton";
 import GoToProfile from "@/components/common/gotoprofilebutton";
 import { LoogedInUser } from "@/interfaces/Interfaces";
+import { getServerSession } from "next-auth";
+import { authConfig } from "@/lib/auth";
 
 export default function Login() {
+
+
   const router = useRouter();
 
   const [number, setnumber] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState<LoogedInUser>({
-    status: '',
-    name: '',
-    phone: '',
-    uuid: '',
+    status: "",
+    name: "",
+    phone: "",
+    uuid: "",
   });
   const [status, setStatus] = useState("");
   const [username, setUsername] = useState("");
@@ -32,8 +36,8 @@ export default function Login() {
     setPassword(e.target.value);
   };
 
+ 
   async function submitLogin() {
-
     console.log("Calling submitLogin");
     console.log({ number, password, apiBasePath });
     try {
@@ -55,9 +59,7 @@ export default function Login() {
       if (response.status === 200) {
         const data = await response.data;
 
-        console.log(data)
-
-  
+        console.log(data);
         setStatus(data.status);
         setUserUuid(data.uuid);
         setUser(data);
@@ -67,12 +69,8 @@ export default function Login() {
         localStorage.setItem("phone", data.phone);
         //localStorage.setItem('user', data);
 
-       
-      
-      
-
-        setnumber('')
-        setPassword('')
+        setnumber("");
+        setPassword("");
       } else {
         //console.log("error res", response);
         alert(response.data.message);
@@ -85,15 +83,12 @@ export default function Login() {
 
   useEffect(() => {
     setStatus(localStorage.getItem("status") || "");
-
   }, [status]);
 
   useEffect(() => {
-    setUsername(localStorage.getItem('name')|| '');
-    setUserUuid(localStorage.getItem('uuid')|| '')
+    setUsername(localStorage.getItem("name") || "");
+    setUserUuid(localStorage.getItem("uuid") || "");
   }, []);
-
- 
 
   return (
     <>
@@ -112,7 +107,8 @@ export default function Login() {
               <GoToProfile
                 buttonText="Your Profile"
                 buttonClass="text-white bg-[#F9A106] w-[200px] h-[30px]  "
-                id={userUuid} />
+                id={userUuid}
+              />
             </div>
             <Divider />
           </div>

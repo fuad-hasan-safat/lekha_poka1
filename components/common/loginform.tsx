@@ -14,17 +14,20 @@ type logreg = {
 export default function LoginForm({ logreg, btntext }: logreg) {
   const router = useRouter();
 
-  const [email, setEmail] = useState("");
+  const [number, setnumber] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState<LoogedInUser>({
-    id: 0,
-    name: "",
-    email: "",
+    status: '',
+    name: '',
+    phone: '',
+    uuid: '',
   });
-  const [token, setToken] = useState("");
+  const [status, setStatus] = useState("");
+  const [username, setUsername] = useState("");
+  const [userUuid, setUserUuid] = useState("");
 
-  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
+  const handleNumberhange = (e: ChangeEvent<HTMLInputElement>) => {
+    setnumber(e.target.value);
   };
 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,12 +35,16 @@ export default function LoginForm({ logreg, btntext }: logreg) {
   };
 
   async function submitLogin() {
-    //console.log("Calling submitLogin");
-    //console.log({ email, password, apiBasePath });
+
+    console.log("Calling submitLogin");
+    console.log({ number, password, apiBasePath });
     try {
       const response = await axios.post(
-        `${apiBasePath}/login`,
-        { email, password },
+        `http://192.168.88.248:3002/login`,
+        {
+          phone: number,
+          password: password,
+        },
         {
           headers: {
             "Content-Type": "application/json",
@@ -50,41 +57,41 @@ export default function LoginForm({ logreg, btntext }: logreg) {
       if (response.status === 200) {
         const data = await response.data;
 
-        //console.log({ data });
+        console.log(data)
+        setStatus(data.status);
+        setUserUuid(data.uuid);
+        setUser(data);
+        localStorage.setItem("status", data.status);
+        localStorage.setItem("name", data.name);
+        localStorage.setItem("uuid", data.uuid);
+        localStorage.setItem("phone", data.phone);
+        //localStorage.setItem('user', data);
 
-        // Store token in session storage
-        setToken(data.token);
-        // window.sessionStorage.setItem("token", data.token);
-        // window.sessionStorage.setItem("user", JSON.stringify(data.user));
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
-        // Redirect to dashboard or another authenticated route
-        // setUser(JSON.parse(data.user));
-        router.push(`/user/${data.user.id}`);
 
-        setEmail("");
-        setPassword("");
+        setnumber('')
+        setPassword('')
+        router.push(`/user/${userUuid}`)
       } else {
         //console.log("error res", response);
         alert(response.data.message);
       }
     } catch (error: any) {
-      console.log("inside catch", error);
+      //console.log("inside catch", error);
       alert(error.response.data.message);
     }
   }
 
 
+   useEffect(() => {
+    setStatus(localStorage.getItem("status") || "");
+
+  }, [status]);
 
   useEffect(() => {
-    setToken(localStorage.getItem("token") || "");
-  }, [token]);
+    setUsername(localStorage.getItem('name')|| '');
+    setUserUuid(localStorage.getItem('uuid')|| '')
+  }, []);
 
-  useEffect(() => {
-    if (token) {
-      setUser(JSON.parse(localStorage.getItem("user") || ""));
-    }
-  }, [token]);
 
   return (
     <>
@@ -96,12 +103,12 @@ export default function LoginForm({ logreg, btntext }: logreg) {
         <div className="  grid place-items-center">
           <div className="mb-4 ">
             <input
-              onChange={handleEmailChange}
-              value={email}
+              onChange={handleNumberhange}
+              value={number}
               className="w-[559px] h-[62px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="email"
-              type="text"
-              placeholder="Enter Email"
+              id="phone"
+              type="number"
+              placeholder="Enter Number"
               required
             />
           </div>

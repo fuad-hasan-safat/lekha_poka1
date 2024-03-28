@@ -1,3 +1,5 @@
+import { signIn } from 'next-auth/react';
+
 type SignInOptionProps = {
     title?: string;
     icon1?: string;
@@ -29,13 +31,11 @@ export default function SignInOption({ title, icon1, icon2, icon3, lowermessege1
 
             {icon1?.length &&
                 <div className="pt-4 flex space-x-6 pl-6">
-                    <a
+                    <button
                         // className="mb-3 flex  w-[67px] h-[43px] items-center justify-center rounded leading-normal  shadow-primary-3 transition duration-150 ease-in-out hover:bg-yellow-400 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
                         className={`${classProperty} `}
-                        href="#!"
-                        role="button"
-                        data-twe-ripple-init
-                        data-twe-ripple-color="light">
+                        onClick={() => signIn('google')}
+                      >
                         <img
                             src={icon1}
                             width={300}
@@ -44,7 +44,7 @@ export default function SignInOption({ title, icon1, icon2, icon3, lowermessege1
                             className="w-[44px] h-[22px]"
                         />
 
-                    </a>
+                    </button>
 
                     <a
                         className={`${classProperty} `} href="#!"

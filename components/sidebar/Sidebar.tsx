@@ -1,10 +1,16 @@
+import { authConfig } from "@/lib/auth"
 import Divider from "../common/sidebardivider"
 import Jonopriyo from "./jonopriyo/Jonopriyo"
 import Lekhok from "./lekhok/Lekhok"
 import Login from "./login-sidebar/Login"
 import Samprotik from "./samprotik/Samprotik"
 import Somosamoyik from "./somosamoyik/Somosamoyik"
-export default function Sidebar() {
+import { getServerSession } from "next-auth"
+export default async function Sidebar() {
+
+  //const session = await getServerSession(authConfig);
+
+
 
 
     return (

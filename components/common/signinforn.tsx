@@ -77,7 +77,7 @@ export default function SigninForm({ logreg, btntext }: logreg) {
                     usertype:"user",
                 });
                 // Handle successful signup response (e.g., redirect)
-                router.push(`/`)
+                router.push(`/login`)
             } catch (error) {
                 console.error('Signup error:', error);
                 // Handle signup error (e.g., display error message)
