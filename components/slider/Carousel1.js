@@ -24,14 +24,7 @@ const CarouselIndicators = ({ images, activeIndex, onClick }) => {
 
 const Carousel1 = ({interval = 3000 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [data, setData] = useState([{
-    _id: '',
-    title: '',
-    content: '',
-    image: '',
-    __v:0
-  }
-  ]); // State to store fetched data
+  const [data, setData] = useState(sliderPosts); // State to store fetched data
   const [error, setError] = useState(null); // State to store any errors
 
   useEffect(() => {

@@ -70,7 +70,7 @@ export default function LoginForm({ logreg, btntext }: logreg) {
 
         setnumber('')
         setPassword('')
-        router.push(`/user/${userUuid}`)
+        router.push(`/`)
       } else {
         //console.log("error res", response);
         alert(response.data.message);

@@ -1,3 +1,4 @@
+import SobJiboni from "@/components/jiboni/sobJiboni";
 import SobKobita from "@/components/kobita/sobKobita";
 import { Metadata } from "next";
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="pt-[125px] text-black">
-      <SobKobita />
+      <SobJiboni />
     </div>
   );
 }

@@ -4,15 +4,15 @@ import { useRouter } from "next/navigation";
 interface SliderPostProps {
   title: string;
   caption: string;
-  discription: string;
-  id: string;
+  content: string;
+  _id: string;
 }
 
 const SliderPost: React.FC<SliderPostProps> = ({
   title,
   caption,
-  discription,
-  id,
+  content,
+  _id,
 }) => {
   const router = useRouter();
   
@@ -26,11 +26,11 @@ const SliderPost: React.FC<SliderPostProps> = ({
       <div className="text-[28px] font-bold text-gray-700">{caption}</div>
       {/* <div className="text-[16px] text-black" dangerouslySetInnerHTML={html}/> */}
       <div className="text-[16px] text-black w-1/3 tracking-wider">
-        {discription}
+        {content}
       </div>
 
       <button
-        onClick={() => featureHandler(id)}
+        onClick={() => featureHandler(_id)}
         className="w-[176px] bg-orange-400 px-2 py-1 h-[56px] rounded-md text-[19px] font-semibold text-white"
       >
         বিস্তারিত

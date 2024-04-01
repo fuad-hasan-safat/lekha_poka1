@@ -26,9 +26,9 @@ const MyFooter = () => {
               <FooterLink
                 title="গুরুত্বপূর্ণ লিঙ্ক"
                 links={[
-                  { url: "https://example.com", label: "গল্প" },
-                  { url: "https://docs.example.com", label: "কবিতা" },
-                  { url: "https://docs.example.com", label: "প্রবন্ধ" },
+                  { url: "/golpo", label: "গল্প" },
+                  { url: "/kobita", label: "কবিতা" },
+                  { url: "/probondho", label: "প্রবন্ধ" },
                 ]}
               />
             </div>
@@ -37,9 +37,9 @@ const MyFooter = () => {
               <FooterLink
                 title="গুরুত্বপূর্ণ লিঙ্ক"
                 links={[
-                  { url: "https://example.com", label: "প্রাইভেসি" },
-                  { url: "https://docs.example.com", label: "শর্তাবলি" },
-                  { url: "https://docs.example.com", label: "সাইটম্যাপ" },
+                  { url: "/privacy", label: "প্রাইভেসি" },
+                  { url: "/conditions", label: "শর্তাবলি" },
+                  { url: "/sitemaps", label: "সাইটম্যাপ" },
                 ]}
               />
             </div>
@@ -75,7 +75,7 @@ const MyFooter = () => {
 
       <div className="flex flex-col">
         <div className="grid justify-center">
-          <hr className={` my-12 h-[0.3px] w-[1090px] border-t-0 bg-gray-400  dark:bg-white/10 justify-center content-center z-50`} />
+          <hr className={` my-12 h-[0.3px] w-[1090px] border-t-0 bg-gray-400  dark:bg-white/10 justify-center content-center`} />
         </div>
         <div className="grid justify-center">
           <div className="text-white mb-24 pt-3"> © 2024 Lekhapoka | All Rights Reserved </div>

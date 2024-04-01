@@ -25,8 +25,8 @@ export default function Layout({ children }: LayoutProps) {
           <main className={`${myFont.className}`}>
             <MyNavbar />
             <div>{children}</div>
+            <AudioPlayer/>
             <MyFooter />
-            <AudioPlayer />
           </main>
         </Provider>
       </body>
