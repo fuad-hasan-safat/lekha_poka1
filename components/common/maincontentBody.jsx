@@ -16,7 +16,7 @@ const MaincontentBody = ({
 
 
   function handleClick(postId) {
-     router.push(`/${postId}`);
+    router.push(`/${postId}`);
   }
   return (
     <>

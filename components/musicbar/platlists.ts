@@ -1,7 +1,7 @@
 
 import {Playlist} from '@/components/musicbar/audioplayer/type'
 
-const playlist: Playlist = [
+const playlist = [
   {
     audioSrc: '/audio/track2.mp3',
     metadata: {

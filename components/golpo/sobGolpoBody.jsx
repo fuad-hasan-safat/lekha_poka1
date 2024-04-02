@@ -4,7 +4,7 @@ import Image from "next/image";
 import { mainContaintPost } from "@/interfaces/Interfaces";
 import { useRouter } from "next/navigation";
 
-const SobGolpoBody = ({title, writer, content}) => {
+const SobGolpoBody = ({id, title, writer, content}) => {
   const router = useRouter();
 
   const [html, setHTML] = useState({ __html: content });

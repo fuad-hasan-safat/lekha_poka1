@@ -1,29 +1,22 @@
 "use client";
 import Loading from "@/components/common/loading";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState, useRef, useMemo } from "react";
 import JoditEditor from 'jodit-react';
-import Dropdown from 'react-dropdown';
 import { components } from 'react-select';
 import Select from 'react-select';
 
 
 import UserDetails from '@/components/user/userdetails'
 import Sidebar from "@/components/sidebar/Sidebar";
+import { fetchData } from '@/app/api/api'
 
 
 
 
-// const options = [
-//   { value: 'one', label: 'One' },
-//   { value: 'two', label: 'Two', className: 'myOptionClassName' },
+export default function Home(context) {
+  const { slug } = context.params;
 
-// ];
-
-
-
-export default function Home() {
   // --------------- editor ----------
 
   const editor = useRef(null);
@@ -68,6 +61,8 @@ export default function Home() {
   const [status, setStatus] = useState("");
   const [username, setUsername] = useState("");
   const [userUuid, setUserUuid] = useState("");
+  const [userToken, setUserToken] = useState("")
+  const [userPost, setUserPost] = useState([])
 
 
 
@@ -81,22 +76,48 @@ export default function Home() {
   useEffect(() => {
 
     fetch("http://192.168.88.248:3002/writers")
-    .then(response => response.json())
-    .then(data => {
-      setWriters(data);
+      .then(response => response.json())
+      .then(data => {
+        setWriters(data);
 
-      setIsLoading(false);
-    })
-    .catch(error => console.error("Error fetching data:", error));
+      })
+      .catch(error => console.error("Error fetching data:", error));
 
     fetch("http://192.168.88.248:3002/categories")
       .then(response => response.json())
       .then(data => {
         setCategory(data);
 
-        setIsLoading(false);
+
       })
-      .catch(error => console.error("Error fetching data:", error));
+      .catch(error => console.error("Error fetching data:", error)).finally(setIsLoading(false));
+
+
+
+    // user post
+
+    
+    // fetch(`http://192.168.88.248:3002/postsbyuser/${slug}`)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     setUserPost(data.object);
+
+
+    //   })
+    //   .catch(error => console.error("Error fetching data:", error)).finally(setIsLoading(false));
+
+    async function fetchDataAsync() {
+      try {
+        const result = await fetchData(`http://192.168.88.248:3002/postsbyuser/${slug}`);
+        console.log('result        user profile  ->>>>>>>>>>>>>>>>', result.object)
+        setUserPost(result.object);
+        console.log('result        user USER POST  ->>>>>>>>>>>>>>>>', userPost)
+      } catch (error) {
+        alert('Error fetching user post')
+      }
+    }
+
+    fetchDataAsync();
   }, []);
 
 
@@ -107,6 +128,7 @@ export default function Home() {
 
   useEffect(() => {
     setUsername(localStorage.getItem('name') || '');
+    setUserToken(localStorage.getItem('token') || '')
     setUserUuid(localStorage.getItem('uuid') || '')
   }, []);
 
@@ -133,33 +155,48 @@ export default function Home() {
   };
 
 
- const handleSubmit = async () => {
+  const handleSubmit = async () => {
 
-      
-         try {
-                const response = await axios.post(`http://192.168.88.248:3002/posts`, {
-                  file: null,
-                  category: selectedOption?.label,
-                  cat_id: selectedOption?.value,
-                  writer: selectedOption?.label,
-                  writer_id: selectedOption?.value,
-                  title:title,
-                  content:content,
-                  rating: 1,
-                  status: false,
-                  uploaded_by: username,
+    const formData = new FormData();
+    formData.append('file', null);
+    formData.append('category', selectedOption?.label);
+    formData.append('cat_id', selectedOption?.value);
+    formData.append('writer', selectedOption?.label);
+    formData.append('writer_id', selectedOption?.value);
+    formData.append('title', title);
 
-                });
-                // Handle successful signup response (e.g., redirect)
-                console.error('sucessful post ---------------------------------------');
-               alert('Sucessfully submitted')
-            } catch (error) {
-                console.error('post error:', error);
-                alert(error)
-                // Handle signup error (e.g., display error message)
-            }
-        
-    };
+    formData.append('content', content);
+    formData.append('rating', 0);
+    formData.append('status', false);
+    formData.append('uploaded_by', userUuid);
+
+
+
+    try {
+      const response = await fetch(`http://192.168.88.248:3002/posts`, {
+        method: 'POST',
+        headers: {
+          // 'x-access-token': userToken, 
+          // 'x-user-channel': 'apps'
+        },
+        body: formData
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('sucessfully sent:', data);
+        alert('Send Data Sucessfully')
+
+      } else {
+        console.error('Failed to update profile:', response.statusText);
+        alert(response.statusText)
+      }
+    } catch (error) {
+      console.error('Error updating profile:', error);
+      alert(error)
+    }
+
+  };
 
 
 
@@ -253,6 +290,26 @@ export default function Home() {
                 </div>
 
                 <div>
+                  {userPost.length &&
+                    userPost.map((post, index) => (
+                      <>
+                        <div>
+                          <div className="pb-3 pt-10">
+                            <div className="text-3xl text-yellow-400 font-bold">{post.title}</div>
+                          </div>
+                          <div className="pb-4">
+                            <div className="text-xl text-gray-800 font-semibold ">{post.writer}</div>
+                          </div>
+                          <div className="pb-3">
+                            <div
+                              className="text-[16px] text-gray-500"
+                              dangerouslySetInnerHTML={{ __html: post.content }}/>
+                          </div>
+
+                        </div>
+
+                      </>
+                    ))}
 
                 </div>
 

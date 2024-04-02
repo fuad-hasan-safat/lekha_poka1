@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 import FullPost from '@/components/common/fullContent'
+import { fetchData } from '@/app/api/api'
+
 
 export default function PostDetails(context) {
   const { slug } = context.params;
@@ -18,14 +20,29 @@ export default function PostDetails(context) {
 
   useEffect(() => {
     console.log('in side use effect')
-    fetch(`http://192.168.88.248:3002/getpost/${slug}`)
-      .then(response => response.json())
-      .then(data => {
-        setData(data.object[0]);
-        //setHTML({ __html: data.object.content })
-        console.log('----get single post-------', data.object)
-      })
-      .catch(error => console.error("Error fetching data:", error));
+
+
+    async function fetchDataAsync() {
+      try {
+        const result = await fetchData(`http://192.168.88.248:3002/getpost/${slug}`);
+        console.log('result         ->>>>>>>>>>>>>>>>', result.object)
+        setData(result.object);
+      } catch (error) {
+        // Handle error
+      }
+    }
+
+    fetchDataAsync();
+
+
+    // fetch(`http://192.168.88.248:3002/getpost/${slug}`)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     setData(data.object[0]);
+    //     //setHTML({ __html: data.object.content })
+    //     console.log('----get single post-------', data.object)
+    //   })
+    //   .catch(error => console.error("Error fetching data:", error));
 
   }, []);
  
