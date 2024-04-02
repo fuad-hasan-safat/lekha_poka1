@@ -18,7 +18,6 @@ const Modal = ({ isOpen, selectedContent, onClose }) => {
 
         </div>
         {/* <p>{selectedContent.content}</p> */}
-        {/* Optionally display other content properties like author */}
         <button onClick={onClose}>Close</button>
       </div>
     </div>
@@ -35,7 +34,7 @@ const modalStyles = {
   border: '1px solid #ccc',
   borderRadius: '5px',
   boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
-  zIndex: 10, // Ensure modal is above other content
+  zIndex: 10, 
 };
 
 export default function StyledModal({ isOpen, selectedContent, onClose }) {
