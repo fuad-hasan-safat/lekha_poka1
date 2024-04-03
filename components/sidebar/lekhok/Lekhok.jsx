@@ -66,7 +66,7 @@ const Lekhok = () => {
                 <div>
                     <h1 className="text-[20px] text-yellow-500 font-semibold">লেখক</h1>
                 </div>
-                <div className="pt-10 pb-1">
+                <div className="pt-[23px] ">
                     {lekhokList.length &&
                         lekhokList.map((item, index) => (
                             <>
@@ -91,10 +91,10 @@ const Lekhok = () => {
                         ))}
                 </div>
                 <div>
-                    <div className="w-[180px] pb-8 flex space-x-16">
+                    <div className="w-[180px] pb-[60px] pt-[30px] flex ">
                         <div>
                             <button
-                                className="bg-yellow-500 w-[180px] h-[43px] text-white rounded-md"
+                                className="bg-yellow-500 w-[180px] h-[43px] text-white rounded-md mr-3"
 
                             >
                                 সব দেখুন

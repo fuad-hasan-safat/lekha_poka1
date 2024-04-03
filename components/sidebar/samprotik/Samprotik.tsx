@@ -46,7 +46,7 @@ const Samprotik = () => {
         <div>
           <h1 className="text-[20px] text-yellow-500 font-semibold">সাম্প্রতিক</h1>
         </div>
-        <div className="pt-10">
+        <div className="pt-[23px]">
           {somosamoyekPosts.length &&
             somosamoyekPosts.map((item, index) => (
               <>
@@ -60,7 +60,7 @@ const Samprotik = () => {
                   star={item.star}
                 />
               </div>
-              <div className="pb-3">
+              <div className="pb-[14px]">
               {index <= somosamoyekPosts.length - 2 ? (
                   <SidebarPostDivider />
               ) : (

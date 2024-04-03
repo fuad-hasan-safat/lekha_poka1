@@ -7,7 +7,7 @@ import SobJiboniLeftContent from "./sobJiboniLeftContent";
 export default function SobJiboni() {
     return (
         <>
-            <div className="flex flex-col">
+            <section className="all__post__sec__wrap">
                 <div>
                     <Image
                         src={'/images/pages-banner-svg/jiboni.png'}
@@ -16,16 +16,27 @@ export default function SobJiboni() {
                         alt={"kobita banner"}
                     />
                 </div>
-                <div className="flex flex-row">
-                    <div className="w-maincontainwidth">
-                        <SobJiboniLeftContent />
-                    </div>
-                    <div className="w-sidebarwidth">
-                        <Sidebar />
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="flex flex-col">
+
+                                <div className="flex flex-row">
+                                    <div className="w-maincontainwidth">
+                                        <SobJiboniLeftContent />
+                                    </div>
+                                    <div className="w-sidebarwidth">
+                                        <Sidebar />
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+            </section>
 
-            </div>
 
         </>
     );

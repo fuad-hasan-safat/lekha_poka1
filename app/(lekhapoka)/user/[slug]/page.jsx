@@ -42,10 +42,9 @@ export default function Home(context) {
   const customStyles = {
     menu: (provided) => ({
       ...provided,
-      backgroundColor: '#fff', // Set background color to white
-      border: '1px solid #ccc', // Add optional border
+      backgroundColor: '#fff', 
+      border: '1px solid #ccc', 
     }),
-    // You can style other elements like control, option, etc. here
   };
 
   // --------------------------------------------
@@ -93,18 +92,7 @@ export default function Home(context) {
       .catch(error => console.error("Error fetching data:", error)).finally(setIsLoading(false));
 
 
-
     // user post
-
-    
-    // fetch(`http://192.168.88.248:3002/postsbyuser/${slug}`)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setUserPost(data.object);
-
-
-    //   })
-    //   .catch(error => console.error("Error fetching data:", error)).finally(setIsLoading(false));
 
     async function fetchDataAsync() {
       try {
@@ -277,7 +265,7 @@ export default function Home(context) {
                   <JoditEditor
                     ref={editor}
                     value={content}
-                    //config={}
+                    config={false}
                     //tabIndex={1} // tabIndex of textarea
                     onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                     onChange={newContent => { console.log(content) }}

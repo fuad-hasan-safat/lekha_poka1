@@ -48,7 +48,7 @@ const Somosamoyik = () => {
             সমসাময়িক
           </div>
         </div>
-        <div className="pt-10">
+        <div className="pt-[23px]">
           {somosamoyekPosts.length &&
             somosamoyekPosts.map((item, index) => (
               <>

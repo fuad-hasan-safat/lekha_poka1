@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 };
 export default function Home() {
   return (
-      <div className="pt-[125px] text-black">
+      <div className=" text-black">
         <SobGolpo />
       </div>
   );

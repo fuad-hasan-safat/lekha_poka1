@@ -17,13 +17,13 @@ export default function RatingComponent({post_id, setRating, rating}) {
   const onPointerMove = (value, index) => console.log(value, index)
 
   const ratingStyle = {
-    display: 'inline-flex',
+    float: 'left',
   };
 
   return (
-    <div className=' flex-col grid place-content-center pt-[60px]'>
+    <div className='start__rating flex-col grid place-content-center pt-[60px] float-left'>
       <Rating
-        style={ratingStyle}
+        style={{float:'left'}}
         onClick={handleRating}
         onPointerEnter={onPointerEnter}
         onPointerLeave={onPointerLeave}

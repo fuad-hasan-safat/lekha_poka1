@@ -52,7 +52,7 @@ const ProcchodButtonList = ({ selectedId, setSelectedId, setPostList}) => {
 }, []);
 
   return (
-    <div className="flex space-x-6 pl-[200px] pt-16">
+    <div className="flex space-x-6 pt-16">
       {buttons.length &&
         buttons.map((button, index) => (
           <ButtonItem

@@ -6,7 +6,7 @@ import SobOnugolpoLeftContent from "./sobOnugolpoLeftContent";
 export default function SobOnuGolpo() {
     return (
         <>
-            <div className="flex flex-col">
+            <section className="all__post__sec__wrap">
                 <div>
                     <Image
                         src={'/images/pages-banner-svg/onugolpo.png'}
@@ -15,16 +15,25 @@ export default function SobOnuGolpo() {
                         alt={"kobita banner"}
                     />
                 </div>
-                <div className="flex flex-row">
-                    <div className="w-maincontainwidth">
-                        <SobOnugolpoLeftContent />
-                    </div>
-                    <div className="w-sidebarwidth">
-                        <Sidebar />
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12"></div>
+                        <div className="flex flex-col">
+
+                            <div className="flex flex-row">
+                                <div className="w-maincontainwidth">
+                                    <SobOnugolpoLeftContent />
+                                </div>
+                                <div className="w-sidebarwidth">
+                                    <Sidebar />
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+        </section >
 
-            </div>
 
         </>
     );

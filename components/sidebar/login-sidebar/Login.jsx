@@ -29,7 +29,7 @@ export default function Login() {
     setPassword(e.target.value);
   };
 
- 
+
   async function submitLogin() {
     console.log("Calling submitLogin");
     console.log({ number, password, apiBasePath });
@@ -47,7 +47,7 @@ export default function Login() {
         }
       );
 
-      
+
 
       if (response.status === 200) {
         const data = await response.data;
@@ -108,12 +108,12 @@ export default function Login() {
       ) : (
         <div>
           <div>
-            <div className="text-[20px] font-semibold text-yellow-500 h-[28px]  pt-5 mb-8">
+            <div className="text-[20px] text-yellow-500 h-[28px]  pt-5 pb-[28px]">
               লগইন
             </div>
-            <div className="mb-3 w-[298px] pt-4">
+            <div className="mb-3  pt-4">
               <input
-                className="border rounded-2xl w-[297px] h-[43px] text-[14px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="border rounded-lg w-full h-[43px] text-[14px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="phonenumber"
                 type="number"
                 placeholder="মোবাইল নাম্বার দিন"
@@ -124,7 +124,7 @@ export default function Login() {
             </div>
             <div className="">
               <input
-                className="border rounded-2xl w-[297px] h-[43px] text-[14px] py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
+                className="border rounded-lg w-full h-[43px] text-[14px] py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
                 id="password"
                 type="password"
                 placeholder="পাসওয়ার্ড দিন"
@@ -134,14 +134,14 @@ export default function Login() {
               />
             </div>
             <a
-              className="ml-[170px] mb-6 inline-block align-baseline font-bold text-xs text-gray-600 hover:text-black-800"
+              className="pt-[12px] float-right mb-[15px] inline-block align-baseline font-bold text-xs text-gray-600 hover:text-black-800"
               href="#"
             >
               পাসওয়ার্ড ভুলে গেসেন?
             </a>
             <div className="">
               <button
-                className=" mb-8 w-[297px] h-[43px] text-[16px] bg-[#F9A106] hover:bg-yellow-700 text-white font-semibold  py-2 rounded focus:outline-none focus:shadow-outline"
+                className=" mb-8 w-full h-[43px] text-[16px] bg-[#F9A106] hover:bg-yellow-700 text-white  py-2 rounded focus:outline-none focus:shadow-outline"
                 type="button"
                 onClick={submitLogin}
               >

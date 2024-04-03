@@ -2,13 +2,21 @@ import ProcchodLeftContent from "@/components/procchodLeftContent/ProcchodLeftCo
 import Sidebar from "@/components/sidebar/Sidebar";
 export default function Procchod() {
   return (
-    <div className="flex flex-row pt-10">
-      <div className="w-maincontainwidth">
-        <ProcchodLeftContent />
-      </div>
-      <div className="w-sidebarwidth">
-        <Sidebar />
-      </div>
-    </div>
+    <section className="all__post__sec__wrap">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="flex flex-row pt-10">
+                <div className="w-maincontainwidth pr-10">
+                  <ProcchodLeftContent />
+                </div>
+                <div className="w-sidebarwidth">
+                  <Sidebar />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
   );
 }

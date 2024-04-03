@@ -46,7 +46,7 @@ const Jonopriyo = () => {
         <div>
           <h1 className="text-[20px] text-yellow-500 font-semibold">জনপ্রিয়</h1>
         </div>
-        <div className="pt-10 ">
+        <div className="pt-[23px]">
           {somosamoyekPosts.length &&
             somosamoyekPosts.map((item, index) => (
               <>

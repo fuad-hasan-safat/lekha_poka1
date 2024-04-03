@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
         {/* <Carousel1 /> */}
-        <div className="pt-[110px]">
+        <div className="">
         <ImageSlider/>
         <Procchod />
         </div>

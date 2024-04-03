@@ -31,7 +31,7 @@ export default function ProcchodLeftContent() {
   return (
     <div>
       <ProcchodButtonList selectedId={selectedId} setSelectedId={setSelectedId} setPostList={setPostList} />
-      <div className="pt-20 ml-[200px] text-3xl mr-[100px]">
+      <div className="pt-20 text-3xl">
         {postList.length &&
           postList.map((post, index) => (
             <>
