@@ -11,6 +11,7 @@ const PostTable = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState(null)
   const [statusRevoked, setStatusRevoked] = useState(false);
+  const [toggleStatus, setToggleStatus] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
@@ -43,12 +44,12 @@ setStatusRevoked(false);
 },[statusRevoked])
 
 
-  const handleOpenPopup = (content) => {
-    setModalData(content)
-    console.log('---------------', modalData)
+  // const handleOpenPopup = (content) => {
+  //   setModalData(content)
+  //   console.log('---------------', modalData)
 
-    setShowModal(!showModal)
-  };
+  //   setShowModal(!showModal)
+  // };
 
   function revokeStatus(id, status) {
     const data = {
@@ -111,16 +112,19 @@ setStatusRevoked(false);
         <ul>
           {postList.length &&
             postList.map((post, index) => (
+              
               <li>
+                {setToggleStatus(post.status)}
                 <button
-                  className={`${post.status === true ? 'text-green-500' : 'text-red-500'}`}
+                  className={`${toggleStatus ? 'text-green-500' : 'text-red-500'}`}
 
                   onClick={() => {
                     setStatusRevoked(true)
+                    setToggleStatus(!toggleStatus)
                     revokeStatus(post._id, post.status)
                   }}
                 >
-                  {post.status === true ? 'Revoke Status' : 'Give Status'}
+                  {toggleStatus ? 'Revoke Status' : 'Give Status'}
                 </button>
 
               </li>

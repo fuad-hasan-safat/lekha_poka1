@@ -23,16 +23,16 @@ export default function PostDetails(context) {
   const [rating, setRating] = useState(0);
 
   useEffect(() => {
-    console.log(
-      "<<<<<<<<<<<<<<<<<<<<<<-------------------------in side use effect----------------------->>>>>>>>>>>>>>>>"
-    );
+    // console.log(
+    //   "<<<<<<<<<<<<<<<<<<<<<<-------------------------in side use effect----------------------->>>>>>>>>>>>>>>>"
+    // );
 
     async function fetchDataAsync() {
       try {
         const result = await fetchData(
           `http://192.168.88.248:3002/getpost/${slug}`
         );
-        console.log("result->>>>>>>>>>>>>>>>", result.object);
+        //console.log("result->>>>>>>>>>>>>>>>", result.object);
         setData(result.object);
         if (result.object.audio.length > 0) {
           setIsAudioAvailAble(true);
@@ -45,7 +45,7 @@ export default function PostDetails(context) {
     fetchDataAsync();
   }, []);
 
-  console.log("----DDDDDDDDD AAAAAAAAA TTTTTTTT AAAAAAAAAAA-------", data);
+  //console.log("----DDDDDDDDD AAAAAAAAA TTTTTTTT AAAAAAAAAAA-------", data);
 
   return (
     <>
