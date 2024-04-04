@@ -30,7 +30,7 @@ import ButtonItem from "../common/buttonItem";
 //   },
 // ];
 
-const ProcchodButtonList = ({ selectedId, setSelectedId, setPostList}) => {
+const ProcchodButtonList = ({ selectedId, setSelectedId, setPostList, postList}) => {
 
   const [buttons, setButtons] = useState([
     {
@@ -64,6 +64,7 @@ const ProcchodButtonList = ({ selectedId, setSelectedId, setPostList}) => {
             selectedId={selectedId}
             setSelectedId={setSelectedId}
             setPostList={setPostList}
+            postList={postList}
           />
         ))}
     </div>

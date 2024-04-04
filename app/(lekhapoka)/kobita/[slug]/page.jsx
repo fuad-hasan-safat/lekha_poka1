@@ -10,12 +10,17 @@ import { fetchData } from "@/app/api/api";
 import AudioPlayer from "@/components/musicbar/AudioPlayer";
 import RatingComponent from "@/components/common/starRating";
 
+
+
 export default function PostDetails(context) {
   const { slug } = context.params;
   console.log("----slug-------", slug);
 
   const [data, setData] = useState([]); // State to store fetched data
   const [error, setError] = useState(null); // State to store any errors
+  const [rating, setRating] = useState(0);
+  const [isAudioAvailable, setIsAudioAvailAble] = useState(false);
+
 
   useEffect(() => {
     console.log("in side use effect------------------------->>>>>>>>>>");

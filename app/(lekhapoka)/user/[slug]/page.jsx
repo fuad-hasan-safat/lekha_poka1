@@ -139,7 +139,7 @@ export default function Home(context) {
     formData.append("title", title);
 
     formData.append("content", content);
-    formData.append("rating", 0);
+    formData.append("rating", 1);
     formData.append("status", false);
     formData.append("uploaded_by", userUuid);
 
@@ -173,7 +173,7 @@ export default function Home(context) {
     return (
       <>
         {status && (
-          <div className="pt-[110px]">
+          <div className="">
             <div>
               <div>
                 <img
@@ -221,7 +221,7 @@ export default function Home(context) {
                 <div className="row">
                   <div className="col-md-12"></div>
                   <div className="flex flex-row pt-[80px]">
-                    <div className="w-3/4">
+                    <div className="w-[71%]">
                       <div className="pr-6 space-y-4">
                         <input
                           onChange={handleTitle}
@@ -282,7 +282,7 @@ export default function Home(context) {
                                 </div>
                                 <div className="pb-3">
                                   <div
-                                    className="text-[16px] text-gray-500"
+                                    className="text-[16px] text-gray-500 text-justify pr-11"
                                     dangerouslySetInnerHTML={{
                                       __html: post.content,
                                     }}
@@ -293,7 +293,7 @@ export default function Home(context) {
                           ))}
                       </div>
                     </div>
-                    <div className="w-1/4 flex flex-col">
+                    <div className="w-[29%] flex flex-col">
                       <UserDetails />
                       <Sidebar />
                     </div>

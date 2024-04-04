@@ -65,7 +65,7 @@ export default function PostDetails(context) {
               title={data.title}
               writer={data.writer}
             />
-            <RatingComponent setRating={setRating} rating={rating} />
+            <RatingComponent setRating={setRating} rating={rating} post_id={data._id} />
           </div>
 
           <div className="w-sidebarwidth">

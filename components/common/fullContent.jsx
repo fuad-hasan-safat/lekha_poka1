@@ -8,7 +8,7 @@ export default function FullPost({ content, title, writer }) {
                 <div className="font-semibold text-[35px] text-[#FCD200]">{title}</div>
                 <div className="text-[22px] text-[#595D5B] ">{writer}</div>
                 <div
-                    className="text-[16px] text-gray-500"
+                    className="text-[16px] text-gray-500 text-justify"
                     dangerouslySetInnerHTML={{__html: content}}
                 />
             

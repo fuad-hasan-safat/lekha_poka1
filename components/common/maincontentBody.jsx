@@ -12,7 +12,7 @@ const MaincontentBody = ({
 }) => {
   const router = useRouter();
 
-  const [html, setHTML] = useState({ __html: content });
+  // const [html, setHTML] = useState({ __html: content });
 
 
   function handleClick(postId) {
@@ -29,7 +29,7 @@ const MaincontentBody = ({
       <div className="pb-3">
         <div
           className="text-[16px] text-gray-500 text-justify"
-          dangerouslySetInnerHTML={html}
+          dangerouslySetInnerHTML={{__html: content}}
         />
       </div>
 

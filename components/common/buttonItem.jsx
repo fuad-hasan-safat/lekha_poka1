@@ -9,17 +9,21 @@ const ButtonItem = ({
   weidth,
   title,
   setSelectedId,
-  setPostList
+  setPostList,
+  postList
 }) => {
+
 
   function handleButton(title) {
     setSelectedId(id)
+
+    console.log('buton ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', title);
 
     fetch(`http://192.168.88.248:3002/posts/${title}`)
       .then(response => response.json())
       .then(data => {
         setPostList(data.object)
-        console.log('data ---', data.object);
+        console.log('data --->>>>>>>>>>>>>>>>>>>>>>>>>', postList);
       })
       .catch(error => console.error("Error fetching data:", error));
 

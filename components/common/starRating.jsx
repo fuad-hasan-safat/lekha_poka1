@@ -3,13 +3,31 @@
 import React, { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 
-export default function RatingComponent({post_id, setRating, rating}) {
+export default function RatingComponent({ post_id, setRating, rating }) {
 
   // Catch Rating value
   const handleRating = (rate) => {
     setRating(rate)
 
     // other logic
+  }
+  async function submitRating(id) {
+    const data = {
+      rating: rating,
+    }
+    const response = await fetch(`http://192.168.88.248:3002/rating/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error updating data: ${response.statusText}`);
+    }else{
+      alert('Rating Sucessfully update');
+    }
   }
   // Optinal callback functions
   const onPointerEnter = () => console.log('Enter')
@@ -23,15 +41,16 @@ export default function RatingComponent({post_id, setRating, rating}) {
   return (
     <div className='start__rating flex-col grid place-content-center pt-[60px] float-left'>
       <Rating
-        style={{float:'left'}}
+        style={{ float: 'left' }}
         onClick={handleRating}
         onPointerEnter={onPointerEnter}
         onPointerLeave={onPointerLeave}
         onPointerMove={onPointerMove}
-        /* Available Props */
+      /* Available Props */
       />
       <button
-      className='bg-orange-400 px-2 py-1 text-white h-[34px] w-[195px] rounded-md'
+        onClick={() => submitRating(post_id)}
+        className='bg-orange-400 px-2 py-1 text-white h-[34px] w-[195px] rounded-md'
       >Submit </button>
     </div>
   )

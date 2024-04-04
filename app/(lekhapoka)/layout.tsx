@@ -24,7 +24,7 @@ export default function Layout({ children }: LayoutProps) {
         <Provider store={store}>
           <main className={`${myFont.className}`}>
             <MyNavbar />
-            <div>{children}</div>
+            <div className="pt-[95px]">{children}</div>
            
             <MyFooter />
           </main>

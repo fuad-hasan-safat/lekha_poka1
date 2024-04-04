@@ -24,7 +24,8 @@ export function ImageSlider() {
     const router = useRouter();
 
     function featureHandler(postId) {
-        router.push(`/feature/${postId}`);
+        console.log('features handler ------>>>>>>>>>>>>', postId)
+        router.push(`/${postId}`);
     }
 
 
@@ -104,7 +105,6 @@ export function ImageSlider() {
                                             >
                                                 বিস্তারিত
                                             </button>
-
                                         </div>
                                     </div>
                                 </div>
@@ -143,10 +143,10 @@ export function ImageSlider() {
                 style={{
                     position: "absolute",
                     bottom: "8rem",
-                    left: "7.5%",
+                    left: "16%",
                     translate: "-50%",
                     display: "flex",
-                    gap: ".25rem",
+                    gap: ".5rem",
                 }}
             >
                 {data.map((_, index) => (

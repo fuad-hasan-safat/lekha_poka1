@@ -1,7 +1,35 @@
+'use client'
+import React, { useEffect, useState } from "react";
+
 import LekhaPokaProfile from "@/components/common/lekhaProfile";
 import SidebarPostDivider from "@/components/common/sidebarpostdivider";
+import { fetchData } from "@/app/api/api";
 
-const Jonopriyo = () => {
+const Samprotik = () => {
+
+
+
+  
+const [samprotikPost, setSamprotikPost] = useState([])
+
+useEffect(() => {
+  console.log("in side use effect");
+
+  async function fetchDataAsync() {
+    try {
+      const result = await fetchData(
+        `http://192.168.88.248:3002/recentpost`
+      );
+      console.log("result         ->>>>>>>>>>>>>>>>", result.object);
+      setSamprotikPost(result.posts);
+    } catch (error) {
+      alert(error)
+    }
+  }
+
+  fetchDataAsync();
+}, []);
+
   const somosamoyekPosts = [
     {
       id: "xyz",
@@ -44,33 +72,31 @@ const Jonopriyo = () => {
     <>
       <div>
         <div>
-          <h1 className="text-[20px] text-yellow-500 font-semibold">জনপ্রিয়</h1>
+          <h1 className="text-[20px] text-yellow-500 font-semibold">সাম্প্রতিক</h1>
         </div>
         <div className="pt-[23px]">
-          {somosamoyekPosts.length &&
-            somosamoyekPosts.map((item, index) => (
+          {samprotikPost.length &&
+            samprotikPost.map((item, index) => (
               <>
-
-                <div className="pb-1">
-                  <LekhaPokaProfile
-                    key={index}
-                    image={item.image}
-                    title={item.title}
-                    writer={item.writer}
-                    id={item.id}
-                    star={item.star}
-                  />
-                </div>
-                <div className="pb-3">
-                  {index <= somosamoyekPosts.length - 2 ? (
-                    <SidebarPostDivider />
-                  ) : (
-                    ""
-                  )}
-                </div>
+               <div className="pb-1">
+                <LekhaPokaProfile
+                   key={index}
+                   image={'/images/writerimage/robi.jpg'}
+                   title={item.title}
+                   writer={item.writer}
+                   id={item._id}
+                   star={item.rating}
+                />
+              </div>
+              <div className="pb-[14px]">
+              {index <= samprotikPost.length - 2 ? (
+                  <SidebarPostDivider />
+              ) : (
+                  ""
+              )}
+          </div>
               </>
-
-
+             
             ))}
         </div>
       </div>
@@ -78,4 +104,4 @@ const Jonopriyo = () => {
   );
 };
 
-export default Jonopriyo;
+export default Samprotik;

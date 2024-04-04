@@ -1,7 +1,37 @@
+'use client'
+import React, { useEffect, useState } from "react";
+
 import LekhaPokaProfile from "@/components/common/lekhaProfile";
 import SidebarPostDivider from "@/components/common/sidebarpostdivider";
+import { fetchData } from "@/app/api/api";
 
 const Somosamoyik = () => {
+
+    
+const [somosamoyikPost, setSomosamoyikPost] = useState([])
+
+useEffect(() => {
+  console.log("in side use effect");
+
+  async function fetchDataAsync() {
+    try {
+      const result = await fetchData(
+        `http://192.168.88.248:3002/contemporarypost`
+      );
+      console.log("result         ->>>>>>>>>>>>>>>>", result.object);
+      setSomosamoyikPost(result.posts);
+    } catch (error) {
+      alert(error)
+    }
+  }
+
+  fetchDataAsync();
+}, []);
+
+
+
+
+
   const somosamoyekPosts = [
     {
       id: "xyz",
@@ -49,21 +79,21 @@ const Somosamoyik = () => {
           </div>
         </div>
         <div className="pt-[23px]">
-          {somosamoyekPosts.length &&
-            somosamoyekPosts.map((item, index) => (
+          {somosamoyikPost.length &&
+            somosamoyikPost.map((item, index) => (
               <>
                 <div className="pb-1">
                   <LekhaPokaProfile
-                    key={index}
-                    image={item.image}
-                    title={item.title}
-                    writer={item.writer}
-                    id={item.id}
-                    star={item.star}
+                   key={index}
+                   image={'/images/writerimage/robi.jpg'}
+                   title={item.title}
+                   writer={item.writer}
+                   id={item._id}
+                   star={item.rating}
                   />
                 </div>
                 <div className="pb-3">
-                  {index <= somosamoyekPosts.length - 2 ? (
+                  {index <= somosamoyikPost.length - 2 ? (
                     <SidebarPostDivider />
                   ) : (
                     ""

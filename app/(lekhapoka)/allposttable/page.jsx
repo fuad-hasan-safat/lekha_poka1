@@ -114,7 +114,7 @@ setStatusRevoked(false);
             postList.map((post, index) => (
               
               <li>
-                {setToggleStatus(post.status)}
+                {/* {setToggleStatus(post.status)} */}
                 <button
                   className={`${toggleStatus ? 'text-green-500' : 'text-red-500'}`}
 

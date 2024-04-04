@@ -4,19 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 
-type soblekhaProp = {
-  sobClass: string;
-}
+// type soblekhaProp = {
+//   sobClass: string;
+// }
 
-const SobLekha = ({ sobClass }: soblekhaProp) => {
+const SobLekha = ({ sobClass }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef(null);
   const [soblekhaSelect, setSoblekhaSelect] = useState('সব লেখা');
 
   useEffect(() => {
     sobClass = 'text-[#F9A106] font-semibold underline';
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
