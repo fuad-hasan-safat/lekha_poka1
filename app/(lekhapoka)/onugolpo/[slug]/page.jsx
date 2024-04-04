@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import FullPost from "@/components/common/fullContent";
 import { fetchData } from "@/app/api/api";
 import AudioPlayer from "@/components/musicbar/AudioPlayer";
+import RatingComponent from "@/components/common/starRating";
 
 export default function PostDetails(context) {
   const { slug } = context.params;
@@ -36,7 +37,7 @@ export default function PostDetails(context) {
 
   return (
     <>
-      <div className="flex flex-col pt-[115px]">
+      <section className="all__post__sec__wrap">
         <div>
           <Image
             src={"/images/pages-banner-svg/onugolpo.png"}
@@ -45,21 +46,33 @@ export default function PostDetails(context) {
             alt={"kobita banner"}
           />
         </div>
-        <div className="flex flex-row">
-          <div className="flex flex-col w-[70%]">
-            <FullPost
-              content={data.content}
-              title={data.title}
-              writer={data.writer}
-            />
-            <RatingComponent setRating={setRating} rating={rating} />
-          </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12"></div>
+            <div className="flex flex-col pt-[115px]">
+              <div className="flex flex-row">
+                <div className="flex flex-col w-[70%]">
+                  <FullPost
+                    content={data.content}
+                    title={data.title}
+                    writer={data.writer}
+                  />
+                  <RatingComponent
+                    setRating={setRating}
+                    rating={rating}
+                    post_id={slug}
+                  />
+                </div>
 
-          <div className="w-sidebarwidth">
-            <Sidebar />
+                <div className="w-sidebarwidth">
+                  <Sidebar />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
       {isAudioAvailable && (
         <AudioPlayer
           playlist={[
