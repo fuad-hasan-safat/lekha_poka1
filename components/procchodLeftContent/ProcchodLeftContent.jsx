@@ -22,9 +22,9 @@ export default function ProcchodLeftContent() {
 
     const fetchPosts = async () => {
       try {
-        const response = await fetch("http://192.168.88.248:3002/posts");
+        const response = await fetch(`${apiBasePath}/posts`);
         const data = await response.json();
-        setPostList(data);
+        setPostList(data.data);
 
         // Calculate total pages based on posts and postsPerPage
         setTotalPages(Math.ceil(data.length / postsPerPage));

@@ -6,7 +6,7 @@ module.exports = {
   env: {
     ENV: process.env.NODE_ENV,
     TZ: process.env.TZ,
-    API_BASE_PATH: process.env.API_BASE_PATH,
+    API_BASE_PATH: process.env.API_BASE_PATH || "http://localhost:5000",
   },
   webpack(config, options) {
     const { isServer } = options;
