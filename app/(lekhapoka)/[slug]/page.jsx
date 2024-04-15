@@ -50,35 +50,35 @@ export default function PostDetails(context) {
 
   return (
     <>
-      <div className="flex flex-col pt-[115px]">
-        <div>
-          {/* <Image
-          src={'/images/pages-banner-svg/kobita.svg'}
-          height={380}
-          width={1920}
-          alt={"kobita banner"}
-        /> */}
-        </div>
-        <div className="flex flex-row">
-          <div className="flex flex-col w-[70%]">
-            <FullPost
-              content={data.content}
-              title={data.title}
-              writer={data.writer}
-            />
-            <RatingComponent setRating={setRating} rating={rating} post_id={data._id} />
-          </div>
+      <section className="all__post__sec__wrap">
 
-          <div className="w-sidebarwidth">
-            <Sidebar />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="flex flex-row">
+                <div className="flex flex-col w-[70%]">
+                  <FullPost
+                    content={data.content}
+                    title={data.title}
+                    writer={data.writer}
+                  />
+                  <RatingComponent setRating={setRating} rating={rating} post_id={data._id} />
+                </div>
+
+                <div className="w-sidebarwidth">
+                  <Sidebar />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
       {isAudioAvailable && (
         <AudioPlayer
           playlist={[
             {
-              audioSrc: `http://192.168.88.248:3002/${data.audio}`,
+              audioSrc: `${apiBasePath}/${data.audio}`,
               metadata: {
                 title: data.title,
                 writer: data.writer,

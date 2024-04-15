@@ -18,8 +18,8 @@ const FooterLink: React.FC<FooterLinkProps> = ({ title, links }) => {
             </div>
             <div className="pb-2 ">
                 <ul className="m-1 space-y-4">
-                    {links.map((link) => (
-                        <li key={link.url}>
+                    {links.map((link, index) => (
+                        <li key={index}>
                             <Link href={link.url}>
                             {link.label}
                             </Link>

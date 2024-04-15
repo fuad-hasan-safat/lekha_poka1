@@ -72,7 +72,7 @@ export default function SobJiboniLeftContent() {
         <div>Error fetching posts: {error.message}</div>
       ) : (
         <>
-          <div className="pt-20 ml-[200px] text-3xl w-[604px]">
+          <div className="pt-20 text-3xl w-[604px]">
             {displayedPosts.length && (
               displayedPosts.map((post, index) => (
                 <>
@@ -89,7 +89,7 @@ export default function SobJiboniLeftContent() {
               ))
             )}
           </div>
-          <div className="py-10 space-x-4"> {/* Add a class for styling */}
+          {totalPages > 1 && <div className="py-10 space-x-4"> {/* Add a class for styling */}
             <button
               className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
 
@@ -103,7 +103,7 @@ export default function SobJiboniLeftContent() {
               Previous Page
             </button>
             <span
-                className="text-sm "
+              className="text-sm "
 
             >Page {currentPage} of {totalPages}</span>
             <button
@@ -119,6 +119,7 @@ export default function SobJiboniLeftContent() {
               Last Page
             </button>
           </div>
+          }
         </>
       )}
     </div>

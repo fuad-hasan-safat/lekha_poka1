@@ -22,7 +22,7 @@ export default function ProcchodLeftContent() {
 
     const fetchPosts = async () => {
       try {
-        const response = await fetch("http://192.168.88.248:3002/posts");
+        const response = await fetch(`${apiBasePath}/posts`);
         const data = await response.json();
         setPostList(data);
 
@@ -35,14 +35,7 @@ export default function ProcchodLeftContent() {
 
     fetchPosts();
 
-    // fetch("http://192.168.88.248:3002/posts")
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setPostList(data);
-    //     console.log('-----------', data)
-    //     console.log('-----------', postList)
-    //   })
-    //   .catch(error => console.error("Error fetching data:", error));
+    
 
   }, []);
 
@@ -78,7 +71,7 @@ export default function ProcchodLeftContent() {
 
   return (
     <div>
-      <ProcchodButtonList selectedId={selectedId} setSelectedId={setSelectedId} setPostList={setPostList} postList={postList} />
+      <ProcchodButtonList selectedId={selectedId} setSelectedId={setSelectedId} setPostList={setPostList} postList={postList} setTotalPages={setTotalPages} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
       <div className="pt-20 text-3xl">
 
         {error ? (
@@ -100,7 +93,7 @@ export default function ProcchodLeftContent() {
                 </>
               ))}
             </div>
-            <div className="py-10 space-x-4"> {/* Add a class for styling */}
+           {totalPages > 1 && <div className="py-10 space-x-4"> {/* Add a class for styling */}
               <button
               className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
                onClick={firstPage} disabled={currentPage === 1}>
@@ -125,29 +118,10 @@ export default function ProcchodLeftContent() {
                 Last Page
               </button>
             </div>
+}
           </>
         )}
-        {/* {postList.length &&
-          postList.map((post, index) => (
-            <>
-              <div>
-                <MaincontentBody
-                  key={index}
-                  id={post._id}
-                  title={post.title}
-                  writer={post.writer}
-                  content={post.content.split('\n').slice(0, 8).join('\n')}
-                />
-              </div>
-              <div>
-                {index <= postList.length - 2 ? (
-                  <MainContentDivider />
-                ) : (
-                  ""
-                )}
-              </div>
-            </>
-          ))} */}
+     
       </div>
     </div>
   );

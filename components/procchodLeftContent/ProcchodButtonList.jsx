@@ -12,6 +12,7 @@ const ProcchodButtonList = ({
   postList,
   setTotalPages,
   postsPerPage,
+  setCurrentPage,
 }) => {
   const [buttons, setButtons] = useState([
     {
@@ -22,12 +23,7 @@ const ProcchodButtonList = ({
   ]);
 
    useEffect(() => {
-  //   fetch(`${apiBasePath}/categories`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setButtons(data);
-  //     })
-  //     .catch((error) => console.log("Error fetching data:", error));
+ 
 
     async function fetchDataAsync() {
       try {
@@ -58,6 +54,7 @@ const ProcchodButtonList = ({
             postList={postList}
             setTotalPages={setTotalPages}
             postsPerPage={postsPerPage}
+            setCurrentPage={setCurrentPage}
           />
         ))}
     </div>

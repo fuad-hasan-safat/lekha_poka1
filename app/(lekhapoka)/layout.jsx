@@ -4,10 +4,10 @@ import React from "react";
 import { Provider } from "react-redux";
 import store, { RootState } from "@/lib/store";
 import localFont from "next/font/local";
+import 'remixicon/fonts/remixicon.css'
 
 import MyNavbar from "@/components/navbar/Navbar";
 import MyFooter from "@/components/footer/Footer";
-import AudioPlayer from "@/components/musicbar/AudioPlayer";
 
 const myFont = localFont({
   src: "../../public/assets/fonts/Tatsama.ttf",

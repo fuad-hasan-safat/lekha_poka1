@@ -63,6 +63,17 @@ export default function Home(context) {
   const [writers, setWriters] = useState([]);
 
   // profile information fetch
+  const [designation, setDesignation] = useState('');
+  const [profileStatus, setProfileStatus] = useState('');
+  const [gender, setGender] = useState('');
+  const [dob, setDob] = useState('');
+  const [address, setAddress] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [image, setImage] = useState('');
+  const [follower, setFollower] = useState(0);
+  const [post, setPost] = useState(0);
+  const [following, setFollowing] = useState(0);
 
 
   useEffect(() => {
@@ -70,7 +81,18 @@ export default function Home(context) {
     fetch(`${apiBasePath}/getprofile/${slug}`)
       .then((response) => response.json())
       .then((data) => {
-        
+        console.log('pofile details --------------->>>>>>>', data);
+        setDesignation(data.object.profile.designation)
+        setProfileStatus(data.object.profile.profileStatus)
+        setGender(data.object.profile.gender)
+        setDob(data.object.profile.dob)
+        setAddress(data.object.profile.address)
+        setEmail(data.object.profile.email)
+        setPhone(data.object.profile.phone)
+        setImage(data.object.profile.image)
+        setFollower(data.object.profile.follower)
+        setFollowing(data.object.profile.following)
+        setPost(data.object.profile.post)
       })
       .catch((error) => console.error("Error fetching data:", error));
 
@@ -142,9 +164,16 @@ export default function Home(context) {
     setTitle(e.target.value);
   };
 
+  // audio file 
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
   const handleSubmit = async () => {
     const formData = new FormData();
-    formData.append("file", null);
+    formData.append("file", selectedFile);
     formData.append("category", selectedOption?.label);
     formData.append("cat_id", selectedOption?.value);
     formData.append("writer", selectedOption?.label);
@@ -160,8 +189,7 @@ export default function Home(context) {
       const response = await fetch(`${apiBasePath}/posts`, {
         method: "POST",
         headers: {
-          // 'x-access-token': userToken,
-          // 'x-user-channel': 'apps'
+
         },
         body: formData,
       });
@@ -170,6 +198,12 @@ export default function Home(context) {
         const data = await response.json();
         console.log("sucessfully sent:", data);
         alert("Send Data Sucessfully");
+
+        setSelectedFile(null);
+        setTitle('');
+        setCategory('');
+        setWriters('')
+        setContent('')
       } else {
         console.error("Failed to update profile:", response.statusText);
         alert(response.statusText);
@@ -197,33 +231,33 @@ export default function Home(context) {
               </div>
               <div className="grid place-content-center items-center -mt-[110px]">
                 <div className="">
-                  <img className="" src="/images/usericons/userprofile.svg" />
+                  <img
+                    className="w-[264px] h-[264px] rounded-full border-solid border-3 border-white "
+                    src={image.length > 0 ? `${apiBasePath}/${image}` : '/images/defaultUserPic/profile.jpg'} />
                 </div>
                 <div className="grid place-content-center space-y-4">
-                  <h1 className="text-[#FCD200] text-[35px] pl-[60px]  items-center">
+                  <h1 className="text-[#FCD200] text-[35px]  items-center">
                     {username}
                   </h1>
-                  <h1 className="text-[#595D5B] text-[22px] pl-[120px] items-center">
-                    কবি
+                  <h1 className="text-[#595D5B] text-[22px]  items-center">
+                    {designation}
                   </h1>
                   <h1 className="text-[#737373] text-[22px]  items-center">
-                    এতোটা গ্রহণ এতো প্রশংসা প্রয়োজন নেই
-                    <br />
-                    কিছুটা আঘাত অবহেলা চাই প্রত্যাখান।
+                    {profileStatus}
                   </h1>
                 </div>
                 <div className="flex flex-row text-[#484848] text-[28px] divide-x-2 space-x-3 pt-4">
                   <div className="">
-                    <h1>১৬</h1>
+                    <h1>{post}</h1>
                     <h1>পোস্ট</h1>
                   </div>
 
                   <div className="pl-2">
-                    <h1>১০১২</h1>
+                    <h1>{follower}</h1>
                     <h1>ফলোয়ার</h1>
                   </div>
                   <div className="pl-2">
-                    <h1>৩১২</h1>
+                    <h1>{following}</h1>
                     <h1>ফলোয়িং</h1>
                   </div>
                 </div>
@@ -269,6 +303,14 @@ export default function Home(context) {
                             console.log(content);
                           }}
                         />
+                        <div>
+                          <input type="file" accept="audio/*" onChange={handleFileChange} />
+                          {selectedFile ? (
+                            <p>Selected file: {selectedFile.name}</p>
+                          ) : (
+                            <p>অডিও ফাইল আপলোড করুন</p>
+                          )}
+                        </div>
                         <button
                           onClick={handleSubmit}
                           className="w-[219px] h-[43px] bg-[#F9A106] text-[16px] text-white"
@@ -307,7 +349,14 @@ export default function Home(context) {
                       </div>
                     </div>
                     <div className="w-[29%] flex flex-col">
-                      <UserDetails />
+                      <UserDetails
+                        sex={gender}
+                        birthdate={dob}
+                        location={address}
+                        mail={email}
+                        phone={phone}
+                        userID={userUuid}
+                      />
                       <Sidebar />
                     </div>
                   </div>

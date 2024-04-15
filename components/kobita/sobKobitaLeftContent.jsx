@@ -42,18 +42,6 @@ export default function SobKobitaLeftContent() {
     fetchPosts();
 
 
-    // fetch("http://192.168.88.248:3002/posts/কবিতা")
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setPostList(data.object);
-    //     console.log('-----------', data)
-    //     console.log('-----------', postList)
-    //   })
-    //   .catch(error => console.error("Error fetching data:", error))
-    //   .finally(
-    //     setIsLoading(false)
-    //   )
-
   }, []);
 
 
@@ -76,7 +64,7 @@ export default function SobKobitaLeftContent() {
         <div>Error fetching posts: {error.message}</div>
       ) : (
         <>
-          <div className="pt-20 ml-[200px] text-3xl mr-[100px]">
+          <div className="pt-20  text-3xl mr-[100px]">
             {displayedPosts.length && (
               displayedPosts.map((post, index) => (
                 <>
@@ -93,7 +81,7 @@ export default function SobKobitaLeftContent() {
               ))
             )}
           </div>
-          <div className="py-10 space-x-4"> {/* Add a class for styling */}
+         {totalPages >1 && <div className="py-10 space-x-4"> {/* Add a class for styling */}
             <button
               className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
               onClick={() => handlePageChange(1)} disabled={currentPage === 1}>
@@ -119,6 +107,7 @@ export default function SobKobitaLeftContent() {
               Last Page
             </button>
           </div>
+}
         </>
       )}
     </div>

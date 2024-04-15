@@ -7,6 +7,20 @@ import DropDown from "../common/dropDown";
 
 const LoginPage = () => {
 
+  const [status, setStatus] = useState("");
+  const [username, setUsername] = useState("");
+  const [userUuid, setUserUuid] = useState("");
+  const [userToken, setUserToken] = useState("");
+
+
+
+  useEffect(() => {
+    setStatus(localStorage.getItem("status") || "");
+    setUsername(localStorage.getItem("name") || "");
+    setUserToken(localStorage.getItem("token") || "");
+    setUserUuid(localStorage.getItem("uuid") || "");
+  }, []);
+
   
   return (
     <>

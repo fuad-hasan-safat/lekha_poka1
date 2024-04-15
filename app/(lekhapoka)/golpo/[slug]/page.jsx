@@ -80,7 +80,7 @@ export default function PostDetails(context) {
         <AudioPlayer
           playlist={[
             {
-              audioSrc: `http://192.168.88.248:3002/${data.audio}`,
+              audioSrc: `${apiBasePath}/${data.audio}`,
               metadata: {
                 title: data.title,
                 writer: data.writer,

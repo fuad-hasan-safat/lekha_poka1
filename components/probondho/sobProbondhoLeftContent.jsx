@@ -41,18 +41,6 @@ export default function SobProbondhoLeftContent() {
     fetchPosts();
 
 
-    // fetch("http://192.168.88.248:3002/posts/প্রবন্ধ")
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setPostList(data.object);
-    //     console.log('-----------', data)
-    //     console.log('-----------', postList)
-    //   })
-    //   .catch(error => console.error("Error fetching data:", error))
-    //   .finally(
-    //     setIsLoading(false)
-    //   )
-
   }, []);
 
 
@@ -77,7 +65,7 @@ export default function SobProbondhoLeftContent() {
         <div>Error fetching posts: {error.message}</div>
       ) : (
         <>
-          <div className="pt-20 ml-[200px] text-3xl w-[604px]">
+          <div className="pt-20 text-3xl w-[604px]">
             {displayedPosts.length && (
               displayedPosts.map((post, index) => (
                 <>
@@ -94,7 +82,7 @@ export default function SobProbondhoLeftContent() {
               ))
             )}
           </div>
-          <div className="py-10 space-x-4"> {/* Add a class for styling */}
+          {totalPages > 1 && <div className="py-10 space-x-4"> {/* Add a class for styling */}
             <button
               className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
 
@@ -124,6 +112,7 @@ export default function SobProbondhoLeftContent() {
               Last Page
             </button>
           </div>
+          }
         </>
       )}
     </div>

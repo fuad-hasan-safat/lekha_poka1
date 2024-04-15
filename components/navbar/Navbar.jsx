@@ -82,7 +82,7 @@ const MyNavbar = () => {
 
 
   function goToSearchPost(id){
-
+    router.push(`/${id}`)
   }
 
   return (

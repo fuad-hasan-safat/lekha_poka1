@@ -4,6 +4,7 @@ import MainContentDivider from "../common/mainContentDivider";
 import { sobGolpoPosts } from "@/public/demo-data/data";
 import SobGolpoBody from "./sobGolpoBody";
 import Loading from "../common/loading";
+import { apiBasePath } from "@/utils/constant";
 export default function SobGolpoLeftContent() {
 
   //   const [selectedId, setSelectedId] = useState("sob");
@@ -21,7 +22,7 @@ export default function SobGolpoLeftContent() {
 
     const fetchPosts = async () => {
       try {
-        const response = await fetch("http://192.168.88.248:3002/posts/গল্প");
+        const response = await fetch(`${apiBasePath}/posts/গল্প`);
         const data = await response.json();
         setPostList(data.object);
 
@@ -37,17 +38,7 @@ export default function SobGolpoLeftContent() {
     fetchPosts();
 
 
-    // fetch("http://192.168.88.248:3002/posts/গল্প")
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setPostList(data.object);
-    //     console.log('-----------', data)
-    //     console.log('-----------', postList)
-    //   })
-    //   .catch(error => console.error("Error fetching data:", error))
-    //   .finally(
-    //     setIsLoading(false)
-    //   )
+
 
   }, []);
 
@@ -97,7 +88,7 @@ export default function SobGolpoLeftContent() {
                   ))
                 )}
               </div>
-              <div className="py-10 space-x-4"> {/* Add a class for styling */}
+            {totalPages >1 &&  <div className="py-10 space-x-4"> {/* Add a class for styling */}
                 <button
                   className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
 
@@ -126,6 +117,7 @@ export default function SobGolpoLeftContent() {
                   Last Page
                 </button>
               </div>
+  }
             </>
           )}
 

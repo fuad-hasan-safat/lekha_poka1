@@ -63,12 +63,12 @@ export default function Login() {
         setnumber("");
         setPassword("");
       } else {
-        console.log("error res--------------------", response.data.message);
-        alert(response.data.message);
+        console.log("error res--------------------", response.message);
+        alert(response.message);
       }
     } catch (error) {
       console.log("inside catch ----------------", error);
-      alert(error.response.data.message);
+      alert(error);
     }
   }
 

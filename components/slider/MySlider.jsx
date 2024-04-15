@@ -26,7 +26,7 @@ export function ImageSlider() {
 
     function featureHandler(postId) {
         console.log('features handler ------>>>>>>>>>>>>', postId)
-        router.push(`/${postId}`);
+        router.push(`/feature/${postId}`);
     }
 
 
@@ -69,7 +69,7 @@ export function ImageSlider() {
                         {data.map(({ _id, title, caption, image, content }, index) => (
                             <img
                                 key={_id}
-                                src={`http://192.168.88.248:3002/${image}`}
+                                src={`${apiBasePath}/${image}`}
                                 alt={image}
                                 aria-hidden={imageIndex !== index}
                                 className="img-slider-img"

@@ -6,11 +6,6 @@ import Samprotik from "./samprotik/Samprotik"
 import Somosamoyik from "./somosamoyik/Somosamoyik"
 export default function Sidebar() {
 
-    //const session = await getServerSession(authConfig);
-
-
-
-
     return (
         <div>
             <div className="bg-white rounded  pt-12">

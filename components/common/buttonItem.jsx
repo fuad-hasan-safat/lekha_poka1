@@ -13,12 +13,14 @@ const ButtonItem = ({
   setPostList,
   postList,
   postsPerPage,
-  setTotalPages
+  setTotalPages,
+  setCurrentPage,
 }) => {
 
 
   function handleButton(title) {
     setSelectedId(id)
+    setCurrentPage(1)
 
     console.log('buton ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', title);
 
@@ -26,8 +28,9 @@ const ButtonItem = ({
       .then(response => response.json())
       .then(data => {
         setPostList(data.object)
-        setTotalPages(Math.ceil(data.length / postsPerPage))
+        setTotalPages(Math.ceil(data.object.length / 5))
         //console.log('data --->>>>>>>>>>>>>>>>>>>>>>>>>', postList);
+       
       })
       .catch(error => console.error("Error fetching data:", error));
 

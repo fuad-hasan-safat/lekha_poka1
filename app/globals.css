@@ -58,7 +58,7 @@ body {
   left: 0;
   top: 0;
   bottom: 0;
-  /* height: 100%; */
+  /* / height: 100%; / */
 }
 .header-innr{
   display: flex;
@@ -71,7 +71,7 @@ body {
 
 
 .search-button {
-  /* Styles for the button */
+  /* / Styles for the button / */
   background-color: transparent;
   border: none;
   padding: 0;
@@ -79,13 +79,13 @@ body {
 }
 
 .search-icon {
-  /* Styles for the search icon */
+  /* / Styles for the search icon / */
   width: 20px;
   height: 20px;
 }
 
 .search-input {
-  /* Styles for the search input field */
+  /* / Styles for the search input field / */
   display: none;
   width: 100px;
   padding: 5px;
@@ -122,7 +122,7 @@ body {
 }
 
 
-/* carosal */
+/* / carosal / */
 
 .carousel {
   position: relative;
@@ -133,7 +133,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  /* background-color: rgba(0, 0, 0, 0.5); */
+  /* / background-color: rgba(0, 0, 0, 0.5); / */
   color: gray;
   font-size: 2rem;
   border: none;
@@ -172,7 +172,7 @@ z-index: 20;
 }
 
 
-/* music bar slider */
+/* / music bar slider / */
 .slider {
   -webkit-appearance: none;
   appearance: none; 
@@ -198,7 +198,7 @@ z-index: 20;
 @media screen and (-webkit-min-device-pixel-ratio:0) {
    input[type='range'] {
     overflow: hidden;
-    /* width: 400px; */
+    /* / width: 400px; / */
     -webkit-appearance: none;
     appearance: none;
     background-color: #ffffff;
@@ -212,10 +212,10 @@ z-index: 20;
   }
   
   input[type='range']::-webkit-slider-thumb {
-    /* width: 10px; */
+    /* / width: 10px; / */
     -webkit-appearance: none;
-    /* height: 10px; */
-    /* cursor: ; */
+    /* / height: 10px; / */
+    /* / cursor: ; / */
     background: #f8e405;
     box-shadow: -400px 0 0 400px #f8e405;
   }
@@ -231,7 +231,7 @@ background-color: #f8e405;
 }
 
 
-/* loading page  */
+/* / loading page  / */
 .loading {
   position: fixed;
   top: 0;
@@ -242,7 +242,7 @@ background-color: #f8e405;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* Ensure loading screen is above other content */
+  z-index: 999; 
 }
 
 .spinner {
@@ -269,14 +269,14 @@ background-color: #f8e405;
 }
 
 
+/* 
+/ --------------------------- /
+ -------- paginationButton-------- /
+/ --------------------------- / */
 
-/* --------------------------- */
-/* -------- paginationButton-------- */
-/* --------------------------- */
 
 
-
-/* search input */
+/* / search input / */
 .search_section {
     padding: 20px 0;
     width: 100%;
@@ -344,4 +344,111 @@ background-color: #f8e405;
     align-items: center;
     cursor: pointer;
     
+}
+
+/*
+-------------------
+ Profile Edit
+-------------------
+*/
+.edit__radio__btn{
+  padding-top: 10px;
+}
+.radio-container label {
+  font-size: 14px;
+  line-height: 1;
+  color: #fff;
+}
+.radio-container {
+  float: left;
+  position: relative;
+  padding-left: 25px;
+  padding-right: 20px;
+}
+.radio-container input[type='radio'] {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 0;
+  top: 8px;
+}
+
+.profile__input label {
+  display: block;
+  font-size: 14px;
+  line-height: 1;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.profile__input input {
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  padding: 10px 10px;
+  font-size: 16px;
+  line-height: 1;
+  color: #000;
+}
+.form__submit button {
+  width: 100%;
+  height: 40px;
+  background: #db9800;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+.profile__input {
+  margin-bottom: 15px;
+}
+.react-datepicker-wrapper {
+  display: block !important;
+}
+
+/*
+-------------------
+-------------------
+*/
+.profile__image__upload {
+  position: relative;
+  padding-bottom: 30px;
+}
+.upload__button {
+  width: 60px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
+.upload__file {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  text-transform: capitalize;
+  text-decoration: none;
+   /* background-color: #27AE60;  */
+  border: 0;
+  border-radius: 8px;
+}
+.button i {
+  font-size: 40px;
+  line-height: 1;
+  color: #fcab36;
 }
