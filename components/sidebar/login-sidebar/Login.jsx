@@ -35,7 +35,7 @@ export default function Login() {
     console.log({ number, password, apiBasePath });
     try {
       const response = await axios.post(
-        `http://192.168.88.248:3002/login`,
+        `${apiBasePath}/login`,
         {
           phone: number,
           password: password,

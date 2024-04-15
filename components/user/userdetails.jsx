@@ -1,5 +1,10 @@
+'use client'
+
+
+
 
 export default function UserDetails({ sex = 'পুরুষ', birthdate = '০৩ মে ১৯৮৬', location = 'ঢাকা, বাংলাদেশ', mail = 'abcd@gmail.com', phone = '০১৯৫৬৮৭৪৫২' }) {
+
     return <div>
         <div className="text-[28px] text-[#F9A106]">বিস্তারিত</div>
         <div className="text-[20px] text-[#737373] divide-y w-[200px] space-y-3 ">
@@ -34,6 +39,7 @@ export default function UserDetails({ sex = 'পুরুষ', birthdate = '০�
                 />
                 <p>{phone}</p>
             </div>
+            <button>Edit Profile</button>
         </div>
     </div>
 }

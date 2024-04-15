@@ -52,10 +52,10 @@ const MyNavbar = () => {
       try {
         const response = await fetch(`${apiBasePath}/posts`);
         const data = await response.json();
-        setPostList(data.data);
+        setPostList(data);
         //console.log( "------------------->>>> POST LIST ------------------>>>>>>>",postList );
       } catch (error) {
-        alert("Error Fetching data");
+       // alert("Error Fetching data");
       }
     };
 
@@ -143,7 +143,7 @@ const MyNavbar = () => {
                       }`}
                     />
                   </li>
-                  <li
+                  {/* <li
                     onClick={() => setSelectedNav("bistarito")}
                     className={`${
                       selectedNav === "bistarito"
@@ -152,7 +152,7 @@ const MyNavbar = () => {
                     }`}
                   >
                     <Link href="/details">বিস্তারিত</Link>
-                  </li>
+                  </li> */}
                   <li
                     onClick={() => setSelectedNav("zogazog")}
                     className={`${
@@ -163,7 +163,7 @@ const MyNavbar = () => {
                   >
                     <Link href="/contacts">যোগাযোগ</Link>
                   </li>
-                  <li
+                  {/* <li
                     onClick={() => setSelectedNav("amader_somporke")}
                     className={` w-[130px] ${
                       selectedNav === "amader_somporke"
@@ -172,7 +172,7 @@ const MyNavbar = () => {
                     }`}
                   >
                     <Link href="/aboutus">আমাদের সম্পর্কে</Link>
-                  </li>
+                  </li> */}
                   <li className="relative flex flex-row place-content-center ">
                     <Image
                       src="/images/svgs/search.svg"

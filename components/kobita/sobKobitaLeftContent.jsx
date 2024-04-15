@@ -7,10 +7,10 @@ import SobKobitaBody from "./sobKobitaBody";
 import axios from "axios";
 import Loading from "../common/loading";
 import { apiBasePath } from "@/utils/constant";
-import { fetchData } from "@/app/api/api";
 
 export default function SobKobitaLeftContent() {
 
+  
   //   const [selectedId, setSelectedId] = useState("sob");
   const [postList, setPostList] = useState([])
   const [isLoading, setIsLoading] = useState(true);
@@ -23,48 +23,36 @@ export default function SobKobitaLeftContent() {
   const postsPerPage = 5; // Number of posts to display per page
 
   useEffect(() => {
-     async function fetchDataAsync() {
+
+    const fetchPosts = async () => {
       try {
-        console.log("Inside try ================================")
-        console.log(`${apiBasePath}/posts/কবিতা`)
-        const response = await fetchData(`${apiBasePath}/posts/কবিতা`);
-        const data = await response.json();
-        console.log("কবিতা         ->>>>>>>>>>>>>>>>", data.data);
-        setPostList(data.data);
-        setTotalPages(postList.length ? Math.ceil(postList.length / postsPerPage) : 0);
-        setIsLoading(false);
+        const response = await axios.get(`${apiBasePath}/posts/কবিতা`); // Use Axios
+        const data = response.data; // Assuming the response structure
+        setPostList(data.object);
+
+        // Calculate total pages based on posts and postsPerPage
+        setTotalPages(Math.ceil(data.object.length / postsPerPage));
       } catch (error) {
-        console.log("Inside carch ================================")
-        console.log(error)
-        alert(error)
-      }finally{
-        console.log("Inside finally ================================")
+        setError(error);
+      } finally {
         setIsLoading(false);
-        setTotalPages(postList.length ? Math.ceil(postList.length / postsPerPage) : 0);
-
       }
-    }
+    };
 
-    fetchDataAsync();
-
-    // const fetchPosts = async () => {
-    //   try {
-    //     const response = await axios.get(`${apiBasePath}/posts/কবিতা`); 
-    //     const data = response.data; 
-
-    //     setPostList(data.data);
-
-    //     setTotalPages(Math.ceil(data.object.length / postsPerPage));
-    //   } catch (error) {
-    //     setError(error);
-    //   } finally {
-    //     setIsLoading(false);
-    //   }
-    // };
-
-    // fetchPosts();
+    fetchPosts();
 
 
+    // fetch("http://192.168.88.248:3002/posts/কবিতা")
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     setPostList(data.object);
+    //     console.log('-----------', data)
+    //     console.log('-----------', postList)
+    //   })
+    //   .catch(error => console.error("Error fetching data:", error))
+    //   .finally(
+    //     setIsLoading(false)
+    //   )
 
   }, []);
 

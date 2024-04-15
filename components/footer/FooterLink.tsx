@@ -20,7 +20,6 @@ const FooterLink: React.FC<FooterLinkProps> = ({ title, links }) => {
                 <ul className="m-1 space-y-4">
                     {links.map((link) => (
                         <li key={link.url}>
-                            {/* <a href={link.url}>{link.label}</a> */}
                             <Link href={link.url}>
                             {link.label}
                             </Link>

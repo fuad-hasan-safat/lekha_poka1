@@ -10,6 +10,7 @@ import UserDetails from "@/components/user/userdetails";
 import Sidebar from "@/components/sidebar/Sidebar";
 import { fetchData } from "@/app/api/api";
 import { apiBasePath } from "@/utils/constant";
+import Link from "next/link";
 
 export default function Home(context) {
   const { slug } = context.params;
@@ -61,15 +62,26 @@ export default function Home(context) {
   const [category, setCategory] = useState([]);
   const [writers, setWriters] = useState([]);
 
+  // profile information fetch
+
+
   useEffect(() => {
-    fetch("http://192.168.88.248:3002/writers")
+
+    fetch(`${apiBasePath}/getprofile/${slug}`)
+      .then((response) => response.json())
+      .then((data) => {
+        
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+
+    fetch(`${apiBasePath}/writers`)
       .then((response) => response.json())
       .then((data) => {
         setWriters(data);
       })
       .catch((error) => console.error("Error fetching data:", error));
 
-    fetch("http://192.168.88.248:3002/categories")
+    fetch(`${apiBasePath}/categories`)
       .then((response) => response.json())
       .then((data) => {
         setCategory(data);
@@ -145,7 +157,7 @@ export default function Home(context) {
     formData.append("uploaded_by", userUuid);
 
     try {
-      const response = await fetch(`http://192.168.88.248:3002/posts`, {
+      const response = await fetch(`${apiBasePath}/posts`, {
         method: "POST",
         headers: {
           // 'x-access-token': userToken,
@@ -304,7 +316,14 @@ export default function Home(context) {
             </section>
           </div>
         )}
-        {/* {!status && router.push(`/unauthorizeduser`)} */}
+        {!status && (
+          <div>
+            <div>
+              You Are Not logged In,
+            </div>
+            <Link href='/'> Go to home Page</Link>
+          </div>
+        )}
       </>
     );
   }
