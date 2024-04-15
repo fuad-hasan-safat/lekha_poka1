@@ -6,6 +6,8 @@ import { sobKobitaPosts } from "@/public/demo-data/data";
 import SobKobitaBody from "./sobKobitaBody";
 import axios from "axios";
 import Loading from "../common/loading";
+import { apiBasePath } from "@/utils/constant";
+import { fetchData } from "@/app/api/api";
 
 export default function SobKobitaLeftContent() {
 
@@ -21,36 +23,43 @@ export default function SobKobitaLeftContent() {
   const postsPerPage = 5; // Number of posts to display per page
 
   useEffect(() => {
-
-    const fetchPosts = async () => {
+     async function fetchDataAsync() {
       try {
-        const response = await axios.get("http://192.168.88.248:3002/posts/কবিতা"); // Use Axios
-        const data = response.data; // Assuming the response structure
-        setPostList(data.object);
-
-        // Calculate total pages based on posts and postsPerPage
-        setTotalPages(Math.ceil(data.object.length / postsPerPage));
-      } catch (error) {
-        setError(error);
-      } finally {
+        const response = await fetchData(`${apiBasePath}/posts/কবিতা`);
+         const data = await response.json();
+        console.log("কবিতা         ->>>>>>>>>>>>>>>>", data.data);
+        setPostList(data.data);
+        setTotalPages(postList.length ? Math.ceil(postList.length / postsPerPage) : 0);
         setIsLoading(false);
+      } catch (error) {
+        alert(error)
+      }finally{
+        setIsLoading(false);
+        setTotalPages(postList.length ? Math.ceil(postList.length / postsPerPage) : 0);
+
       }
-    };
+    }
 
-    fetchPosts();
+    fetchDataAsync();
+
+    // const fetchPosts = async () => {
+    //   try {
+    //     const response = await axios.get(`${apiBasePath}/posts/কবিতা`); 
+    //     const data = response.data; 
+
+    //     setPostList(data.data);
+
+    //     setTotalPages(Math.ceil(data.object.length / postsPerPage));
+    //   } catch (error) {
+    //     setError(error);
+    //   } finally {
+    //     setIsLoading(false);
+    //   }
+    // };
+
+    // fetchPosts();
 
 
-    // fetch("http://192.168.88.248:3002/posts/কবিতা")
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setPostList(data.object);
-    //     console.log('-----------', data)
-    //     console.log('-----------', postList)
-    //   })
-    //   .catch(error => console.error("Error fetching data:", error))
-    //   .finally(
-    //     setIsLoading(false)
-    //   )
 
   }, []);
 
