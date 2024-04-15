@@ -25,15 +25,20 @@ export default function SobKobitaLeftContent() {
   useEffect(() => {
      async function fetchDataAsync() {
       try {
+        console.log("Inside try ================================")
+        console.log(`${apiBasePath}/posts/কবিতা`)
         const response = await fetchData(`${apiBasePath}/posts/কবিতা`);
-         const data = await response.json();
+        const data = await response.json();
         console.log("কবিতা         ->>>>>>>>>>>>>>>>", data.data);
         setPostList(data.data);
         setTotalPages(postList.length ? Math.ceil(postList.length / postsPerPage) : 0);
         setIsLoading(false);
       } catch (error) {
+        console.log("Inside carch ================================")
+        console.log(error)
         alert(error)
       }finally{
+        console.log("Inside finally ================================")
         setIsLoading(false);
         setTotalPages(postList.length ? Math.ceil(postList.length / postsPerPage) : 0);
 
