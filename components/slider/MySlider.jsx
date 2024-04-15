@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { Circle } from 'lucide-react';
 import { sliderPosts } from "@/public/demo-data/data";
 import '/public/assets/css/image-slider.css'
+import { apiBasePath } from "@/utils/constant";
 
 export function ImageSlider() {
     const [data, setData] = useState([])
@@ -11,7 +12,7 @@ export function ImageSlider() {
     // api call 
     useEffect(() => {
 
-        fetch(`http://192.168.88.248:3002/sliders`)
+        fetch(`${apiBasePath}/sliders`)
             .then(response => response.json())
             .then(data => {
                 setData(data)

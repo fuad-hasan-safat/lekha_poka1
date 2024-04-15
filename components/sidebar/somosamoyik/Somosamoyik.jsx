@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import LekhaPokaProfile from "@/components/common/lekhaProfile";
 import SidebarPostDivider from "@/components/common/sidebarpostdivider";
 import { fetchData } from "@/app/api/api";
+import { apiBasePath } from "@/utils/constant";
 
 const Somosamoyik = () => {
 
@@ -16,7 +17,7 @@ useEffect(() => {
   async function fetchDataAsync() {
     try {
       const result = await fetchData(
-        `http://192.168.88.248:3002/contemporarypost`
+        `${apiBasePath}/contemporarypost`
       );
       console.log("result         ->>>>>>>>>>>>>>>>", result.object);
       setSomosamoyikPost(result.posts);

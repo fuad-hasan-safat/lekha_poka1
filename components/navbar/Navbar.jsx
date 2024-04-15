@@ -53,10 +53,7 @@ const MyNavbar = () => {
         const response = await fetch(`${apiBasePath}/posts`);
         const data = await response.json();
         setPostList(data.data);
-        console.log(
-          "------------------->>>> POST LIST ------------------>>>>>>>",
-          postList
-        );
+        //console.log( "------------------->>>> POST LIST ------------------>>>>>>>",postList );
       } catch (error) {
         alert("Error Fetching data");
       }
@@ -70,18 +67,23 @@ const MyNavbar = () => {
       // fetch(`http://api.tvmaze.com/search/shows?q=${search}`)
       //     .then((res) => res.json())
       //     .then((data) => setSearchData(data))
-
-      const newFiltreddata = postList.filter((post) => {
-        return post.title
-          .toLocaleLowerCase()
-          .includes(search.toLocaleLowerCase());
-      });
-
-      setSearchData(newFiltreddata);
+      try {
+        const newFiltreddata = postList.filter((post) => {
+          return post.title
+            .toLocaleLowerCase()
+            .includes(search.toLocaleLowerCase());
+        });
+        setSearchData(newFiltreddata);
+      } catch (error) {}
     } else {
       setSearchData([]);
     }
   }, [search]);
+
+
+  function goToSearchPost(id){
+
+  }
 
   return (
     <div className="fixed w-full bg-white z-[100]">
@@ -209,7 +211,8 @@ const MyNavbar = () => {
                     >
                       {searchData.map((data, index) => {
                         return (
-                          <h1
+                          <button
+                          onClick={()=> goToSearchPost(data._id)}
                             className={
                               selectedIteam === index
                                 ? "search_suggestion_line active"
@@ -218,12 +221,12 @@ const MyNavbar = () => {
                             key={index}
                           >
                             {data.title}
-                          </h1>
+                          </button>
                         );
                       })}
-                      {searchData.length === 0 && search !== '' &&
+                      {searchData.length === 0 && search !== "" && (
                         <h1>No Result Found</h1>
-                      }
+                      )}
                     </div>
 
                     {/* <input

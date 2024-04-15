@@ -18,22 +18,36 @@ export default function ProcchodLeftContent() {
 
 
   useEffect(() => {
-
-
-    const fetchPosts = async () => {
+     const fetchPosts = async () => {
       try {
         const response = await fetch(`${apiBasePath}/posts`);
         const data = await response.json();
         setPostList(data.data);
-
-        // Calculate total pages based on posts and postsPerPage
-        setTotalPages(Math.ceil(data.length / postsPerPage));
+        setTotalPages(Math.ceil(postList.length / postsPerPage));
+        console.log( "------------------->>>> POST LIST Procchod ------------------>>>>>>>",data );
       } catch (error) {
-        setError(error);
+        alert("Error Fetching data Procchod");
       }
     };
 
     fetchPosts();
+
+
+    // const fetchPosts =  () => {
+    //   try {
+    //     const response =  fetch(`${apiBasePath}/posts`);
+    //     const data =  response.json();
+    //     setPostList(data.data);
+
+
+    //     setTotalPages(Math.ceil(postList.length / postsPerPage));
+    //   } catch (error) {
+    //     alert(error)
+    //     setError(error);
+    //   }
+    // };
+
+    // fetchPosts();
 
     // fetch("http://192.168.88.248:3002/posts")
     //   .then(response => response.json())
@@ -78,7 +92,14 @@ export default function ProcchodLeftContent() {
 
   return (
     <div>
-      <ProcchodButtonList selectedId={selectedId} setSelectedId={setSelectedId} setPostList={setPostList} postList={postList} />
+      <ProcchodButtonList 
+      selectedId={selectedId} 
+      setSelectedId={setSelectedId} 
+      setPostList={setPostList} 
+      postList={postList} 
+      setTotalPages={setTotalPages} 
+      postsPerPage={postsPerPage}
+      />
       <div className="pt-20 text-3xl">
 
         {error ? (

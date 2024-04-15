@@ -13,11 +13,11 @@ const myFont = localFont({
   src: "../../public/assets/fonts/Tatsama.ttf",
 });
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
+// interface LayoutProps {
+//   children: React.ReactNode;
+// }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children }) {
   return (
     <html lang="en">
       <body>
@@ -25,7 +25,6 @@ export default function Layout({ children }: LayoutProps) {
           <main className={`${myFont.className}`}>
             <MyNavbar />
             <div className="pt-[95px]">{children}</div>
-           
             <MyFooter />
           </main>
         </Provider>

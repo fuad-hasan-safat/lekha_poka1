@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import LekhaPokaProfile from "@/components/common/lekhaProfile";
 import SidebarPostDivider from "@/components/common/sidebarpostdivider";
 import { fetchData } from "@/app/api/api";
+import { apiBasePath } from "@/utils/constant";
 
 const Samprotik = () => {
 
@@ -18,9 +19,9 @@ useEffect(() => {
   async function fetchDataAsync() {
     try {
       const result = await fetchData(
-        `http://192.168.88.248:3002/recentpost`
+        `${apiBasePath}/recentpost`
       );
-      console.log("result         ->>>>>>>>>>>>>>>>", result.object);
+      //console.log("result         ->>>>>>>>>>>>>>>>", result.object);
       setSamprotikPost(result.posts);
     } catch (error) {
       alert(error)

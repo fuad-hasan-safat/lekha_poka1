@@ -9,6 +9,7 @@ import Select from "react-select";
 import UserDetails from "@/components/user/userdetails";
 import Sidebar from "@/components/sidebar/Sidebar";
 import { fetchData } from "@/app/api/api";
+import { apiBasePath } from "@/utils/constant";
 
 export default function Home(context) {
   const { slug } = context.params;
@@ -81,7 +82,7 @@ export default function Home(context) {
     async function fetchDataAsync() {
       try {
         const result = await fetchData(
-          `http://192.168.88.248:3002/postsbyuser/${slug}`
+          `${apiBasePath}/postsbyuser/${slug}`
         );
         console.log(
           "result        user profile  ->>>>>>>>>>>>>>>>",

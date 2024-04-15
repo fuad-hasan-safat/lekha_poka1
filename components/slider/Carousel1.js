@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import SliderPost from './sliderPost/SliderPost';
 import { sliderPosts } from "@/public/demo-data/data";
+import { apiBasePath } from '@/utils/constant';
 
 // ...
 const CarouselIndicators = ({ images, activeIndex, onClick }) => {
@@ -22,33 +23,33 @@ const CarouselIndicators = ({ images, activeIndex, onClick }) => {
 };
 
 
-const Carousel1 = ({interval = 3000 }) => {
+const Carousel1 = ({ interval = 3000 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [data, setData] = useState(sliderPosts); // State to store fetched data
   const [error, setError] = useState(null); // State to store any errors
 
   useEffect(() => {
 
-    fetch(`http://192.168.88.248:3002/sliders`)
-    .then(response => response.json())
-    .then(data =>{
-      setData(data)
-    }).catch(error => console.log("Error fetching data"))
+    // fetch(`${apiBasePath}/sliders`)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     setData(data)
+    //   }).catch(error => console.log("Error fetching data"))
 
-    // const fetchData = async () => {
-    //   try {
-    //     const response = await axios.get(`http://192.168.88.248:3002/sliders`); 
+    async function fetchDataAsync() {
+      try {
+        const result = await fetchData(
+          `${apiBasePath}/sliders`
+        );
+       // console.log("sliders         ->>>>>>>>>>>>>>>>", result.object);
+        setData(result)
+      } catch (error) {
+        alert(error)
+      }
+    }
 
-    //     console.log(response.data)
-    //    setData(response.data); 
-    //   } catch (error) {
-    //     setError(error);
-    //     console.error('Error fetching data:', error);
-    //   }
-    // };
-
-    // fetchData(); 
-  }, []); 
+    fetchDataAsync();
+  }, []);
 
 
   useEffect(() => {
@@ -78,8 +79,8 @@ const Carousel1 = ({interval = 3000 }) => {
         &lt;
       </button>
       <div className='absolute pl-[302px] pt-[150px]'>
-        { <SliderPost
-        key={`${data[activeIndex]._id} of ${data[activeIndex].title}`}
+        {<SliderPost
+          key={`${data[activeIndex]._id} of ${data[activeIndex].title}`}
           title={data[activeIndex].title}
           caption={data[activeIndex].caption}
           discription={data[activeIndex].content}
@@ -93,13 +94,13 @@ const Carousel1 = ({interval = 3000 }) => {
           onClick={goToSlide}
         />
       </div>
-     
+
 
       <div className='w-full h-[780px] justify-center transition-all  cubic-bezier(0.77, 0, 0.175, 1)'>
         <img
           src={`http://192.168.88.248:3002/${data[activeIndex].image}`}
           alt={`Slide ${activeIndex}`}
-         // width={1920}
+          // width={1920}
           //height={780}
           className="carousel__img"
         />

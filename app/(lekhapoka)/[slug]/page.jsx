@@ -9,6 +9,7 @@ import FullPost from "@/components/common/fullContent";
 import RatingComponent from "@/components/common/starRating";
 import AudioPlayer from "@/components/musicbar/AudioPlayer";
 import { fetchData } from "@/app/api/api";
+import { apiBasePath } from "@/utils/constant";
 
 export default function PostDetails(context) {
   const { slug } = context.params;
@@ -30,7 +31,7 @@ export default function PostDetails(context) {
     async function fetchDataAsync() {
       try {
         const result = await fetchData(
-          `http://192.168.88.248:3002/getpost/${slug}`
+          `${apiBasePath}/getpost/${slug}`
         );
         //console.log("result->>>>>>>>>>>>>>>>", result.object);
         setData(result.object);

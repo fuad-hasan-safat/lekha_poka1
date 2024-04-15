@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { fetchData } from "@/app/api/api";
 import LekhaPokaProfile from "@/components/common/lekhaProfile";
 import SidebarPostDivider from "@/components/common/sidebarpostdivider";
+import { apiBasePath } from "@/utils/constant";
 
 const Jonopriyo = () => {
 
@@ -15,9 +16,9 @@ const [jonopriyoData, setJanapriyoData] = useState([])
     async function fetchDataAsync() {
       try {
         const result = await fetchData(
-          `http://192.168.88.248:3002/popularpost`
+          `${apiBasePath}/popularpost`
         );
-        console.log("result         ->>>>>>>>>>>>>>>>", result.object);
+       // console.log("result         ->>>>>>>>>>>>>>>>", result.object);
         setJanapriyoData(result.posts);
       } catch (error) {
         alert(error)

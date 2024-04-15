@@ -1,5 +1,6 @@
 "use client";
 import { buttonItem } from "@/interfaces/Interfaces";
+import { apiBasePath } from "@/utils/constant";
 import { useEffect, useState } from "react";
 
 const ButtonItem = ({
@@ -10,7 +11,9 @@ const ButtonItem = ({
   title,
   setSelectedId,
   setPostList,
-  postList
+  postList,
+  postsPerPage,
+  setTotalPages
 }) => {
 
 
@@ -19,11 +22,12 @@ const ButtonItem = ({
 
     console.log('buton ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', title);
 
-    fetch(`http://192.168.88.248:3002/posts/${title}`)
+    fetch(`${apiBasePath}/posts/${title}`)
       .then(response => response.json())
       .then(data => {
         setPostList(data.object)
-        console.log('data --->>>>>>>>>>>>>>>>>>>>>>>>>', postList);
+        setTotalPages(Math.ceil(data.length / postsPerPage))
+        //console.log('data --->>>>>>>>>>>>>>>>>>>>>>>>>', postList);
       })
       .catch(error => console.error("Error fetching data:", error));
 

@@ -2,54 +2,44 @@
 import { buttonItem, ProcchodButtonProps } from "@/interfaces/Interfaces";
 import { useEffect, useState } from "react";
 import ButtonItem from "../common/buttonItem";
+import { apiBasePath } from "@/utils/constant";
 
-// const buttons = [
-//   {
-//     id: "sob",
-//     txt: "সব",
-//   },
-//   {
-//     id: "kobita",
-//     txt: "কবিতা",
-//   },
-//   {
-//     id: "probondho",
-//     txt: "প্রবন্ধ",
-//   },
-//   {
-//     id: "golpo",
-//     txt: "গল্প",
-//   },
-//   {
-//     id: "anugolpo",
-//     txt: "অনুগল্প",
-//   },
-//   {
-//     id: "jiboni",
-//     txt: "জীবনী",
-//   },
-// ];
-
-const ProcchodButtonList = ({ selectedId, setSelectedId, setPostList, postList}) => {
-
+const ProcchodButtonList = ({
+  selectedId,
+  setSelectedId,
+  setPostList,
+  postList,
+  setTotalPages,
+  postsPerPage,
+}) => {
   const [buttons, setButtons] = useState([
     {
-      _id: '',
-      title:' ',
-      __v: 0
+      _id: "",
+      title: " ",
+      __v: 0,
+    },
+  ]);
+
+   useEffect(() => {
+  //   fetch(`${apiBasePath}/categories`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setButtons(data);
+  //     })
+  //     .catch((error) => console.log("Error fetching data:", error));
+
+    async function fetchDataAsync() {
+      try {
+        const result = await fetchData(`${apiBasePath}/categories`);
+        //console.log("result         ->>>>>>>>>>>>>>>>", result.object);
+        setButtons(result);
+      } catch (error) {
+        alert(error)
+      }
     }
-  ])
 
-  useEffect(() => {
-    fetch("http://192.168.88.248:3002/categories")
-        .then(response => response.json())
-        .then(data => {
-          setButtons(data);
-        })
-        .catch(error => console.error("Error fetching data:", error));
-
-    
-}, []);
+    fetchDataAsync();
+  }, []);
 
   return (
     <div className="flex space-x-6 pt-16">
@@ -65,6 +55,8 @@ const ProcchodButtonList = ({ selectedId, setSelectedId, setPostList, postList})
             setSelectedId={setSelectedId}
             setPostList={setPostList}
             postList={postList}
+            setTotalPages={setTotalPages}
+            postsPerPage={postsPerPage}
           />
         ))}
     </div>
