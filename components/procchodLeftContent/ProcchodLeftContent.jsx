@@ -6,7 +6,7 @@ import ProcchodButtonList from "./ProcchodButtonList";
 import { apiBasePath } from "@/utils/constant";
 
 export default function ProcchodLeftContent() {
- 
+
   const [selectedId, setSelectedId] = useState("sob");
   const [postList, setPostList] = useState([])
   const [error, setError] = useState(null);
@@ -43,7 +43,7 @@ export default function ProcchodLeftContent() {
 
     fetchPosts();
 
-    
+
 
   }, []);
 
@@ -79,7 +79,7 @@ export default function ProcchodLeftContent() {
 
   return (
     <div>
-      <ProcchodButtonList buttons={buttons} setButtons={setButtons}  selectedId={selectedId} setSelectedId={setSelectedId} setPostList={setPostList} postList={postList} setTotalPages={setTotalPages} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
+      <ProcchodButtonList buttons={buttons} setButtons={setButtons} selectedId={selectedId} setSelectedId={setSelectedId} setPostList={setPostList} postList={postList} setTotalPages={setTotalPages} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
       <div className="text-3xl">
 
         {error ? (
@@ -103,35 +103,35 @@ export default function ProcchodLeftContent() {
                 </>
               ))}
             </div>
-           {totalPages > 1 && <div className="py-10 space-x-4"> {/* Add a class for styling */}
+            {totalPages > 1 && <div className="py-10 space-x-4"> {/* Add a class for styling */}
               <button
-              className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
-               onClick={firstPage} disabled={currentPage === 1}>
-                First Page
+                className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
+                onClick={firstPage} disabled={currentPage === 1}>
+                প্রথম পৃষ্ঠা
               </button>
-              <button 
-               className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
-              onClick={prevPage} disabled={currentPage === 1}>
-                Previous Page
+              <button
+                className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
+                onClick={prevPage} disabled={currentPage === 1}>
+                পূর্ববর্তী পৃষ্ঠা
               </button>
               <span
-              className="text-sm "
-              >Page {currentPage} of {totalPages}</span>
+                className="text-sm "
+              >পৃষ্ঠা {currentPage} এর {totalPages}</span>
               <button
-               className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
-               onClick={nextPage} disabled={currentPage === totalPages}>
-                Next Page
+                className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
+                onClick={nextPage} disabled={currentPage === totalPages}>
+                পরবর্তী পৃষ্ঠা
               </button>
               <button
-               className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
-               onClick={lastPage} disabled={currentPage === totalPages}>
-                Last Page
+                className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
+                onClick={lastPage} disabled={currentPage === totalPages}>
+                শেষ পৃষ্ঠা
               </button>
             </div>
-}
+            }
           </>
         )}
-     
+
       </div>
     </div>
   );

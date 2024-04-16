@@ -90,36 +90,35 @@ export default function SobJiboniLeftContent() {
             )}
           </div>
           {totalPages > 1 && <div className="py-10 space-x-4"> {/* Add a class for styling */}
-            <button
-              className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
+                <button
+                  className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
 
-              onClick={() => handlePageChange(1)} disabled={currentPage === 1}>
-              First Page
-            </button>
-            <button
-              className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
+                  onClick={() => handlePageChange(1)} disabled={currentPage === 1}>
+                  প্রথম পৃষ্ঠা 
+                </button>
+                <button
+                  className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
 
-              onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-              Previous Page
-            </button>
-            <span
-              className="text-sm "
+                  onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                  পূর্ববর্তী পৃষ্ঠা 
+                </button>
+                <span
+                  className="text-sm "
+                >পৃষ্ঠা {currentPage} এর {totalPages}</span>
+                <button
+                  className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
 
-            >Page {currentPage} of {totalPages}</span>
-            <button
-              className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
+                  onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                  পরবর্তী পৃষ্ঠা 
+                </button>
+                <button
+                  className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
 
-              onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-              Next Page
-            </button>
-            <button
-              className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"
-
-              onClick={() => handlePageChange(totalPages)} disabled={currentPage === totalPages}>
-              Last Page
-            </button>
-          </div>
-          }
+                  onClick={() => handlePageChange(totalPages)} disabled={currentPage === totalPages}>
+                  শেষ পৃষ্ঠা
+                </button>
+              </div>
+              }
         </>
       )}
     </div>

@@ -12,7 +12,7 @@ import { fetchData } from "@/app/api/api";
 import { apiBasePath } from "@/utils/constant";
 import Link from "next/link";
 
-export default function Home(context) {
+export default function UserProfile(context) {
   const { slug } = context.params;
 
   // --------------- editor ----------
@@ -211,9 +211,8 @@ export default function Home(context) {
         setSelectedFile(null);
         setTitle('');
         setCategory('');
-        setWriters('');
-        setContent('');
-        setSummary('');
+        setWriters('')
+        setContent('')
       } else {
         console.error("Failed to update profile:", response.statusText);
         alert(response.statusText);
