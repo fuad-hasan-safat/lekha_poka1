@@ -93,12 +93,12 @@ export default function Login() {
             <div className="flex flex-row space-x-3 text-[18px]">
               <LogoutButton
                 buttonText="Logout"
-                buttonClass="text-white bg-[#F9A106] w-[100px] h-[30px]"
+                buttonClass="text-white rounded-[6px] bg-[#F9A106] w-[120px] h-[40px]"
                 setStatus={setStatus}
               />
               <GoToProfile
                 buttonText="Your Profile"
-                buttonClass="text-white bg-[#F9A106] w-[200px] h-[30px]  "
+                buttonClass="text-white rounded-[6px] bg-[#F9A106] w-[180px] h-[40px]  "
                 id={userUuid}
               />
             </div>

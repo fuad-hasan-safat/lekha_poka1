@@ -263,9 +263,24 @@ background-color: #f8e405;
   }
 }
 
-
+.start__rating span{
+  text-align: center;
+  display: table;
+  margin:0 auto;
+}
 .star-svg{
-  float: left;
+  /* float: left; */
+  display: inline-block;
+  vertical-align: baseline;
+  width:25px !important;
+}
+.kobita__content {
+  box-shadow: 0px 10px 100px 0px rgb(0 0 0 / 0.2);
+  border-radius: 20px;
+  transform: scale(1.05);
+  transition: all 0.5s;
+  margin: 60px;
+  padding: 30px 30px 40px;
 }
 
 
