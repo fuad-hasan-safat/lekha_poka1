@@ -25,19 +25,19 @@ export default function Home() {
           </div>
         </section>
 
-        <section>
+        <section className="py-[54px]">
           <div className="container">
             <div >
 
-              <p className="px-[300px]">লেখার পোকা  হলো কবিতা, গান, প্রবন্ধ গল্প এবং জীবনী লেখা প্রকাশের একটি ওয়েব সাইট।
-                  যেটা অভিব্যক্তির একটি সুন্দর রূপ যা ব্যক্তিদের তাদের চিন্তাভাবনা, 
-                 আবেগ এবং অভিজ্ঞতা সৃজনশীল এবং শৈল্পিক উপায়ে প্রকাশ করতে দেয়। </p>
+              <p className=" text-center text-gray-700 [word-spacing:8px] text-[28px]">লেখার পোকা  হলো কবিতা, গান, প্রবন্ধ গল্প এবং জীবনী লেখা প্রকাশের একটি ওয়েব <br/> সাইট।
+                  যেটা অভিব্যক্তির একটি সুন্দর রূপ যা ব্যক্তিদের তাদের চিন্তাভাবনা, আবেগ এবং <br/> 
+                  অভিজ্ঞতা সৃজনশীল এবং শৈল্পিক উপায়ে প্রকাশ করতে দেয়। </p>
 
             </div>
           </div>
         </section>
 
-        <section>
+        <section >
           <div className="container">
             <div className="flex flex-row">
               <div className="columns-6">
