@@ -36,12 +36,13 @@ export default function RatingComponent({ post_id, setRating, rating }) {
 
   const ratingStyle = {
     float: 'left',
+    fontSize:'14px'
   };
 
   return (
-    <div className='start__rating flex-col grid place-content-center pt-[60px] float-left'>
-      <Rating
-        style={{ float: 'left' }}
+    <div className='start__rating flex-col grid place-content-center pt-[20px] float-left'>
+      <Rating 
+        style={{ float: 'left',textAlign:'center'}}
         onClick={handleRating}
         onPointerEnter={onPointerEnter}
         onPointerLeave={onPointerLeave}
