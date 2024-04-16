@@ -49,11 +49,11 @@ const SobLekha = ({ sobClass }) => {
       </button>
 
       {isOpen && (
-        <div className="backdrop-blur-md shadow-xl bg-yellow-500/30 z-[1000] origin-top-right absolute right-0 mt-2 w-56 rounded-md rounded-r-3xl ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu" tabIndex={-1}>
-          <div className="" role="none">
+        <div className="backdrop-blur-md shadow-xl bg-[#F9A106] z-[1000] origin-top-right absolute right-0 mt-2 w-56 rounded-md rounded-r-3xl ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu" tabIndex={-1}>
+          <div className="text-black" role="none">
             <Link
               href="/kobita"
-              className="block px-4 py-2 text-sm rounded-tr-3xl text-gray-700 hover:bg-white hover:text-[#F9A10]"
+              className="block px-4 py-2 text-sm rounded-tr-3xl  hover:bg-white  hover:text-gray-700"
               role="menuitem"
               tabIndex={-1}
               id="options-menu-item-0"
@@ -63,7 +63,7 @@ const SobLekha = ({ sobClass }) => {
             </Link>
             <Link
               href="/golpo"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-white hover:text-[#F9A10]"
+              className="block px-4 py-2 text-sm  hover:bg-white  hover:text-gray-700"
               role="menuitem"
               tabIndex={-1}
               id="options-menu-item-1"
@@ -73,7 +73,7 @@ const SobLekha = ({ sobClass }) => {
             </Link>
             <Link
               href="/onugolpo"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-white hover:text-[#F9A10]"
+              className="block px-4 py-2 text-sm hover:bg-white  hover:text-gray-700"
               role="menuitem"
               tabIndex={-1}
               id="options-menu-item-2"
@@ -83,7 +83,7 @@ const SobLekha = ({ sobClass }) => {
             </Link>
             <Link
               href="/probondho"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-white hover:text-[#F9A10]"
+              className="block px-4 py-2 text-sm  hover:bg-white  hover:text-gray-700"
               role="menuitem"
               tabIndex={-1}
               id="options-menu-item-3"
@@ -94,7 +94,7 @@ const SobLekha = ({ sobClass }) => {
             </Link>
             <Link
               href="/jiboni"
-              className="block px-4 py-2 text-sm rounded-br-3xl text-gray-700 hover:bg-white hover:text-[#F9A10]"
+              className="block px-4 py-2 text-sm rounded-br-3xl  hover:bg-white  hover:text-gray-700"
               role="menuitem"
               tabIndex={-1}
               id="options-menu-item-4"

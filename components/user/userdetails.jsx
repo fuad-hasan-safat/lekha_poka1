@@ -33,13 +33,14 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
     const handleProfileUpdate = async (e) => {
         e.preventDefault();
 
+        const formattedDate = moment(startDate).format('DD-MM-YYYY');
 
         const formData = new FormData();
         formData.append('file', imageFile);
         formData.append('designation', designation);
         formData.append('profileStatus', profileStatus);
         formData.append('gender', gender);
-        formData.append('dob', startDate);
+        formData.append('dob', formattedDate);
         formData.append('address', address);
         formData.append('email', email);
         formData.append('phone', phoneNumber);
@@ -117,7 +118,7 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
                 <p>{phone}</p>
             </div>
             <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="bg-[#F9A106]  text-white py-2 px-4 rounded"
                 onClick={toggleModal}>
                 Edit Profile
             </button>
@@ -199,7 +200,7 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
                                     </div>
                                     <div className='form__submit'>
                                         <button
-                                        className='bg-[#F9A106]'
+                                        className='bg-[#F9A106] hover:bg-orange-600'
                                          type='submit'>Update</button>
                                     </div>
                                 </form>

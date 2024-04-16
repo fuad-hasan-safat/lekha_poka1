@@ -37,14 +37,14 @@ const MyFooter = () => {
                     </div>
 
                     <div className="text-white">
-                      {/* <FooterLink
+                      <FooterLink
                         title="গুরুত্বপূর্ণ লিঙ্ক"
                         links={[
                           { url: "/privacy", label: "প্রাইভেসি" },
                           { url: "/conditions", label: "শর্তাবলি" },
                           { url: "/sitemaps", label: "সাইটম্যাপ" },
                         ]}
-                      /> */}
+                      />
                     </div>
 
                     <div className="text-white">

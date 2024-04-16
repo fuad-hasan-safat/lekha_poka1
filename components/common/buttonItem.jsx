@@ -15,6 +15,7 @@ const ButtonItem = ({
   postsPerPage,
   setTotalPages,
   setCurrentPage,
+  buttons,
 }) => {
 
 
@@ -24,15 +25,34 @@ const ButtonItem = ({
 
     console.log('buton ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', title);
 
-    fetch(`${apiBasePath}/posts/${title}`)
-      .then(response => response.json())
-      .then(data => {
-        setPostList(data.object)
-        setTotalPages(Math.ceil(data.object.length / 5))
-        //console.log('data --->>>>>>>>>>>>>>>>>>>>>>>>>', postList);
-       
-      })
-      .catch(error => console.error("Error fetching data:", error));
+    if (title === 'সব') {
+      fetch(`${apiBasePath}/posts`)
+        .then(response => response.json())
+        .then(data => {
+          setPostList(data)
+          setTotalPages(Math.ceil(data.length / 5))
+          console.log('data --->>>>>>>>>>>>>>>>>>>>>>>>>', data);
+
+        })
+        .catch(error => console.error("Error fetching data:", error));
+
+
+    }
+    else {
+
+      fetch(`${apiBasePath}/posts/${title}`)
+        .then(response => response.json())
+        .then(data => {
+          setPostList(data.object)
+          setTotalPages(Math.ceil(data.object.length / 5))
+          console.log('data --->>>>>>>>>>>>>>>>>>>>>>>>>', data);
+
+        })
+        .catch(error => console.error("Error fetching data:", error));
+
+    }
+
+
 
   }
 

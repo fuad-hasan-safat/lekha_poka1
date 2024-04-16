@@ -9,13 +9,28 @@ const MaincontentBody = ({
   title,
   writer,
   content,
+  buttons,
 }) => {
   const router = useRouter();
 
   // const [html, setHTML] = useState({ __html: content });
 
 
-  function handleClick(postId) {
+  function handleClick(postId, title) {
+    let path = '';
+    if(title==='কবিতা'){
+      path = 'kobita'
+    }else if(title==='প্রবন্ধ'){
+      path = 'kobita'
+    }else if(title==='গল্প'){
+      path = 'kobita'
+    }else if(title===''){
+      path = 'kobita'
+    }else if(title==='কবিতা'){
+      path = 'kobita'
+    }else if(title==='কবিতা'){
+      path = 'kobita'
+    }
     router.push(`/${postId}`);
   }
   return (
@@ -36,7 +51,7 @@ const MaincontentBody = ({
       {/* button -- it would be conditionally appaer */}
       <div className="flex space-x-2">
         <button
-          onClick={() => handleClick(id)}
+          onClick={() => handleClick(id, buttons.title)}
           className="text-yellow-500 text-xs"
         >
           <Image

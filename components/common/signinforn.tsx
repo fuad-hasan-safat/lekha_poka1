@@ -70,17 +70,18 @@ export default function SigninForm({ logreg, btntext }: logreg) {
 
         if (!state.isDisabled) {
             try {
-                const response = await axios.post(`http://192.168.88.248:3002/register`, {
+                const response = await axios.post(`${apiBasePath}/register`, {
                     name: state.fullName,
                     phone: state.mobileNumber,
                     password: state.password,
                     usertype:"user",
                 });
                 // Handle successful signup response (e.g., redirect)
-                router.push(`/login`)
+                router.push(`/`)
             } catch (error) {
                 console.error('Signup error:', error);
                 // Handle signup error (e.g., display error message)
+                alert(error);
             }
         }
     };

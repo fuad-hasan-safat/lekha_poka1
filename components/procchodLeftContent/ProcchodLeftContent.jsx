@@ -14,6 +14,14 @@ export default function ProcchodLeftContent() {
   const [totalPages, setTotalPages] = useState(0);
   const postsPerPage = 5; // Number of posts to display per page
 
+  const [buttons, setButtons] = useState([
+    {
+      _id: "",
+      title: " ",
+      __v: 0,
+    },
+  ]);
+
 
 
 
@@ -71,7 +79,7 @@ export default function ProcchodLeftContent() {
 
   return (
     <div>
-      <ProcchodButtonList selectedId={selectedId} setSelectedId={setSelectedId} setPostList={setPostList} postList={postList} setTotalPages={setTotalPages} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
+      <ProcchodButtonList buttons={buttons} setButtons={setButtons}  selectedId={selectedId} setSelectedId={setSelectedId} setPostList={setPostList} postList={postList} setTotalPages={setTotalPages} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
       <div className="pt-20 text-3xl">
 
         {error ? (
@@ -84,6 +92,7 @@ export default function ProcchodLeftContent() {
                   <div key={index}>
                     <MaincontentBody
                       id={post._id}
+                      buttons={buttons}
                       title={post.title}
                       writer={post.writer}
                       content={post.content.split('\n').slice(0, 8).join('\n')} // Truncate content

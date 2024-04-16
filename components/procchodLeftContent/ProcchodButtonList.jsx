@@ -13,14 +13,10 @@ const ProcchodButtonList = ({
   setTotalPages,
   postsPerPage,
   setCurrentPage,
+  buttons,
+  setButtons,
 }) => {
-  const [buttons, setButtons] = useState([
-    {
-      _id: "",
-      title: " ",
-      __v: 0,
-    },
-  ]);
+
 
    useEffect(() => {
  
@@ -55,6 +51,7 @@ const ProcchodButtonList = ({
             setTotalPages={setTotalPages}
             postsPerPage={postsPerPage}
             setCurrentPage={setCurrentPage}
+            buttons={buttons}
           />
         ))}
     </div>
