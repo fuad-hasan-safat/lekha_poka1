@@ -6,6 +6,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { apiBasePath } from '@/utils/constant';
 import { Router } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import moment from 'moment';
+
 
 
 export default function UserDetails({ sex = '---', birthdate = '---', location = '---', mail = '---', phone = '---' , userID=''}) {
