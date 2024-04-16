@@ -10,6 +10,7 @@ const MaincontentBody = ({
   writer,
   content,
   buttons,
+  category,
 }) => {
   const router = useRouter();
 
@@ -18,50 +19,86 @@ const MaincontentBody = ({
 
   function handleClick(postId, title) {
     let path = '';
-    if(title==='কবিতা'){
+    if (title === 'কবিতা') {
       path = 'kobita'
-    }else if(title==='প্রবন্ধ'){
+    } else if (title === 'প্রবন্ধ') {
       path = 'kobita'
-    }else if(title==='গল্প'){
+    } else if (title === 'গল্প') {
       path = 'kobita'
-    }else if(title===''){
+    } else if (title === '') {
       path = 'kobita'
-    }else if(title==='কবিতা'){
+    } else if (title === 'কবিতা') {
       path = 'kobita'
-    }else if(title==='কবিতা'){
+    } else if (title === 'কবিতা') {
       path = 'kobita'
     }
     router.push(`/${postId}`);
   }
   return (
     <>
-      <div className="pb-3">
-        <div className="text-3xl text-yellow-400 font-bold">{title}</div>
-      </div>
-      <div className="pb-4">
-        <div className="text-xl text-gray-800 font-semibold ">{writer}</div>
-      </div>
-      <div className="pb-3">
-        <div
-          className="text-[16px] text-gray-500 text-justify"
-          dangerouslySetInnerHTML={{__html: content}}
-        />
-      </div>
+      {category === 'কবিতা' ? (
+        <div className="text-center">
+          <div className="pb-3">
+            <div className="text-3xl text-yellow-400 font-bold">{title}</div>
+          </div>
+          <div className="pb-4">
+            <div className="text-xl text-gray-800 font-semibold ">{writer}</div>
+          </div>
+          <div className="pb-3">
+            <div
+              className="text-[16px] text-gray-500 "
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
+          </div>
+          <div className="text-center">
+            <button
+              onClick={() => handleClick(id, buttons.title)}
+              className="text-yellow-500 text-xs"
+            >
+              <Image
+                src={"/images/svgs/purotadekhun.svg"}
+                height={30}
+                width={190}
+                alt="next"
+              />
+            </button>
+          </div>
+        </div >
+      ) :
+        (<>
+
+
+          <div className="pb-3">
+            <div className="text-3xl text-yellow-400 font-bold">{title}</div>
+          </div>
+          <div className="pb-4">
+            <div className="text-xl text-gray-800 font-semibold ">{writer}</div>
+          </div>
+          <div className="pb-3">
+            <div
+              className="text-[16px] text-gray-500 "
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
+          </div>
+
+          <div className="flex space-x-2">
+            <button
+              onClick={() => handleClick(id, buttons.title)}
+              className="text-yellow-500 text-xs"
+            >
+              <Image
+                src={"/images/svgs/purotadekhun.svg"}
+                height={30}
+                width={190}
+                alt="next"
+              />
+            </button>
+          </div>
+
+        </>)}
 
       {/* button -- it would be conditionally appaer */}
-      <div className="flex space-x-2">
-        <button
-          onClick={() => handleClick(id, buttons.title)}
-          className="text-yellow-500 text-xs"
-        >
-          <Image
-            src={"/images/svgs/purotadekhun.svg"}
-            height={30}
-            width={190}
-            alt="next"
-          />
-        </button>
-      </div>
+
     </>
   );
 };

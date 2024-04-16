@@ -41,9 +41,10 @@ export default function Home() {
         <section className="pt-[175px]">
           <div className="container">
             <div className="flex flex-row">
-              <div className="columns-6 w-1/2">
-                <img
-                  className=""
+              <div className="w-1/2">
+                <Image style={{width:'600px'}}
+                  width={669}
+                  height={1032}
                   alt="mission side image"
                   src="/images/aboutuspage/missionSideImage.png"
                 />
@@ -94,7 +95,7 @@ export default function Home() {
           <div className="container">
             <div className="flex flex-row">
              
-              <div className="columns-6 flex flex-col text-[20px] w-1/2 text-justify space-y-[48px]">
+              <div className="flex flex-col text-[20px] w-1/2 text-justify space-y-[48px]">
                 <div className="text-[#F9A106] text-[48px]">মিশন</div>
                 <div>
                   <hr className={`my-2 w-[547px]  h-[0.5px] border-0 bg-[#F9A106]`} />

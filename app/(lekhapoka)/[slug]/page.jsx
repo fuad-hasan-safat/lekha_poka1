@@ -20,7 +20,7 @@ export default function PostDetails(context) {
   const [isAudioAvailable, setIsAudioAvailAble] = useState(false);
   const [audioSrc, setAudioSrc] = useState("");
   const [audioData, setAudioData] = useState(null);
-  const [catagory, setcategory] = useState('')
+  //const [catagory, setcategory] = useState('')
 
   const [rating, setRating] = useState(0);
 
@@ -30,18 +30,21 @@ export default function PostDetails(context) {
     // );
 
     async function fetchDataAsync() {
+      
       try {
         const result = await fetchData(
           `${apiBasePath}/getpost/${slug}`
         );
         //console.log("result->>>>>>>>>>>>>>>>", result.object);
         setData(result.object);
-        setcategory(result.object.category)
+        //setcategory(result.object.category);
         if (result.object.audio.length > 0) {
           setIsAudioAvailAble(true);
         }
       } catch (error) {
         console.log(error);
+      }finally{
+        //setcategory(kobita)
       }
     }
 
@@ -63,7 +66,7 @@ export default function PostDetails(context) {
                     content={data.content}
                     title={data.title}
                     writer={data.writer}
-                    catagory={catagory}
+                    catagory={data.category}
                   />
                   <RatingComponent setRating={setRating} rating={rating} post_id={data._id} />
                 </div>

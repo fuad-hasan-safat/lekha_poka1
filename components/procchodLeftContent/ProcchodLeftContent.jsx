@@ -80,7 +80,7 @@ export default function ProcchodLeftContent() {
   return (
     <div>
       <ProcchodButtonList buttons={buttons} setButtons={setButtons}  selectedId={selectedId} setSelectedId={setSelectedId} setPostList={setPostList} postList={postList} setTotalPages={setTotalPages} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
-      <div className="pt-20 text-3xl">
+      <div className="text-3xl">
 
         {error ? (
           <div>Error fetching posts: {error.message}</div>
@@ -95,6 +95,7 @@ export default function ProcchodLeftContent() {
                       buttons={buttons}
                       title={post.title}
                       writer={post.writer}
+                      category={post.category}
                       content={post.content.split('\n').slice(0, 8).join('\n')} // Truncate content
                     />
                   </div>
