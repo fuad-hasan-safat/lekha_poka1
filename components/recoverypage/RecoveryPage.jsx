@@ -7,6 +7,7 @@ import SignInOption from "../signInOption/SignInOption";
 import DropDown from "../common/dropDown";
 import { apiBasePath } from "@/utils/constant";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const RecoveryPage = () => {
 
@@ -65,13 +66,37 @@ const RecoveryPage = () => {
     // function to call api for Number
 
     async function fetchData() {
-        try {
-            const response = await axios.get(`${apiBasePath}/`);
-            setIsValidUser(true)
-            console.log(response.data);
-        } catch (error) {
-            console.error(error);
-        }
+
+        const data = {
+            phone: number
+          };
+
+        console.log('recover password ---------------->>>>>>>>>>>>>>', number)
+        const options = {
+            method: "POST", // Specify the HTTP method as POST
+            headers: {
+              "Content-Type": "application/json", // Set the content type for JSON data
+            },
+            body: JSON.stringify(data), // Convert data to JSON string for the body
+          };
+        
+          try {
+            const response = await fetch(`${apiBasePath}/verify-number`, options);
+        
+            if (!response.ok) {
+              throw new Error(`API request failed with status ${response.status}`);
+            }
+        
+            const responseBody = await response.json();
+            console.log("API response:", responseBody);
+            // Handle the response data here, for example, update UI or store in state
+
+            setIsValidUser(true);
+          } catch (error) {
+            console.error("Error:", error);
+            // Handle errors here, for example, display an error message to the user
+          }
+       
     }
 
     const handleSubmit = () => {
@@ -87,19 +112,35 @@ const RecoveryPage = () => {
 
         validate(); // Perform validation before submitting
 
-        if (!state.isDisabled) {
-            try {
-                const response = await axios.post(`${apiBasePath}/`, {
-                    password: state.password,
+        const data = {
+            phone: number,
+            password: state.password
+          };
 
-                });
-                // Handle successful signup response (e.g., redirect)
-                router.push(`/`)
-            } catch (error) {
-                console.error('pasword recovery:', error);
-                // Handle signup error (e.g., display error message)
+        const options = {
+            method: "PUT", // Specify the HTTP method as POST
+            headers: {
+              "Content-Type": "application/json", // Set the content type for JSON data
+            },
+            body: JSON.stringify(data), // Convert data to JSON string for the body
+          };
+        
+          try {
+            const response = await fetch(`${apiBasePath}/changepassword`, options);
+        
+            if (!response.ok) {
+              throw new Error(`API request failed with status ${response.status}`);
             }
-        }
+        
+            const responseBody = await response.json();
+            console.log("API response:", responseBody);
+            // Handle the response data here, for example, update UI or store in state
+            router.push('/login')
+
+          } catch (error) {
+            console.error("Error:", error);
+            // Handle errors here, for example, display an error message to the user
+          }
 
     }
 

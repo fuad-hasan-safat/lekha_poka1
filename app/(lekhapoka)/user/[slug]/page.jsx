@@ -61,6 +61,8 @@ export default function Home(context) {
   //  category fetch
   const [category, setCategory] = useState([]);
   const [writers, setWriters] = useState([]);
+  // summary
+  const [summary, setSummary] = useState('')
 
   // profile information fetch
   const [designation, setDesignation] = useState('');
@@ -89,10 +91,12 @@ export default function Home(context) {
         setAddress(data.object.profile.address)
         setEmail(data.object.profile.email)
         setPhone(data.object.profile.phone)
-        setImage(data.object.profile.image)
+        setImage(data.object.profile.image || '')
         setFollower(data.object.profile.follower)
         setFollowing(data.object.profile.following)
         setPost(data.object.profile.post)
+
+        console.log(' profile image----------->>>>', image)
       })
       .catch((error) => console.error("Error fetching data:", error));
 
@@ -164,6 +168,11 @@ export default function Home(context) {
     setTitle(e.target.value);
   };
 
+  const handleSummary = (e) => {
+    setSummary(e.target.value);
+  };
+
+
   // audio file 
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -179,7 +188,7 @@ export default function Home(context) {
     formData.append("writer", selectedOption?.label);
     formData.append("writer_id", selectedOption?.value);
     formData.append("title", title);
-
+    formData.append("summary", summary);
     formData.append("content", content);
     formData.append("rating", 1);
     formData.append("status", false);
@@ -277,6 +286,15 @@ export default function Home(context) {
                           id="title"
                           type="text"
                           placeholder="Post Title"
+                          required
+                        />
+                         <textarea
+                          onChange={handleSummary}
+                          value={summary}
+                          className="w-full h-[62px] p-4 bg-[#FCF7E8] border-solid border-slate-800 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          id="summary"
+                          type="textarea"
+                          placeholder="Summary"
                           required
                         />
 
