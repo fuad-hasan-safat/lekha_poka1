@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function FullPost({ content, title, writer }) {
+export default function FullPost({ content, title, writer, catagory }) {
 
     return (
         <>

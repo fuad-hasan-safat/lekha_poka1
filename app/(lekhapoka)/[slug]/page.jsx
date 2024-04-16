@@ -20,6 +20,7 @@ export default function PostDetails(context) {
   const [isAudioAvailable, setIsAudioAvailAble] = useState(false);
   const [audioSrc, setAudioSrc] = useState("");
   const [audioData, setAudioData] = useState(null);
+  const [catagory, setcategory] = useState('')
 
   const [rating, setRating] = useState(0);
 
@@ -35,6 +36,7 @@ export default function PostDetails(context) {
         );
         //console.log("result->>>>>>>>>>>>>>>>", result.object);
         setData(result.object);
+        setcategory(result.object.category)
         if (result.object.audio.length > 0) {
           setIsAudioAvailAble(true);
         }
@@ -61,6 +63,7 @@ export default function PostDetails(context) {
                     content={data.content}
                     title={data.title}
                     writer={data.writer}
+                    catagory={catagory}
                   />
                   <RatingComponent setRating={setRating} rating={rating} post_id={data._id} />
                 </div>
