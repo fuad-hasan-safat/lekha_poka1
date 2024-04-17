@@ -68,7 +68,7 @@ const page = () => {
 
     const saveData = async () => {
         const formData = new FormData();
-        formData.append('image', imageFile);
+        formData.append('file', imageFile);
         formData.append('title', title);
         formData.append('caption', caption);
         formData.append('content', content);

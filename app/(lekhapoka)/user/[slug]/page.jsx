@@ -289,13 +289,13 @@ export default function Home(context) {
                   alt="banner"
                 />
               </div>
-              <div className="grid place-content-center items-center -mt-[110px]">
-                <div className="">
+              <div className="grid place-content-center items-center text-center -mt-[110px]">
+                <div className="table m-auto">
                   <img
-                    className="w-[264px] h-[264px] rounded-full border-solid border-3 border-white "
+                    className="w-[264px] h-[264px] rounded-full border-solid border-3 border-white  "
                     src={image.length > 0 ? `${apiBasePath}/${image}` : '/images/defaultUserPic/profile.jpg'} />
                 </div>
-                <div className="grid place-content-center space-y-4">
+                <div className="grid place-content-center  text-center space-y-4">
                   <h1 className="text-[#FCD200] text-[35px]  items-center">
                     {username}
                   </h1>
@@ -306,7 +306,8 @@ export default function Home(context) {
                     {profileStatus}
                   </h1>
                 </div>
-                <div className="flex flex-row text-[#484848] text-[28px] divide-x-2 space-x-3 pt-4">
+                <div className="flex flex-row text-[#484848] text-[28px] justify-items-center  m-auto divide-x-2 space-x-3 pt-4">
+                 
                   <div className="">
                     <h1>{post}</h1>
                     <h1>পোস্ট</h1>
