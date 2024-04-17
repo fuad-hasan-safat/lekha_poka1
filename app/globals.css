@@ -352,14 +352,30 @@ background-color: #f8e405;
 }
 
 .search_icon {
-    background-color: rgb(227, 227, 227);
-    padding: 10px 10px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    
+  background-color: rgb(227, 227, 227);
+  padding: 10px 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.5s !important;
+  -ms-transition: all 0.5s !important;
+  -webkit-transition: all 0.5s !important;
 }
+.search__bar{
+transition: all 0.5s !important;
+-ms-transition: all 0.5s !important;
+-webkit-transition: all 0.5s !important;
+position: relative;
+}
+/* .search__bar input{
+transform: scale3d(1,0,1);
+-ms-transform: scale3d(1,0,1);
+-webkit-transform: scale3d(1,0,1);
+transition: all 0.5s !important;
+-ms-transition: all 0.5s !important;
+-webkit-transition: all 0.5s !important;
+} */
 
 /*
 -------------------
@@ -466,4 +482,67 @@ background-color: #f8e405;
   font-size: 40px;
   line-height: 1;
   color: #fcab36;
+}
+
+.admin__upload__wrap{
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+.admin__input label{
+  display: inline-block;
+  vertical-align: baseline;
+  font-size: 16px;
+  line-height: 1;
+  color: #000;
+  margin-bottom: 10px;
+}
+.admin__input{
+  margin-bottom: 15px;
+}
+.admin__input textarea,
+.admin__input input {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  line-height: 1;
+  color: #000;
+  border: 1px solid#ddd;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+.admin__input textarea{
+  height: 150px;
+}
+.admin__input select{
+  width: 100%;
+  height: 40px;
+  border: 1px solid#ddd;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+.admin__submit button{
+  font-size: 16px;
+  line-height: 1;
+  color: #fff;
+  background: #fcab36;
+  width: 200px;
+  padding: 15px 20px;
+  border-radius: 5px;
+}
+.admin__input textarea::-webkit-input-placeholder,
+.admin__input input::-webkit-input-placeholder { 
+  color: #000;
+}
+.admin__input textarea::-webkit-input-placeholder,
+.admin__input input::-moz-placeholder { 
+  color: #000;
+}
+.admin__input textarea::-webkit-input-placeholder,
+.admin__input input:-ms-input-placeholder {
+  color: #000;
+}
+.admin__input textarea::-webkit-input-placeholder,
+.admin__input input:-moz-placeholder { 
+  color: #000;
 }
