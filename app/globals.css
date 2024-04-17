@@ -488,7 +488,7 @@ transition: all 0.5s !important;
 
 /* react jodit */
 .joidcss p{
-color: black !important;
+  color: black !important;
 }
 
 .admin__upload__wrap{
