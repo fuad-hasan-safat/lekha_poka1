@@ -25,9 +25,25 @@ export default function LoginForm({ logreg, btntext }: logreg) {
   const [status, setStatus] = useState("");
   const [username, setUsername] = useState("");
   const [userUuid, setUserUuid] = useState("");
+  const [error, setError] = useState<string | null>(null); 
+  const [numberPrefix, setNumberPrefix] = useState('88');
+
 
   const handleNumberhange = (e: ChangeEvent<HTMLInputElement>) => {
-    setnumber(e.target.value);
+     // Allow only numbers and backspace key
+     const newValue = e.target.value.replace(/[^0-9\b]/g, "");
+     // Enforce maximum length of 11 digits
+     if (newValue.length > 11) {
+       setError("Phone number cannot exceed 11 digits.");
+       return;
+     }
+     // Enforce starting with "01"
+     if (newValue.length > 1 && newValue.slice(0, 2) !== "01") {
+       setError("Phone number must start with 01.");
+       return;
+     }
+     setnumber(newValue);
+     setError(null); // Clear error if valid input
   };
 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +58,7 @@ export default function LoginForm({ logreg, btntext }: logreg) {
       const response = await axios.post(
         `${apiBasePath}/login`,
         {
-          phone: number,
+          phone: numberPrefix+number,
           password: password,
         },
         {
@@ -108,9 +124,10 @@ export default function LoginForm({ logreg, btntext }: logreg) {
               className="w-[559px] h-[62px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="phone"
               type="number"
-              placeholder="Enter Number"
+              placeholder="Enter Phone Number (01-XXXXXXXXX)"
               required
             />
+            {error && <p className="error text-red-500">{error}</p>}
           </div>
           <div className="">
             <input

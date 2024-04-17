@@ -20,9 +20,25 @@ export default function Login() {
   const [status, setStatus] = useState("");
   const [username, setUsername] = useState("");
   const [userUuid, setUserUuid] = useState("");
+  const [error, setError] = useState(null); 
+  const [numberPrefix, setNumberPrefix] = useState('88');
+
 
   const handleNumberhange = (e) => {
-    setnumber(e.target.value);
+    // Allow only numbers and backspace key
+    const newValue = e.target.value.replace(/[^0-9\b]/g, "");
+    // Enforce maximum length of 11 digits
+    if (newValue.length > 11) {
+      setError("Phone number cannot exceed 11 digits.");
+      return;
+    }
+    // Enforce starting with "01"
+    if (newValue.length > 1 && newValue.slice(0, 2) !== "01") {
+      setError("Phone number must start with 01.");
+      return;
+    }
+    setnumber(newValue);
+    setError(null); // Clear error if valid input
   };
 
   const handlePasswordChange = (e) => {
@@ -37,7 +53,7 @@ export default function Login() {
       const response = await axios.post(
         `${apiBasePath}/login`,
         {
-          phone: number,
+          phone: numberPrefix+number,
           password: password,
         },
         {
@@ -49,7 +65,7 @@ export default function Login() {
 
 
 
-      if (response.status === 200) {
+      if (response.status === 'success' || 200) {
         const data = await response.data;
         console.log(data);
         setStatus(data.status);
@@ -63,12 +79,12 @@ export default function Login() {
         setnumber("");
         setPassword("");
       } else {
-        console.log("error res--------------------", response.message);
-        alert(response.message);
+        console.log("error res--------------------", response);
+        alert(response.data.message);
       }
     } catch (error) {
       console.log("inside catch ----------------", error);
-      alert(error);
+      alert('Invalid Password');
     }
   }
 
@@ -116,11 +132,12 @@ export default function Login() {
                 className="border rounded-lg w-full h-[43px] text-[14px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="phonenumber"
                 type="number"
-                placeholder="মোবাইল নাম্বার দিন"
+                placeholder="মোবাইল নাম্বার দিন ০১-xxxxxxxxx"
                 required
                 onChange={handleNumberhange}
                 value={number}
               />
+              {error && <p className="error text-red-500">{error}</p>}
             </div>
             <div className="">
               <input

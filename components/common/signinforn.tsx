@@ -39,6 +39,7 @@ export default function SigninForm({ logreg, btntext }: logreg) {
             ...prevState,
             [name]: value,
         }));
+
     };
 
     // validate phone number 
@@ -48,6 +49,7 @@ export default function SigninForm({ logreg, btntext }: logreg) {
     };
 
     const validate = () => {
+        console.log(`--------------->>>>>>SSSS ${numberPrefix}${state.password}`)
         let isValid = true;
         setState((prevState) => ({ ...prevState, error: null, phoneError: null }));
 
@@ -79,19 +81,20 @@ export default function SigninForm({ logreg, btntext }: logreg) {
         validate(); // Perform validation before submitting
 
         if (!state.isDisabled) {
+
             try {
                 const response = await axios.post(`${apiBasePath}/register`, {
                     name: state.fullName,
-                    phone: state.mobileNumber,
+                    phone: `${numberPrefix}${state.mobileNumber}`,
                     password: state.password,
                     usertype: "user",
                 });
                 // Handle successful signup response (e.g., redirect)
                 router.push(`/`)
-            } catch (error) {
+            } catch (error: any) {
                 console.error('Signup error:', error);
                 // Handle signup error (e.g., display error message)
-                alert(error);
+                alert(error.message);
             }
         }
     };
@@ -123,7 +126,7 @@ export default function SigninForm({ logreg, btntext }: logreg) {
                             id="phonenumber"
                             type="number"
                             name="mobileNumber"
-                            placeholder="Mobile Number"
+                            placeholder="Enter Phone Number (01-XXXXXXXXX)"
                             value={state.mobileNumber}
                             onChange={handleChange}
                             onBlur={validate}

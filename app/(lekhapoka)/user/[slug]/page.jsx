@@ -11,6 +11,8 @@ import Sidebar from "@/components/sidebar/Sidebar";
 import { fetchData } from "@/app/api/api";
 import { apiBasePath } from "@/utils/constant";
 import Link from "next/link";
+import { color } from "jodit/esm/plugins/color/color";
+import { placeholder } from "jodit/esm/plugins/placeholder/placeholder";
 
 export default function Home(context) {
   const { slug } = context.params;
@@ -26,8 +28,16 @@ export default function Home(context) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedWriter, setSelectedWriter] = useState(null);
 
+  // determine writer and writer id
+  const [writer, setWriter] = useState(localStorage.getItem("name"));
+  const [writerId, setWriterId] = useState(null);
+  const [isNewWriter, setIsNewWriter] = useState(false);
+
   const categoryhandleChange = (selected) => {
     setSelectedOption(selected); // Selected option object
+    setWriter(selected?.label)
+    setWriterId(selected?.value)
+
   };
 
   const writerhandleChange = (selected) => {
@@ -39,6 +49,7 @@ export default function Home(context) {
       ...provided,
       backgroundColor: "#fff",
       border: "1px solid #ccc",
+      color: "#000"
     }),
   };
 
@@ -58,9 +69,12 @@ export default function Home(context) {
   const [userToken, setUserToken] = useState("");
   const [userPost, setUserPost] = useState([]);
 
-  //  category fetch
+  //  category and writer fetch
   const [category, setCategory] = useState([]);
   const [writers, setWriters] = useState([]);
+
+
+
   // summary
   const [summary, setSummary] = useState('')
 
@@ -132,7 +146,8 @@ export default function Home(context) {
           userPost
         );
       } catch (error) {
-        alert("Error fetching user post");
+        //alert("Error fetching user post");
+        console.log("Error fetching user post")
       }
     }
 
@@ -180,48 +195,83 @@ export default function Home(context) {
     setSelectedFile(event.target.files[0]);
   };
 
+  // jodit editor config
+  const joditconfig = {
+    // Other configurations...
+    placeholder: 'লিখুন',
+    color: 'black'
+    
+  };
+
+
+
   const handleSubmit = async () => {
-    const formData = new FormData();
-    formData.append("file", selectedFile);
-    formData.append("category", selectedOption?.label);
-    formData.append("cat_id", selectedOption?.value);
-    formData.append("writer", selectedOption?.label);
-    formData.append("writer_id", selectedOption?.value);
-    formData.append("title", title);
-    formData.append("summary", summary);
-    formData.append("content", content);
-    formData.append("rating", 1);
-    formData.append("status", false);
-    formData.append("uploaded_by", userUuid);
-
-    try {
-      const response = await fetch(`${apiBasePath}/posts`, {
-        method: "POST",
-        headers: {
-
-        },
-        body: formData,
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log("sucessfully sent:", data);
-        alert("Send Data Sucessfully");
-
-        setSelectedFile(null);
-        setTitle('');
-        setCategory('');
-        setWriters('');
-        setContent('');
-        setSummary('');
-      } else {
-        console.error("Failed to update profile:", response.statusText);
-        alert(response.statusText);
-      }
-    } catch (error) {
-      console.error("Error updating profile:", error);
-      alert(error);
+    if (!writerId) {
+      setIsNewWriter(true)
     }
+
+
+    if (!title) {
+      alert('দয়া করে আপনার লেখার শিরোনাম')
+    }
+    else if (!selectedOption) {
+      alert('দয়া করে আপনার লেখার ধরণ নির্বাচন করুন')
+    }
+    else if (!summary) {
+      alert('দয়া করে আপনার লেখার সারমর্ম লিখুন')
+    }
+    else {
+
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+      formData.append("category", selectedOption?.label);
+      formData.append("cat_id", selectedOption?.value);
+      formData.append("writer", writer);
+      formData.append("writer_id", writerId);
+      formData.append("title", title);
+      formData.append("summary", summary);
+      formData.append("content", content);
+      formData.append("rating", 1);
+      formData.append("status", false);
+      formData.append("uploaded_by", userUuid);
+      formData.append("new_writer", isNewWriter);
+
+      if (title && selectedOption && summary) {
+
+        try {
+          const response = await fetch(`${apiBasePath}/posts`, {
+            method: "POST",
+            headers: {
+
+            },
+            body: formData,
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            console.log("sucessfully sent:", data);
+            alert("Send Data Sucessfully");
+
+            setSelectedFile(null);
+            setTitle('');
+            setCategory('');
+            setWriters('');
+            setContent('');
+            setSummary('');
+          } else {
+            console.error("Failed to update profile:", response.statusText);
+            alert(response.statusText);
+          }
+        } catch (error) {
+          console.error("Error updating profile:", error);
+          alert(error);
+        }
+      } else {
+        alert('শিরোনাম, লেখার ধরণ ও সারসংক্ষেপ লিখুন')
+      }
+    }
+
+
   };
 
   if (isLoading) {
@@ -286,19 +336,19 @@ export default function Home(context) {
                           className="w-full h-[62px] p-4 bg-[#FCF7E8] border-solid border-slate-800 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                           id="title"
                           type="text"
-                          placeholder="Post Title"
+                          placeholder="শিরোনাম"
                           required
                         />
-                         <textarea
+                        <textarea
                           onChange={handleSummary}
                           value={summary}
                           className="w-full h-[200px] p-4 bg-[#FCF7E8] border-solid border-slate-800 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                           id="summary"
                           type="textarea"
-                          placeholder="Summary"
+                          placeholder="সারসংক্ষেপ"
                           required
                         />
-
+                        <div className="text-gray-800">লেখক নির্বাচন করুন(যদি আপনার নিজে লেখক না হয়ে থাকেন)</div>
                         <Select
                           value={selectedOption}
                           onChange={categoryhandleChange}
@@ -306,23 +356,31 @@ export default function Home(context) {
                           options={Categoryoptions}
                         />
 
+                        <div className="text-gray-800">আপনার লেখার ধরণ নির্বাচন করুন</div>
                         <Select
                           value={selectedWriter}
                           onChange={writerhandleChange}
                           styles={customStyles}
                           options={writersOptions}
                         />
-                        <JoditEditor
+
+                        <div className="text-gray-800">আপনার লেখা নিচে লিখুন</div>
+                      <div className="joidcss">
+
+                      <JoditEditor
                           ref={editor}
                           value={content}
-                          config={false}
+                          config={joditconfig}
                           //tabIndex={1} // tabIndex of textarea
                           onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                           onChange={(newContent) => {
                             console.log(content);
                           }}
                         />
-                        <div>
+
+                      </div>
+                       
+                        <div className="text-gray-800">
                           <input type="file" accept="audio/*" onChange={handleFileChange} />
                           {selectedFile ? (
                             <p>Selected file: {selectedFile.name}</p>
@@ -385,11 +443,11 @@ export default function Home(context) {
           </div>
         )}
         {!status && (
-          <div>
+          <div className="text-gray-800">
             <div>
-              You Are Not logged In,
+              আপনি লগ ইন করেননি,
             </div>
-            <Link href='/'> Go to home Page</Link>
+            <Link href='/'> প্রচ্ছদ পৃষ্ঠায় যান</Link>
           </div>
         )}
       </>
