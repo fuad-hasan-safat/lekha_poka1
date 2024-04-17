@@ -64,13 +64,15 @@ export default function PostDetails(context) {
   return (
     <>
       <section className="all__post__sec__wrap">
-        <div>
+        <div className="relative">
           <Image
-            src={"/images/pages-banner-svg/basebanner.svg"}
+            src={"/images/pages-banner-svg/baseBanner.png"}
             height={380}
             width={1920}
             alt={"kobita banner"}
           />
+          <h2 className=" absolute top-[50%] left-[50%] text-[40px] text-[#F9A106] -translate-x-[50%] -translate-y-[50%]">{data.category}</h2>
+          
         </div>
 
         <div className="container">
