@@ -9,7 +9,7 @@ export default function Sidebar() {
     return (
         <div>
             <div className="bg-white rounded  pt-12">
-                <div className=" shadow-md px-10 mp-[40]">
+                <div className=" shadow-md px-10 mb-[40px]">
                 
                                 <div className="">
                                     <Login />

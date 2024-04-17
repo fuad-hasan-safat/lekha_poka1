@@ -1,5 +1,6 @@
 'use client'
 
+import { apiBasePath } from '@/utils/constant'
 import React, { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 
@@ -15,7 +16,7 @@ export default function RatingComponent({ post_id, setRating, rating }) {
     const data = {
       rating: rating,
     }
-    const response = await fetch(`http://192.168.88.248:3002/rating/${id}`, {
+    const response = await fetch(`${apiBasePath}/rating/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -40,7 +41,8 @@ export default function RatingComponent({ post_id, setRating, rating }) {
   };
 
   return (
-    <div className='start__rating flex-col grid place-content-center pt-[20px] float-left'>
+    <div className='start__rating flex-col grid place-content-center pt-[20px] pb-[20px] mx-[40px] rounded-xl float-left text-center border-2 border-gray-400'>
+      ekhane rating korun
       <Rating 
         style={{ float: 'left',textAlign:'center'}}
         onClick={handleRating}
