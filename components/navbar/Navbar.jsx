@@ -161,7 +161,7 @@ const MyNavbar = () => {
                   >
                     <Link href="/contacts">যোগাযোগ</Link>
                   </li>
-                  {/* <li
+                  <li
                     onClick={() => setSelectedNav("amader_somporke")}
                     className={` w-[130px] ${
                       selectedNav === "amader_somporke"
@@ -170,7 +170,7 @@ const MyNavbar = () => {
                     }`}
                   >
                     <Link href="/aboutus">আমাদের সম্পর্কে</Link>
-                  </li> */}
+                  </li>
                 </ul>
                 <div className="search__bar relative flex flex-row place-content-center">
                     <Image

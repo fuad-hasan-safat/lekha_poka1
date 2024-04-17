@@ -24,13 +24,20 @@ export default function PostDetails(context) {
 
   const [rating, setRating] = useState(0);
 
+
+  const golpoBanner = '/images/pages-banner-svg/golpo.svg'
+  const kobitaBanner = '/images/pages-banner-svg/kobita.svg'
+  const probondhoBanner = '/images/pages-banner-svg/golpo.svg'
+  const onugolpoBanner = '/images/pages-banner-svg/golpo.svg'
+  const jiboniBanner = '/images/pages-banner-svg/golpo.svg'
+
   useEffect(() => {
     // console.log(
     //   "<<<<<<<<<<<<<<<<<<<<<<-------------------------in side use effect----------------------->>>>>>>>>>>>>>>>"
     // );
 
     async function fetchDataAsync() {
-      
+
       try {
         const result = await fetchData(
           `${apiBasePath}/getpost/${slug}`
@@ -43,7 +50,7 @@ export default function PostDetails(context) {
         }
       } catch (error) {
         console.log(error);
-      }finally{
+      } finally {
         //setcategory(kobita)
       }
     }
@@ -53,9 +60,18 @@ export default function PostDetails(context) {
 
   //console.log("----DDDDDDDDD AAAAAAAAA TTTTTTTT AAAAAAAAAAA-------", data);
 
+
   return (
     <>
       <section className="all__post__sec__wrap">
+        <div>
+          <Image
+            src={"/images/pages-banner-svg/basebanner.svg"}
+            height={380}
+            width={1920}
+            alt={"kobita banner"}
+          />
+        </div>
 
         <div className="container">
           <div className="row">

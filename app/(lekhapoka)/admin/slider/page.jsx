@@ -2,6 +2,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import Classes from '../slider/slider.module.css';
+import { apiBasePath } from '@/utils/constant';
 
 const page = () => {
 
@@ -14,6 +15,16 @@ const page = () => {
     const [related, setRelated] = useState('');
     const [optionList, setOptionList] = useState([])
 
+
+    const customStyles = {
+        menu: (provided) => ({
+          ...provided,
+          backgroundColor: "#fff",
+          border: "1px solid #ccc",
+          color: "#000"
+        }),
+      };
+
     const handleProfileUpdate = async (e) => {
         e.preventDefault();
 
@@ -24,7 +35,7 @@ const page = () => {
 
         const token = JSON.parse(localStorage.getItem('token'));
         try {
-            const response = await fetch('http://192.168.88.248:3002/sliders', {
+            const response = await fetch(`${apiBasePath}/sliders`, {
                 method: 'PUT',
                 headers: {
                     'x-access-token': token,
@@ -46,7 +57,7 @@ const page = () => {
     };
 
     useEffect(() => {
-        fetch("http://192.168.88.248:3002/posts")
+        fetch(`${apiBasePath}/posts`)
             .then((res) => res.json())
             .then(data => setOptionList(data))
     }, [])
@@ -66,7 +77,7 @@ const page = () => {
         console.log(formData)
 
         try {
-            const response = await fetch('http://192.168.88.248:3002/sliders', {
+            const response = await fetch(`${apiBasePath}/sliders`, {
                 method: 'POST',
                 body: formData
             });
@@ -143,8 +154,10 @@ const page = () => {
                                         <label>Caption</label>
                                         <textarea type='text' value={caption} onChange={(e) => setCaption(e.target.value)} placeholder='Caption'/>
                                     </div>
-                                    <div className='admin__input'>
-                                        <select name="optons" id="options" onChange={(e) => setRelated(e.target.value)}>
+                                    <div className='admin__input text-black'>
+                                        <select 
+                                        name="optons" id="options" 
+                                        onChange={(e) => setRelated(e.target.value)} >
                                             {options}
                                         </select>
                                     </div>
