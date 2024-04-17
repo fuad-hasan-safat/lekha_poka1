@@ -15,7 +15,7 @@ const SobProbondhoBody= ({
 
 
   function handleClick(probondhoId) {
-    router.push(`/probondho/${probondhoId}`);
+    router.push(`/${probondhoId}`);
   }
   return (
     <>

@@ -5,6 +5,7 @@ import { sobKobitaPosts } from "@/public/demo-data/data";
 import SobKobitaBody from "./sobProbondhoBody";
 import axios from "axios";
 import Loading from "../common/loading";
+import { apiBasePath } from "@/utils/constant";
 
 export default function SobProbondhoLeftContent() {
 
@@ -25,7 +26,7 @@ export default function SobProbondhoLeftContent() {
 
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("http://192.168.88.248:3002/posts/প্রবন্ধ"); // Use Axios
+        const response = await axios.get(`${apiBasePath}/posts/প্রবন্ধ`); // Use Axios
         const data = response.data; // Assuming the response structure
         setPostList(data.object);
 

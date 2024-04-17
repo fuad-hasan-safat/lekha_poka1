@@ -11,7 +11,7 @@ const SobGolpoBody = ({id, title, writer, content}) => {
 
 
   function handleClick(golpoId) {
-    router.push(`/golpo/${golpoId}`);
+    router.push(`/${golpoId}`);
   }
   return (
     <>

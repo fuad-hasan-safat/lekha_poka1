@@ -103,7 +103,7 @@ export default function SobJiboniLeftContent() {
                   পূর্ববর্তী পৃষ্ঠা 
                 </button>
                 <span
-                  className="text-sm "
+                  className="text-sm text-gray-700"
                 >পৃষ্ঠা {currentPage} এর {totalPages}</span>
                 <button
                   className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"

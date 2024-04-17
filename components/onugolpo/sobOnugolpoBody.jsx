@@ -16,7 +16,7 @@ const SobOnugolpoBody = ({
 
 
   function handleClick(onugolpoId) {
-    router.push(`/onugolpo/${onugolpoId}`);
+    router.push(`/${onugolpoId}`);
   }
   return (
     <>

@@ -5,6 +5,7 @@ import { sobKobitaPosts } from "@/public/demo-data/data";
 import axios from "axios";
 import Loading from "../common/loading";
 import SobOnugolpoBody from "./sobOnugolpoBody";
+import { apiBasePath } from "@/utils/constant";
 
 export default function SobOnugolpoLeftContent() {
 
@@ -24,7 +25,7 @@ export default function SobOnugolpoLeftContent() {
 
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("http://192.168.88.248:3002/posts/প্রবন্ধ"); // Use Axios
+        const response = await axios.get(`${apiBasePath}/posts/অনুগল্প`); // Use Axios
         const data = response.data; // Assuming the response structure
         setPostList(data.object);
 
@@ -107,7 +108,7 @@ export default function SobOnugolpoLeftContent() {
                   পূর্ববর্তী পৃষ্ঠা 
                 </button>
                 <span
-                  className="text-sm "
+                  className="text-sm text-gray-700"
                 >পৃষ্ঠা {currentPage} এর {totalPages}</span>
                 <button
                   className="text-[16px] bg-orange-400 px-2 text-white rounded-2xl h-[40px]"

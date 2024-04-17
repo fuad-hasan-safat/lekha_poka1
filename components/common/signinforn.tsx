@@ -16,6 +16,7 @@ interface SignupState {
     password: string;
     retypePassword: string;
     error: string | null;
+    phoneError: string | null;
     isDisabled: boolean;
 }
 export default function SigninForm({ logreg, btntext }: logreg) {
@@ -26,8 +27,11 @@ export default function SigninForm({ logreg, btntext }: logreg) {
         password: '',
         retypePassword: '',
         error: null,
+        phoneError: null,
         isDisabled: true, // Button initially disabled
     });
+
+    const [numberPrefix, setNumberPrefix] = useState('88');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -37,15 +41,21 @@ export default function SigninForm({ logreg, btntext }: logreg) {
         }));
     };
 
+    // validate phone number 
+    const validateMobileNumber = (mobileNumber: string) => {
+        const regex = /^01\d{9}$/; // Regex to match '01' followed by 9 digits
+        return regex.test(mobileNumber);
+    };
+
     const validate = () => {
         let isValid = true;
-        setState((prevState) => ({ ...prevState, error: null }));
+        setState((prevState) => ({ ...prevState, error: null, phoneError: null }));
 
         if (!state.mobileNumber) {
-            setState((prevState) => ({ ...prevState, error: 'Mobile number is required.' }));
+            setState((prevState) => ({ ...prevState, phoneError: 'Mobile number is required.' }));
             isValid = false;
-        } else if (state.mobileNumber.startsWith('0')) {
-            setState((prevState) => ({ ...prevState, error: 'Mobile number cannot start with zero.' }));
+        } else if (!validateMobileNumber(state.mobileNumber)) {
+            setState((prevState) => ({ ...prevState, phoneError: 'Mobile number must start with 01 and be 11 digits long.' }));
             isValid = false;
         }
 
@@ -74,7 +84,7 @@ export default function SigninForm({ logreg, btntext }: logreg) {
                     name: state.fullName,
                     phone: state.mobileNumber,
                     password: state.password,
-                    usertype:"user",
+                    usertype: "user",
                 });
                 // Handle successful signup response (e.g., redirect)
                 router.push(`/`)
@@ -120,7 +130,7 @@ export default function SigninForm({ logreg, btntext }: logreg) {
                             className="w-[559px] h-[62px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
-                        {state.error && state.mobileNumber.startsWith('0') && <p className="error">Mobile number cannot start with zero.</p>}
+                       {state.phoneError && state.mobileNumber && <p className="error text-red-500">{state.phoneError}</p>}
                     </div>
                     <div className="mb-5">
 
