@@ -112,12 +112,10 @@ const MyNavbar = () => {
                   />
                 </Link>
               </div>
-              <div
-                className={` space-x-3 text-black text-[18px]  place-content-center `}
-              >
+              <div className={`flex justify-between items-center space-x-3 text-black text-[18px] pt-1  place-content-center `}>
                 {/* Buttons */}
                 <ul
-                  className={`flex flex-row space-x-6  kangsa-font transition-all ease-in-out duration-1000 "
+                  className={`flex flex-row space-x-6  kangsa-font transition-all ease-in-out duration-2000"
                     }`}
                 >
                   <li
@@ -163,7 +161,7 @@ const MyNavbar = () => {
                   >
                     <Link href="/contacts">যোগাযোগ</Link>
                   </li>
-                  <li
+                  {/* <li
                     onClick={() => setSelectedNav("amader_somporke")}
                     className={` w-[130px] ${
                       selectedNav === "amader_somporke"
@@ -172,8 +170,9 @@ const MyNavbar = () => {
                     }`}
                   >
                     <Link href="/aboutus">আমাদের সম্পর্কে</Link>
-                  </li>
-                  <li className="relative flex flex-row place-content-center ">
+                  </li> */}
+                </ul>
+                <div className="search__bar relative flex flex-row place-content-center">
                     <Image
                       src="/images/svgs/search.svg"
                       height={50}
@@ -194,16 +193,6 @@ const MyNavbar = () => {
                         onKeyDown={handleKeyDown}
                       />
                     )}
-                    {/* {isSearchActive && (
-                      <div className={`search_icon`}>
-                        {search === "" ? (
-                          <SearchIcon />
-                        ) : (
-                          <CloseIcon onClick={handleClose} />
-                        )}
-                      </div>
-                    )} */}
-
                     <div
                       className={`search_result ${
                         isSearchActive ? "visible" : "hidden"
@@ -246,8 +235,7 @@ const MyNavbar = () => {
                         onClick={() => setIsSearchActive(false)}
                       />
                     )}
-                  </li>
-                </ul>
+                  </div>
               </div>
             </div>
           </div>
