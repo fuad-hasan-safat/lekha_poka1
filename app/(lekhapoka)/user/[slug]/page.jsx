@@ -292,7 +292,7 @@ export default function Home(context) {
               <div className="grid place-content-center items-center text-center -mt-[110px]">
                 <div className="table m-auto">
                   <img
-                    className="w-[264px] h-[264px] rounded-full border-solid border-3 border-white  "
+                    className="w-[264px] h-[264px] rounded-full  border-4 border-solid border-white  "
                     src={image.length > 0 ? `${apiBasePath}/${image}` : '/images/defaultUserPic/profile.jpg'} />
                 </div>
                 <div className="grid place-content-center  text-center space-y-4">
