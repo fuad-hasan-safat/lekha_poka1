@@ -73,7 +73,7 @@ export default function PostDetails(context) {
           <div className="row">
             <div className="col-md-12">
               <div className="flex flex-row">
-                <div className="flex flex-col w-[70%]">
+                { data.length>0 ? <div className="flex flex-col w-[70%]">
                   <FullPost
                     content={data.content}
                     title={data.title}
@@ -81,7 +81,12 @@ export default function PostDetails(context) {
                     catagory={data.category}
                   />
                   <RatingComponent setRating={setRating} rating={rating} post_id={data._id} />
+                </div> :
+                <div className="w-[70%]">
+                    <h2 className="text-2xl text-yellow-600 pt-[20px]">লেখাটি পাওয়া যায় নি, দুঃখিত অসুবিধার জন্য</h2>
                 </div>
+                
+                }
 
                 <div className="w-sidebarwidth">
                   <Sidebar />
