@@ -17,21 +17,7 @@ const MaincontentBody = ({
   // const [html, setHTML] = useState({ __html: content });
 
 
-  function handleClick(postId, title) {
-    let path = '';
-    if (title === 'কবিতা') {
-      path = 'kobita'
-    } else if (title === 'প্রবন্ধ') {
-      path = 'kobita'
-    } else if (title === 'গল্প') {
-      path = 'kobita'
-    } else if (title === '') {
-      path = 'kobita'
-    } else if (title === 'কবিতা') {
-      path = 'kobita'
-    } else if (title === 'কবিতা') {
-      path = 'kobita'
-    }
+  function handleClick(postId) {
     router.push(`/${postId}`);
   }
   return (
@@ -52,7 +38,7 @@ const MaincontentBody = ({
           </div>
           <div className="text-center">
             <button
-              onClick={() => handleClick(id, buttons.title)}
+              onClick={() => handleClick(id)}
               className="text-yellow-500 text-xs"
             >
               <Image

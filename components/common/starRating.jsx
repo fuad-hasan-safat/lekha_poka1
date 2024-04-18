@@ -1,10 +1,25 @@
 'use client'
 
 import { apiBasePath } from '@/utils/constant'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 
+
 export default function RatingComponent({ post_id, setRating, rating }) {
+
+  const [status, setStatus] = useState("");
+  const [username, setUsername] = useState("");
+  const [userUuid, setUserUuid] = useState("");
+  const [userToken, setUserToken] = useState("");
+
+
+  // check if user is logged in
+  useEffect(() => {
+    setStatus(localStorage.getItem("status") || "");
+    setUsername(localStorage.getItem("name") || "");
+    setUserToken(localStorage.getItem("token") || "");
+    setUserUuid(localStorage.getItem("uuid") || "");
+  }, []);
 
   // Catch Rating value
   const handleRating = (rate) => {
@@ -13,22 +28,30 @@ export default function RatingComponent({ post_id, setRating, rating }) {
     // other logic
   }
   async function submitRating(id) {
-    const data = {
-      rating: rating,
-    }
-    const response = await fetch(`${apiBasePath}/rating/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
 
-    if (!response.ok) {
-      throw new Error(`Error updating data: ${response.statusText}`);
+
+    if(userUuid.length>0){
+      const data = {
+        rating: rating,
+      }
+      const response = await fetch(`${apiBasePath}/rating/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Error updating data: ${response.statusText}`);
+      } else {
+        alert('Rating Sucessfully update');
+      }
+
     }else{
-      alert('Rating Sucessfully update');
+      alert('Looged In first')
     }
+    
   }
   // Optinal callback functions
   const onPointerEnter = () => console.log('Enter')
@@ -37,14 +60,14 @@ export default function RatingComponent({ post_id, setRating, rating }) {
 
   const ratingStyle = {
     float: 'left',
-    fontSize:'14px'
+    fontSize: '14px'
   };
 
   return (
-    <div className='start__rating flex-col grid place-content-center pt-[20px] pb-[20px] mx-[40px] rounded-xl float-left text-center border-2 border-gray-400'>
-      ekhane rating korun
-      <Rating 
-        style={{ float: 'left',textAlign:'center'}}
+    <div className='start__rating flex-col grid place-content-center pt-[20px] pb-[20px] mx-[40px] rounded-xl float-left text-center border-2 text-black border-gray-400'>
+     কবিতাটিতে রেটিং দিন । 
+      <Rating
+        style={{ float: 'left', textAlign: 'center' }}
         onClick={handleRating}
         onPointerEnter={onPointerEnter}
         onPointerLeave={onPointerLeave}

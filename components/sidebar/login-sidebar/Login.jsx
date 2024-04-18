@@ -47,13 +47,13 @@ export default function Login() {
 
 
   async function submitLogin() {
-    console.log("Calling submitLogin");
-    console.log({ number, password, apiBasePath });
+    console.log("Calling submitLogin><><><<<<<<<<<>>>>>>>>>>>>>>>>>");
+    console.log(`${numberPrefix}${number}`);
     try {
       const response = await axios.post(
         `${apiBasePath}/login`,
         {
-          phone: numberPrefix+number,
+          phone: `${numberPrefix}${number}`,
           password: password,
         },
         {
@@ -75,6 +75,9 @@ export default function Login() {
         localStorage.setItem("name", data.name);
         localStorage.setItem("uuid", data.uuid);
         localStorage.setItem("phone", data.phone);
+        localStorage.setItem("token", data.access_token);
+        localStorage.setItem("usertype", data.usertype);
+
 
         setnumber("");
         setPassword("");

@@ -25,12 +25,6 @@ export default function PostDetails(context) {
   const [rating, setRating] = useState(0);
 
 
-  const golpoBanner = '/images/pages-banner-svg/golpo.svg'
-  const kobitaBanner = '/images/pages-banner-svg/kobita.svg'
-  const probondhoBanner = '/images/pages-banner-svg/golpo.svg'
-  const onugolpoBanner = '/images/pages-banner-svg/golpo.svg'
-  const jiboniBanner = '/images/pages-banner-svg/golpo.svg'
-
   useEffect(() => {
     // console.log(
     //   "<<<<<<<<<<<<<<<<<<<<<<-------------------------in side use effect----------------------->>>>>>>>>>>>>>>>"

@@ -25,6 +25,7 @@ export default function LoginForm({ logreg, btntext }: logreg) {
   const [status, setStatus] = useState("");
   const [username, setUsername] = useState("");
   const [userUuid, setUserUuid] = useState("");
+  const [userType, setUserType] = useState("");
   const [error, setError] = useState<string | null>(null); 
   const [numberPrefix, setNumberPrefix] = useState('88');
 
@@ -52,13 +53,13 @@ export default function LoginForm({ logreg, btntext }: logreg) {
 
   async function submitLogin() {
 
-    console.log("Calling submitLogin");
-    console.log({ number, password, apiBasePath });
+    console.log("Calling submitLogin---------------->>>>>>");
+    console.log(`${numberPrefix}${number}`);
     try {
       const response = await axios.post(
         `${apiBasePath}/login`,
         {
-          phone: numberPrefix+number,
+          phone: `${numberPrefix}${number}`,
           password: password,
         },
         {
@@ -80,8 +81,9 @@ export default function LoginForm({ logreg, btntext }: logreg) {
         localStorage.setItem("status", data.status);
         localStorage.setItem("name", data.name);
         localStorage.setItem("uuid", data.uuid);
-        localStorage.setItem("token", data.token);
         localStorage.setItem("phone", data.phone);
+        localStorage.setItem("token", data.access_token);
+        localStorage.setItem("usertype", data.usertype);
         //localStorage.setItem('user', data);
 
 
