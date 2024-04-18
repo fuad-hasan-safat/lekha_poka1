@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Classes from './profile.module.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -24,6 +24,12 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
     const [highlight, setHighlight] = useState(false);
     const [imageFile, setImageFile] = useState(null);
     const [preview, setPreview] = useState(null);
+    // get saved info
+    const [status, setStatus] = useState("");
+    const [username, setUsername] = useState("");
+    const [userUuid, setUserUuid] = useState("");
+    const [userToken, setUserToken] = useState("");
+    const [number, setnumber] = useState("");
 
 
     const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +37,21 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
     const toggleModal = () => {
         setIsOpen(!isOpen);
     };
+
+
+
+    // get profile data 
+
+    useEffect(() => {
+
+    setUsername(localStorage.getItem("name") || "");
+    setUserToken(localStorage.getItem("token") || "");
+    setUserUuid(localStorage.getItem("uuid") || "");
+    setnumber(localStorage.getItem("phone") || "");
+      
+    }, [])
+    
+    
 
     const handleProfileUpdate = async (e) => {
         e.preventDefault();
@@ -45,12 +66,12 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
         formData.append('dob', formattedDate);
         formData.append('address', address);
         formData.append('email', email);
-        formData.append('phone', phoneNumber);
+        formData.append('phone', number);
         formData.append('user_id', userID);
         // const token = JSON.parse(localStorage.getItem('token'));
         try {
             const response = await fetch(`${apiBasePath}/profile`, {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     // 'x-access-token': token,
                 },
@@ -175,10 +196,10 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
                                         <label>Address</label>
                                         <input type='text' value={address} onChange={(e) => setAddress(e.target.value)} placeholder='Address' />
                                     </div>
-                                    <div className='profile__input'>
+                                    {/* <div className='profile__input'>
                                         <label>Phone Number</label>
                                         <input type='text' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} placeholder='Phone Number' />
-                                    </div>
+                                    </div> */}
                                     <div className='profile__input'>
                                         <label>Email</label>
                                         <input type='text' value={email} onChange={(e) => setemail(e.target.value)} placeholder='Enter Email' />

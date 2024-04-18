@@ -16,6 +16,7 @@ const RecoveryPage = () => {
     const [number, setnumber] = useState("");
     const [isSend, setIsSend] = useState(false);
     const [isValidUser, setIsValidUser] = useState(false);
+    const [numberPrefix, setNumberPrefix] = useState("88");
 
     const [state, setState] = useState({
         password: '',
@@ -68,7 +69,7 @@ const RecoveryPage = () => {
     async function fetchData() {
 
         const data = {
-            phone: number
+            phone: numberPrefix+number
           };
 
         console.log('recover password ---------------->>>>>>>>>>>>>>', number)
@@ -113,7 +114,7 @@ const RecoveryPage = () => {
         validate(); // Perform validation before submitting
 
         const data = {
-            phone: number,
+            phone: numberPrefix+number,
             password: state.password
           };
 

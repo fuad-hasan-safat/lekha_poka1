@@ -84,6 +84,7 @@ export default function LoginForm({ logreg, btntext }: logreg) {
         localStorage.setItem("phone", data.phone);
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("usertype", data.usertype);
+        localStorage.setItem("phone", data.phone);
         //localStorage.setItem('user', data);
 
 

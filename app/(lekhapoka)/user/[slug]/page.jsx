@@ -223,7 +223,7 @@ export default function Home(context) {
     else if (!summary) {
       alert('দয়া করে আপনার লেখার সারমর্ম লিখুন')
     } else if(!writer && !checkboxValue){
-      alert('দয়া করে লেখক নির্বাচন করুন')
+      alert('দয়া করে লেখক নির্বাচন করুন ')
     }
     else {
 

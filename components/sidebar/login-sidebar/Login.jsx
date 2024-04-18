@@ -77,6 +77,7 @@ export default function Login() {
         localStorage.setItem("phone", data.phone);
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("usertype", data.usertype);
+        localStorage.setItem("phone", data.phone);
 
 
         setnumber("");
