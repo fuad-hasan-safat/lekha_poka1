@@ -7,38 +7,7 @@ import Image from "next/image";
 import { apiBasePath } from "@/utils/constant";
 
 const Lekhok = () => {
-  const somosamoyekPosts = [
-    {
-      id: "xyz",
-      image: "/images/writerimage/Jibanananda_Das.jpg",
-      writer: "জীবনানন্দ দাস",
-      lifeCycle: "১৬ অক্টোবর ৫৬ - ২১ জুন ৯৯",
-    },
-    {
-      id: "xyz",
-      image: "/images/writerimage/RahmanShamsur.jpg",
-      writer: "শামসুর রাহমান",
-      lifeCycle: "১৬ অক্টোবর ৫৬ - ২১ জুন ৯৯",
-    },
-    {
-      id: "xyz",
-      image: "/images/writerimage/nazrul.jpg",
-      writer: "কাজী নজরুল ইসলাম",
-      lifeCycle: "২৪ মে ১৮৯৯ - ২৯ আগস্ট ১৯৭৬",
-    },
-    {
-      id: "xyz",
-      image: "/images/writerimage/robi.jpg",
-      writer: "রবীন্দ্রনাথ ঠাকুর",
-      lifeCycle: "১৬ অক্টোবর ৫৬ - ২১ জুন ৯৯",
-    },
-    {
-      id: "xyz",
-      image: "/images/writerimage/asaf.png",
-      writer: "আসাফ উদ্‌-দৌলা ",
-      lifeCycle: "১৬ অক্টোবর ৫৬ - ২১ জুন ৯৯",
-    },
-  ];
+  
 
   const [lekhokList, setLekhokList] = useState([]);
   const [error, setError] = useState(null);
@@ -67,7 +36,7 @@ const Lekhok = () => {
                 <div className="pb-3">
                   <LekhokDetails
                     key={index}
-                    image={`http://192.168.88.248:3002/${item.image}`}
+                    image={`${apiBasePath}/${item.image}`}
                     writer={item.name}
                     id={item._id}
                     lifeCycle={`${item.birth_date} - ${item.expiry_date}`}

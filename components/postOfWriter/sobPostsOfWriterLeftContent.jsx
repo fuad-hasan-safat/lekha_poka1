@@ -2,10 +2,12 @@
 import { useEffect, useState } from "react";
 import MainContentDivider from "../common/mainContentDivider";
 import { sobGolpoPosts } from "@/public/demo-data/data";
-import SobGolpoBody from "./sobGolpoBody";
+import SobPostsOfWriterBody from "./sobPostsOfWriterBody";
 import Loading from "../common/loading";
 import { apiBasePath } from "@/utils/constant";
-export default function SobGolpoLeftContent() {
+
+
+export default function SobPostsOfWriterLeftContent() {
 
   //   const [selectedId, setSelectedId] = useState("sob");
   const [postList, setPostList] = useState(sobGolpoPosts)
@@ -16,7 +18,7 @@ export default function SobGolpoLeftContent() {
   const [error, setError] = useState(null); // State to store any errors
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const postsPerPage = 5; // Number of posts to display per page
+  const postsPerPage = 4; // Number of posts to display per page
 
   useEffect(() => {
 
@@ -76,7 +78,7 @@ export default function SobGolpoLeftContent() {
                   displayedPosts.map((post, index) => (
                     <>
                       <div key={index}>
-                        <SobGolpoBody
+                        <SobPostsOfWriterBody
                           id={post._id}
                           title={post.title}
                           writer={post.writer}
@@ -122,7 +124,27 @@ export default function SobGolpoLeftContent() {
           )}
 
 
-
+          {/* {postList.length &&
+            postList.map((post, index) => (
+              <>
+                <div>
+                  <SobGolpoBody
+                    key={index}
+                    id={post._id}
+                    title={post.title}
+                    writer={post.writer}
+                    content={post.content.split('\n').slice(0, 8).join('\n')}
+                  />
+                </div>
+                <div>
+                  {index <= postList.length - 2 ? (
+                    <MainContentDivider />
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </>
+            ))} */}
         </div>
       </div>
     );

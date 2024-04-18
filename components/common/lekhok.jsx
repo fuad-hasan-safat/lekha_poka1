@@ -18,7 +18,7 @@ const LekhokDetails = ({
                    />
                 </div>
                 <div className="pl-4 text-[20px] text-gray-900">
-                    <a className=" " href="#">
+                    <a className=" " href={`/postswriter/${writer}`}>
                         {writer}
                     </a>
                     <h1 className="text-[16px] text-gray-600">{lifeCycle}</h1>
