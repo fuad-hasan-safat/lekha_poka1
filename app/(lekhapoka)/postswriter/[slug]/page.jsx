@@ -4,6 +4,7 @@ import SobPostsOfWriterBody from '@/components/postOfWriter/sobPostsOfWriterBody
 import Loading from '../../loading';
 import { apiBasePath } from '@/utils/constant';
 import Sidebar from '@/components/sidebar/Sidebar';
+import MainContentDivider from '@/components/common/mainContentDivider';
 
 
 export default function page(context) {
