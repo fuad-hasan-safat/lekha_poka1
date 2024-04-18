@@ -9,12 +9,12 @@ import SocialLink from "./SocialLink";
 const MyFooter = () => {
   const icon: string = "";
   return (
-    <div className={`bg-black pt-36`}>
+    <div className={`bg-black pt-[65px]`}>
       <section className="all__post__sec__wrap">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="flex flex-row space-x-28  mt-[100px]  ">
+              <div className="flex flex-row space-x-28">
                 <div className="">
                   <Logo
                     icon="/images/image.png"
@@ -77,13 +77,13 @@ const MyFooter = () => {
               </div>
 
               <div className="flex flex-col">
-                <div className="grid justify-center">
-                  <hr
-                    className={` my-12 h-[0.3px] w-[1073px] border-t-0 bg-gray-400  dark:bg-white/10 justify-center content-center`}
-                  />
+                <div className="grid ftr__border justify-center">
+                  {/* <div
+                    className={` my-12 h-[0.3px] max-w-[1000px] border-t-0 bg-gray-400  dark:bg-white/10 justify-center content-center`}
+                  /> */}
                 </div>
                 <div className="grid justify-center">
-                  <div className="text-white pb-24 pt-3">
+                  <div className="text-white pb-[65px] pt-3">
                     {" "}
                     © 2024 Lekhapoka | All Rights Reserved{" "}
                   </div>

@@ -553,3 +553,12 @@ transition: all 0.5s !important;
 .admin__input input:-moz-placeholder { 
   color: #000;
 }
+
+.ftr__border{
+  border-top:1px solid#979797;
+  max-width:1000px;
+  width:100%;
+  margin:0 auto;
+  padding-top: 50px;
+  margin-top: 50px;
+}
