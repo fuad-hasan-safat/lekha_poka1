@@ -3,7 +3,6 @@ import Loading from "@/components/common/loading";
 import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState, useRef, useMemo } from "react";
 import JoditEditor from "jodit-react";
-import { components } from "react-select";
 import Select from "react-select";
 
 import UserDetails from "@/components/user/userdetails";
@@ -11,8 +10,8 @@ import Sidebar from "@/components/sidebar/Sidebar";
 import { fetchData } from "@/app/api/api";
 import { apiBasePath } from "@/utils/constant";
 import Link from "next/link";
-import { color } from "jodit/esm/plugins/color/color";
-import { placeholder } from "jodit/esm/plugins/placeholder/placeholder";
+
+import Checkbox from '@/components/common/Checkbox'
 
 export default function Home(context) {
   const { slug } = context.params;
@@ -32,6 +31,14 @@ export default function Home(context) {
   const [writer, setWriter] = useState(localStorage.getItem("name"));
   const [writerId, setWriterId] = useState(null);
   const [isNewWriter, setIsNewWriter] = useState(false);
+
+  // check box ---- (writer creation)
+  const [checkboxValue, setCheckboxValue] = useState(false);
+
+  const handleCheckboxChange = (isChecked) => {
+    setCheckboxValue(isChecked);
+    // Handle the changed checkbox value in your application logic here
+  };
 
   const categoryhandleChange = (selected) => {
     setSelectedOption(selected); // Selected option object
@@ -200,16 +207,12 @@ export default function Home(context) {
     // Other configurations...
     placeholder: 'লিখুন',
     color: 'black'
-    
+
   };
 
 
 
   const handleSubmit = async () => {
-    if (!writerId) {
-      setIsNewWriter(true)
-    }
-
 
     if (!title) {
       alert('দয়া করে আপনার লেখার শিরোনাম')
@@ -219,6 +222,8 @@ export default function Home(context) {
     }
     else if (!summary) {
       alert('দয়া করে আপনার লেখার সারমর্ম লিখুন')
+    } else if(!writer && !checkboxValue){
+      alert('দয়া করে লেখক নির্বাচন করুন')
     }
     else {
 
@@ -234,7 +239,7 @@ export default function Home(context) {
       formData.append("rating", 1);
       formData.append("status", false);
       formData.append("uploaded_by", userUuid);
-      formData.append("new_writer", isNewWriter);
+      formData.append("new_writer", checkboxValue);
 
       if (title && selectedOption && summary) {
 
@@ -284,7 +289,7 @@ export default function Home(context) {
             <div>
               <div>
                 <img
-                  className="w-full h-[315px]"
+                  className="w-full"
                   src="/images/usericons/userbanner.svg"
                   alt="banner"
                 />
@@ -307,7 +312,7 @@ export default function Home(context) {
                   </h1>
                 </div>
                 <div className="flex flex-row text-[#484848] text-[28px] justify-items-center  m-auto divide-x-2 space-x-3 pt-4">
-                 
+
                   <div className="">
                     <h1>{post}</h1>
                     <h1>পোস্ট</h1>
@@ -349,7 +354,8 @@ export default function Home(context) {
                           placeholder="সারসংক্ষেপ"
                           required
                         />
-                        <div className="text-gray-800">লেখক নির্বাচন করুন(যদি আপনার নিজে লেখক না হয়ে থাকেন)</div>
+                        <div className="text-yellow-800 text-[22px]">আপনার লেখার ধরণ নির্বাচন করুন</div>
+
                         <Select
                           value={selectedOption}
                           onChange={categoryhandleChange}
@@ -357,30 +363,48 @@ export default function Home(context) {
                           options={Categoryoptions}
                         />
 
-                        <div className="text-gray-800">আপনার লেখার ধরণ নির্বাচন করুন</div>
-                        <Select
-                          value={selectedWriter}
-                          onChange={writerhandleChange}
-                          styles={customStyles}
-                          options={writersOptions}
-                        />
+                        <div className="text-yellow-800 text-[22px]">লেখক নির্বাচন করুন(<span className="text-red-500">যদি আপনার নাম তালিকায় থাকে</span>)</div>
+                        <div className=" place-content-center justify-center ">
 
-                        <div className="text-gray-800">আপনার লেখা নিচে লিখুন</div>
-                      <div className="joidcss">
+                          <div className="">
+                            <Select
+                              value={selectedWriter}
+                              onChange={writerhandleChange}
+                              styles={customStyles}
+                              options={writersOptions} 
+                            />
 
-                      <JoditEditor
-                          ref={editor}
-                          value={content}
-                          config={joditconfig}
-                          //tabIndex={1} // tabIndex of textarea
-                          onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-                          onChange={(newContent) => {
-                            console.log(content);
-                          }}
-                        />
+                          </div>
 
-                      </div>
-                       
+                          <div className="pt-[10px]">
+
+                            <h1 className="text-black text-[16px]">নিচের বক্সটি চেক করুন (<span className="text-red-500"> যদি আপনার নাম তালিকায় না থাকে</span>) </h1>
+                            <Checkbox label="My Checkbox" name="myCheckbox" onChange={handleCheckboxChange} />
+                            {/* <p className="text-black">Checkbox value: {checkboxValue.toString()}</p> */}
+
+                          </div>
+
+
+                        </div>
+
+
+                        <div className="text-yellow-800 text-[22px]">আপনার লেখা নিচে লিখুন</div>
+
+                        <div className="joidcss">
+
+                          <JoditEditor
+                            ref={editor}
+                            value={content}
+                            config={joditconfig}
+                            //tabIndex={1} // tabIndex of textarea
+                            onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                            onChange={(newContent) => {
+                              console.log(content);
+                            }}
+                          />
+
+                        </div>
+
                         <div className="text-gray-800">
                           <input type="file" accept="audio/*" onChange={handleFileChange} />
                           {selectedFile ? (
