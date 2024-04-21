@@ -184,7 +184,7 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
                 Edit Profile
             </button>
             {isOpen && (
-                <div className="fixed inset-0 flex items-center justify-center z-50">
+                <div className="fixed inset-0 flex items-center justify-center z-[9999]">
                     <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
                     <div className="bg-white rounded-lg z-999 w-500">
                         <div className={`${Classes.user__profile__wrap}`}>
