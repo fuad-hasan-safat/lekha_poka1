@@ -87,9 +87,9 @@ const MyNavbar = () => {
 
   return (
     <div className="fixed w-full bg-white z-[100]">
-      <header className="header shadow-md ">
+      <header className="header shadow-md">
         {/* Logo */}
-        <div className="header__bg">
+        {/* <div className="header__bg">
           <Link href="/">
             <Image
               src="/images/svgs/header-bg.svg"
@@ -98,7 +98,7 @@ const MyNavbar = () => {
               alt="LekhaPoka logo"
             />
           </Link>
-        </div>
+        </div> */}
         <div className="container">
           <div className="row-span-12">
             <div className="header-innr">
@@ -114,10 +114,7 @@ const MyNavbar = () => {
               </div>
               <div className={`flex justify-between items-center space-x-3 text-black text-[18px] pt-1  place-content-center `}>
                 {/* Buttons */}
-                <ul
-                  className={`flex flex-row space-x-6  kangsa-font transition-all ease-in-out duration-2000"
-                    }`}
-                >
+                <ul className={`flex flex-row space-x-6  kangsa-font transition-all ease-in-out duration-2000"}`}>
                   <li
                     onClick={() => setSelectedNav("procchod")}
                     className={`${

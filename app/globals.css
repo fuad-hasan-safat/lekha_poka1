@@ -40,6 +40,7 @@ body {
   max-width: 1370px !important;
   width: 100% !important;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
 
@@ -49,9 +50,18 @@ body {
 ---------------------
 */
 .header{
-  padding: 11px 0;
+  /* padding: 11px 0; */
   position: relative;
   margin-bottom: 5px;
+}
+.header::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width:20%;
+  background: #ffd700;
 }
 .header__bg img {
   position: absolute;
@@ -65,11 +75,22 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.logo{
+.logo {
   position: relative;
+  background: #ffd700;
+  padding: 10px 45px 10px 0;
+  z-index: 1;
 }
-
-
+.logo:after {
+  position: absolute;
+  right: -133px;
+  top: 0;
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 91px solid #ffd700;
+  border-right: 135px solid transparent;
+}
 .search-button {
   /* / Styles for the button / */
   background-color: transparent;
