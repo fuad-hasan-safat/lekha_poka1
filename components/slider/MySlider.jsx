@@ -58,7 +58,7 @@ export function ImageSlider() {
             {data.length &&
                 <div>
                     <div
-                        className="relative"
+                        className="relative slider__bg__img"
                         style={{
                             width: "100%",
                             height: "100%",
@@ -96,16 +96,18 @@ export function ImageSlider() {
                                 <div className="container">
                                     <div className="row">
                                         <div className="col-md-12">
-                                            <h1 className="text-[52px] text-[#86312F]" >{title}</h1>
-                                            <h2 className="text-[28px] text-[#595D5B]">{caption}</h2>
-                                            <p className="text-[16px] text-[#595D5B] w-[50%]">{content}</p>
+                                            <div className="slider__desc">
+                                                <h1 className="text-[52px] text-[#86312F]" >{title}</h1>
+                                                <h2 className="text-[28px] text-[#595D5B]">{caption}</h2>
+                                                <p className="text-[16px] text-[#595D5B] w-[50%]">{content}</p>
 
-                                            <button
-                                                onClick={() => featureHandler(_id)}
-                                                className="w-[176px] inline-block mt-[30px] bg-orange-400 px-2 h-[56px] rounded-md text-[19px]  text-white"
-                                            >
-                                                বিস্তারিত
-                                            </button>
+                                                <button
+                                                    onClick={() => featureHandler(_id)}
+                                                    className="w-[176px] inline-block mt-[30px] bg-orange-400 px-2 h-[56px] rounded-md text-[19px]  text-white"
+                                                >
+                                                    বিস্তারিত
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

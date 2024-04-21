@@ -143,6 +143,15 @@ body {
 }
 
 
+/*
+-------------------
+ Slider Img
+-------------------
+*/
+.slider__bg__img img{
+  width: 100%;
+  height: 700px;
+}
 /* / carosal / */
 
 .carousel {
