@@ -24,8 +24,8 @@ export default function Layout({ children }) {
         <Provider store={store}>
           <main className={`${myFont.className}`}>
             <MyNavbar />
-            <div className="pt-[95px]">{children}</div>
-            <MyFooter />
+            <div className="slider__pt__wrap pt-[95px]">{children}</div>
+            {/* <MyFooter /> */}
           </main>
         </Provider>
       </body>

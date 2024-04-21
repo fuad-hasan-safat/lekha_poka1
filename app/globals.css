@@ -592,3 +592,132 @@ transition: all 0.5s !important;
   padding-top: 50px;
   margin-top: 50px;
 }
+.hambar__icon{
+  display: none;
+}
+
+
+/*
+----------------------
+ Resposnive Css
+---------------------- 
+*/
+@media(max-width:1199px){
+  .slider__bg__img img {
+      height: 680px;
+  }
+  .slider__desc h1{
+    font-size: 50px;
+  }
+}
+@media(max-width:991px){
+  .logo {
+      padding: 10px 40px 10px 0;
+  }
+  .slider__bg__img img {
+      height: 640px;
+  }
+  .slider__desc h1{
+    font-size:46px;
+  }
+}
+@media(max-width:767px){
+  .slider__pt__wrap{
+    padding-top: 85px;
+  }
+  .hambar__icon{
+    display: block;
+  }
+  .sidebar{
+      position: absolute;
+      left: 0;
+      top: 100%;
+      right: 0;
+      text-align: center;
+      background: #f8e405;
+      /* padding: 30px 20px; */
+      margin: 0 !important;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s;
+      -ms-transition: all 0.5s;
+      -webkit-transition: all 0.5s;
+  }
+  .active.sidebar{
+    opacity: 1;
+    visibility: visible;
+  }
+  .sidebar ul{
+    display: block;
+    padding: 30px 30px !important;
+  }
+  .sidebar ul li{
+    width: auto !important;
+  }
+  .logo a img{
+    width: 180px !important;
+  }
+  .sidebar ul li {
+      width: auto !important;
+      height: auto;
+      padding: 5px 0;
+  }
+  .logo:after {
+      border-top: 85px solid #ffd700;
+      border-right: 135px solid transparent;
+  }
+  .slider__bg__img img {
+      height: 600px;
+  }
+  .slider__desc p{
+    width: 100%;
+  }
+  .slider__desc h1{
+    font-size:42px;
+  }
+  .slider__pagination{
+      bottom: 5rem !important;
+      left: 8% !important;
+  }
+}
+@media(max-width:575px){
+  .slider__bg__img img {
+      height: 550px;
+  }
+  .slider__pt__wrap {
+      padding-top: 70px;
+  }
+}
+@media(max-width:479px){
+  .logo a img {
+      width: 140px !important;
+  }
+  .logo {
+      padding: 10px 10px 10px 0;
+  }
+  .logo:after {
+      border-top: 70px solid #ffd700;
+      border-right: 100px solid transparent;
+      right: -100px;
+  }
+  .slider__bg__img img {
+      height: 450px;
+  }
+  .slider__desc h1{
+    font-size:34px;
+  }
+  .slider__desc h2{
+    font-size: 24px;
+  }
+  .slider__desc button {
+      font-size: 17px;
+      width: 150px;
+      height: 45px;
+      margin-top: 20px;
+  }
+  .slider__pagination {
+      bottom: 3rem !important;
+      left: 10% !important;
+  }
+}

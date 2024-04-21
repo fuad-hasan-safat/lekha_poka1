@@ -21,6 +21,14 @@ const MyNavbar = () => {
   const [search, setSearch] = useState("");
   const [searchData, setSearchData] = useState([]);
   const [selectedIteam, setSelectedIteam] = useState(-1);
+
+  //Resposnive Header Toggle
+  const [isOpen, setIsopen] = useState(false);
+
+  const ToggleSidebar = () => {
+      isOpen === true ? setIsopen(false) : setIsopen(true);
+  }
+
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
@@ -112,63 +120,68 @@ const MyNavbar = () => {
                   />
                 </Link>
               </div>
-              <div className={`flex justify-between items-center space-x-3 text-black text-[18px] pt-1  place-content-center `}>
+              <div className={`flex justify-between items-center space-x-3 text-black lg:text-[18px] sm:text-[15px] pt-1  place-content-center `}>
+                <div className="hambar__icon" onClick={ToggleSidebar} >
+                  <i class="ri-menu-line"></i>
+                </div>
                 {/* Buttons */}
-                <ul className={`flex flex-row space-x-6  kangsa-font transition-all ease-in-out duration-2000"}`}>
-                  <li
-                    onClick={() => setSelectedNav("procchod")}
-                    className={`${
-                      selectedNav === "procchod"
-                        ? "text-[#F9A106] font-semibold underline"
-                        : ""
-                    }`}
-                  >
-                    <Link href="/">প্রচ্ছদ</Link>
-                  </li>
-                  <li
-                    onClick={() => {
-                      setSelectedNav("soblekha");
-                    }}
-                  >
-                    <SobLekha
-                      sobClass={`${
-                        selectedNav === "soblekha"
+                <div className={`sidebar ${isOpen == true ? 'active' : ''}`}>
+                  <ul className={`flex flex-row lg:space-x-6 sm:space-x-4 xs:space-x-[0px] kangsa-font transition-all ease-in-out duration-2000"}`}>
+                    <li
+                      onClick={() => setSelectedNav("procchod")}
+                      className={`${
+                        selectedNav === "procchod"
                           ? "text-[#F9A106] font-semibold underline"
-                          : "text-black"
+                          : ""
                       }`}
-                    />
-                  </li>
-                  {/* <li
-                    onClick={() => setSelectedNav("bistarito")}
-                    className={`${
-                      selectedNav === "bistarito"
-                        ? "text-[#F9A106] font-semibold underline"
-                        : ""
-                    }`}
-                  >
-                    <Link href="/details">বিস্তারিত</Link>
-                  </li> */}
-                  <li
-                    onClick={() => setSelectedNav("zogazog")}
-                    className={`${
-                      selectedNav === "zogazog"
-                        ? "text-[#F9A106] font-semibold underline"
-                        : ""
-                    }`}
-                  >
-                    <Link href="/contacts">যোগাযোগ</Link>
-                  </li>
-                  <li
-                    onClick={() => setSelectedNav("amader_somporke")}
-                    className={` w-[130px] ${
-                      selectedNav === "amader_somporke"
-                        ? "text-[#F9A106] font-semibold underline"
-                        : ""
-                    }`}
-                  >
-                    <Link href="/aboutus">আমাদের সম্পর্কে</Link>
-                  </li>
-                </ul>
+                    >
+                      <Link href="/">প্রচ্ছদ</Link>
+                    </li>
+                    <li
+                      onClick={() => {
+                        setSelectedNav("soblekha");
+                      }}
+                    >
+                      <SobLekha
+                        sobClass={`${
+                          selectedNav === "soblekha"
+                            ? "text-[#F9A106] font-semibold underline"
+                            : "text-black"
+                        }`}
+                      />
+                    </li>
+                    {/* <li
+                      onClick={() => setSelectedNav("bistarito")}
+                      className={`${
+                        selectedNav === "bistarito"
+                          ? "text-[#F9A106] font-semibold underline"
+                          : ""
+                      }`}
+                    >
+                      <Link href="/details">বিস্তারিত</Link>
+                    </li> */}
+                    <li
+                      onClick={() => setSelectedNav("zogazog")}
+                      className={`${
+                        selectedNav === "zogazog"
+                          ? "text-[#F9A106] font-semibold underline"
+                          : ""
+                      }`}
+                    >
+                      <Link href="/contacts">যোগাযোগ</Link>
+                    </li>
+                    <li
+                      onClick={() => setSelectedNav("amader_somporke")}
+                      className={` lg:w-[130px] sm:w-[100px] ${
+                        selectedNav === "amader_somporke"
+                          ? "text-[#F9A106] font-semibold underline"
+                          : ""
+                      }`}
+                    >
+                      <Link href="/aboutus">আমাদের সম্পর্কে</Link>
+                    </li>
+                  </ul>
+                </div>
                 <div className="search__bar relative flex flex-row place-content-center">
                     <Image
                       src="/images/svgs/search.svg"
