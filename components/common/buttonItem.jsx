@@ -59,7 +59,7 @@ const ButtonItem = ({
   return (
     <>
       <div
-        className={`py-1 rounded-md border border-gray-300  ${selectedId === id ? " bg-yellow-400 shadow-md" : "bg-gray-300"
+        className={`procchod__button py-1 rounded-md border border-gray-300  ${selectedId === id ? " bg-yellow-400 shadow-md" : "bg-gray-300"
           }`}
       >
         <button
