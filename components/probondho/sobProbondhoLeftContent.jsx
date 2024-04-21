@@ -67,7 +67,7 @@ export default function SobProbondhoLeftContent() {
         <div>Error fetching posts: {error.message}</div>
       ) : (
         <>
-          <div className="pt-20 text-3xl w-[604px]">
+          <div className="pt-20 text-3xl mr-[100px]">
             {displayedPosts.length && (
               displayedPosts.map((post, index) => (
                 <>

@@ -27,7 +27,7 @@ const SobProbondhoBody= ({
       </div>
       <div className="pb-3">
         <div
-          className="text-[16px] text-gray-500"
+          className="text-[16px] text-gray-500 text-justify"
           dangerouslySetInnerHTML={html}
         />
       </div>

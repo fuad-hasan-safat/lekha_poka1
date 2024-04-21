@@ -5,9 +5,10 @@ import LekhokDetails from "@/components/common/lekhok";
 import SidebarPostDivider from "@/components/common/sidebarpostdivider";
 import Image from "next/image";
 import { apiBasePath } from "@/utils/constant";
+import { useRouter } from "next/navigation";
 
 const Lekhok = () => {
-  
+  const router = useRouter()  
 
   const [lekhokList, setLekhokList] = useState([]);
   const [error, setError] = useState(null);
@@ -22,6 +23,11 @@ const Lekhok = () => {
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+
+
+  function allWriterHandler(){
+    router.push(`/allwriter`)
+  }
 
   return (
     <>
@@ -51,7 +57,9 @@ const Lekhok = () => {
         <div>
           <div className="w-[180px] pb-[60px] pt-[30px] flex ">
             <div>
-              <button className="bg-yellow-500 w-[180px] h-[43px] text-white rounded-md mr-3">
+              <button
+              onClick={allWriterHandler}
+               className="bg-yellow-500 w-[180px] h-[43px] text-white rounded-md mr-3">
                 সব দেখুন
               </button>
             </div>
