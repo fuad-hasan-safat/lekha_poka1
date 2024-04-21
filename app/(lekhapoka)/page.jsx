@@ -16,7 +16,7 @@ export default function Home() {
         {/* <Carousel1 /> */}
         <div className="">
         <ImageSlider/>
-        {/* <Procchod /> */}
+        <Procchod />
         </div>
         
     </>
