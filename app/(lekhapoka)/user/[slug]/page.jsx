@@ -97,6 +97,8 @@ export default function Home(context) {
   const [follower, setFollower] = useState(0);
   const [post, setPost] = useState(0);
   const [following, setFollowing] = useState(0);
+  //
+  const [canPostStatus, setCanPostStatus] = useState(false)
 
 
   useEffect(() => {
@@ -116,6 +118,12 @@ export default function Home(context) {
         setFollower(data.object.profile.follower)
         setFollowing(data.object.profile.following)
         setPost(data.object.profile.post)
+
+        if (!data.object.stats) {
+          setCanPostStatus(false)
+        } else {
+          setCanPostStatus(true)
+        }
 
         console.log(' profile image----------->>>>', image)
       })
@@ -213,67 +221,73 @@ export default function Home(context) {
 
 
   const handleSubmit = async () => {
-
-    if (!title) {
-      alert('দয়া করে আপনার লেখার শিরোনাম')
-    }
-    else if (!selectedOption) {
-      alert('দয়া করে আপনার লেখার ধরণ নির্বাচন করুন')
-    }
-    else if (!summary) {
-      alert('দয়া করে আপনার লেখার সারমর্ম লিখুন')
-    } else if(!writer && !checkboxValue){
-      alert('দয়া করে লেখক নির্বাচন করুন ')
+    if (!canPostStatus) {
+      alert('দয়া করে প্রোফাইল তৈরি করুন')
     }
     else {
 
-      const formData = new FormData();
-      formData.append("file", selectedFile);
-      formData.append("category", selectedOption?.label);
-      formData.append("cat_id", selectedOption?.value);
-      formData.append("writer", writer);
-      formData.append("writer_id", writerId);
-      formData.append("title", title);
-      formData.append("summary", summary);
-      formData.append("content", content);
-      formData.append("rating", 1);
-      formData.append("status", false);
-      formData.append("uploaded_by", userUuid);
-      formData.append("new_writer", checkboxValue);
-
-      if (title && selectedOption && summary) {
-
-        try {
-          const response = await fetch(`${apiBasePath}/posts`, {
-            method: "POST",
-            headers: {
-
-            },
-            body: formData,
-          });
-
-          if (response.ok) {
-            const data = await response.json();
-            console.log("sucessfully sent:", data);
-            alert("Send Data Sucessfully");
-
-            setSelectedFile(null);
-            setTitle('');
-            setCategory('');
-            setWriters('');
-            setContent('');
-            setSummary('');
-          } else {
-            console.error("Failed to update profile:", response.statusText);
-            alert(response.statusText);
-          }
-        } catch (error) {
-          console.error("Error updating profile:", error);
-          alert(error);
-        }
-      } else {
-        alert('শিরোনাম, লেখার ধরণ ও সারসংক্ষেপ লিখুন')
+      if (!title) {
+        alert('দয়া করে আপনার লেখার শিরোনাম')
       }
+      else if (!selectedOption) {
+        alert('দয়া করে আপনার লেখার ধরণ নির্বাচন করুন')
+      }
+      else if (!summary) {
+        alert('দয়া করে আপনার লেখার সারমর্ম লিখুন')
+      } else if (!writer && !checkboxValue) {
+        alert('দয়া করে লেখক নির্বাচন করুন ')
+      }
+      else {
+
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+        formData.append("category", selectedOption?.label);
+        formData.append("cat_id", selectedOption?.value);
+        formData.append("writer", writer);
+        formData.append("writer_id", writerId);
+        formData.append("title", title);
+        formData.append("summary", summary);
+        formData.append("content", content);
+        formData.append("rating", 1);
+        formData.append("status", false);
+        formData.append("uploaded_by", userUuid);
+        formData.append("new_writer", checkboxValue);
+
+        if (title && selectedOption && summary) {
+
+          try {
+            const response = await fetch(`${apiBasePath}/posts`, {
+              method: "POST",
+              headers: {
+
+              },
+              body: formData,
+            });
+
+            if (response.ok) {
+              const data = await response.json();
+              console.log("sucessfully sent:", data);
+              alert("Send Data Sucessfully");
+
+              setSelectedFile(null);
+              setTitle('');
+              setCategory('');
+              setWriters('');
+              setContent('');
+              setSummary('');
+            } else {
+              console.error("Failed to update profile:", response.statusText);
+              alert(response.statusText);
+            }
+          } catch (error) {
+            console.error("Error updating profile:", error);
+            alert(error);
+          }
+        } else {
+          alert('শিরোনাম, লেখার ধরণ ও সারসংক্ষেপ লিখুন')
+        }
+      }
+
     }
 
 
@@ -371,7 +385,7 @@ export default function Home(context) {
                               value={selectedWriter}
                               onChange={writerhandleChange}
                               styles={customStyles}
-                              options={writersOptions} 
+                              options={writersOptions}
                             />
 
                           </div>

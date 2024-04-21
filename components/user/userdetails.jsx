@@ -38,6 +38,8 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
         setIsOpen(!isOpen);
     };
 
+    // profile state
+    
 
 
     // get profile data 
@@ -48,6 +50,30 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
     setUserToken(localStorage.getItem("token") || "");
     setUserUuid(localStorage.getItem("uuid") || "");
     setnumber(localStorage.getItem("phone") || "");
+
+
+    // get previous profile
+
+    fetch(`${apiBasePath}/getprofile/${userID}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('pofile details --------------->>>>>>>', data);
+     // setFullName(data.object.profile.)
+      setDesignation(data.object.profile.designation)
+      setProfileStatus(data.object.profile.profileStatus)
+      setGender(data.object.profile.gender)
+      //setStartDate( new Date(data.object.profile.dob))
+      setAddress(data.object.profile.address)
+      setemail(data.object.profile.email)
+      //setPhone(data.object.profile.phone)
+      setImageFile(`${apiBasePath}/${data.object.profile.image}`)
+      //setFollower(data.object.profile.follower)
+      //setFollowing(data.object.profile.following)
+      //setPost(data.object.profile.post)
+
+      console.log(' profile image----------->>>>', image)
+    })
+    .catch((error) => console.error("Error fetching profile:", error));
       
     }, [])
     
@@ -179,16 +205,16 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
                             </div>
                             <div className='profile__form__wrap'>
                                 <form onSubmit={handleProfileUpdate}>
-                                    <div className='profile__input'>
+                                    {/* <div className='profile__input'>
                                         <label>First name</label>
                                         <input type='text' value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder='Full Name' />
-                                    </div>
+                                    </div> */}
                                     <div className='profile__input'>
-                                        <label></label>
+                                        <label>Designation</label>
                                         <input type='text' value={designation} onChange={(e) => setDesignation(e.target.value)} placeholder='Designation' />
                                     </div>
                                     <div className='profile__input'>
-                                        <label></label>
+                                        <label>Profile Status</label>
                                         <input type='text' value={profileStatus} onChange={(e) => setProfileStatus(e.target.value)} placeholder='ProfileStatus' />
                                     </div>
                                     
