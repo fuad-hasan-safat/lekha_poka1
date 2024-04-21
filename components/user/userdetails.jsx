@@ -10,10 +10,11 @@ import moment from 'moment';
 
 
 
-export default function UserDetails({ sex = '---', birthdate = '---', location = '---', mail = '---', phone = '---' , userID=''}) {
+export default function UserDetails({ sex = '---', birthdate = '---', location = '---', mail = '---', phone = '---', userID = '' }) {
 
     const router = useRouter();
     const [startDate, setStartDate] = useState(new Date());
+    const [birthOfDate, setBirthOfDate] = useState('')
     const [fullName, setFullName] = useState('');
     const [designation, setDesignation] = useState('');
     const [profileStatus, setProfileStatus] = useState('');
@@ -23,6 +24,7 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
     const [gender, setGender] = useState('');
     const [highlight, setHighlight] = useState(false);
     const [imageFile, setImageFile] = useState(null);
+    const [image, setImage] = useState('');
     const [preview, setPreview] = useState(null);
     // get saved info
     const [status, setStatus] = useState("");
@@ -39,80 +41,90 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
     };
 
     // profile state
-    
+
 
 
     // get profile data 
 
     useEffect(() => {
 
-    setUsername(localStorage.getItem("name") || "");
-    setUserToken(localStorage.getItem("token") || "");
-    setUserUuid(localStorage.getItem("uuid") || "");
-    setnumber(localStorage.getItem("phone") || "");
+        setUsername(localStorage.getItem("name") || "");
+        setUserToken(localStorage.getItem("token") || "");
+        setUserUuid(localStorage.getItem("uuid") || "");
+        setnumber(localStorage.getItem("phone") || "");
 
 
-    // get previous profile
+        // get previous profile
 
-    fetch(`${apiBasePath}/getprofile/${userID}`)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('pofile details --------------->>>>>>>', data);
-     // setFullName(data.object.profile.)
-      setDesignation(data.object.profile.designation)
-      setProfileStatus(data.object.profile.profileStatus)
-      setGender(data.object.profile.gender)
-      //setStartDate( new Date(data.object.profile.dob))
-      setAddress(data.object.profile.address)
-      setemail(data.object.profile.email)
-      //setPhone(data.object.profile.phone)
-      setImageFile(`${apiBasePath}/${data.object.profile.image}`)
-      //setFollower(data.object.profile.follower)
-      //setFollowing(data.object.profile.following)
-      //setPost(data.object.profile.post)
+        fetch(`${apiBasePath}/getprofile/${userID}`)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('pofile details --------------->>>>>>>', data);
+                // setFullName(data.object.profile.)
+                setDesignation(data.object.profile.designation)
+                setProfileStatus(data.object.profile.profileStatus)
+                setGender(data.object.profile.gender)
+                setBirthOfDate(data.object.profile.dob)
+                setAddress(data.object.profile.address)
+                setemail(data.object.profile.email)
+                //setPhone(data.object.profile.phone)
+                setImage(data.object.profile.image)
+                setGender(data.object.profile.gender)
+                //setFollower(data.object.profile.follower)
+                //setFollowing(data.object.profile.following)
+                //setPost(data.object.profile.post)
 
-      console.log(' profile image----------->>>>', image)
-    })
-    .catch((error) => console.error("Error fetching profile:", error));
-      
+                console.log(' profile image----------->>>>', image)
+            })
+            .catch((error) => console.error("Error fetching profile:", error));
+
     }, [])
-    
-    
+
+
 
     const handleProfileUpdate = async (e) => {
         e.preventDefault();
 
-        const formattedDate = moment(startDate).format('DD-MM-YYYY');
+        if (!imageFile) {
+            alert('Upload your image')
+        } else if (!gender) {
+            alert('Select your gender')
+        } else if (!birthOfDate) {
+            alert('Give your birth date')
+        } else {
 
-        const formData = new FormData();
-        formData.append('file', imageFile);
-        formData.append('designation', designation);
-        formData.append('profileStatus', profileStatus);
-        formData.append('gender', gender);
-        formData.append('dob', formattedDate);
-        formData.append('address', address);
-        formData.append('email', email);
-        formData.append('phone', number);
-        formData.append('user_id', userID);
-        // const token = JSON.parse(localStorage.getItem('token'));
-        try {
-            const response = await fetch(`${apiBasePath}/profile`, {
-                method: 'PUT',
-                headers: {
-                    // 'x-access-token': token,
-                },
-                body: formData
-            });
+            //const formattedDate = moment(startDate).format('DD-MM-YYYY');
 
-            if (response.ok) {
-                const data = await response.json();
-                console.log('Profile updated successfully:', data);
-                router.push(`/user/${userID}`);
-            } else {
-                console.error('Failed to update profile:', response.statusText);
+            const formData = new FormData();
+            formData.append('file', imageFile);
+            formData.append('designation', designation);
+            formData.append('profileStatus', profileStatus);
+            formData.append('gender', gender);
+            formData.append('dob', birthOfDate);
+            formData.append('address', address);
+            formData.append('email', email);
+            formData.append('phone', number);
+            formData.append('user_id', userID);
+            // const token = JSON.parse(localStorage.getItem('token'));
+            try {
+                const response = await fetch(`${apiBasePath}/profile`, {
+                    method: 'PUT',
+                    headers: {
+                        // 'x-access-token': token,
+                    },
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('Profile updated successfully:', data);
+                    router.push(`/user/${userID}`);
+                } else {
+                    console.error('Failed to update profile:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error updating profile:', error);
             }
-        } catch (error) {
-            console.error('Error updating profile:', error);
         }
     };
 
@@ -198,6 +210,7 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
                                                 accept='image/*'
                                                 onChange={(e) => handleUpload(e)}
                                             />
+
                                             <button className='button'><i className='ri-camera-line'></i></button>
                                         </div>
                                     </form>
@@ -217,10 +230,16 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
                                         <label>Profile Status</label>
                                         <input type='text' value={profileStatus} onChange={(e) => setProfileStatus(e.target.value)} placeholder='ProfileStatus' />
                                     </div>
-                                    
+
                                     <div className='profile__input'>
                                         <label>Address</label>
-                                        <input type='text' value={address} onChange={(e) => setAddress(e.target.value)} placeholder='Address' />
+                                        <input
+                                            type='text'
+                                            value={address}
+                                            onChange={(e) => setAddress(e.target.value)}
+                                            placeholder='Address'
+                                            required
+                                        />
                                     </div>
                                     {/* <div className='profile__input'>
                                         <label>Phone Number</label>
@@ -228,29 +247,53 @@ export default function UserDetails({ sex = '---', birthdate = '---', location =
                                     </div> */}
                                     <div className='profile__input'>
                                         <label>Email</label>
-                                        <input type='text' value={email} onChange={(e) => setemail(e.target.value)} placeholder='Enter Email' />
+                                        <input
+                                            type='text'
+                                            value={email}
+                                            onChange={(e) => setemail(e.target.value)}
+                                            placeholder='Enter Email'
+                                            required />
                                     </div>
                                     <div className='profile__input'>
                                         <label>Date</label>
-                                        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                                        <input
+                                            type='text'
+                                            value={birthOfDate}
+                                            onChange={(e) => setBirthOfDate(e.target.value)}
+                                            placeholder='Birth of date (month-day-year)'
+                                            required />
+                                        {/* <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} /> */}
                                     </div>
                                     <div className='edit__radio__btn clearfix'>
                                         <div className='radio-container' style={{ paddingLeft: '0' }}>
                                             <label>Gender</label>
                                         </div>
                                         <div className='radio-container'>
-                                            <input type='radio' id='male' name='gender' className='custom-radio' value='male' onChange={(e) => setGender(e.target.value)} />
+                                            <input
+                                                type='radio'
+                                                id='male'
+                                                name='gender'
+                                                checked={gender === 'male'}
+                                                className='custom-radio'
+                                                value='male' onChange={(e) => setGender(e.target.value)} />
                                             <label htmlFor='male' className='custom-radio-label'>Male</label>
                                         </div>
                                         <div className='radio-container'>
-                                            <input type='radio' id='female' name='gender' className='custom-radio' value='female' onChange={(e) => setGender(e.target.value)} />
+                                            <input
+                                                type='radio'
+                                                id='female'
+                                                name='gender'
+                                                className='custom-radio'
+                                                value='female'
+                                                checked={gender === 'famale'}
+                                                onChange={(e) => setGender(e.target.value)} />
                                             <label htmlFor='female' className='custom-radio-label'>Female</label>
                                         </div>
                                     </div>
                                     <div className='form__submit'>
                                         <button
-                                        className='bg-[#F9A106] hover:bg-orange-600'
-                                         type='submit'>Update</button>
+                                            className='bg-[#F9A106] hover:bg-orange-600'
+                                            type='submit'>Update</button>
                                     </div>
                                 </form>
                             </div>
