@@ -40,7 +40,7 @@ const modalStyles = {
 export default function StyledModal({ isOpen, selectedContent, onClose }) {
   return (
     <div
-    className='backdrop-blur bg-black/25'
+    className=' bg-black/25'
      style={modalStyles}>
       <Modal isOpen={isOpen} selectedContent={selectedContent} onClose={onClose} />
     </div>

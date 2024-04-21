@@ -6,6 +6,7 @@ import SobKobitaBody from "./sobProbondhoBody";
 import axios from "axios";
 import Loading from "../common/loading";
 import { apiBasePath } from "@/utils/constant";
+import SobProbondhoBody from "./sobProbondhoBody";
 
 export default function SobProbondhoLeftContent() {
 
@@ -66,7 +67,7 @@ export default function SobProbondhoLeftContent() {
         <div>Error fetching posts: {error.message}</div>
       ) : (
         <>
-          <div className="pt-20 text-3xl w-[604px]">
+          <div className="pt-20 text-3xl mr-[100px]">
             {displayedPosts.length && (
               displayedPosts.map((post, index) => (
                 <>
