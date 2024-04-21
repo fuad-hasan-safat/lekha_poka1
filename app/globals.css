@@ -286,7 +286,7 @@ background-color: #f8e405;
 
 .start__rating span{
   text-align: center;
-  display: table;
+  /* display: table; */
   margin:0 auto;
 }
 .star-svg{
