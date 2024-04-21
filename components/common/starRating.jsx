@@ -56,13 +56,13 @@ export default function RatingComponent({ post_id, setRating, rating }) {
   // Optinal callback functions
   const onPointerEnter = () => console.log('Enter')
   const onPointerLeave = () => console.log('Leave')
-  const onPointerMove = (value, index) => console.log(value, index)
+  const onPointerMove = (value, index) => console.log(value, index, rating)
 
 
 
   return (
     <div className='start__rating place-content-center justify-center  pt-[20px] pb-[20px] mx-[40px] rounded-xl float-left text-center border-2 text-black border-gray-400'>
-     <p>কবিতাটিতে রেটিং দিন ।</p> 
+     <p>রেটিং দিন ।</p> 
 
      <div>
 

@@ -6,6 +6,7 @@ import SobKobitaBody from "./sobProbondhoBody";
 import axios from "axios";
 import Loading from "../common/loading";
 import { apiBasePath } from "@/utils/constant";
+import SobProbondhoBody from "./sobProbondhoBody";
 
 export default function SobProbondhoLeftContent() {
 
