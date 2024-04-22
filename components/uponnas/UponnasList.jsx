@@ -12,7 +12,7 @@ export default function UponnasList() {
     const [error, setError] = useState(null); // State to store any errors
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const postsPerPage = 7; // Number of posts to display per page
+    const postsPerPage = 5; // Number of posts to display per page
 
     useEffect(() => {
         const fetchPosts = async () => {
