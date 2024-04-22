@@ -72,11 +72,9 @@ const AudioFileUpload = ({ selectedFile, setSelectedFile }) => {
 
                                     <ProgressBar
                                         completed={progress}
-                                        // className="wrapper"
-                                        // barContainerClassName="audiocontainer"
-                                        // completedClassName="barCompleted"
                                         bgColor="#F9A106"
-                                        // labelClassName="label"
+                                        height="16px"
+                                        labelSize="12px"
                                     />
                                 )}
                             </div>
