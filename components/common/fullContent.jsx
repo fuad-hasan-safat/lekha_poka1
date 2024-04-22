@@ -22,11 +22,9 @@ const FullPost = ({ content, title, writer, catagory }) => {
                 {lines.slice(prevLines, numLines).map((line, index) => (
                     <div key={index} className="text-[16px] text-gray-500 text-justify" dangerouslySetInnerHTML={{ __html: line }} />
                 ))}
-                {numLines < lines.length ? (
-                    <button className="text-[14] text-yellow-400" onClick={handleLoadMore}>Next</button>
-                ) : (
-                    <button className="text-[14] text-yellow-400" disabled>No More</button>
-                )}
+                {numLines < lines.length && (
+                    <button className="text-[14] text-yellow-400" onClick={handleLoadMore}>পরবর্তী </button>
+                ) }
             </div>
         );
     } else {
@@ -37,11 +35,9 @@ const FullPost = ({ content, title, writer, catagory }) => {
                 {lines.slice(prevLines, numLines).map((line, index) => (
                     <div key={index} className="text-[16px] text-gray-500 text-justify" dangerouslySetInnerHTML={{ __html: line }} />
                 ))}
-                {numLines < lines.length ? (
-                    <button onClick={handleLoadMore}>Next</button>
-                ) : (
-                    <button disabled>No More</button>
-                )}
+                {numLines < lines.length && (
+                    <button onClick={handleLoadMore}>পরবর্তী</button>
+                ) }
             </div>
         );
     }
