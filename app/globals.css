@@ -602,12 +602,21 @@ transition: all 0.5s !important;
  Resposnive Css
 ---------------------- 
 */
+@media(max-width:1299px){
+  .procchod__button button{
+    width: 110px;
+  }
+}
 @media(max-width:1199px){
   .slider__bg__img img {
       height: 680px;
   }
   .slider__desc h1{
     font-size: 50px;
+  }
+  .procchod__button button {
+      width: 90px;
+      font-size: 14px;
   }
 }
 @media(max-width:991px){
