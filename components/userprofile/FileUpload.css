@@ -57,7 +57,10 @@
     height: 100%;
     background-color: #d0b714;
     border-radius: 5px;
-    transition: width 0.5s ease-in-out;
+    transition: all 0.5s;
+   -ms-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+
   }
   
   .close-icon {

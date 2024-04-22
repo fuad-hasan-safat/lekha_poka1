@@ -6,10 +6,12 @@ import { apiBasePath } from "@/utils/constant";
 import { useRouter } from "next/navigation";
 
 const Lekhok = () => {
-  const router = useRouter()  
+  const router = useRouter()
 
   const [lekhokList, setLekhokList] = useState([]);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1); // Track current page
+  const [writersPerPage, setWritersPerPage] = useState(3); // Number of writers per page
 
   useEffect(() => {
     fetch(`${apiBasePath}/writers`)
@@ -23,9 +25,29 @@ const Lekhok = () => {
   }, []);
 
 
-  function allWriterHandler(){
+  function allWriterHandler() {
     router.push(`/allwriter`)
   }
+
+  const handleNextPage = () => {
+    const totalPages = Math.ceil(lekhokList.length / writersPerPage);
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const getVisibleWriters = () => {
+    const startIndex = (currentPage - 1) * writersPerPage;
+    const endIndex = Math.min(startIndex + writersPerPage, lekhokList.length);
+    return lekhokList.slice(startIndex, endIndex);
+  };
+
 
   return (
     <>
@@ -34,7 +56,7 @@ const Lekhok = () => {
           <h1 className="text-[20px] text-yellow-500 font-semibold">লেখক</h1>
         </div>
         <div className="pt-[23px] ">
-          {lekhokList.length &&
+          {/* {lekhokList.length &&
             lekhokList.map((item, index) => (
               <>
                 <div className="pb-3">
@@ -50,21 +72,44 @@ const Lekhok = () => {
                   {index <= lekhokList.length - 2 ? <SidebarPostDivider /> : ""}
                 </div>
               </>
+            ))} */}
+          {getVisibleWriters().length > 0 &&
+            getVisibleWriters().map((item, index) => (
+              <>
+                <div className="pb-3">
+                  <LekhokDetails
+                    key={index}
+                    image={`${apiBasePath}/${item.image}`}
+                    writer={item.name}
+                    id={item._id}
+                    lifeCycle={`${item.birth_date} - ${item.expiry_date}`}
+                  />
+                </div>
+                <div className="pb-3">
+                  {index < getVisibleWriters().length - 1 ? (
+                    <SidebarPostDivider />
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </>
             ))}
         </div>
         <div>
           <div className="w-[180px] pb-[60px] pt-[30px] flex ">
             <div>
               <button
-              onClick={allWriterHandler}
-               className="bg-yellow-500 w-[180px] h-[43px] text-white rounded-md mr-3">
+                onClick={allWriterHandler}
+                className="bg-yellow-500 w-[180px] h-[43px] text-white rounded-md mr-3">
                 সব দেখুন
               </button>
             </div>
 
             <div className="flex space-x-3">
-              <button className="pl-2 bg-white rounded-md border border-gray-300  w-[50px] h-[43px] ">
-             
+              <button
+                onClick={handlePreviousPage}
+                className="pl-2 bg-white rounded-md border border-gray-300  w-[50px] h-[43px] ">
+
                 <svg
                   width="24"
                   height="25"
@@ -81,8 +126,10 @@ const Lekhok = () => {
                   />
                 </svg>
               </button>
-              <button className="pl-4 bg-white rounded-md border border-gray-300 w-[50px] h-[43px] ">
-              
+              <button
+                onClick={handleNextPage}
+                className="pl-4 bg-white rounded-md border border-gray-300 w-[50px] h-[43px] ">
+
                 <svg
                   width="24"
                   height="25"
