@@ -1,5 +1,9 @@
 import React, { useRef, useState } from "react";
+import ProgressBar from "@ramonak/react-progress-bar";
+
 import './FileUpload.css'
+import './audioProgressBar.scss'
+
 
 const AudioFileUpload = ({ selectedFile, setSelectedFile }) => {
     const inputRef = useRef();
@@ -24,7 +28,7 @@ const AudioFileUpload = ({ selectedFile, setSelectedFile }) => {
 
         // Simulate upload progress (replace with actual upload logic if needed)
         for (let i = 0; i <= 100; i += 10) {
-            await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate delay
+            await new Promise((resolve) => setTimeout(resolve, 100)); // Simulate delay
             setProgress(i);
             console.log('---------', i)
         }
@@ -64,19 +68,17 @@ const AudioFileUpload = ({ selectedFile, setSelectedFile }) => {
                             <div style={{ flex: 1 }}>
                                 <h6>{selectedFile?.name}</h6>
 
-                                <div className="progress-bg">
-                                    {progress > 0 && ( // Show progress bar only when a file is selected
-                                        // <div className="progress-bar">
-                                        //   <div
-                                        //     className={`progress-bar-filled text-red transition-all delay-1000 ${progress===100? 'w-full' : `w-[${progress}px]`} `}
-                                        //     //style={{ width: `${progress}%` }}
-                                        //   />
-                                        // </div>
-                                        <div className="progress-bar">
-                                            <div className="progress" style={{ width: `${progress}%` }} />
-                                        </div>
-                                    )}
-                                </div>
+                                {progress > 0 && ( // Show progress bar only when a file is selected
+
+                                    <ProgressBar
+                                        completed={progress}
+                                        // className="wrapper"
+                                        // barContainerClassName="audiocontainer"
+                                        // completedClassName="barCompleted"
+                                        bgColor="#F9A106"
+                                        // labelClassName="label"
+                                    />
+                                )}
                             </div>
 
                             <button onClick={clearFileInput}>
