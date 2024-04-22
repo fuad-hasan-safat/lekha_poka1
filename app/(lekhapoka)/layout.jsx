@@ -25,7 +25,7 @@ export default function Layout({ children }) {
           <main className={`${myFont.className}`}>
             <MyNavbar />
             <div className="slider__pt__wrap pt-[95px]">{children}</div>
-            {/* <MyFooter /> */}
+            <MyFooter />
           </main>
         </Provider>
       </body>

@@ -97,16 +97,7 @@ const MyNavbar = () => {
     <div className="fixed w-full bg-white z-[100]">
       <header className="header shadow-md">
         {/* Logo */}
-        {/* <div className="header__bg">
-          <Link href="/">
-            <Image
-              src="/images/svgs/header-bg.svg"
-              width={655}
-              height={95}
-              alt="LekhaPoka logo"
-            />
-          </Link>
-        </div> */}
+       
         <div className="container">
           <div className="row-span-12">
             <div className="header-innr">

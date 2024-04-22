@@ -8,7 +8,7 @@ import { apiBasePath } from "@/utils/constant";
 export default function SobGolpoLeftContent() {
 
   //   const [selectedId, setSelectedId] = useState("sob");
-  const [postList, setPostList] = useState(sobGolpoPosts)
+  const [postList, setPostList] = useState([])
   const [isLoading, setIsLoading] = useState(true);
 
 

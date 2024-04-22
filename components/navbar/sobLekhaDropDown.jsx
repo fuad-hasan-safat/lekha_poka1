@@ -103,6 +103,17 @@ const SobLekha = ({ sobClass }) => {
             >
               জীবনী
             </Link>
+            <Link
+              href="/uponnas"
+              className="block px-4 py-2 text-sm hover:bg-white  hover:text-gray-700"
+              role="menuitem"
+              tabIndex={-1}
+              id="options-menu-item-4"
+              onClick={() => setSoblekhaSelect('উপন্যাস')}
+
+            >
+              উপন্যাস
+            </Link>
           </div>
         </div>
       )}
