@@ -143,6 +143,7 @@ export function ImageSlider() {
                 />
             </button>
             <div
+            className="slider__pagination"
                 style={{
                     position: "absolute",
                     bottom: "8rem",

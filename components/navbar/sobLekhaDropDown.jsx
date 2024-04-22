@@ -39,7 +39,7 @@ const SobLekha = ({ sobClass }) => {
       <button
         type="button"
         onClick={toggleDropdown}
-        className={`${sobClass} inline-flex w-[110px] justify-center  px-2  bg-transparent text-[18px] font-medium  focus:outline-none focus:text-[#F9A106]`}
+        className={`${sobClass} inline-flex w-[110px] justify-center  px-2  bg-transparent font-medium  focus:outline-none focus:text-[#F9A106]`}
         aria-haspopup="true"
         aria-expanded={isOpen ? 'true' : 'false'}
 
