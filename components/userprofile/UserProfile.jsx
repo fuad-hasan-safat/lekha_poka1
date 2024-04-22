@@ -3,7 +3,6 @@ import Loading from "@/components/common/loading";
 import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState, useRef, useMemo } from "react";
 import JoditEditor from "jodit-react";
-import { components } from "react-select";
 import Select from "react-select";
 
 import UserDetails from "@/components/user/userdetails";
@@ -12,8 +11,11 @@ import { fetchData } from "@/app/api/api";
 import { apiBasePath } from "@/utils/constant";
 import Link from "next/link";
 
-export default function UserProfile(context) {
-  const { slug } = context.params;
+import Checkbox from '@/components/common/Checkbox'
+import AudioFileUpload from '@/components/userprofile/AudiofileUpload'
+
+export default function UserProfile(slug) {
+ // const { slug } = context.params;
 
   // --------------- editor ----------
 
@@ -26,8 +28,24 @@ export default function UserProfile(context) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedWriter, setSelectedWriter] = useState(null);
 
+  // determine writer and writer id
+  const [writer, setWriter] = useState(localStorage.getItem("name"));
+  const [writerId, setWriterId] = useState(null);
+  const [isNewWriter, setIsNewWriter] = useState(false);
+
+  // check box ---- (writer creation)
+  const [checkboxValue, setCheckboxValue] = useState(false);
+
+  const handleCheckboxChange = (isChecked) => {
+    setCheckboxValue(isChecked);
+    // Handle the changed checkbox value in your application logic here
+  };
+
   const categoryhandleChange = (selected) => {
     setSelectedOption(selected); // Selected option object
+    setWriter(selected?.label)
+    setWriterId(selected?.value)
+
   };
 
   const writerhandleChange = (selected) => {
@@ -39,6 +57,7 @@ export default function UserProfile(context) {
       ...provided,
       backgroundColor: "#fff",
       border: "1px solid #ccc",
+      color: "#000"
     }),
   };
 
@@ -58,9 +77,12 @@ export default function UserProfile(context) {
   const [userToken, setUserToken] = useState("");
   const [userPost, setUserPost] = useState([]);
 
-  //  category fetch
+  //  category and writer fetch
   const [category, setCategory] = useState([]);
   const [writers, setWriters] = useState([]);
+
+
+
   // summary
   const [summary, setSummary] = useState('')
 
@@ -76,6 +98,8 @@ export default function UserProfile(context) {
   const [follower, setFollower] = useState(0);
   const [post, setPost] = useState(0);
   const [following, setFollowing] = useState(0);
+  //
+  const [canPostStatus, setCanPostStatus] = useState(false)
 
 
   useEffect(() => {
@@ -95,6 +119,12 @@ export default function UserProfile(context) {
         setFollower(data.object.profile.follower)
         setFollowing(data.object.profile.following)
         setPost(data.object.profile.post)
+
+        if (!data.object.stats) {
+          setCanPostStatus(false)
+        } else {
+          setCanPostStatus(true)
+        }
 
         console.log(' profile image----------->>>>', image)
       })
@@ -132,7 +162,8 @@ export default function UserProfile(context) {
           userPost
         );
       } catch (error) {
-        alert("Error fetching user post");
+        //alert("Error fetching user post");
+        console.log("Error fetching user post")
       }
     }
 
@@ -174,53 +205,100 @@ export default function UserProfile(context) {
 
 
   // audio file 
+  const audioRef = useRef();
   const [selectedFile, setSelectedFile] = useState(null);
+  const [progress, setProgress] = useState(0);
 
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+  
+
+  // const handleFileChange = (event) => {
+  //   if (event.target.files && event.target.files.length > 0) {
+  //     setSelectedFile(event.target.files[0]);
+  //     setProgress(0); // Reset progress when a new file is selected (optional)
+  //   }
+  // };
+
+  // jodit editor config
+  const joditconfig = {
+    // Other configurations...
+    placeholder: 'লিখুন',
+    color: 'black'
+
   };
 
+
+
   const handleSubmit = async () => {
-    const formData = new FormData();
-    formData.append("file", selectedFile);
-    formData.append("category", selectedOption?.label);
-    formData.append("cat_id", selectedOption?.value);
-    formData.append("writer", selectedOption?.label);
-    formData.append("writer_id", selectedOption?.value);
-    formData.append("title", title);
-    formData.append("summary", summary);
-    formData.append("content", content);
-    formData.append("rating", 1);
-    formData.append("status", false);
-    formData.append("uploaded_by", userUuid);
-
-    try {
-      const response = await fetch(`${apiBasePath}/posts`, {
-        method: "POST",
-        headers: {
-
-        },
-        body: formData,
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log("sucessfully sent:", data);
-        alert("Send Data Sucessfully");
-
-        setSelectedFile(null);
-        setTitle('');
-        setCategory('');
-        setWriters('')
-        setContent('')
-      } else {
-        console.error("Failed to update profile:", response.statusText);
-        alert(response.statusText);
-      }
-    } catch (error) {
-      console.error("Error updating profile:", error);
-      alert(error);
+    if (!canPostStatus) {
+      alert('দয়া করে প্রোফাইল তৈরি করুন')
     }
+    else {
+
+      if (!title) {
+        alert('দয়া করে আপনার লেখার শিরোনাম')
+      }
+      else if (!selectedOption) {
+        alert('দয়া করে আপনার লেখার ধরণ নির্বাচন করুন')
+      }
+      else if (!summary) {
+        alert('দয়া করে আপনার লেখার সারমর্ম লিখুন')
+      } else if (!writer && !checkboxValue) {
+        alert('দয়া করে লেখক নির্বাচন করুন ')
+      }
+      else {
+
+        const formData = new FormData();
+        formData.append("file", selectedFile);
+        formData.append("category", selectedOption?.label);
+        formData.append("cat_id", selectedOption?.value);
+        formData.append("writer", writer);
+        formData.append("writer_id", writerId);
+        formData.append("title", title);
+        formData.append("summary", summary);
+        formData.append("content", content);
+        formData.append("rating", 1);
+        formData.append("status", false);
+        formData.append("uploaded_by", userUuid);
+        formData.append("new_writer", checkboxValue);
+
+        if (title && selectedOption && summary) {
+
+          try {
+            const response = await fetch(`${apiBasePath}/posts`, {
+              method: "POST",
+              headers: {
+
+              },
+              body: formData,
+            });
+
+            if (response.ok) {
+              const data = await response.json();
+              console.log("sucessfully sent:", data);
+              alert("Send Data Sucessfully");
+
+              setSelectedFile(null);
+              setTitle('');
+              setCategory('');
+              setWriters('');
+              setContent('');
+              setSummary('');
+            } else {
+              console.error("Failed to update profile:", response.statusText);
+              alert(response.statusText);
+            }
+          } catch (error) {
+            console.error("Error updating profile:", error);
+            alert(error);
+          }
+        } else {
+          alert('শিরোনাম, লেখার ধরণ ও সারসংক্ষেপ লিখুন')
+        }
+      }
+
+    }
+
+
   };
 
   if (isLoading) {
@@ -233,18 +311,18 @@ export default function UserProfile(context) {
             <div>
               <div>
                 <img
-                  className="w-full h-[315px]"
+                  className="w-full"
                   src="/images/usericons/userbanner.svg"
                   alt="banner"
                 />
               </div>
-              <div className="grid place-content-center items-center -mt-[110px]">
-                <div className="">
+              <div className="grid place-content-center items-center text-center -mt-[110px]">
+                <div className="table m-auto">
                   <img
-                    className="w-[264px] h-[264px] rounded-full border-solid border-3 border-white "
+                    className="w-[264px] h-[264px] rounded-full  border-4 border-solid border-white  "
                     src={image.length > 0 ? `${apiBasePath}/${image}` : '/images/defaultUserPic/profile.jpg'} />
                 </div>
-                <div className="grid place-content-center space-y-4">
+                <div className="grid place-content-center  text-center space-y-4">
                   <h1 className="text-[#FCD200] text-[35px]  items-center">
                     {username}
                   </h1>
@@ -255,7 +333,8 @@ export default function UserProfile(context) {
                     {profileStatus}
                   </h1>
                 </div>
-                <div className="flex flex-row text-[#484848] text-[28px] divide-x-2 space-x-3 pt-4">
+                <div className="flex flex-row text-[#484848] text-[28px] justify-items-center  m-auto divide-x-2 space-x-3 pt-4">
+
                   <div className="">
                     <h1>{post}</h1>
                     <h1>পোস্ট</h1>
@@ -285,18 +364,19 @@ export default function UserProfile(context) {
                           className="w-full h-[62px] p-4 bg-[#FCF7E8] border-solid border-slate-800 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                           id="title"
                           type="text"
-                          placeholder="Post Title"
+                          placeholder="শিরোনাম"
                           required
                         />
-                         <textarea
+                        <textarea
                           onChange={handleSummary}
                           value={summary}
                           className="w-full h-[200px] p-4 bg-[#FCF7E8] border-solid border-slate-800 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                           id="summary"
                           type="textarea"
-                          placeholder="Summary"
+                          placeholder="সারসংক্ষেপ"
                           required
                         />
+                        <div className="text-yellow-800 text-[22px]">আপনার লেখার ধরণ নির্বাচন করুন</div>
 
                         <Select
                           value={selectedOption}
@@ -305,29 +385,58 @@ export default function UserProfile(context) {
                           options={Categoryoptions}
                         />
 
-                        <Select
-                          value={selectedWriter}
-                          onChange={writerhandleChange}
-                          styles={customStyles}
-                          options={writersOptions}
-                        />
-                        <JoditEditor
-                          ref={editor}
-                          value={content}
-                          config={false}
-                          //tabIndex={1} // tabIndex of textarea
-                          onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-                          onChange={(newContent) => {
-                            console.log(content);
-                          }}
-                        />
-                        <div>
+                        <div className="text-yellow-800 text-[22px]">লেখক নির্বাচন করুন(<span className="text-red-500">যদি আপনার নাম তালিকায় থাকে</span>)</div>
+                        <div className=" place-content-center justify-center ">
+
+                          <div className="">
+                            <Select
+                              value={selectedWriter}
+                              onChange={writerhandleChange}
+                              styles={customStyles}
+                              options={writersOptions}
+                            />
+
+                          </div>
+
+                          <div className="pt-[10px]">
+
+                            <h1 className="text-black text-[16px]">নিচের বক্সটি চেক করুন (<span className="text-red-500"> যদি আপনার নাম তালিকায় না থাকে</span>) </h1>
+                            <Checkbox label="My Checkbox" name="myCheckbox" onChange={handleCheckboxChange} />
+                            {/* <p className="text-black">Checkbox value: {checkboxValue.toString()}</p> */}
+
+                          </div>
+
+
+                        </div>
+
+
+                        <div className="text-yellow-800 text-[22px]">আপনার লেখা নিচে লিখুন</div>
+
+                        <div className="joidcss">
+
+                          <JoditEditor
+                            ref={editor}
+                            value={content}
+                            config={joditconfig}
+                            //tabIndex={1} // tabIndex of textarea
+                            onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                            onChange={(newContent) => {
+                              console.log(content);
+                            }}
+                          />
+
+                        </div>
+
+                        {/* <div className="text-gray-800">
                           <input type="file" accept="audio/*" onChange={handleFileChange} />
                           {selectedFile ? (
                             <p>Selected file: {selectedFile.name}</p>
                           ) : (
                             <p>অডিও ফাইল আপলোড করুন</p>
                           )}
+                        </div> */}
+                        <div>
+                          <AudioFileUpload selectedFile={selectedFile} setSelectedFile={setSelectedFile}/>
                         </div>
                         <button
                           onClick={handleSubmit}
@@ -384,11 +493,11 @@ export default function UserProfile(context) {
           </div>
         )}
         {!status && (
-          <div>
+          <div className="text-gray-800">
             <div>
-              You Are Not logged In,
+              আপনি লগ ইন করেননি,
             </div>
-            <Link href='/'> Go to home Page</Link>
+            <Link href='/'> প্রচ্ছদ পৃষ্ঠায় যান</Link>
           </div>
         )}
       </>

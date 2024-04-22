@@ -21,7 +21,7 @@ export default function AllWriterList() {
 
     return (
         <div className='container'>
-            <div className='w-max mt-[50px]'>
+            <div className='mt-[50px]'>
                 <div className='text-[26px] text-[#FCD200]'>
                     <p> লেখকদের তালিকা </p>
                     <hr className='bg-[#fcac00]'></hr>

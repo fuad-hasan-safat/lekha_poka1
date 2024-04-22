@@ -1,9 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import LekhaPokaProfile from "@/components/common/lekhaProfile";
 import LekhokDetails from "@/components/common/lekhok";
 import SidebarPostDivider from "@/components/common/sidebarpostdivider";
-import Image from "next/image";
 import { apiBasePath } from "@/utils/constant";
 import { useRouter } from "next/navigation";
 
@@ -66,13 +64,7 @@ const Lekhok = () => {
 
             <div className="flex space-x-3">
               <button className="pl-2 bg-white rounded-md border border-gray-300  w-[50px] h-[43px] ">
-                {/* <Image
-                                    src={'/images/svgs/previous.svg'}
-                                    width={20}
-                                    height={20}
-                                    alt={'ff'}
-                                    className="ml-[6px]"
-                                /> */}
+             
                 <svg
                   width="24"
                   height="25"
@@ -90,12 +82,7 @@ const Lekhok = () => {
                 </svg>
               </button>
               <button className="pl-4 bg-white rounded-md border border-gray-300 w-[50px] h-[43px] ">
-                {/* <Image
-                  src={"/images/svgs/next.svg"}
-                  width={10}
-                  height={10}
-                  alt={"ff"}
-                /> */}
+              
                 <svg
                   width="24"
                   height="25"

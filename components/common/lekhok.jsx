@@ -10,7 +10,7 @@ const LekhokDetails = ({
 }) => {
     return (
         <>
-            <div className="flex w-[321]">
+            <div className="flex w-full">
                 <div className="lekhokIteam">
                     <img 
                     src={image}  
