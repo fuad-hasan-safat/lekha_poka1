@@ -1,4 +1,5 @@
 "use client"
+import "../../app/globals.css";
 import { Provider } from "react-redux";
 import store, { RootState } from "@/lib/store";
 // export const metadata = {

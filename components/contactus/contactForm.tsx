@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { arial } from "../fonts/arial";
+import axios from 'axios';
 
 const ContactForm = () => {
     // State variables to store form data
@@ -20,10 +21,25 @@ const ContactForm = () => {
     };
 
     // Handle form submission
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
+    const handleSubmit =  async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         // Do something with the form data, for example, send it to an API
         console.log('Form data submitted:', formData);
+        try {
+            const response = await axios.post(`http://192.168.88.248:3002/contact`, {
+                name: formData.fullName,
+                mobile: formData.phoneNumber,
+                message: formData.message
+            });
+            // Handle successful signup response (e.g., redirect)
+            alert('Sucessfully Submit')
+        } catch (error) {
+            console.error('Signup error:', error);
+            // Handle signup error (e.g., display error message)
+        }
+
+
+
         // Reset form fields after submission
         setFormData({
             fullName: '',

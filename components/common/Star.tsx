@@ -26,7 +26,7 @@ const Star: React.FC<starObject> = ({
       <div className="flex">
         {starArray.length &&
           starArray.map((item) => (
-            <Image
+            <Image className="px-[2px]"
               src={
                 item == 1
                   ? "/images/svgs/full-star.svg"

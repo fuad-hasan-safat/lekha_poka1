@@ -31,6 +31,8 @@ export interface lekhokObj {
 export interface ProcchodButtonProps  {
   selectedId: string;
   setSelectedId: React.Dispatch<SetStateAction<string>>;
+  // setFilteredData: React.Dispatch<SetStateAction<filttredDataType>>;
+  // setPostList: React.Dispatch<SetStateAction<[]>>;
 };
 
 
@@ -38,24 +40,41 @@ export interface buttonItem extends ProcchodButtonProps {
   id: string;
   height: number;
   weidth: number;
-  txt: string;
+  title: string;
   
 }
 
-export interface mainContaintPost {
+export interface mainContaintPostType {
   id: string;
   title: string;
   writer: string;
   content: string;
 }
 
-// export type Post ={
-//   id: string,
-//   title: string,
-//   caltion: string,
-//   discription: string,
-//   image: string,
-// }
-// export interface Posts {
-//   post: Post[];
-// }
+export interface postObjectType{
+    _id: string;
+    category: string;
+    cat_id: string;
+    writer: string;
+    writer_id: string;
+    title:string;
+    content: string;
+    rating: number;
+    audio: string;
+    status: boolean;
+    uploaded_by: string;
+    __v: number;
+}
+
+export interface filttredDataType{
+  status: string;
+  object:[postObjectType];
+}
+
+
+export interface LoogedInUser {
+  status: string;
+  name: string;
+  phone: string;
+  uuid: string;
+}

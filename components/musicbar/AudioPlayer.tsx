@@ -2,12 +2,14 @@
 import { useRef, useState } from "react";
 import Controls from "./Control";
 import Progressbar from "./Progressbar";
-import playlist from "./platlists";
+//import playlist from "./platlists";
 import SongInfo from "./song-info";
 import useAudioPlayer from "./audioplayer/hook";
 import MusicleftPart from "./leftPart/MusicLeftPart";
+import { Playlist, Track } from "./audioplayer/type";
 
-const AudioPlayer = () => {
+const AudioPlayer = ({playlist} : any) => {
+  console.log("playlist data : ", playlist)
   const {
     playNextTrack,
     playPreviousTrack,
