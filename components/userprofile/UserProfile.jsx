@@ -13,9 +13,9 @@ import Link from "next/link";
 
 import Checkbox from '@/components/common/Checkbox'
 import AudioFileUpload from '@/components/userprofile/AudiofileUpload'
+import ChankFileUpload from '@/components/userprofile/ChankFileUpload'
 
-export default function UserProfile(slug) {
- // const { slug } = context.params;
+export default function UserProfile({slug}) {
 
   // --------------- editor ----------
 
@@ -31,7 +31,6 @@ export default function UserProfile(slug) {
   // determine writer and writer id
   const [writer, setWriter] = useState(localStorage.getItem("name"));
   const [writerId, setWriterId] = useState(null);
-  const [isNewWriter, setIsNewWriter] = useState(false);
 
   // check box ---- (writer creation)
   const [checkboxValue, setCheckboxValue] = useState(false);
@@ -65,11 +64,9 @@ export default function UserProfile(slug) {
 
   const router = useRouter();
 
-  const [data, setData] = useState(null);
   const [title, setTitle] = useState("");
 
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   const [status, setStatus] = useState("");
   const [username, setUsername] = useState("");
@@ -107,7 +104,7 @@ export default function UserProfile(slug) {
     fetch(`${apiBasePath}/getprofile/${slug}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log('pofile details --------------->>>>>>>', data);
+        console.log('pofile details on user profile--------------->>>>>>>', data);
         setDesignation(data.object.profile.designation)
         setProfileStatus(data.object.profile.profileStatus)
         setGender(data.object.profile.gender)
@@ -119,6 +116,9 @@ export default function UserProfile(slug) {
         setFollower(data.object.profile.follower)
         setFollowing(data.object.profile.following)
         setPost(data.object.profile.post)
+
+        console.log('pofile gender details on user profile--------------->>>>>>>', gender);
+
 
         if (!data.object.stats) {
           setCanPostStatus(false)
@@ -211,12 +211,6 @@ export default function UserProfile(slug) {
 
   
 
-  // const handleFileChange = (event) => {
-  //   if (event.target.files && event.target.files.length > 0) {
-  //     setSelectedFile(event.target.files[0]);
-  //     setProgress(0); // Reset progress when a new file is selected (optional)
-  //   }
-  // };
 
   // jodit editor config
   const joditconfig = {
@@ -418,7 +412,7 @@ export default function UserProfile(slug) {
                             ref={editor}
                             value={content}
                             config={joditconfig}
-                            //tabIndex={1} // tabIndex of textarea
+                            tabIndex={1} // tabIndex of textarea
                             onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
                             onChange={(newContent) => {
                               console.log(content);
@@ -437,6 +431,7 @@ export default function UserProfile(slug) {
                         </div> */}
                         <div>
                           <AudioFileUpload selectedFile={selectedFile} setSelectedFile={setSelectedFile}/>
+                          {/* <ChankFileUpload/> */}
                         </div>
                         <button
                           onClick={handleSubmit}
