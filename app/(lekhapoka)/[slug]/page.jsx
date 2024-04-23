@@ -1,6 +1,5 @@
 "use client";
 import Sidebar from "@/components/sidebar/Sidebar";
-import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -10,6 +9,7 @@ import RatingComponent from "@/components/common/starRating";
 import AudioPlayer from "@/components/musicbar/AudioPlayer";
 import { fetchData } from "@/app/api/api";
 import { apiBasePath } from "@/utils/constant";
+import SimpleAudioPlayer from '@/components/musicbar/SimpleAudioPlayer'
 
 export default function PostDetails(context) {
   const { slug } = context.params;
@@ -107,6 +107,8 @@ export default function PostDetails(context) {
             },
           ]}
         />
+
+        // <SimpleAudioPlayer playlist={[{ audioSrc: `${apiBasePath}/${data.audio}`}]} />
       )}
     </>
   );

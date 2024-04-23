@@ -1,4 +1,4 @@
-// 'use client'
+'use client'
 import { useEffect, useState } from "react";
 import {
   Controls,
@@ -14,6 +14,20 @@ export function createAudioplayer(
 ): Controls {
 
 // ----------------------------------
+// ------------ Log in and conditions -------------
+
+const [status, setStatus] = useState("");
+  const [username, setUsername] = useState("");
+  const [userUuid, setUserUuid] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+  const [userToken, setUserToken] = useState("");
+
+  useEffect(() => {
+    setUsername(localStorage.getItem('name')|| '');
+    setUserUuid(localStorage.getItem('uuid')|| '')
+    setUserPhone(localStorage.getItem('phone')|| '')
+    setUserToken(localStorage.getItem('token')|| '')
+  }, []);
 
 // ----------------------------------
 
@@ -169,10 +183,8 @@ export function createAudioplayer(
   }
 
   function togglePlayPause() {
-    if(audioElement.currentTime === 2){
-      audioElement.pause();
-    }
 
+    
     //console.log('audio current time: ------>>>>>>', audioElement.currentTime)
     if (audioElement.paused) {
       audioElement.play();

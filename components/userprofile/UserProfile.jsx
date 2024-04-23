@@ -71,6 +71,7 @@ export default function UserProfile({slug}) {
   const [status, setStatus] = useState("");
   const [username, setUsername] = useState("");
   const [userUuid, setUserUuid] = useState("");
+  const [userPhone, setUserPhone] = useState("");
   const [userToken, setUserToken] = useState("");
   const [userPost, setUserPost] = useState([]);
 
@@ -178,6 +179,7 @@ export default function UserProfile({slug}) {
     setUsername(localStorage.getItem("name") || "");
     setUserToken(localStorage.getItem("token") || "");
     setUserUuid(localStorage.getItem("uuid") || "");
+    setUserPhone(localStorage.getItem("phone") || "");
   }, []);
 
   // Drop down category

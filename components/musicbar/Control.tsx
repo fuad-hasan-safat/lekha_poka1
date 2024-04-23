@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useEffect } from 'react';
 import ImageButton from './Imagebutton';
 
 type ControlsProps = {
@@ -26,6 +27,9 @@ const Controls = ({onPlayClick, onPrevClick, onNextClick, onRepeatClick, onShuff
     const shuffleButtonDisabledIcon: string  = '/images/icons/ic_shuffle_disabled.svg';
     const pauseButtonIcon: string  = '/images/icons/ic_pause.svg';
     const repeatButtonDisabledIcon: string  = '/images/icons/ic_repeat_disabled.svg';
+
+
+    const tt = false;
 
   
 
