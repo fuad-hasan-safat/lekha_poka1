@@ -12,9 +12,11 @@ type ControlsProps = {
     isPlaying: boolean;
     repeat: boolean;
     shuffle: boolean;
+    currentTrackDuration: number | null;
+    currentTrackPlaybackPosition: number | null;
 };
 
-const Controls = ({onPlayClick, onPrevClick, onNextClick, onRepeatClick, onShuffleClick ,isPlaying, repeat, shuffle}: ControlsProps) => {
+const Controls = ({onPlayClick, onPrevClick, onNextClick, onRepeatClick, onShuffleClick ,isPlaying, repeat, shuffle, currentTrackDuration, currentTrackPlaybackPosition}: ControlsProps) => {
 
     const playButtonIcon: string = '/images/icons/play-svgrepo-com.svg';
     const nextButtonIcon: string  = '/images/icons/ic_next.svg';

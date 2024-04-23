@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Controls from "./Control";
 import Progressbar from "./Progressbar";
 //import playlist from "./platlists";
@@ -9,7 +9,7 @@ import MusicleftPart from "./leftPart/MusicLeftPart";
 import { Playlist, Track } from "./audioplayer/type";
 
 const AudioPlayer = ({playlist} : any) => {
-  console.log("playlist data : ", playlist)
+  // console.log("playlist data : ", playlist)
   const {
     playNextTrack,
     playPreviousTrack,
@@ -30,6 +30,11 @@ const AudioPlayer = ({playlist} : any) => {
     currentTrackPlaybackPosition,
     currentTrackMetadata,
   } = playerState;
+
+
+  useEffect(()=>{
+    console.log('current duration ------>>>>>', currentTrackPlaybackPosition)
+  })
 
   function setProgress(value: number) {
     if (currentTrackDuration !== null) {
@@ -69,6 +74,8 @@ const AudioPlayer = ({playlist} : any) => {
             isPlaying={playbackState === "PLAYING"}
             repeat={repeat}
             shuffle={shuffle}
+            currentTrackDuration={currentTrackDuration}
+            currentTrackPlaybackPosition={currentTrackPlaybackPosition}
           />
           <Progressbar
             rightLabel={formatTime(currentTrackDuration)}

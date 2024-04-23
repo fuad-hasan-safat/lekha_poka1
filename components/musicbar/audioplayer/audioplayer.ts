@@ -1,3 +1,5 @@
+// 'use client'
+import { useEffect, useState } from "react";
 import {
   Controls,
   PlaybackState,
@@ -10,11 +12,18 @@ export function createAudioplayer(
   playlist: Playlist,
   onStateChange: (state: PlayerState) => void
 ): Controls {
+
+// ----------------------------------
+
+// ----------------------------------
+
+
   let currentTrackIndex = 0;
   let repeat = false;
   let shuffle = false;
   const playbackHistory: Array<number> = [];
   const audioElement: HTMLAudioElement = new Audio();
+
 
   /* === PlayerState === */
   //#region
@@ -160,6 +169,11 @@ export function createAudioplayer(
   }
 
   function togglePlayPause() {
+    if(audioElement.currentTime === 2){
+      audioElement.pause();
+    }
+
+    //console.log('audio current time: ------>>>>>>', audioElement.currentTime)
     if (audioElement.paused) {
       audioElement.play();
     } else {

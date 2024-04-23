@@ -18,6 +18,7 @@ function useAudioPlayer(playlist: Playlist): AudioPlayer {
   useEffect(() => {
     const newPlayer = createAudioplayer(playlist, setPlayerState);
     playerRef.current = newPlayer;
+
     return () => {
       newPlayer.cleanup();
     };
@@ -38,6 +39,7 @@ function useAudioPlayer(playlist: Playlist): AudioPlayer {
   function togglePlayPause() {
     playerRef.current?.togglePlayPause();
   }
+
 
   function playNextTrack() {
     playerRef.current?.playNextTrack();
