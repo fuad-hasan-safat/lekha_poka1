@@ -49,16 +49,6 @@ const MyFooter = () => {
                         ]}
                       />
                     </div>
-                    <div>
-                        <FooterLink
-                          title="গুরুত্বপূর্ণ লিঙ্ক"
-                          links={[
-                            { url: "/privacy", label: "প্রাইভেসি" },
-                            { url: "/conditions", label: "শর্তাবলি" },
-                            { url: "/sitemaps", label: "সাইটম্যাপ" },
-                          ]}
-                        />
-                      </div>
                   </li>
                   <li>
                     <div className="text-white">
