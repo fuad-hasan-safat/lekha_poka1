@@ -73,6 +73,7 @@ export default function SobKobitaLeftContent() {
                       id={post._id} // Assuming '_id' is the unique identifier
                       title={post.title}
                       writer={post.writer}
+                      category={post.category}
                       content={post.content.split('\n').slice(0, 8).join('\n')}
                     />
                   </div>

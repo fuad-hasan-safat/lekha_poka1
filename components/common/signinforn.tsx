@@ -36,47 +36,59 @@ export default function SigninForm({ logreg, btntext }: logreg) {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setState((prevState) => ({
-            ...prevState,
-            [name]: value,
+          ...prevState,
+          [name]: value,
+          // Validate phone number on every change for inline error display
+          phoneError: validateMobileNumber(value) ? null : 'Mobile number is invalid.',
         }));
 
     };
 
     // validate phone number 
+    // Validate phone number
     const validateMobileNumber = (mobileNumber: string) => {
-        const regex = /^01\d{9}$/; // Regex to match '01' followed by 9 digits
+        // Enforce exactly 11 digits after '01' using positive lookahead assertion
+        const regex = /^01(?=\d{11}$)/;
         return regex.test(mobileNumber);
-    };
-
-    const validate = () => {
-        console.log(`--------------->>>>>>SSSS ${numberPrefix}${state.password}`)
+      };
+    
+      const validate = () => {
+        console.log(`--------------->>>>>>SSSS <span class="math-inline">\{numberPrefix\}</span>{state.password}`);
         let isValid = true;
         setState((prevState) => ({ ...prevState, error: null, phoneError: null }));
-
+    
         if (!state.mobileNumber) {
-            setState((prevState) => ({ ...prevState, phoneError: 'Mobile number is required.' }));
-            isValid = false;
+          setState((prevState) => ({ ...prevState, phoneError: 'Mobile number is required.' }));
+          isValid = false;
         } else if (!validateMobileNumber(state.mobileNumber)) {
-            setState((prevState) => ({ ...prevState, phoneError: 'Mobile number must start with 01 and be 11 digits long.' }));
-            isValid = false;
+          let errorMessage = 'Mobile number must start with 01 and be 11 digits long.';
+          if (state.mobileNumber.length < 3) {
+            errorMessage = 'Mobile number is too short.';
+          } else if (state.mobileNumber.length > 11) {
+            errorMessage = 'Mobile number is too long.';
+          } else if (!state.mobileNumber.startsWith('01')) {
+            errorMessage = 'Mobile number must start with 01.';
+          }
+          setState((prevState) => ({ ...prevState, phoneError: errorMessage }));
+          isValid = false;
         }
-
+    
         if (!state.password) {
-            setState((prevState) => ({ ...prevState, error: 'Password is required.' }));
-            isValid = false;
+          setState((prevState) => ({ ...prevState, error: 'Password is required.' }));
+          isValid = false;
         } else if (state.password.length < 8) {
-            setState((prevState) => ({ ...prevState, error: 'Password must be at least 8 characters long.' }));
-            isValid = false;
+          setState((prevState) => ({ ...prevState, error: 'Password must be at least 8 characters long.' }));
+          isValid = false;
         }
-
+    
         if (state.password !== state.retypePassword) {
-            setState((prevState) => ({ ...prevState, error: 'Passwords do not match.' }));
-            isValid = false;
+          setState((prevState) => ({ ...prevState, error: 'Passwords do not match.' }));
+          isValid = false;
         }
-
+    
         setState((prevState) => ({ ...prevState, isDisabled: !isValid })); // Enable button if all validations pass
-    };
-
+      };
+    
     const handleSubmit = async () => {
         validate(); // Perform validation before submitting
 
