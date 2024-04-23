@@ -626,6 +626,20 @@ transition: all 0.5s !important;
 }
 
 
+/* 
+----------------------------
+------ contact page---------
+---------------------------
+ */
+ .contect__frm_left{
+  width: 50%;
+  padding-right: 50px;
+ }
+ .contect__frm_right{
+  width: 50%;
+  padding-left: 50px;
+ }
+
 /*
 ----------------------
  Resposnive Css
@@ -658,6 +672,12 @@ transition: all 0.5s !important;
       width: 25%;
       float: left;
   }
+  .contect__frm_left {
+      padding-right: 30px;
+  }
+  .contect__frm_right {
+      padding-left: 30px;
+  }
 }
 @media(max-width:991px){
   .logo {
@@ -686,6 +706,15 @@ transition: all 0.5s !important;
   .ftr__main__content > ul > li {
       width: 33.3333%;
       float: left;
+  }
+  .contect__frm_left {
+      padding-right: 15px;
+  }
+  .contect__frm_right {
+      padding-left: 15px;
+  }
+  .contect__frm__wrap{
+    padding: 50px 0 !important;
   }
 }
 @media(max-width:767px){
@@ -780,6 +809,19 @@ transition: all 0.5s !important;
   .ftr__btm {
       padding: 30px 0;
       margin-top: 0;
+  }
+  .contect__frm_left {
+      padding-right: 0;
+      width: 100%;
+  }
+  .contect__frm_right {
+      padding-left: 0;
+      width: 100%;
+      margin-left: 0 !important;
+      padding-top: 50px;
+  }
+  .contect__frm__wrap{
+    display: block;
   }
 }
 @media(max-width:575px){

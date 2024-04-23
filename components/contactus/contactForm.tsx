@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { arial } from "../fonts/arial";
 import axios from 'axios';
+import { apiBasePath } from '@/utils/constant';
 
 const ContactForm = () => {
     // State variables to store form data
@@ -26,7 +27,7 @@ const ContactForm = () => {
         // Do something with the form data, for example, send it to an API
         console.log('Form data submitted:', formData);
         try {
-            const response = await axios.post(`http://192.168.88.248:3002/contact`, {
+            const response = await axios.post(`${apiBasePath}/contact`, {
                 name: formData.fullName,
                 mobile: formData.phoneNumber,
                 message: formData.message
@@ -60,7 +61,7 @@ const ContactForm = () => {
                         value={formData.fullName}
                         onChange={handleInputChange}
                         required
-                        className='bg-[#FCF7E8] w-[559px] h-[62px] rounded-3xl p-3'
+                        className='bg-[#FCF7E8] w-full lg:h-[62px] md:h-[55px] sm:h-[50px] xs:h-[45px] rounded-3xl p-5'
                     />
                 </div>
                 <div className={`${arial.variable} font-arial`}>
@@ -72,7 +73,7 @@ const ContactForm = () => {
                         value={formData.phoneNumber}
                         onChange={handleInputChange}
                         required
-                        className='bg-[#FCF7E8] w-[559px] h-[62px] rounded-3xl p-3'
+                        className='bg-[#FCF7E8] w-full lg:h-[62px] md:h-[55px] sm:h-[50px] xs:h-[45px] rounded-3xl p-5'
                     />
                 </div>
                 <div className={`${arial.variable} font-arial`}>
@@ -83,12 +84,12 @@ const ContactForm = () => {
                         value={formData.message}
                         onChange={handleInputChange}
                         required
-                        className='bg-[#FCF7E8] w-[559px] h-[257px] rounded-3xl p-3'
+                        className='bg-[#FCF7E8] w-full lg:h-[257px] md:h-[240px] sm:h-[220px] xs:h-[200px] rounded-3xl p-5'
                     />
                 </div>
                 <button
                     type="submit"
-                    className={`${arial.variable} font-arial bg-[#F9A106] w-[559px] h-[75px] rounded-3xl text-[36px] text-white`}
+                    className={`${arial.variable} font-arial bg-[#F9A106] w-full lg:h-[75px] md:h-[70px] sm:h-[60px] xs:h-[50px] rounded-3xl lg:text-[36px] md:text-[34px] sm:text-[30px] xs:text-[24px] text-white`}
                 >
                     Send
                 </button>
