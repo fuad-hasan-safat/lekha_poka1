@@ -43,7 +43,7 @@ export default function Home() {
               <div className="w-1/2">
                 <Image
                   width={669}
-                  height={1032}
+                  height={500}
                   alt="mission side image"
                   src="/images/aboutuspage/missionSideImage.png"
                 />
@@ -90,7 +90,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="my-[100px]">
+        <section className="my-[80px]">
           <div className="container">
             <div className="flex flex-row space-x-10">
 
@@ -128,7 +128,7 @@ export default function Home() {
               </div>
 
               <div className=" w-1/2 ">
-                <div className="mt-[210px]">
+                <div className="mt-[150px]">
                   <Image
                     width={669}
                     height={1032}
