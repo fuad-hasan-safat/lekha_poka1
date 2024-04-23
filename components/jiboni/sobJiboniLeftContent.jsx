@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import MainContentDivider from "../common/mainContentDivider";
 import Loading from "../common/loading";
 import SobJiboniBody from "./sobJiboniBody";
+import { apiBasePath } from "@/utils/constant";
 
 export default function SobJiboniLeftContent() {
 
@@ -22,7 +23,7 @@ export default function SobJiboniLeftContent() {
 
     const fetchPosts = async () => {
       try {
-        const response = await fetch("http://192.168.88.248:3002/posts/জীবনী");
+        const response = await fetch(`${apiBasePath}/posts/জীবনী`);
         const data = await response.json();
         setPostList(data.object);
 
@@ -37,17 +38,7 @@ export default function SobJiboniLeftContent() {
 
     fetchPosts();
 
-    // fetch("http://192.168.88.248:3002/posts/জীবনী")
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setPostList(data.object);
-    //     console.log('-----------', data)
-    //     console.log('-----------', postList)
-    //   })
-    //   .catch(error => console.error("Error fetching data:", error))
-    //   .finally(
-    //     setIsLoading(false)
-    //   )
+  
 
   }, []);
 
@@ -72,7 +63,7 @@ export default function SobJiboniLeftContent() {
         <div>Error fetching posts: {error.message}</div>
       ) : (
         <>
-          <div className="pt-20 text-3xl w-[604px]">
+          <div className="lakha__main__content pt-20  text-3xl lg:mr-[100px] md:mr-[50px]">
             {displayedPosts.length && (
               displayedPosts.map((post, index) => (
                 <>

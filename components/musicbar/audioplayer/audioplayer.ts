@@ -1,5 +1,5 @@
-'use client'
-import { useEffect, useState } from "react";
+// 'use client'
+// import { useEffect, useState } from "react";
 import {
   Controls,
   PlaybackState,
@@ -16,18 +16,18 @@ export function createAudioplayer(
 // ----------------------------------
 // ------------ Log in and conditions -------------
 
-const [status, setStatus] = useState("");
-  const [username, setUsername] = useState("");
-  const [userUuid, setUserUuid] = useState("");
-  const [userPhone, setUserPhone] = useState("");
-  const [userToken, setUserToken] = useState("");
+// const [status, setStatus] = useState("");
+//   const [username, setUsername] = useState("");
+//   const [userUuid, setUserUuid] = useState("");
+//   const [userPhone, setUserPhone] = useState("");
+//   const [userToken, setUserToken] = useState("");
 
-  useEffect(() => {
-    setUsername(localStorage.getItem('name')|| '');
-    setUserUuid(localStorage.getItem('uuid')|| '')
-    setUserPhone(localStorage.getItem('phone')|| '')
-    setUserToken(localStorage.getItem('token')|| '')
-  }, []);
+//   useEffect(() => {
+//     setUsername(localStorage.getItem('name')|| '');
+//     setUserUuid(localStorage.getItem('uuid')|| '')
+//     setUserPhone(localStorage.getItem('phone')|| '')
+//     setUserToken(localStorage.getItem('token')|| '')
+//   }, []);
 
 // ----------------------------------
 

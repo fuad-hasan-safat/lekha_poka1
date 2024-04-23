@@ -20,7 +20,7 @@ export default function SobProbondho() {
                         <div className="col-md-12"></div>
                         <div className="flex flex-col">
 
-                            <div className="flex flex-row">
+                            <div className="all__post__content flex flex-row">
                                 <div className="w-maincontainwidth">
                                     <SobProbondhoLeftContent />
                                 </div>

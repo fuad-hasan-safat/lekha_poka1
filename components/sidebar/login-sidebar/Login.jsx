@@ -82,6 +82,7 @@ export default function Login() {
 
         setnumber("");
         setPassword("");
+        router.refresh()
       } else {
         console.log("error res--------------------", response);
         alert(response.data.message);

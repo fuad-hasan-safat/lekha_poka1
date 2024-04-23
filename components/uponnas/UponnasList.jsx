@@ -54,7 +54,7 @@ export default function UponnasList() {
         <>
             <div className='container'>
                 <div className='flex'>
-                    <div>
+                    <div className='lakha__main__content pt-20  text-3xl lg:mr-[100px] md:mr-[50px]">'>
                         {displayedPosts.length && (
                             displayedPosts.map((post, index) => (
                                 <>

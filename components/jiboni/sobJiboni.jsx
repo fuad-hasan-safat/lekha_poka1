@@ -21,7 +21,7 @@ export default function SobJiboni() {
                         <div className="col-md-12">
                             <div className="flex flex-col">
 
-                                <div className="flex flex-row">
+                                <div className="all__post__content flex flex-row">
                                     <div className="w-maincontainwidth">
                                         <SobJiboniLeftContent />
                                     </div>

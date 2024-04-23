@@ -41,19 +41,6 @@ export default function SobOnugolpoLeftContent() {
     fetchPosts();
 
 
-
-    // fetch("http://192.168.88.248:3002/posts/প্রবন্ধ")
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setPostList(data.object);
-    //     console.log('-----------', data)
-    //     console.log('-----------', postList)
-    //   })
-    //   .catch(error => console.error("Error fetching data:", error))
-    //   .finally(
-    //     setIsLoading(false)
-    //   )
-
   }, []);
 
 
@@ -77,7 +64,7 @@ export default function SobOnugolpoLeftContent() {
         <div>Error fetching posts: {error.message}</div>
       ) : (
         <>
-          <div className="pt-20 text-3xl w-[604px]">
+          <div className="lakha__main__content pt-20  text-3xl lg:mr-[100px] md:mr-[50px]">
             {displayedPosts.length && (
               displayedPosts.map((post, index) => (
                 <>

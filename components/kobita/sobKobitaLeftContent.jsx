@@ -64,7 +64,7 @@ export default function SobKobitaLeftContent() {
         <div>Error fetching posts: {error.message}</div>
       ) : (
         <>
-          <div className="pt-20  text-3xl mr-[100px]">
+          <div className="lakha__main__content pt-20  text-3xl lg:mr-[100px] md:mr-[70px] ">
             {displayedPosts.length && (
               displayedPosts.map((post, index) => (
                 <>
