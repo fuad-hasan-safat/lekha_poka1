@@ -40,7 +40,6 @@ const MyFooter = () => {
                   </li>
                   <li>
                     <div className="text-white">
-<<<<<<< Updated upstream
                       <FooterLink
                         title="গুরুত্বপূর্ণ লিঙ্ক"
                         links={[
@@ -50,8 +49,7 @@ const MyFooter = () => {
                         ]}
                       />
                     </div>
-
-=======
+                    <div>
                         <FooterLink
                           title="গুরুত্বপূর্ণ লিঙ্ক"
                           links={[
@@ -63,7 +61,6 @@ const MyFooter = () => {
                       </div>
                   </li>
                   <li>
->>>>>>> Stashed changes
                     <div className="text-white">
                         <FooterLink
                           title="যোগাযোগ"
