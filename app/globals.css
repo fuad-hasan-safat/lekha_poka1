@@ -42,7 +42,17 @@ body {
   margin: 0 auto;
   padding: 0 15px;
 }
-
+.reset-list,
+.ulc{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 
 /* 
 ---------------------
@@ -596,6 +606,25 @@ transition: all 0.5s !important;
   display: none;
 }
 
+/*
+-----------------
+ Footer Css
+----------------- 
+*/
+.ftr__main__content > ul > li{
+  width: 20%;
+  float: left;
+}
+
+.ftr__btm {
+  padding: 60px 0;
+  border-top: 1px solid#979797;
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 80px;
+}
+
 
 /*
 ----------------------
@@ -618,6 +647,17 @@ transition: all 0.5s !important;
       width: 90px;
       font-size: 14px;
   }
+  .sidebar__all__see{
+    width: 130px !important;
+  }
+  .sidebar__wrap {
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+  .ftr__main__content > ul > li {
+      width: 25%;
+      float: left;
+  }
 }
 @media(max-width:991px){
   .logo {
@@ -628,6 +668,24 @@ transition: all 0.5s !important;
   }
   .slider__desc h1{
     font-size:46px;
+  }
+  .all__post__content{
+    display: block;
+  }
+  .w-maincontainwidth {
+      width: 100%;
+      padding-right: 0 !important;
+  }
+  .w-sidebarwidth {
+      width: 100%;
+  }
+  .all__button__list{
+    justify-content: center;
+    align-items: center;
+  }
+  .ftr__main__content > ul > li {
+      width: 33.3333%;
+      float: left;
   }
 }
 @media(max-width:767px){
@@ -689,6 +747,40 @@ transition: all 0.5s !important;
       bottom: 5rem !important;
       left: 8% !important;
   }
+  .procchod__button{
+    margin: 0 5px !important;
+  }
+  .procchod__button button {
+      width: 80px;
+      font-size: 13px;
+  }
+  .lakha__main__content{
+    padding-top: 50px !important;
+  }
+  .all__button__list {
+      padding-top: 30px;
+  }
+  .ftr__main__content{
+    text-align: center;
+  }
+  .ftr__main__content > ul > li {
+      width:100%;
+  }
+  .ftr__logo {
+      text-align: center;
+      display: table;
+      margin: 0 auto;
+      padding-bottom: 25px;
+  }
+  .ftr__socail__icon ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ftr__btm {
+      padding: 30px 0;
+      margin-top: 0;
+  }
 }
 @media(max-width:575px){
   .slider__bg__img img {
@@ -696,6 +788,10 @@ transition: all 0.5s !important;
   }
   .slider__pt__wrap {
       padding-top: 70px;
+  }
+  .procchod__button button {
+      width: 65px;
+      font-size: 13px;
   }
 }
 @media(max-width:479px){
@@ -728,5 +824,9 @@ transition: all 0.5s !important;
   .slider__pagination {
       bottom: 3rem !important;
       left: 10% !important;
+  }
+  .procchod__button button {
+      width: 45px;
+      font-size: 10px;
   }
 }

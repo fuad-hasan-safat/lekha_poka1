@@ -86,7 +86,7 @@ export default function ProcchodLeftContent() {
           <div>Error fetching posts: {error.message}</div>
         ) : (
           <>
-            <div className="pt-20 text-3xl">
+            <div className="lakha__main__content pt-20 text-3xl">
               {displayedPosts.map((post, index) => (
                 <>
                   <div key={index}>

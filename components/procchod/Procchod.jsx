@@ -6,7 +6,7 @@ export default function Procchod() {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="flex flex-row pt-10">
+              <div className="all__post__content flex flex-row pt-10">
                 <div className="w-maincontainwidth pr-10">
                   <ProcchodLeftContent />
                 </div>

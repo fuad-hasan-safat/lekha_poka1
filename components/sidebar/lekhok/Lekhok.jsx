@@ -100,7 +100,7 @@ const Lekhok = () => {
             <div>
               <button
                 onClick={allWriterHandler}
-                className="bg-yellow-500 w-[180px] h-[43px] text-white rounded-md mr-3">
+                className="sidebar__all__see bg-yellow-500 lg:w-[180px] md:w-[160px] sm:w-[150px] h-[43px] text-white rounded-md mr-3">
                 সব দেখুন
               </button>
             </div>
