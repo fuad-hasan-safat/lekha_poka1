@@ -115,10 +115,10 @@ export default function SigninForm({ logreg, btntext }: logreg) {
         <>
             <div >
 
-                <div className="text-[48px] mb-5  font-semibold text-yellow-500">
+                <div className="lg:text-[48px] md:text-[42px] sm:text-[40px] xs:text-[38px] mb-5  font-semibold text-yellow-500">
                     {logreg}
                 </div>
-                <div className="  grid place-items-center">
+                <div className="text-center">
                     <div className="mb-4 ">
 
                         <input
@@ -128,7 +128,7 @@ export default function SigninForm({ logreg, btntext }: logreg) {
                             placeholder="Full Name"
                             value={state.fullName}
                             onChange={handleChange}
-                            className="w-[559px] h-[62px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="w-full lg:h-[60px] xs:h-[45px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
                     </div>
@@ -142,7 +142,7 @@ export default function SigninForm({ logreg, btntext }: logreg) {
                             value={state.mobileNumber}
                             onChange={handleChange}
                             onBlur={validate}
-                            className="w-[559px] h-[62px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="w-full lg:h-[60px] xs:h-[45px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
                        {state.phoneError && state.mobileNumber && <p className="error text-red-500">{state.phoneError}</p>}
@@ -157,7 +157,7 @@ export default function SigninForm({ logreg, btntext }: logreg) {
                             value={state.password}
                             onChange={handleChange}
                             onBlur={validate}
-                            className="w-[559px] h-[62px] p-4 bg-[#FCF7E8]  rounded-2xl   text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
+                            className="w-full lg:h-[60px] xs:h-[45px] p-4 bg-[#FCF7E8]  rounded-2xl   text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
 
@@ -171,7 +171,7 @@ export default function SigninForm({ logreg, btntext }: logreg) {
                             value={state.retypePassword}
                             onChange={handleChange}
                             onBlur={validate}
-                            className="w-[559px] h-[62px] p-4 bg-[#FCF7E8]  rounded-2xl   text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
+                            className="w-full lg:h-[60px] xs:h-[45px] p-4 bg-[#FCF7E8]  rounded-2xl   text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
                             required
                         />
                         {state.error && <p className="error">{state.error}</p>}
@@ -181,7 +181,7 @@ export default function SigninForm({ logreg, btntext }: logreg) {
 
                     <button
                         onClick={handleSubmit}
-                        className=" mt-8 px-5 bg-[#F9A106] rounded-full text-[35px] text-white w-[368px] h-[75px] "
+                        className=" mt-8 px-5 bg-[#F9A106] rounded-full lg:text-[35px] xs:text-[25px] text-white w-full lg:h-[65px] xs:h-[50px]"
                     >
                         {btntext}
                     </button>

@@ -31,16 +31,16 @@ const LoginPage = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className={`flex ${arial.variable} font-arial`}>
-                <div className="flex flex-row  bg-[#FCF7E8] shadow-md">
+              <div className={`${arial.variable} font-arial`}>
+                <div className="login__form__wrap clearfix flex flex-row justify-center bg-[#FCF7E8] shadow-md">
                   {/* left part */}
-                  <div className=" w-[640px]   ">
+                  <div className="login__form__left">
                     <LoginSignInOtpLeftPartDesign />
                   </div>
                   {/* right part */}
-                  <div className="relative w-[640px]  bg-white rounded-l-[46px] text-black grid place-items-center ">
+                  <div className="login__form__right relative bg-white rounded-l-[46px] text-black">
 
-                    <div className="grid place-items-center ">
+                    <div className="">
                       <LoginReg logreg="Log In" btntext="Log In" />
                       <SignInOption
                         title="Or Signup with"
@@ -53,7 +53,7 @@ const LoginPage = () => {
                       />
 
                     </div>
-                    <div className="absolute top-7 right-0 pr-2">
+                    <div className="language__dropdown absolute top-7 right-0 pr-2">
                       <DropDown />
                     </div>
                   </div>

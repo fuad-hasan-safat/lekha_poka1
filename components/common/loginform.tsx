@@ -116,15 +116,15 @@ export default function LoginForm({ logreg, btntext }: logreg) {
   return (
     <>
       <div>
-        <div className="text-[48px] mb-5  font-semibold text-yellow-500">
+        <div className="lg:text-[48px] md:text-[44px] sm:text-[40px] xs:text-[36px] mb-5  font-semibold text-yellow-500">
           {logreg}
         </div>
-        <div className="  grid place-items-center">
+        <div className="login__form__wrap">
           <div className="mb-4 ">
             <input
               onChange={handleNumberhange}
               value={number}
-              className="w-[559px] h-[62px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="w-full lg:h-[60px] xs:h-[45px] p-4 bg-[#FCF7E8] rounded-2xl text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="phone"
               type="number"
               placeholder="Enter Phone Number (01-XXXXXXXXX)"
@@ -136,7 +136,7 @@ export default function LoginForm({ logreg, btntext }: logreg) {
             <input
               onChange={handlePasswordChange}
               value={password}
-              className="w-[559px] h-[62px] p-4 bg-[#FCF7E8]  rounded-2xl   text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
+              className="w-full lg:h-[60px] xs:h-[45px] p-4 bg-[#FCF7E8]  rounded-2xl   text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
               placeholder="Password"
@@ -147,7 +147,7 @@ export default function LoginForm({ logreg, btntext }: logreg) {
           <button
             type="button"
             onClick={submitLogin}
-            className=" mt-8 px-5 bg-[#F9A106] rounded-full text-[35px] text-white w-[368px] h-[75px] "
+            className=" mt-8 px-5 bg-[#F9A106] rounded-full lg:text-[35px] xs:text-[25px] text-white w-full lg:h-[65px] xs:h-[50px]"
           >
             {btntext}
           </button>

@@ -22,15 +22,15 @@ const SignUpPage = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              {!uuid ? (<div className={`flex ${arial.variable} font-arial`}>
-                <div className="relative flex flex-row bg-[#FCF7E8] shadow-md">
+              {!uuid ? (<div className={`${arial.variable} font-arial`}>
+                <div className="login__form__wrap clearfix relative bg-[#FCF7E8] shadow-md">
                   {/* left part */}
-                  <div className=" w-[640px]   ">
+                  <div className="login__form__left">
                     <LoginSignInOtpLeftPartDesign />
                   </div>
                   {/* right part */}
-                  <div className=" w-[640px]  bg-white rounded-l-[46px] text-black grid place-items-center ">
-                    <div className="grid place-items-center">
+                  <div className="login__form__right  bg-white rounded-l-[46px] text-black">
+                    <div className="">
                       <SigninForm logreg="Create Account" btntext="Sign Up" />
                       <SignInOption
                         title="Or Signup with"
@@ -44,7 +44,7 @@ const SignUpPage = () => {
                     </div>
 
                   </div>
-                  <div className="absolute top-7 right-0 pr-2">
+                  <div className="language__dropdown absolute top-7 right-0 pr-2">
                     <DropDown />
                   </div>
                 </div>

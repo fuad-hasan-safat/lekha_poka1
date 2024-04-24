@@ -2,22 +2,18 @@
 export default function LoginSignInOtpLeftPartDesign() {
   return (
     <>
-      <div className="space-y-20">
-        <div className="pl-9">
+      <div className="">
+        <div className="login__logo">
           <img
             src="/images/svgs/lekhapokaBlack.svg"
             height={72}
             width={205}
             alt="logo"
-            className="pt-[81px] "
           />
         </div>
-        <div className=" grid place-items-center">
-          <div className="w-[561px] text-black text-6xl">
-            <div className="">Enjoy The world of</div>
-            <div className="mt-2">
-              <span className="text-[#F9A106]">Poem</span> anytime !
-            </div>
+        <div className="login__lft__dsc grid place-items-center">
+          <div className="login__lft__text text-black text-6xl">
+            <h2 className="pt-[30px]">Enjoy The world of <span className="text-[#F9A106]">Poem</span> anytime !</h2>
           </div>
 
           <div>
@@ -26,7 +22,6 @@ export default function LoginSignInOtpLeftPartDesign() {
               height={546}
               width={346}
               alt="logo"
-              className="pt-16"
             />
           </div>
         </div>
